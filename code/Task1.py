@@ -6,10 +6,10 @@ from collections import defaultdict
 # ---------------------------
 # CONFIG
 # ---------------------------
-BASE_DIR = r"C:\Users\milan\Documents\audio-focus-inference-research"
-DATA_DIR = os.path.join(BASE_DIR, "data", "input")
-OUTPUT_DIR = os.path.join(BASE_DIR, "data", "output_milan")
+DATA_DIR = "data/input"
+OUTPUT_DIR = "data/output_milan"
 RANDOM_SEED = 42
+
 
 
 # ---------------------------
