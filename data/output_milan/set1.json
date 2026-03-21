@@ -1,0 +1,122 @@
+[
+    {
+        "S1": "Sam only gave Ellen APPLES.",
+        "S2": "Sam didn't give Bill apples.",
+        "A": "B",
+        "focus": 2,
+        "logic": "NEG",
+        "alternative": "1",
+        "source_file": "f3.json",
+        "item_index": 4,
+        "structure": [
+            "2",
+            "1",
+            "NEG"
+        ]
+    },
+    {
+        "S1": "Sam only gave ROB oranges.",
+        "S2": "Sam also gave Rob apples.",
+        "A": "B",
+        "focus": 1,
+        "logic": "POS",
+        "alternative": "2",
+        "source_file": "f3.json",
+        "item_index": 6,
+        "structure": [
+            "1",
+            "2",
+            "POS"
+        ]
+    },
+    {
+        "S1": "Sam only gave SUE apples.",
+        "S2": "Sam didn't give Sue oranges.",
+        "A": "B",
+        "focus": 1,
+        "logic": "NEG",
+        "alternative": "2",
+        "source_file": "f2.json",
+        "item_index": 5,
+        "structure": [
+            "1",
+            "2",
+            "NEG"
+        ]
+    },
+    {
+        "S1": "Sam only gave Sue GRAPES.",
+        "S2": "Sam didn't give Sue apples.",
+        "A": "A",
+        "focus": 2,
+        "logic": "NEG",
+        "alternative": "2",
+        "source_file": "f2.json",
+        "item_index": 6,
+        "structure": [
+            "2",
+            "2",
+            "NEG"
+        ]
+    },
+    {
+        "S1": "Sam only gave Bill GRAPES.",
+        "S2": "Sam also gave Rob grapes.",
+        "A": "B",
+        "focus": 2,
+        "logic": "POS",
+        "alternative": "1",
+        "source_file": "f9.json",
+        "item_index": 8,
+        "structure": [
+            "2",
+            "1",
+            "POS"
+        ]
+    },
+    {
+        "S1": "Sam only gave BILL grapes.",
+        "S2": "Sam also gave Sue grapes.",
+        "A": "C",
+        "focus": 1,
+        "logic": "POS",
+        "alternative": "1",
+        "source_file": "f1.json",
+        "item_index": 0,
+        "structure": [
+            "1",
+            "1",
+            "POS"
+        ]
+    },
+    {
+        "S1": "Sam only gave Rob ORANGES.",
+        "S2": "Sam also gave Rob bananas.",
+        "A": "C",
+        "focus": 2,
+        "logic": "POS",
+        "alternative": "2",
+        "source_file": "f6.json",
+        "item_index": 4,
+        "structure": [
+            "2",
+            "2",
+            "POS"
+        ]
+    },
+    {
+        "S1": "Sam only gave SUE apples.",
+        "S2": "Sam didn't give Rob apples.",
+        "A": "A",
+        "focus": 1,
+        "logic": "NEG",
+        "alternative": "1",
+        "source_file": "f10.json",
+        "item_index": 3,
+        "structure": [
+            "1",
+            "1",
+            "NEG"
+        ]
+    }
+]
