@@ -9,12 +9,15 @@ from difflib import SequenceMatcher, get_close_matches
 # CONFIG
 # =========================================================
 
-SET1_FILE = "data/output_milan/set1.json"
-SET2_FILE = "data/output_milan/set2.json"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(SCRIPT_DIR)
 
-INPUT_DIR = "data/input"
-OUTPUT_MATCH_DIR = "data/output_milan/matches"
-OUTPUT_CLIPS_BASE = "data/clips"
+SET1_FILE = os.path.join(REPO_ROOT, "data", "output_milan", "set1.json")
+SET2_FILE = os.path.join(REPO_ROOT, "data", "output_milan", "set2.json")
+
+INPUT_DIR = os.path.join(REPO_ROOT, "data", "input")
+OUTPUT_MATCH_DIR = os.path.join(REPO_ROOT, "data", "output_milan", "matches")
+OUTPUT_CLIPS_BASE = os.path.join(REPO_ROOT, "data", "clips")
 
 WHISPER_MODEL = "medium"   # ha túl lassú: "small"
 START_PADDING = 0.03
@@ -190,8 +193,7 @@ def load_source_items(json_file):
     return items
 
 
-def transcribe_words(audio_file):
-    model = whisper.load_model(WHISPER_MODEL)
+def transcribe_words(audio_file, model):
     result = model.transcribe(
         audio_file,
         word_timestamps=True,
@@ -326,7 +328,7 @@ def match_items_forward(items, words):
     return results
 
 
-def process_source_file(source_basename, needed_for_sets):
+def process_source_file(source_basename, needed_for_sets, model):
     audio_file = os.path.join(INPUT_DIR, f"{source_basename}.m4a")
     json_file = os.path.join(INPUT_DIR, f"{source_basename}.json")
 
@@ -343,7 +345,7 @@ def process_source_file(source_basename, needed_for_sets):
     print(f"Needed in set2: {sorted(needed_for_sets['set2'])}")
 
     items = load_source_items(json_file)
-    words = transcribe_words(audio_file)
+    words = transcribe_words(audio_file, model)
     results = match_items_forward(items, words)
 
     os.makedirs(OUTPUT_MATCH_DIR, exist_ok=True)
@@ -384,6 +386,7 @@ def process_source_file(source_basename, needed_for_sets):
 
 def main():
     required = build_required_map()
+    model = whisper.load_model(WHISPER_MODEL)
 
     print("Required source files:")
     for source, sets in sorted(required.items()):
@@ -394,7 +397,7 @@ def main():
         )
 
     for source_basename, needed_for_sets in sorted(required.items()):
-        process_source_file(source_basename, needed_for_sets)
+        process_source_file(source_basename, needed_for_sets, model)
 
     print("\nDone.")
 
