@@ -208,9 +208,17 @@ def load_source_items(json_file):
 
 
 def transcribe_words(audio_file, model):
+    # Keep decoding deterministic and CPU-safe across runs.
+    # - language/task pin Whisper to English transcription mode
+    # - temperature=0 removes sampling randomness
+    # - fp16=False avoids CPU fp16 warnings/fallback behavior
     result = model.transcribe(
         audio_file,
         word_timestamps=True,
+        language="en",
+        task="transcribe",
+        temperature=0,
+        fp16=False,
         verbose=False
     )
 
