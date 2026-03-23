@@ -3,18 +3,26 @@ import re
 import json
 import whisper
 import subprocess
+from datetime import datetime
 from difflib import SequenceMatcher, get_close_matches
 
 # =========================================================
 # CONFIG
 # =========================================================
 
-SET1_FILE = "data/output_milan/set1.json"
-SET2_FILE = "data/output_milan/set2.json"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(SCRIPT_DIR)
 
-INPUT_DIR = "data/input"
-OUTPUT_MATCH_DIR = "data/output_milan/matches"
-OUTPUT_CLIPS_BASE = "data/clips"
+SET1_FILE = os.path.join(REPO_ROOT, "data", "output_milan", "set1.json")
+SET2_FILE = os.path.join(REPO_ROOT, "data", "output_milan", "set2.json")
+
+INPUT_DIR = os.path.join(REPO_ROOT, "data", "input")
+OUTPUT_MATCH_DIR = os.path.join(REPO_ROOT, "data", "output_milan", "matches")
+OUTPUT_CLIPS_BASE = os.path.join(REPO_ROOT, "data", "clips")
+LOG_DIR = os.path.join(REPO_ROOT, "data", "output_milan", "logs")
+
+RUN_TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
+LOG_FILE = os.path.join(LOG_DIR, f"task2_all_{RUN_TIMESTAMP}.log")
 
 WHISPER_MODEL = "medium"   # ha túl lassú: "small"
 START_PADDING = 0.03
@@ -46,6 +54,15 @@ MANUAL_MAP = {
     "orange": "oranges",
     "apple": "apples",
 }
+
+
+def log(message: str):
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {message}"
+    print(line)
+    os.makedirs(LOG_DIR, exist_ok=True)
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
 
 # =========================================================
 # HELPERS
@@ -190,27 +207,41 @@ def load_source_items(json_file):
     return items
 
 
-def transcribe_words(audio_file):
-    model = whisper.load_model(WHISPER_MODEL)
+def transcribe_words(audio_file, model):
+    # Keep decoding deterministic and CPU-safe across runs.
+    # - language/task pin Whisper to English transcription mode
+    # - temperature=0 removes sampling randomness
+    # - fp16=False avoids CPU fp16 warnings/fallback behavior
     result = model.transcribe(
         audio_file,
         word_timestamps=True,
+        language="en",
+        task="transcribe",
+        temperature=0,
+        fp16=False,
         verbose=False
     )
 
     words = []
+    raw_word_count = 0
+    normalized_word_count = 0
+    dropped_unsnapped = 0
+
     for seg in result.get("segments", []):
         for w in seg.get("words", []):
             raw = w.get("word", "").strip()
             if not raw:
                 continue
+            raw_word_count += 1
 
             raw_norm = normalize_text(raw)
             if not raw_norm:
                 continue
+            normalized_word_count += 1
 
             snapped = snap_token(raw_norm)
             if snapped is None:
+                dropped_unsnapped += 1
                 continue
 
             words.append({
@@ -221,7 +252,15 @@ def transcribe_words(audio_file):
                 "end": w["end"],
             })
 
-    return words
+    diagnostics = {
+        "raw_word_count": raw_word_count,
+        "normalized_word_count": normalized_word_count,
+        "kept_word_count": len(words),
+        "dropped_unsnapped": dropped_unsnapped,
+        "last_word_end_time": words[-1]["end"] if words else None,
+    }
+
+    return words, diagnostics
 
 
 def score_candidate(item, candidate_tokens):
@@ -326,32 +365,70 @@ def match_items_forward(items, words):
     return results
 
 
-def process_source_file(source_basename, needed_for_sets):
-    audio_file = os.path.join(INPUT_DIR, f"{source_basename}.m4a")
+def process_source_file(source_basename, needed_for_sets, model):
+    audio_file_m4a = os.path.join(INPUT_DIR, f"{source_basename}.m4a")
+    audio_file_wav = os.path.join(INPUT_DIR, f"{source_basename}.wav")
     json_file = os.path.join(INPUT_DIR, f"{source_basename}.json")
 
-    if not os.path.exists(audio_file):
-        print(f"[SKIP] Missing audio: {audio_file}")
+    if os.path.exists(audio_file_m4a):
+        audio_file = audio_file_m4a
+        audio_kind = "m4a"
+    elif os.path.exists(audio_file_wav):
+        audio_file = audio_file_wav
+        audio_kind = "wav"
+    else:
+        log(f"[SKIP] Missing audio: {audio_file_m4a} and {audio_file_wav}")
         return
 
     if not os.path.exists(json_file):
-        print(f"[SKIP] Missing json: {json_file}")
+        log(f"[SKIP] Missing json: {json_file}")
         return
 
-    print(f"\n=== Processing {source_basename} ===")
-    print(f"Needed in set1: {sorted(needed_for_sets['set1'])}")
-    print(f"Needed in set2: {sorted(needed_for_sets['set2'])}")
+    log(f"=== Processing {source_basename} ===")
+    log(f"Audio source: {audio_file} ({audio_kind})")
+    log(f"Needed in set1: {sorted(needed_for_sets['set1'])}")
+    log(f"Needed in set2: {sorted(needed_for_sets['set2'])}")
 
     items = load_source_items(json_file)
-    words = transcribe_words(audio_file)
+    words, diag = transcribe_words(audio_file, model)
+    total_duration = get_audio_duration(audio_file)
+
+    # If m4a transcription is suspiciously short, retry with wav when available.
+    if (
+        audio_kind == "m4a"
+        and os.path.exists(audio_file_wav)
+        and (
+            not words
+            or diag["last_word_end_time"] is None
+            or diag["last_word_end_time"] < 0.75 * total_duration
+        )
+    ):
+        log(
+            "[WARN] m4a transcript coverage looks short; retrying with wav "
+            f"({diag['last_word_end_time']}s of {total_duration:.2f}s)."
+        )
+        audio_file = audio_file_wav
+        audio_kind = "wav"
+        words, diag = transcribe_words(audio_file, model)
+        total_duration = get_audio_duration(audio_file)
+
+    last_end = diag["last_word_end_time"]
+    last_end_str = f"{last_end:.2f}s" if last_end is not None else "None"
+    log(
+        "Transcription diagnostics: "
+        f"kept={diag['kept_word_count']}/{diag['normalized_word_count']} "
+        f"(raw={diag['raw_word_count']}), "
+        f"dropped_unsnapped={diag['dropped_unsnapped']}, "
+        f"last_word_end={last_end_str}, "
+        f"audio_duration={total_duration:.2f}s"
+    )
+
     results = match_items_forward(items, words)
 
     os.makedirs(OUTPUT_MATCH_DIR, exist_ok=True)
     match_out = os.path.join(OUTPUT_MATCH_DIR, f"{source_basename}_matches.json")
     with open(match_out, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-
-    total_duration = get_audio_duration(audio_file)
 
     for result in results:
         if not result["found"]:
@@ -372,10 +449,10 @@ def process_source_file(source_basename, needed_for_sets):
                 f"{source_basename}_item{item_idx}.wav"
             )
 
-            print(f"Cutting {set_name}: {source_basename}_item{item_idx}.wav")
+            log(f"Cutting {set_name}: {source_basename}_item{item_idx}.wav")
             cut_clip(audio_file, start, end, output_file)
 
-    print(f"Saved match file: {match_out}")
+    log(f"Saved match file: {match_out}")
 
 
 # =========================================================
@@ -384,19 +461,26 @@ def process_source_file(source_basename, needed_for_sets):
 
 def main():
     required = build_required_map()
+    model = whisper.load_model(WHISPER_MODEL)
 
-    print("Required source files:")
+    os.makedirs(LOG_DIR, exist_ok=True)
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        f.write("")
+
+    log(f"Task2 run started. Log file: {LOG_FILE}")
+    log(f"Whisper model: {WHISPER_MODEL}")
+    log("Required source files:")
     for source, sets in sorted(required.items()):
-        print(
+        log(
             f"  {source}: "
             f"set1={sorted(sets['set1'])}, "
             f"set2={sorted(sets['set2'])}"
         )
 
     for source_basename, needed_for_sets in sorted(required.items()):
-        process_source_file(source_basename, needed_for_sets)
+        process_source_file(source_basename, needed_for_sets, model)
 
-    print("\nDone.")
+    log("Done.")
 
 
 if __name__ == "__main__":
