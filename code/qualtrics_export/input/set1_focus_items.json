@@ -8,7 +8,8 @@
     "alternative": "1",
     "source_json": "f10.json",
     "source_item_index": 3,
-    "audio_file": "f10_item3.wav"
+    "audio_file": "f10_item3.wav",
+    "S1_normalized": "Sam only gave Sue apples."
   },
   {
     "S1": "Sam only gave BILL grapes.",
@@ -19,7 +20,8 @@
     "alternative": "1",
     "source_json": "f1.json",
     "source_item_index": 0,
-    "audio_file": "f1_item0.wav"
+    "audio_file": "f1_item0.wav",
+    "S1_normalized": "Sam only gave Bill grapes."
   },
   {
     "S1": "Sam only gave SUE apples.",
@@ -30,7 +32,8 @@
     "alternative": "2",
     "source_json": "f2.json",
     "source_item_index": 5,
-    "audio_file": "f2_item5.wav"
+    "audio_file": "f2_item5.wav",
+    "S1_normalized": "Sam only gave Sue apples."
   },
   {
     "S1": "Sam only gave Sue GRAPES.",
@@ -41,7 +44,8 @@
     "alternative": "2",
     "source_json": "f2.json",
     "source_item_index": 6,
-    "audio_file": "f2_item6.wav"
+    "audio_file": "f2_item6.wav",
+    "S1_normalized": "Sam only gave Sue grapes."
   },
   {
     "S1": "Sam only gave Ellen APPLES.",
@@ -52,7 +56,8 @@
     "alternative": "1",
     "source_json": "f3.json",
     "source_item_index": 4,
-    "audio_file": "f3_item4.wav"
+    "audio_file": "f3_item4.wav",
+    "S1_normalized": "Sam only gave Ellen apples."
   },
   {
     "S1": "Sam only gave ROB oranges.",
@@ -63,7 +68,8 @@
     "alternative": "2",
     "source_json": "f3.json",
     "source_item_index": 6,
-    "audio_file": "f3_item6.wav"
+    "audio_file": "f3_item6.wav",
+    "S1_normalized": "Sam only gave Rob oranges."
   },
   {
     "S1": "Sam only gave Rob ORANGES.",
@@ -74,7 +80,8 @@
     "alternative": "2",
     "source_json": "f6.json",
     "source_item_index": 4,
-    "audio_file": "f6_item4.wav"
+    "audio_file": "f6_item4.wav",
+    "S1_normalized": "Sam only gave Rob oranges."
   },
   {
     "S1": "Sam only gave Bill GRAPES.",
@@ -85,6 +92,7 @@
     "alternative": "1",
     "source_json": "f9.json",
     "source_item_index": 8,
-    "audio_file": "f9_item8.wav"
+    "audio_file": "f9_item8.wav",
+    "S1_normalized": "Sam only gave Bill grapes."
   }
 ]

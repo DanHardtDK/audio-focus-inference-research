@@ -9,6 +9,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from focus_text_utils import normalize_s1
+
 
 CLIP_PATTERN = re.compile(r"^(f\d+)_item(\d+)\.wav$", re.IGNORECASE)
 
@@ -65,6 +67,8 @@ def build_subset(clips_dir: Path, input_dir: Path) -> list[dict[str, Any]]:
         item["source_json"] = source_json_path.name
         item["source_item_index"] = source_item_index
         item["audio_file"] = clip_path.name
+        if "S1" in item:
+            item["S1_normalized"] = normalize_s1(str(item["S1"]))
         subset.append(item)
 
     if not subset:

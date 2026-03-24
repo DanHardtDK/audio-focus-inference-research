@@ -44,6 +44,8 @@ That gives you:
 - `set1_focus_survey.txt` for the Qualtrics question import
 - `set1_focus_survey.audio_map.csv` so you can manually attach the right uploaded audio to each question
 
+For the focus survey, the clip-subset builder also adds `S1_normalized` to the generated JSON. The focus exporter uses that normalized sentence, hides `Sentence 2`, and normalizes the answer choices so uppercase focus cues are not visible in the text import.
+
 Recommended workflow for the inference survey from `data/clips/set2/`:
 
 ```bash

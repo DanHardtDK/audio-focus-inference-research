@@ -37,10 +37,10 @@ Input item shape:
 from __future__ import annotations
 
 import argparse
-import re
 from pathlib import Path
 from typing import Any
 
+from focus_text_utils import normalize_s1, normalized_focus_choices
 from qualtrics_export_common import (
     build_audio_map_rows,
     load_items,
@@ -54,69 +54,18 @@ BLOCK_HEADER = "[[Block:Focus Survey]]"
 QUESTION_HEADER = "[[Question:MC:SingleAnswer:Vertical]]"
 CHOICES_HEADER = "[[Choices]]"
 
-S1_PATTERN = re.compile(r"^\s*(?P<subject>.+?)\s+only\s+gave\s+(?P<tail>.+?)\s*$")
-TOKEN_PATTERN = re.compile(r"[A-Za-z0-9][A-Za-z0-9'_-]*")
-
-
-def extract_objects_from_s1(s1: str) -> tuple[str, str]:
-    """Extract the two objects from an S1 sentence of the form '<subject> only gave X Y.'."""
-    sanitized_s1 = sanitize_qualtrics_text(s1)
-    match = S1_PATTERN.match(sanitized_s1.rstrip(".!?"))
-    if not match:
-        raise ValueError(f"Could not parse S1 structure: {s1!r}")
-
-    tail = match.group("tail")
-    objects = TOKEN_PATTERN.findall(tail)
-    if len(objects) != 2:
-        raise ValueError(
-            f"Expected exactly two objects after 'only gave' in S1, found {len(objects)}: {s1!r}"
-        )
-
-    return objects[0], objects[1]
-
-
-def extract_emphasized_word(s1: str, focus: int) -> str:
-    """Find the emphasized word, preferring the fully uppercase token when present."""
-    object1, object2 = extract_objects_from_s1(s1)
-    uppercase_objects = [
-        token
-        for token in (object1, object2)
-        if any(char.isalpha() for char in token) and token == token.upper()
-    ]
-
-    if len(uppercase_objects) == 1:
-        return uppercase_objects[0]
-    if len(uppercase_objects) > 1:
-        raise ValueError(f"Found multiple uppercase focus candidates in S1: {s1!r}")
-    if focus == 1:
-        return object1
-    if focus == 2:
-        return object2
-    raise ValueError(f"Unsupported focus value {focus!r} for S1: {s1!r}")
-
 
 def build_qualtrics_question(item: dict[str, Any], idx: int) -> str:
     """Build one Qualtrics Advanced TXT question block from a JSON item."""
-    required_fields = ("S1", "S2", "A", "focus", "logic", "alternative")
+    required_fields = ("S1", "A", "focus", "logic", "alternative")
     missing_fields = [field for field in required_fields if field not in item]
     if missing_fields:
         raise KeyError(f"Item {idx} is missing required fields: {', '.join(missing_fields)}")
 
     s1 = sanitize_qualtrics_text(item["S1"])
-    s2 = sanitize_qualtrics_text(item["S2"])
     focus = int(item["focus"])
-
-    object1, object2 = extract_objects_from_s1(s1)
-    emphasized_word = extract_emphasized_word(s1, focus)
-
-    if emphasized_word == object1:
-        alternative_word = object2
-    elif emphasized_word == object2:
-        alternative_word = object1
-    else:
-        raise ValueError(
-            f"Emphasized word {emphasized_word!r} does not match parsed objects in S1: {s1!r}"
-        )
+    normalized_s1 = sanitize_qualtrics_text(item.get("S1_normalized", normalize_s1(s1)))
+    emphasized_word, alternative_word = normalized_focus_choices(s1, focus)
 
     lines = [
         f"[[ED:item_id:{idx}]]",
@@ -126,8 +75,7 @@ def build_qualtrics_question(item: dict[str, Any], idx: int) -> str:
         f"[[ED:alternative:{sanitize_qualtrics_text(item['alternative'])}]]",
         QUESTION_HEADER,
         "In Sentence 1, which word was said with stronger emphasis?<br><br>",
-        f"Sentence 1: {s1}<br>",
-        f"Sentence 2: {s2}<br>",
+        f"Sentence 1: {normalized_s1}<br>",
         CHOICES_HEADER,
         sanitize_qualtrics_text(emphasized_word),
         sanitize_qualtrics_text(alternative_word),
@@ -146,13 +94,11 @@ def print_preview(items: list[dict[str, Any]], preview_count: int = 3) -> None:
     print(f"Previewing first {min(preview_count, len(items))} question(s):")
     for idx, item in enumerate(items[:preview_count], start=1):
         s1 = sanitize_qualtrics_text(item["S1"])
-        emphasized_word = extract_emphasized_word(s1, int(item["focus"]))
-        object1, object2 = extract_objects_from_s1(s1)
-        alternative_word = object2 if emphasized_word == object1 else object1
+        normalized_s1 = sanitize_qualtrics_text(item.get("S1_normalized", normalize_s1(s1)))
+        emphasized_word, alternative_word = normalized_focus_choices(s1, int(item["focus"]))
         print()
         print(f"Question {idx}")
-        print(f"  Sentence 1: {s1}")
-        print(f"  Sentence 2: {sanitize_qualtrics_text(item['S2'])}")
+        print(f"  Sentence 1: {normalized_s1}")
         print(f"  Choices: {emphasized_word} | {alternative_word}")
 
 

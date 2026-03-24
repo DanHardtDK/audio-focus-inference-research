@@ -9,10 +9,9 @@
 [[ED:alternative:1]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave SUE apples.<br>
-Sentence 2: Sam didn't give Rob apples.<br>
+Sentence 1: Sam only gave Sue apples.<br>
 [[Choices]]
-SUE
+Sue
 apples
 
 [[ED:item_id:2]]
@@ -22,10 +21,9 @@ apples
 [[ED:alternative:1]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave BILL grapes.<br>
-Sentence 2: Sam also gave Sue grapes.<br>
+Sentence 1: Sam only gave Bill grapes.<br>
 [[Choices]]
-BILL
+Bill
 grapes
 
 [[ED:item_id:3]]
@@ -35,10 +33,9 @@ grapes
 [[ED:alternative:2]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave SUE apples.<br>
-Sentence 2: Sam didn't give Sue oranges.<br>
+Sentence 1: Sam only gave Sue apples.<br>
 [[Choices]]
-SUE
+Sue
 apples
 
 [[ED:item_id:4]]
@@ -48,10 +45,9 @@ apples
 [[ED:alternative:2]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Sue GRAPES.<br>
-Sentence 2: Sam didn't give Sue apples.<br>
+Sentence 1: Sam only gave Sue grapes.<br>
 [[Choices]]
-GRAPES
+grapes
 Sue
 
 [[ED:item_id:5]]
@@ -61,10 +57,9 @@ Sue
 [[ED:alternative:1]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Ellen APPLES.<br>
-Sentence 2: Sam didn't give Bill apples.<br>
+Sentence 1: Sam only gave Ellen apples.<br>
 [[Choices]]
-APPLES
+apples
 Ellen
 
 [[ED:item_id:6]]
@@ -74,10 +69,9 @@ Ellen
 [[ED:alternative:2]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave ROB oranges.<br>
-Sentence 2: Sam also gave Rob apples.<br>
+Sentence 1: Sam only gave Rob oranges.<br>
 [[Choices]]
-ROB
+Rob
 oranges
 
 [[ED:item_id:7]]
@@ -87,10 +81,9 @@ oranges
 [[ED:alternative:2]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Rob ORANGES.<br>
-Sentence 2: Sam also gave Rob bananas.<br>
+Sentence 1: Sam only gave Rob oranges.<br>
 [[Choices]]
-ORANGES
+oranges
 Rob
 
 [[ED:item_id:8]]
@@ -100,8 +93,7 @@ Rob
 [[ED:alternative:1]]
 [[Question:MC:SingleAnswer:Vertical]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Bill GRAPES.<br>
-Sentence 2: Sam also gave Rob grapes.<br>
+Sentence 1: Sam only gave Bill grapes.<br>
 [[Choices]]
-GRAPES
+grapes
 Bill
