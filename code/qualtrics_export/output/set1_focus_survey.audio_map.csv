@@ -1,0 +1,9 @@
+question_number,item_id,label,focus,logic,alternative,s1,s2,audio_filename,audio_path,audio_exists
+1,1,A,1,NEG,1,Sam only gave SUE apples.,Sam didn't give Rob apples.,f10_item3.wav,data/clips/set1/f10_item3.wav,yes
+2,2,C,1,POS,1,Sam only gave BILL grapes.,Sam also gave Sue grapes.,f1_item0.wav,data/clips/set1/f1_item0.wav,yes
+3,3,B,1,NEG,2,Sam only gave SUE apples.,Sam didn't give Sue oranges.,f2_item5.wav,data/clips/set1/f2_item5.wav,yes
+4,4,A,2,NEG,2,Sam only gave Sue GRAPES.,Sam didn't give Sue apples.,f2_item6.wav,data/clips/set1/f2_item6.wav,yes
+5,5,B,2,NEG,1,Sam only gave Ellen APPLES.,Sam didn't give Bill apples.,f3_item4.wav,data/clips/set1/f3_item4.wav,yes
+6,6,B,1,POS,2,Sam only gave ROB oranges.,Sam also gave Rob apples.,f3_item6.wav,data/clips/set1/f3_item6.wav,yes
+7,7,C,2,POS,2,Sam only gave Rob ORANGES.,Sam also gave Rob bananas.,f6_item4.wav,data/clips/set1/f6_item4.wav,yes
+8,8,B,2,POS,1,Sam only gave Bill GRAPES.,Sam also gave Rob grapes.,f9_item8.wav,data/clips/set1/f9_item8.wav,yes
