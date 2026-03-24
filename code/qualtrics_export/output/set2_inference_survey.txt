@@ -10,7 +10,7 @@
 [[ED:correct_answer:Sentence 2 might be true.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave BILL bananas.<br>
+Sentence 1: Sam only gave Bill bananas.<br>
 Sentence 2: Sam also gave Bill grapes.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -25,7 +25,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 must be false.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave Rob ORANGES.<br>
+Sentence 1: Sam only gave Rob oranges.<br>
 Sentence 2: Sam also gave Rob apples.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -40,7 +40,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 must be true.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave SUE grapes.<br>
+Sentence 1: Sam only gave Sue grapes.<br>
 Sentence 2: Sam didn't give Tom grapes.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -55,7 +55,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 must be false.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave MARY oranges.<br>
+Sentence 1: Sam only gave Mary oranges.<br>
 Sentence 2: Sam also gave Ellen oranges.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -70,7 +70,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 might be true.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave Ellen ORANGES.<br>
+Sentence 1: Sam only gave Ellen oranges.<br>
 Sentence 2: Sam also gave Sue oranges.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -85,7 +85,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 must be true.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave Rob ORANGES.<br>
+Sentence 1: Sam only gave Rob oranges.<br>
 Sentence 2: Sam didn't give Rob apples.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -100,7 +100,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 might be true.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave Ellen GRAPES.<br>
+Sentence 1: Sam only gave Ellen grapes.<br>
 Sentence 2: Sam didn't give Rob grapes.<br>
 [[Choices]]
 Sentence 2 must be true.
@@ -115,7 +115,7 @@ Sentence 2 must be false.
 [[ED:correct_answer:Sentence 2 might be true.]]
 [[Question:MC:SingleAnswer:Vertical]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
-Sentence 1: Sam only gave MARY apples.<br>
+Sentence 1: Sam only gave Mary apples.<br>
 Sentence 2: Sam didn't give Mary grapes.<br>
 [[Choices]]
 Sentence 2 must be true.

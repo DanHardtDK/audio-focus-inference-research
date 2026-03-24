@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Helpers for parsing and normalizing focus-survey sentence text."""
+"""Helpers for parsing and normalizing survey sentence text."""
 
 from __future__ import annotations
 
@@ -8,26 +8,38 @@ import re
 from qualtrics_export_common import sanitize_qualtrics_text
 
 
-S1_PATTERN = re.compile(r"^\s*(?P<subject>.+?)\s+only\s+gave\s+(?P<tail>.+?)\s*$")
+DELIVERY_PATTERN = re.compile(
+    r"^\s*(?P<subject>.+?)\s+(?P<relation>only\s+gave|didn't\s+give|also\s+gave)\s+(?P<tail>.+?)\s*$",
+    re.IGNORECASE,
+)
 TOKEN_PATTERN = re.compile(r"[A-Za-z0-9][A-Za-z0-9'_-]*")
 
 
-def parse_s1_components(s1: str) -> tuple[str, str, str]:
-    """Parse an S1 sentence into subject, object1, and object2."""
-    sanitized_s1 = sanitize_qualtrics_text(s1)
-    match = S1_PATTERN.match(sanitized_s1.rstrip(".!?"))
+def parse_delivery_components(sentence: str) -> tuple[str, str, str, str]:
+    """Parse a survey sentence into subject, relation, object1, and object2."""
+    sanitized_sentence = sanitize_qualtrics_text(sentence)
+    match = DELIVERY_PATTERN.match(sanitized_sentence.rstrip(".!?"))
     if not match:
-        raise ValueError(f"Could not parse S1 structure: {s1!r}")
+        raise ValueError(f"Could not parse delivery sentence structure: {sentence!r}")
 
     subject = match.group("subject")
+    relation = " ".join(match.group("relation").split()).lower()
     tail = match.group("tail")
     objects = TOKEN_PATTERN.findall(tail)
     if len(objects) != 2:
         raise ValueError(
-            f"Expected exactly two objects after 'only gave' in S1, found {len(objects)}: {s1!r}"
+            f"Expected exactly two objects after the relation phrase, found {len(objects)}: {sentence!r}"
         )
 
-    return subject, objects[0], objects[1]
+    return subject, relation, objects[0], objects[1]
+
+
+def parse_s1_components(s1: str) -> tuple[str, str, str]:
+    """Parse an S1 sentence into subject, object1, and object2."""
+    subject, relation, object1, object2 = parse_delivery_components(s1)
+    if relation != "only gave":
+        raise ValueError(f"S1 must use 'only gave': {s1!r}")
+    return subject, object1, object2
 
 
 def normalize_object1(token: str) -> str:
@@ -47,6 +59,21 @@ def normalize_s1(s1: str) -> str:
     normalized_object1 = normalize_object1(object1)
     normalized_object2 = normalize_object2(object2)
     return f"{normalized_subject} only gave {normalized_object1} {normalized_object2}."
+
+
+def normalize_delivery_sentence(sentence: str) -> str:
+    """Return a normalized delivery sentence without uppercase cues."""
+    subject, relation, object1, object2 = parse_delivery_components(sentence)
+    normalized_subject = sanitize_qualtrics_text(subject)
+    normalized_relation = relation
+    normalized_object1 = normalize_object1(object1)
+    normalized_object2 = normalize_object2(object2)
+    return f"{normalized_subject} {normalized_relation} {normalized_object1} {normalized_object2}."
+
+
+def normalize_s2(s2: str) -> str:
+    """Return a normalized S2 string without uppercase cues."""
+    return normalize_delivery_sentence(s2)
 
 
 def extract_focus_position(s1: str, focus: int) -> int:

@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from focus_text_utils import normalize_s1
+from focus_text_utils import normalize_s1, normalize_s2
 
 
 CLIP_PATTERN = re.compile(r"^(f\d+)_item(\d+)\.wav$", re.IGNORECASE)
@@ -69,6 +69,8 @@ def build_subset(clips_dir: Path, input_dir: Path) -> list[dict[str, Any]]:
         item["audio_file"] = clip_path.name
         if "S1" in item:
             item["S1_normalized"] = normalize_s1(str(item["S1"]))
+        if "S2" in item:
+            item["S2_normalized"] = normalize_s2(str(item["S2"]))
         subset.append(item)
 
     if not subset:

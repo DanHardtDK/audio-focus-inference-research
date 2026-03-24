@@ -8,7 +8,9 @@
     "alternative": "2",
     "source_json": "f10.json",
     "source_item_index": 4,
-    "audio_file": "f10_item4.wav"
+    "audio_file": "f10_item4.wav",
+    "S1_normalized": "Sam only gave Bill bananas.",
+    "S2_normalized": "Sam also gave Bill grapes."
   },
   {
     "S1": "Sam only gave Rob ORANGES.",
@@ -19,7 +21,9 @@
     "alternative": "2",
     "source_json": "f1.json",
     "source_item_index": 4,
-    "audio_file": "f1_item4.wav"
+    "audio_file": "f1_item4.wav",
+    "S1_normalized": "Sam only gave Rob oranges.",
+    "S2_normalized": "Sam also gave Rob apples."
   },
   {
     "S1": "Sam only gave SUE grapes.",
@@ -30,7 +34,9 @@
     "alternative": "1",
     "source_json": "f1.json",
     "source_item_index": 5,
-    "audio_file": "f1_item5.wav"
+    "audio_file": "f1_item5.wav",
+    "S1_normalized": "Sam only gave Sue grapes.",
+    "S2_normalized": "Sam didn't give Tom grapes."
   },
   {
     "S1": "Sam only gave MARY oranges.",
@@ -41,7 +47,9 @@
     "alternative": "1",
     "source_json": "f4.json",
     "source_item_index": 2,
-    "audio_file": "f4_item2.wav"
+    "audio_file": "f4_item2.wav",
+    "S1_normalized": "Sam only gave Mary oranges.",
+    "S2_normalized": "Sam also gave Ellen oranges."
   },
   {
     "S1": "Sam only gave Ellen ORANGES.",
@@ -52,7 +60,9 @@
     "alternative": "1",
     "source_json": "f8.json",
     "source_item_index": 4,
-    "audio_file": "f8_item4.wav"
+    "audio_file": "f8_item4.wav",
+    "S1_normalized": "Sam only gave Ellen oranges.",
+    "S2_normalized": "Sam also gave Sue oranges."
   },
   {
     "S1": "Sam only gave Rob ORANGES.",
@@ -63,7 +73,9 @@
     "alternative": "2",
     "source_json": "f8.json",
     "source_item_index": 5,
-    "audio_file": "f8_item5.wav"
+    "audio_file": "f8_item5.wav",
+    "S1_normalized": "Sam only gave Rob oranges.",
+    "S2_normalized": "Sam didn't give Rob apples."
   },
   {
     "S1": "Sam only gave Ellen GRAPES.",
@@ -74,7 +86,9 @@
     "alternative": "1",
     "source_json": "f8.json",
     "source_item_index": 9,
-    "audio_file": "f8_item9.wav"
+    "audio_file": "f8_item9.wav",
+    "S1_normalized": "Sam only gave Ellen grapes.",
+    "S2_normalized": "Sam didn't give Rob grapes."
   },
   {
     "S1": "Sam only gave MARY apples.",
@@ -85,6 +99,8 @@
     "alternative": "2",
     "source_json": "f9.json",
     "source_item_index": 3,
-    "audio_file": "f9_item3.wav"
+    "audio_file": "f9_item3.wav",
+    "S1_normalized": "Sam only gave Mary apples.",
+    "S2_normalized": "Sam didn't give Mary grapes."
   }
 ]

@@ -35,6 +35,7 @@ import argparse
 from pathlib import Path
 from typing import Any
 
+from focus_text_utils import normalize_s1, normalize_s2
 from qualtrics_export_common import (
     build_audio_map_rows,
     load_items,
@@ -71,8 +72,8 @@ def build_qualtrics_question(item: dict[str, Any], idx: int) -> str:
     if label not in LABEL_MAP:
         raise ValueError(f"Unsupported inference label {label!r} in item {idx}")
 
-    s1 = sanitize_qualtrics_text(item["S1"])
-    s2 = sanitize_qualtrics_text(item["S2"])
+    s1 = sanitize_qualtrics_text(item.get("S1_normalized", normalize_s1(str(item["S1"]))))
+    s2 = sanitize_qualtrics_text(item.get("S2_normalized", normalize_s2(str(item["S2"]))))
     correct_answer = LABEL_MAP[label]
 
     lines = [
@@ -105,8 +106,8 @@ def print_preview(items: list[dict[str, Any]], preview_count: int = 3) -> None:
         label = sanitize_qualtrics_text(item["A"])
         print()
         print(f"Question {idx}")
-        print(f"  Sentence 1: {sanitize_qualtrics_text(item['S1'])}")
-        print(f"  Sentence 2: {sanitize_qualtrics_text(item['S2'])}")
+        print(f"  Sentence 1: {sanitize_qualtrics_text(item.get('S1_normalized', normalize_s1(str(item['S1']))))}")
+        print(f"  Sentence 2: {sanitize_qualtrics_text(item.get('S2_normalized', normalize_s2(str(item['S2']))))}")
         print(f"  Correct answer: {LABEL_MAP[label]}")
 
 
