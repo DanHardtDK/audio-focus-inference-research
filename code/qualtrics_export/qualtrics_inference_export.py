@@ -1,43 +1,37 @@
 #!/usr/bin/env python3
-"""Convert focus-survey JSON items into a Qualtrics Advanced TXT survey.
+"""Convert inference-survey JSON items into a Qualtrics Advanced TXT survey.
 
 Usage:
-    python3 code/qualtrics_export/qualtrics_focus_export.py INPUT_JSON OUTPUT_TXT
+    python3 code/qualtrics_export/qualtrics_inference_export.py INPUT_JSON OUTPUT_TXT
 
 Example:
-    python3 code/qualtrics_export/qualtrics_focus_export.py \
-        code/qualtrics_export/input/f1.json \
-        code/qualtrics_export/output/f1_focus_survey.txt
+    python3 code/qualtrics_export/qualtrics_inference_export.py \
+        code/qualtrics_export/input/set2_inference_items.json \
+        code/qualtrics_export/output/set2_inference_survey.txt
 
 What it does:
-    - Reads a JSON array of focus-survey items.
+    - Reads a JSON array of inference-survey items.
     - Converts each item into one Qualtrics multiple-choice question.
     - Writes a Qualtrics Advanced TXT file ready for import.
     - Writes a companion CSV mapping each question to its matching audio clip.
     - Prints a preview of the first 3 generated questions.
 
+Answer mapping:
+    - A -> Sentence 2 must be true.
+    - B -> Sentence 2 might be true.
+    - C -> Sentence 2 must be false.
+
 Audio mapping:
-    - By default, the script looks for clips in data/clips/set1.
+    - By default, the script looks for clips in data/clips/set2.
     - If the input file is named like f1.json, question 1 maps to f1_item0.wav,
       question 2 maps to f1_item1.wav, etc.
     - For custom mixed subsets, include item-level metadata like source_json,
       source_item_index, or audio_file if you want automatic audio mapping.
-
-Input item shape:
-    {
-        "S1": "Sam only gave ROB bananas.",
-        "S2": "Sam didn't give Tom bananas.",
-        "A": "A",
-        "focus": 1,
-        "logic": "NEG",
-        "alternative": "1"
-    }
 """
 
 from __future__ import annotations
 
 import argparse
-import re
 from pathlib import Path
 from typing import Any
 
@@ -50,122 +44,82 @@ from qualtrics_export_common import (
 
 
 ADVANCED_FORMAT_HEADER = "[[AdvancedFormat]]"
-BLOCK_HEADER = "[[Block:Focus Survey]]"
+BLOCK_HEADER = "[[Block:Inference Survey]]"
 QUESTION_HEADER = "[[Question:MC:SingleAnswer:Vertical]]"
 CHOICES_HEADER = "[[Choices]]"
 
-S1_PATTERN = re.compile(r"^\s*(?P<subject>.+?)\s+only\s+gave\s+(?P<tail>.+?)\s*$")
-TOKEN_PATTERN = re.compile(r"[A-Za-z0-9][A-Za-z0-9'_-]*")
-
-
-def extract_objects_from_s1(s1: str) -> tuple[str, str]:
-    """Extract the two objects from an S1 sentence of the form '<subject> only gave X Y.'."""
-    sanitized_s1 = sanitize_qualtrics_text(s1)
-    match = S1_PATTERN.match(sanitized_s1.rstrip(".!?"))
-    if not match:
-        raise ValueError(f"Could not parse S1 structure: {s1!r}")
-
-    tail = match.group("tail")
-    objects = TOKEN_PATTERN.findall(tail)
-    if len(objects) != 2:
-        raise ValueError(
-            f"Expected exactly two objects after 'only gave' in S1, found {len(objects)}: {s1!r}"
-        )
-
-    return objects[0], objects[1]
-
-
-def extract_emphasized_word(s1: str, focus: int) -> str:
-    """Find the emphasized word, preferring the fully uppercase token when present."""
-    object1, object2 = extract_objects_from_s1(s1)
-    uppercase_objects = [
-        token
-        for token in (object1, object2)
-        if any(char.isalpha() for char in token) and token == token.upper()
-    ]
-
-    if len(uppercase_objects) == 1:
-        return uppercase_objects[0]
-    if len(uppercase_objects) > 1:
-        raise ValueError(f"Found multiple uppercase focus candidates in S1: {s1!r}")
-    if focus == 1:
-        return object1
-    if focus == 2:
-        return object2
-    raise ValueError(f"Unsupported focus value {focus!r} for S1: {s1!r}")
+LABEL_MAP = {
+    "A": "Sentence 2 must be true.",
+    "B": "Sentence 2 might be true.",
+    "C": "Sentence 2 must be false.",
+}
+INFERENCE_CHOICES = [
+    "Sentence 2 must be true.",
+    "Sentence 2 might be true.",
+    "Sentence 2 must be false.",
+]
 
 
 def build_qualtrics_question(item: dict[str, Any], idx: int) -> str:
-    """Build one Qualtrics Advanced TXT question block from a JSON item."""
+    """Build one Qualtrics Advanced TXT inference question block from a JSON item."""
     required_fields = ("S1", "S2", "A", "focus", "logic", "alternative")
     missing_fields = [field for field in required_fields if field not in item]
     if missing_fields:
         raise KeyError(f"Item {idx} is missing required fields: {', '.join(missing_fields)}")
 
+    label = sanitize_qualtrics_text(item["A"])
+    if label not in LABEL_MAP:
+        raise ValueError(f"Unsupported inference label {label!r} in item {idx}")
+
     s1 = sanitize_qualtrics_text(item["S1"])
     s2 = sanitize_qualtrics_text(item["S2"])
-    focus = int(item["focus"])
-
-    object1, object2 = extract_objects_from_s1(s1)
-    emphasized_word = extract_emphasized_word(s1, focus)
-
-    if emphasized_word == object1:
-        alternative_word = object2
-    elif emphasized_word == object2:
-        alternative_word = object1
-    else:
-        raise ValueError(
-            f"Emphasized word {emphasized_word!r} does not match parsed objects in S1: {s1!r}"
-        )
+    correct_answer = LABEL_MAP[label]
 
     lines = [
         f"[[ED:item_id:{idx}]]",
-        f"[[ED:label:{sanitize_qualtrics_text(item['A'])}]]",
-        f"[[ED:focus:{focus}]]",
+        f"[[ED:label:{label}]]",
+        f"[[ED:focus:{sanitize_qualtrics_text(item['focus'])}]]",
         f"[[ED:logic:{sanitize_qualtrics_text(item['logic'])}]]",
         f"[[ED:alternative:{sanitize_qualtrics_text(item['alternative'])}]]",
+        f"[[ED:correct_answer:{sanitize_qualtrics_text(correct_answer)}]]",
         QUESTION_HEADER,
-        "In Sentence 1, which word was said with stronger emphasis?<br><br>",
+        "Given Sentence 1, what can we say about Sentence 2?<br><br>",
         f"Sentence 1: {s1}<br>",
         f"Sentence 2: {s2}<br>",
         CHOICES_HEADER,
-        sanitize_qualtrics_text(emphasized_word),
-        sanitize_qualtrics_text(alternative_word),
+        *INFERENCE_CHOICES,
     ]
     return "\n".join(lines)
 
 
 def build_survey(items: list[dict[str, Any]]) -> str:
-    """Build the complete Qualtrics Advanced TXT survey."""
+    """Build the complete Qualtrics Advanced TXT inference survey."""
     question_blocks = [build_qualtrics_question(item, idx) for idx, item in enumerate(items, start=1)]
     return "\n\n".join([ADVANCED_FORMAT_HEADER, BLOCK_HEADER, *question_blocks]) + "\n"
 
 
 def print_preview(items: list[dict[str, Any]], preview_count: int = 3) -> None:
-    """Print a small console preview for the first few questions."""
+    """Print a small console preview for the first few inference questions."""
     print(f"Previewing first {min(preview_count, len(items))} question(s):")
     for idx, item in enumerate(items[:preview_count], start=1):
-        s1 = sanitize_qualtrics_text(item["S1"])
-        emphasized_word = extract_emphasized_word(s1, int(item["focus"]))
-        object1, object2 = extract_objects_from_s1(s1)
-        alternative_word = object2 if emphasized_word == object1 else object1
+        label = sanitize_qualtrics_text(item["A"])
         print()
         print(f"Question {idx}")
-        print(f"  Sentence 1: {s1}")
+        print(f"  Sentence 1: {sanitize_qualtrics_text(item['S1'])}")
         print(f"  Sentence 2: {sanitize_qualtrics_text(item['S2'])}")
-        print(f"  Choices: {emphasized_word} | {alternative_word}")
+        print(f"  Correct answer: {LABEL_MAP[label]}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Convert a focus-survey JSON array into a Qualtrics Advanced TXT import file."
+        description="Convert an inference-survey JSON array into a Qualtrics Advanced TXT import file."
     )
     parser.add_argument("input_json", type=Path, help="Path to the input JSON file")
     parser.add_argument("output_txt", type=Path, help="Path to the output Qualtrics TXT file")
     parser.add_argument(
         "--clips-dir",
         type=Path,
-        default=Path("data/clips/set1"),
+        default=Path("data/clips/set2"),
         help="Directory containing audio clips for manual Qualtrics attachment",
     )
     parser.add_argument(

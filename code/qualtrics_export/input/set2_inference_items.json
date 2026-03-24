@@ -1,0 +1,90 @@
+[
+  {
+    "S1": "Sam only gave BILL bananas.",
+    "S2": "Sam also gave Bill grapes.",
+    "A": "B",
+    "focus": 1,
+    "logic": "POS",
+    "alternative": "2",
+    "source_json": "f10.json",
+    "source_item_index": 4,
+    "audio_file": "f10_item4.wav"
+  },
+  {
+    "S1": "Sam only gave Rob ORANGES.",
+    "S2": "Sam also gave Rob apples.",
+    "A": "C",
+    "focus": 2,
+    "logic": "POS",
+    "alternative": "2",
+    "source_json": "f1.json",
+    "source_item_index": 4,
+    "audio_file": "f1_item4.wav"
+  },
+  {
+    "S1": "Sam only gave SUE grapes.",
+    "S2": "Sam didn't give Tom grapes.",
+    "A": "A",
+    "focus": 1,
+    "logic": "NEG",
+    "alternative": "1",
+    "source_json": "f1.json",
+    "source_item_index": 5,
+    "audio_file": "f1_item5.wav"
+  },
+  {
+    "S1": "Sam only gave MARY oranges.",
+    "S2": "Sam also gave Ellen oranges.",
+    "A": "C",
+    "focus": 1,
+    "logic": "POS",
+    "alternative": "1",
+    "source_json": "f4.json",
+    "source_item_index": 2,
+    "audio_file": "f4_item2.wav"
+  },
+  {
+    "S1": "Sam only gave Ellen ORANGES.",
+    "S2": "Sam also gave Sue oranges.",
+    "A": "B",
+    "focus": 2,
+    "logic": "POS",
+    "alternative": "1",
+    "source_json": "f8.json",
+    "source_item_index": 4,
+    "audio_file": "f8_item4.wav"
+  },
+  {
+    "S1": "Sam only gave Rob ORANGES.",
+    "S2": "Sam didn't give Rob apples.",
+    "A": "A",
+    "focus": 2,
+    "logic": "NEG",
+    "alternative": "2",
+    "source_json": "f8.json",
+    "source_item_index": 5,
+    "audio_file": "f8_item5.wav"
+  },
+  {
+    "S1": "Sam only gave Ellen GRAPES.",
+    "S2": "Sam didn't give Rob grapes.",
+    "A": "B",
+    "focus": 2,
+    "logic": "NEG",
+    "alternative": "1",
+    "source_json": "f8.json",
+    "source_item_index": 9,
+    "audio_file": "f8_item9.wav"
+  },
+  {
+    "S1": "Sam only gave MARY apples.",
+    "S2": "Sam didn't give Mary grapes.",
+    "A": "B",
+    "focus": 1,
+    "logic": "NEG",
+    "alternative": "2",
+    "source_json": "f9.json",
+    "source_item_index": 3,
+    "audio_file": "f9_item3.wav"
+  }
+]
