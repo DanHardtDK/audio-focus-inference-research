@@ -1,0 +1,76 @@
+[2026-03-26 13:12:37] Task2 run started. Log file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\logs\task2_all_20260326_131231.log
+[2026-03-26 13:12:37] Whisper model: medium
+[2026-03-26 13:12:37] Required source files:
+[2026-03-26 13:12:37]   f1: set1=[0], set2=[4, 5]
+[2026-03-26 13:12:37]   f10: set1=[3], set2=[4]
+[2026-03-26 13:12:37]   f2: set1=[5, 6], set2=[]
+[2026-03-26 13:12:37]   f3: set1=[4, 6], set2=[]
+[2026-03-26 13:12:37]   f4: set1=[], set2=[2]
+[2026-03-26 13:12:37]   f6: set1=[4], set2=[]
+[2026-03-26 13:12:37]   f8: set1=[], set2=[4, 5, 9]
+[2026-03-26 13:12:37]   f9: set1=[8], set2=[3]
+[2026-03-26 13:12:37] === Processing f1 ===
+[2026-03-26 13:12:37] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f1.m4a (m4a)
+[2026-03-26 13:12:37] Needed in set1: [0]
+[2026-03-26 13:12:37] Needed in set2: [4, 5]
+[2026-03-26 13:13:14] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=67.34s, audio_duration=70.40s
+[2026-03-26 13:13:14] Cutting set1: f1_item0.wav
+[2026-03-26 13:13:14] Cutting set2: f1_item4.wav
+[2026-03-26 13:13:15] Cutting set2: f1_item5.wav
+[2026-03-26 13:13:15] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f1_matches.json
+[2026-03-26 13:13:15] === Processing f10 ===
+[2026-03-26 13:13:15] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f10.m4a (m4a)
+[2026-03-26 13:13:15] Needed in set1: [3]
+[2026-03-26 13:13:15] Needed in set2: [4]
+[2026-03-26 13:13:39] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=53.48s, audio_duration=54.43s
+[2026-03-26 13:13:39] Cutting set1: f10_item3.wav
+[2026-03-26 13:13:39] Cutting set2: f10_item4.wav
+[2026-03-26 13:13:39] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f10_matches.json
+[2026-03-26 13:13:39] === Processing f2 ===
+[2026-03-26 13:13:39] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f2.m4a (m4a)
+[2026-03-26 13:13:39] Needed in set1: [5, 6]
+[2026-03-26 13:13:39] Needed in set2: []
+[2026-03-26 13:14:11] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=68.26s, audio_duration=71.15s
+[2026-03-26 13:14:12] Cutting set1: f2_item5.wav
+[2026-03-26 13:14:12] Cutting set1: f2_item6.wav
+[2026-03-26 13:14:12] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f2_matches.json
+[2026-03-26 13:14:12] === Processing f3 ===
+[2026-03-26 13:14:12] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f3.m4a (m4a)
+[2026-03-26 13:14:12] Needed in set1: [4, 6]
+[2026-03-26 13:14:12] Needed in set2: []
+[2026-03-26 13:14:46] Transcription diagnostics: kept=105/105 (raw=105), dropped_unsnapped=0, last_word_end=67.22s, audio_duration=68.59s
+[2026-03-26 13:14:46] Cutting set1: f3_item4.wav
+[2026-03-26 13:14:47] Cutting set1: f3_item6.wav
+[2026-03-26 13:14:47] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f3_matches.json
+[2026-03-26 13:14:47] === Processing f4 ===
+[2026-03-26 13:14:47] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f4.m4a (m4a)
+[2026-03-26 13:14:47] Needed in set1: []
+[2026-03-26 13:14:47] Needed in set2: [2]
+[2026-03-26 13:15:19] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=66.86s, audio_duration=67.85s
+[2026-03-26 13:15:19] Cutting set2: f4_item2.wav
+[2026-03-26 13:15:19] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f4_matches.json
+[2026-03-26 13:15:19] === Processing f6 ===
+[2026-03-26 13:15:19] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f6.m4a (m4a)
+[2026-03-26 13:15:19] Needed in set1: [4]
+[2026-03-26 13:15:19] Needed in set2: []
+[2026-03-26 13:15:44] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=53.00s, audio_duration=53.92s
+[2026-03-26 13:15:44] Cutting set1: f6_item4.wav
+[2026-03-26 13:15:44] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f6_matches.json
+[2026-03-26 13:15:44] === Processing f8 ===
+[2026-03-26 13:15:44] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f8.m4a (m4a)
+[2026-03-26 13:15:44] Needed in set1: []
+[2026-03-26 13:15:44] Needed in set2: [4, 5, 9]
+[2026-03-26 13:16:08] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=54.54s, audio_duration=55.98s
+[2026-03-26 13:16:08] Cutting set2: f8_item4.wav
+[2026-03-26 13:16:08] Cutting set2: f8_item5.wav
+[2026-03-26 13:16:09] Cutting set2: f8_item9.wav
+[2026-03-26 13:16:09] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f8_matches.json
+[2026-03-26 13:16:09] === Processing f9 ===
+[2026-03-26 13:16:09] Audio source: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\input\f9.m4a (m4a)
+[2026-03-26 13:16:09] Needed in set1: [8]
+[2026-03-26 13:16:09] Needed in set2: [3]
+[2026-03-26 13:16:41] Transcription diagnostics: kept=100/100 (raw=100), dropped_unsnapped=0, last_word_end=56.20s, audio_duration=58.07s
+[2026-03-26 13:16:41] Cutting set2: f9_item3.wav
+[2026-03-26 13:16:41] Cutting set1: f9_item8.wav
+[2026-03-26 13:16:41] Saved match file: C:\Users\radus\Desktop\RESEARCH\audio-focus-inference-research\data\output_milan\matches\f9_matches.json
+[2026-03-26 13:16:41] Done.
