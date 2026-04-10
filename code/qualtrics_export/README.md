@@ -2,6 +2,13 @@
 
 This folder contains the scripts for building Qualtrics import files from the experiment JSON items and the selected audio clips.
 
+The current exporters are designed around stable question IDs and simple Qualtrics TXT imports:
+
+- No `Embedded Data` is written into the Survey Flow.
+- Each question ID is derived from the matching audio filename stem, e.g. `f10_item3`.
+- Question order is shuffled at build time by default.
+- Focus-survey answer choices are randomized in Qualtrics.
+
 ## Folder layout
 
 - `build_survey_subset_from_clips.py`
@@ -42,6 +49,29 @@ When you run `build_survey_subset_from_clips.py`, it copies the matching source 
 
 The normalized fields are used for survey display so all-caps emphasis cues are removed from the visible text.
 
+## Shared exporter behavior
+
+Both exporters now do the following:
+
+- Set the Qualtrics question ID from the audio clip stem, e.g. `f8_item5`.
+- Write no `[[ED:...]]` tags.
+- Write an `*.audio_map.csv` file for matching questions to uploaded audio.
+- Shuffle the question order at export time by default.
+
+You can disable build-time shuffling with:
+
+```bash
+--no-shuffle-questions
+```
+
+You can make a shuffled export reproducible with:
+
+```bash
+--seed 42
+```
+
+Qtip: The Qualtrics Advanced TXT format documents choice randomization, but does not document a tag for per-respondent question randomization. The exporters therefore shuffle the question list when building the import file.
+
 ## Focus survey workflow
 
 Use this for the audio-perception survey based on `data/clips/set1/`.
@@ -78,18 +108,22 @@ This creates:
   `In Sentence 1, which word was said with stronger emphasis?`
 - Only normalized `Sentence 1` is shown in the survey
 - `Sentence 2` is not shown
-- The answer choices are derived from `Sentence 1`
+- The question ID is the audio filename stem, e.g. `f10_item3`
+- The answer choices are the two content words from `Sentence 1` in sentence order
 - The answer choices are normalized, so no all-caps emphasis is visible
+- The answer choices are randomized in Qualtrics with `[[Randomize]]`
 
 Example exported focus question:
 
 ```txt
 [[Question:MC:SingleAnswer:Vertical]]
+[[ID:f3_item6]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
 Sentence 1: Sam only gave Rob oranges.<br>
+[[Randomize]]
 [[Choices]]
-oranges
 Rob
+oranges
 ```
 
 ## Inference survey workflow
@@ -127,19 +161,17 @@ This creates:
 - The question asks:
   `Given Sentence 1, what can we say about Sentence 2?`
 - Both displayed sentences are normalized, so no all-caps emphasis is visible
+- The question ID is the audio filename stem, e.g. `f8_item5`
 - The answer choices are fixed:
   - `Sentence 2 must be true.`
   - `Sentence 2 might be true.`
   - `Sentence 2 must be false.`
-- The JSON label is mapped as:
-  - `A -> Sentence 2 must be true.`
-  - `B -> Sentence 2 might be true.`
-  - `C -> Sentence 2 must be false.`
 
 Example exported inference question:
 
 ```txt
 [[Question:MC:SingleAnswer:Vertical]]
+[[ID:f1_item4]]
 Given Sentence 1, what can we say about Sentence 2?<br><br>
 Sentence 1: Sam only gave Rob oranges.<br>
 Sentence 2: Sam also gave Rob apples.<br>
@@ -158,7 +190,7 @@ Each export script also writes a sidecar CSV for manual Qualtrics attachment:
 The CSV includes:
 
 - `question_number`
-- `item_id`
+- `question_id`
 - `label`
 - `focus`
 - `logic`

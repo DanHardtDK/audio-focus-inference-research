@@ -51,6 +51,19 @@ def infer_audio_path(
     return None
 
 
+def infer_question_id(
+    item: dict[str, Any],
+    question_idx: int,
+    input_json: Path,
+    clips_dir: Path,
+) -> str:
+    """Infer a stable question identifier from the matching audio clip stem."""
+    audio_path = infer_audio_path(item, question_idx, input_json, clips_dir)
+    if audio_path:
+        return sanitize_qualtrics_text(audio_path.stem)
+    return f"{sanitize_qualtrics_text(input_json.stem)}_item{question_idx - 1}"
+
+
 def build_audio_map_rows(
     items: list[dict[str, Any]],
     input_json: Path,
@@ -60,12 +73,13 @@ def build_audio_map_rows(
     rows: list[dict[str, str]] = []
     for question_idx, item in enumerate(items, start=1):
         audio_path = infer_audio_path(item, question_idx, input_json, clips_dir)
+        question_id = infer_question_id(item, question_idx, input_json, clips_dir)
         audio_filename = audio_path.name if audio_path else ""
         audio_exists = "yes" if audio_path and audio_path.exists() else "no"
         rows.append(
             {
                 "question_number": str(question_idx),
-                "item_id": str(question_idx),
+                "question_id": question_id,
                 "label": sanitize_qualtrics_text(item.get("A", "")),
                 "focus": sanitize_qualtrics_text(item.get("focus", "")),
                 "logic": sanitize_qualtrics_text(item.get("logic", "")),
@@ -84,7 +98,7 @@ def write_audio_map(rows: list[dict[str, str]], output_path: Path) -> None:
     """Write the audio mapping CSV used for manual upload and attachment in Qualtrics."""
     fieldnames = [
         "question_number",
-        "item_id",
+        "question_id",
         "label",
         "focus",
         "logic",

@@ -104,3 +104,9 @@ def normalized_focus_choices(s1: str, focus: int) -> tuple[str, str]:
     if focus_position == 1:
         return normalized_object1, normalized_object2
     return normalized_object2, normalized_object1
+
+
+def normalized_sentence_order_choices(s1: str) -> tuple[str, str]:
+    """Return normalized S1 choice words in sentence order."""
+    _, object1, object2 = parse_s1_components(s1)
+    return normalize_object1(object1), normalize_object2(object2)

@@ -2,98 +2,74 @@
 
 [[Block:Focus Survey]]
 
-[[ED:item_id:1]]
-[[ED:label:A]]
-[[ED:focus:1]]
-[[ED:logic:NEG]]
-[[ED:alternative:1]]
 [[Question:MC:SingleAnswer:Vertical]]
-In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Sue apples.<br>
-[[Choices]]
-Sue
-apples
-
-[[ED:item_id:2]]
-[[ED:label:C]]
-[[ED:focus:1]]
-[[ED:logic:POS]]
-[[ED:alternative:1]]
-[[Question:MC:SingleAnswer:Vertical]]
-In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Bill grapes.<br>
-[[Choices]]
-Bill
-grapes
-
-[[ED:item_id:3]]
-[[ED:label:B]]
-[[ED:focus:1]]
-[[ED:logic:NEG]]
-[[ED:alternative:2]]
-[[Question:MC:SingleAnswer:Vertical]]
-In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Sue apples.<br>
-[[Choices]]
-Sue
-apples
-
-[[ED:item_id:4]]
-[[ED:label:A]]
-[[ED:focus:2]]
-[[ED:logic:NEG]]
-[[ED:alternative:2]]
-[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f2_item6]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
 Sentence 1: Sam only gave Sue grapes.<br>
+[[Randomize]]
 [[Choices]]
-grapes
 Sue
+grapes
 
-[[ED:item_id:5]]
-[[ED:label:B]]
-[[ED:focus:2]]
-[[ED:logic:NEG]]
-[[ED:alternative:1]]
 [[Question:MC:SingleAnswer:Vertical]]
-In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Ellen apples.<br>
-[[Choices]]
-apples
-Ellen
-
-[[ED:item_id:6]]
-[[ED:label:B]]
-[[ED:focus:1]]
-[[ED:logic:POS]]
-[[ED:alternative:2]]
-[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f6_item4]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
 Sentence 1: Sam only gave Rob oranges.<br>
+[[Randomize]]
 [[Choices]]
 Rob
 oranges
 
-[[ED:item_id:7]]
-[[ED:label:C]]
-[[ED:focus:2]]
-[[ED:logic:POS]]
-[[ED:alternative:2]]
 [[Question:MC:SingleAnswer:Vertical]]
-In Sentence 1, which word was said with stronger emphasis?<br><br>
-Sentence 1: Sam only gave Rob oranges.<br>
-[[Choices]]
-oranges
-Rob
-
-[[ED:item_id:8]]
-[[ED:label:B]]
-[[ED:focus:2]]
-[[ED:logic:POS]]
-[[ED:alternative:1]]
-[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f1_item0]]
 In Sentence 1, which word was said with stronger emphasis?<br><br>
 Sentence 1: Sam only gave Bill grapes.<br>
+[[Randomize]]
 [[Choices]]
-grapes
 Bill
+grapes
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f3_item6]]
+In Sentence 1, which word was said with stronger emphasis?<br><br>
+Sentence 1: Sam only gave Rob oranges.<br>
+[[Randomize]]
+[[Choices]]
+Rob
+oranges
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f9_item8]]
+In Sentence 1, which word was said with stronger emphasis?<br><br>
+Sentence 1: Sam only gave Bill grapes.<br>
+[[Randomize]]
+[[Choices]]
+Bill
+grapes
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f10_item3]]
+In Sentence 1, which word was said with stronger emphasis?<br><br>
+Sentence 1: Sam only gave Sue apples.<br>
+[[Randomize]]
+[[Choices]]
+Sue
+apples
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f3_item4]]
+In Sentence 1, which word was said with stronger emphasis?<br><br>
+Sentence 1: Sam only gave Ellen apples.<br>
+[[Randomize]]
+[[Choices]]
+Ellen
+apples
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:f2_item5]]
+In Sentence 1, which word was said with stronger emphasis?<br><br>
+Sentence 1: Sam only gave Sue apples.<br>
+[[Randomize]]
+[[Choices]]
+Sue
+apples
