@@ -3,3 +3,14 @@
 
 # macOS
 .DS_Store
+
+# Audio files
+*.wav
+*.m4a
+*.mp3
+*.flac
+*.aiff
+
+# Python
+__pycache__/
+*.pyc
