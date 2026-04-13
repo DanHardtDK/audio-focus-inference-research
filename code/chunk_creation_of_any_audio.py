@@ -11,11 +11,11 @@ from difflib import SequenceMatcher, get_close_matches
 
 SOURCE_BASENAME = "f8"   # pl. f2, f3, f6
 
-AUDIO_FILE = f"data/input/{SOURCE_BASENAME}.m4a"
-JSON_FILE = f"data/input/{SOURCE_BASENAME}.json"
+AUDIO_FILE = f"data/speakers/speaker0/raw/{SOURCE_BASENAME}.wav"
+JSON_FILE = f"data/stimuli/{SOURCE_BASENAME}.json"
 
-OUTPUT_RESULTS = f"data/output_milan/json_world_matches_transcript/{SOURCE_BASENAME}_vocab_forward_matches.json"
-OUTPUT_CLIPS_DIR = f"data/clips/{SOURCE_BASENAME}"
+OUTPUT_RESULTS = f"data/output/json_world_matches_transcript/{SOURCE_BASENAME}_vocab_forward_matches.json"
+OUTPUT_CLIPS_DIR = f"data/speakers/speaker0/clips"
 
 WHISPER_MODEL = "medium"   # base helyett!
 CUT_CLIPS = True
