@@ -6,8 +6,8 @@ from collections import defaultdict
 # ---------------------------
 # CONFIG
 # ---------------------------
-DATA_DIR = "data/input"
-OUTPUT_DIR = "data/output_milan"
+DATA_DIR = "data/stimuli"
+OUTPUT_DIR = "data/output"
 RANDOM_SEED = 42
 
 
