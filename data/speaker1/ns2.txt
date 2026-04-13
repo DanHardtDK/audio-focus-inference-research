@@ -1,0 +1,23 @@
+Sam only gave BILL grapes.
+Sam didn't give Bill oranges.
+
+Sam only gave Ellen GRAPES.
+Sam also gave Ellen oranges.
+
+Sam only gave BILL bananas.
+Sam didn't give Tom bananas.
+
+Sam only gave Ellen ORANGES.
+Sam also gave Sue oranges.
+
+Sam only gave TOM apples.
+Sam also gave Bill apples.
+
+Sam only gave Bill BANANAS.
+Sam didn't give Bill grapes.
+
+Sam only gave ELLEN bananas.
+Sam also gave Ellen grapes.
+
+Sam only gave Ellen GRAPES.
+Sam didn't give Rob grapes.
