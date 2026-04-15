@@ -1,0 +1,27 @@
+question_number,question_id,speaker,source_json,source_item_index,label,focus,logic,alternative,s1,s2,audio_filename,audio_path,audio_exists
+1,speaker1_ns2_item6,speaker1,ns2.json,6,B,1,POS,2,Sam only gave ELLEN bananas.,Sam also gave Ellen grapes.,speaker1_ns2_item6.wav,data/clips/inference_multispeaker/speaker1_ns2_item6.wav,yes
+2,speaker1_ns2_item2,speaker1,ns2.json,2,A,1,NEG,1,Sam only gave BILL bananas.,Sam didn't give Tom bananas.,speaker1_ns2_item2.wav,data/clips/inference_multispeaker/speaker1_ns2_item2.wav,yes
+3,speaker0_f5_item9,speaker0,f5.json,9,A,2,NEG,2,Sam only gave Tom BANANAS.,Sam didn't give Tom oranges.,speaker0_f5_item9.wav,data/clips/inference_multispeaker/speaker0_f5_item9.wav,yes
+4,speaker2_ns3_item7,speaker2,ns3.json,7,B,2,NEG,1,Sam only gave Bill APPLES.,Sam didn't give Mary apples.,speaker2_ns3_item7.wav,data/clips/inference_multispeaker/speaker2_ns3_item7.wav,yes
+5,speaker2_ns3_item1,speaker2,ns3.json,1,C,2,POS,2,Sam only gave Mary APPLES.,Sam also gave Mary bananas.,speaker2_ns3_item1.wav,data/clips/inference_multispeaker/speaker2_ns3_item1.wav,yes
+6,speaker0_f5_item6,speaker0,f5.json,6,C,1,POS,1,Sam only gave SUE apples.,Sam also gave Mary apples.,speaker0_f5_item6.wav,data/clips/inference_multispeaker/speaker0_f5_item6.wav,yes
+7,speaker0_f5_item5,speaker0,f5.json,5,C,2,POS,2,Sam only gave Mary GRAPES.,Sam also gave Mary apples.,speaker0_f5_item5.wav,data/clips/inference_multispeaker/speaker0_f5_item5.wav,yes
+8,speaker1_ns2_item0,speaker1,ns2.json,0,B,1,NEG,2,Sam only gave BILL grapes.,Sam didn't give Bill oranges.,speaker1_ns2_item0.wav,data/clips/inference_multispeaker/speaker1_ns2_item0.wav,yes
+9,speaker1_ns2_item5,speaker1,ns2.json,5,A,2,NEG,2,Sam only gave Bill BANANAS.,Sam didn't give Bill grapes.,speaker1_ns2_item5.wav,data/clips/inference_multispeaker/speaker1_ns2_item5.wav,yes
+10,speaker2_ns3_item4,speaker2,ns3.json,4,C,1,POS,1,Sam only gave ELLEN apples.,Sam also gave Rob apples.,speaker2_ns3_item4.wav,data/clips/inference_multispeaker/speaker2_ns3_item4.wav,yes
+11,speaker1_ns2_item1,speaker1,ns2.json,1,C,2,POS,2,Sam only gave Ellen GRAPES.,Sam also gave Ellen oranges.,speaker1_ns2_item1.wav,data/clips/inference_multispeaker/speaker1_ns2_item1.wav,yes
+12,speaker2_ns3_item0,speaker2,ns3.json,0,B,1,POS,2,Sam only gave ROB bananas.,Sam also gave Rob oranges.,speaker2_ns3_item0.wav,data/clips/inference_multispeaker/speaker2_ns3_item0.wav,yes
+13,speaker0_f5_item1,speaker0,f5.json,1,C,1,POS,1,Sam only gave ELLEN apples.,Sam also gave Rob apples.,speaker0_f5_item1.wav,data/clips/inference_multispeaker/speaker0_f5_item1.wav,yes
+14,speaker1_ns2_item4,speaker1,ns2.json,4,C,1,POS,1,Sam only gave TOM apples.,Sam also gave Bill apples.,speaker1_ns2_item4.wav,data/clips/inference_multispeaker/speaker1_ns2_item4.wav,yes
+15,speaker2_ns3_item5,speaker2,ns3.json,5,A,2,NEG,2,Sam only gave Tom BANANAS.,Sam didn't give Tom oranges.,speaker2_ns3_item5.wav,data/clips/inference_multispeaker/speaker2_ns3_item5.wav,yes
+16,speaker1_ns2_item3,speaker1,ns2.json,3,B,2,POS,1,Sam only gave Ellen ORANGES.,Sam also gave Sue oranges.,speaker1_ns2_item3.wav,data/clips/inference_multispeaker/speaker1_ns2_item3.wav,yes
+17,speaker0_f5_item2,speaker0,f5.json,2,B,1,NEG,2,Sam only gave MARY oranges.,Sam didn't give Mary bananas.,speaker0_f5_item2.wav,data/clips/inference_multispeaker/speaker0_f5_item2.wav,yes
+18,speaker1_ns2_item7,speaker1,ns2.json,7,B,2,NEG,1,Sam only gave Ellen GRAPES.,Sam didn't give Rob grapes.,speaker1_ns2_item7.wav,data/clips/inference_multispeaker/speaker1_ns2_item7.wav,yes
+19,speaker2_ns3_item6,speaker2,ns3.json,6,B,1,NEG,2,Sam only gave SUE apples.,Sam didn't give Sue oranges.,speaker2_ns3_item6.wav,data/clips/inference_multispeaker/speaker2_ns3_item6.wav,yes
+20,speaker0_f5_item4,speaker0,f5.json,4,B,2,NEG,1,Sam only gave Mary ORANGES.,Sam didn't give Tom oranges.,speaker0_f5_item4.wav,data/clips/inference_multispeaker/speaker0_f5_item4.wav,yes
+21,speaker2_ns3_item3,speaker2,ns3.json,3,B,2,POS,1,Sam only gave Mary GRAPES.,Sam also gave Ellen grapes.,speaker2_ns3_item3.wav,data/clips/inference_multispeaker/speaker2_ns3_item3.wav,yes
+22,speaker0_f5_item7,speaker0,f5.json,7,C,2,POS,2,Sam only gave Bill ORANGES.,Sam also gave Bill bananas.,speaker0_f5_item7.wav,data/clips/inference_multispeaker/speaker0_f5_item7.wav,yes
+23,speaker0_f5_item8,speaker0,f5.json,8,C,2,POS,2,Sam only gave Ellen BANANAS.,Sam also gave Ellen grapes.,speaker0_f5_item8.wav,data/clips/inference_multispeaker/speaker0_f5_item8.wav,yes
+24,speaker0_f5_item0,speaker0,f5.json,0,C,2,POS,2,Sam only gave Ellen GRAPES.,Sam also gave Ellen oranges.,speaker0_f5_item0.wav,data/clips/inference_multispeaker/speaker0_f5_item0.wav,yes
+25,speaker0_f5_item3,speaker0,f5.json,3,C,1,POS,1,Sam only gave MARY oranges.,Sam also gave Tom oranges.,speaker0_f5_item3.wav,data/clips/inference_multispeaker/speaker0_f5_item3.wav,yes
+26,speaker2_ns3_item2,speaker2,ns3.json,2,A,1,NEG,1,Sam only gave SUE bananas.,Sam didn't give Rob bananas.,speaker2_ns3_item2.wav,data/clips/inference_multispeaker/speaker2_ns3_item2.wav,yes

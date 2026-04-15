@@ -12,7 +12,12 @@ The current exporters are designed around stable question IDs and simple Qualtri
 ## Folder layout
 
 - `build_survey_subset_from_clips.py`
-  Builds a JSON subset from clip filenames like `f1_item0.wav`.
+  Builds a JSON subset from clip filenames like `f1_item0.wav`, `ns1_item0.wav`, or
+  `speaker0_f1_item0.wav`.
+- `build_focus24_survey.py`
+  Builds the current 24-item multi-speaker focus survey and prepares its Qualtrics TXT import.
+- `build_multispeaker_inference_survey.py`
+  Builds a multi-speaker inference survey and prepares its Qualtrics TXT import.
 - `focus_text_utils.py`
   Normalizes sentence text so the exported survey does not reveal focus through all-caps words.
 - `qualtrics_export_common.py`
@@ -28,14 +33,16 @@ The current exporters are designed around stable question IDs and simple Qualtri
 
 ## Source data
 
-- Source JSON items live in `data/input/f*.json`
+- Source JSON items live in `data/stimuli/f*.json` and `data/stimuli/ns*.json`
 - Focus-survey audio clips are selected from `data/clips/set1/`
 - Inference-survey audio clips are selected from `data/clips/set2/`
 
 Clip names determine which source item is selected:
 
-- `f1_item0.wav` means item `0` from `data/input/f1.json`
-- `f8_item5.wav` means item `5` from `data/input/f8.json`
+- `f1_item0.wav` means item `0` from `data/stimuli/f1.json`
+- `ns1_item0.wav` means item `0` from `data/stimuli/ns1.json`
+- `speaker0_f1_item0.wav` means item `0` from `data/stimuli/f1.json`, with
+  `speaker0` stored in the generated JSON metadata.
 
 ## What the subset builder adds
 
@@ -75,6 +82,42 @@ Qtip: The Qualtrics Advanced TXT format documents choice randomization, but does
 ## Focus survey workflow
 
 Use this for the audio-perception survey based on `data/clips/set1/`.
+
+### Current 24-item multi-speaker survey
+
+Use this one-command workflow for the current focus survey:
+
+```bash
+python3 code/qualtrics_export/build_focus24_survey.py --seed 42
+```
+
+By default this builds:
+
+- `speaker0:f1:0-7`
+- `speaker1:ns1:0-7`
+- `speaker2:ns2:0-7`
+
+It creates:
+
+- `code/qualtrics_export/input/focus_24/focus_24_items.json`
+- `code/qualtrics_export/output/focus_24/focus_24_focus_survey.txt`
+- `code/qualtrics_export/output/focus_24/focus_24_focus_survey.audio_map.csv`
+- copied audio clips in `data/clips/focus_24/`
+
+To keep questions in the selected block order instead of shuffling at build time:
+
+```bash
+python3 code/qualtrics_export/build_focus24_survey.py --no-shuffle-questions
+```
+
+To override the item selection, pass one or more `--selection` values:
+
+```bash
+python3 code/qualtrics_export/build_focus24_survey.py \
+  --selection speaker0:f1:0-7 \
+  --selection speaker1:ns1:0-7 \
+  --selection speaker2:ns2:0-7
+```
 
 ### Step 1: build the focus subset JSON
 
@@ -129,6 +172,38 @@ oranges
 ## Inference survey workflow
 
 Use this for the reasoning survey based on `data/clips/set2/`.
+
+### Current multi-speaker inference survey
+
+Use this one-command workflow for the currently available inference survey:
+
+```bash
+python3 code/qualtrics_export/build_multispeaker_inference_survey.py --seed 42
+```
+
+By default this builds the available clips for:
+
+- `speaker0:f5:0-9`
+- `speaker1:ns2:0-7`
+- `speaker2:ns3:0-7`
+
+It creates:
+
+- `code/qualtrics_export/input/inference_multispeaker/items.json`
+- `code/qualtrics_export/output/inference_multispeaker/inference_multispeaker_survey.txt`
+- `code/qualtrics_export/output/inference_multispeaker/inference_multispeaker_survey.audio_map.csv`
+- copied audio clips in `data/clips/inference_multispeaker/`
+
+To build a 30-item version after `ns2` and `ns3` each have items 8 and 9
+available for the selected speakers:
+
+```bash
+python3 code/qualtrics_export/build_multispeaker_inference_survey.py \
+  --selection speaker0:f5:0-9 \
+  --selection speaker1:ns2:0-9 \
+  --selection speaker2:ns3:0-9 \
+  --seed 42
+```
 
 ### Step 1: build the inference subset JSON
 

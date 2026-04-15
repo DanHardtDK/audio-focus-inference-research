@@ -80,6 +80,9 @@ def build_audio_map_rows(
             {
                 "question_number": str(question_idx),
                 "question_id": question_id,
+                "speaker": sanitize_qualtrics_text(item.get("speaker", "")),
+                "source_json": sanitize_qualtrics_text(item.get("source_json", "")),
+                "source_item_index": sanitize_qualtrics_text(item.get("source_item_index", "")),
                 "label": sanitize_qualtrics_text(item.get("A", "")),
                 "focus": sanitize_qualtrics_text(item.get("focus", "")),
                 "logic": sanitize_qualtrics_text(item.get("logic", "")),
@@ -99,6 +102,9 @@ def write_audio_map(rows: list[dict[str, str]], output_path: Path) -> None:
     fieldnames = [
         "question_number",
         "question_id",
+        "speaker",
+        "source_json",
+        "source_item_index",
         "label",
         "focus",
         "logic",
