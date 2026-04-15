@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import argparse
 import whisper
 import subprocess
 from difflib import SequenceMatcher, get_close_matches
@@ -9,16 +10,24 @@ from difflib import SequenceMatcher, get_close_matches
 # CONFIG
 # =========================================================
 
-SOURCE_BASENAME = "f8"   # pl. f2, f3, f6
+parser = argparse.ArgumentParser(description="Transcribe, align and extract clips from a speaker recording.")
+parser.add_argument("--speaker", required=True, help="Speaker ID, e.g. speaker0, speaker1, speaker2")
+parser.add_argument("--file", required=True, help="Source basename, e.g. f1, ns1")
+parser.add_argument("--model", default="medium", help="Whisper model size (default: medium)")
+parser.add_argument("--no-cut", action="store_true", help="Skip clip extraction")
+args = parser.parse_args()
 
-AUDIO_FILE = f"data/input/{SOURCE_BASENAME}.m4a"
-JSON_FILE = f"data/input/{SOURCE_BASENAME}.json"
+SOURCE_BASENAME = args.file
+SPEAKER = args.speaker
 
-OUTPUT_RESULTS = f"data/output_milan/json_world_matches_transcript/{SOURCE_BASENAME}_vocab_forward_matches.json"
-OUTPUT_CLIPS_DIR = f"data/clips/{SOURCE_BASENAME}"
+AUDIO_FILE = f"data/speakers/{SPEAKER}/raw/{SOURCE_BASENAME}.wav"
+JSON_FILE = f"data/stimuli/{SOURCE_BASENAME}.json"
 
-WHISPER_MODEL = "medium"   # base helyett!
-CUT_CLIPS = True
+OUTPUT_RESULTS = f"data/output/json_world_matches_transcript/{SPEAKER}_{SOURCE_BASENAME}_vocab_forward_matches.json"
+OUTPUT_CLIPS_DIR = f"data/speakers/{SPEAKER}/clips"
+
+WHISPER_MODEL = args.model
+CUT_CLIPS = not args.no_cut
 
 START_PADDING = 0.03
 END_PADDING = 0.30
