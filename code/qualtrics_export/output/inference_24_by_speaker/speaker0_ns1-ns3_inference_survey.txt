@@ -1,0 +1,243 @@
+[[AdvancedFormat]]
+
+[[Block:Inference Survey]]
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item7]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen grapes.<br>
+Sentence 2: Sam didn't give Rob grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item5]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen grapes.<br>
+Sentence 2: Sam didn't give Tom grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item2]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Sue bananas.<br>
+Sentence 2: Sam didn't give Rob bananas.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item7]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Bill apples.<br>
+Sentence 2: Sam didn't give Mary apples.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item5]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Bill bananas.<br>
+Sentence 2: Sam didn't give Bill grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item2]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Bill bananas.<br>
+Sentence 2: Sam didn't give Tom bananas.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item1]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Mary apples.<br>
+Sentence 2: Sam also gave Mary bananas.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item3]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen oranges.<br>
+Sentence 2: Sam also gave Sue oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item6]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen bananas.<br>
+Sentence 2: Sam also gave Ellen grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item0]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Rob bananas.<br>
+Sentence 2: Sam also gave Rob oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item1]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Sue oranges.<br>
+Sentence 2: Sam didn't give Rob oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item4]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Tom apples.<br>
+Sentence 2: Sam also gave Bill apples.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item5]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Tom bananas.<br>
+Sentence 2: Sam didn't give Tom oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item6]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Rob oranges.<br>
+Sentence 2: Sam also gave Rob apples.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item1]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen grapes.<br>
+Sentence 2: Sam also gave Ellen oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item2]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Rob grapes.<br>
+Sentence 2: Sam also gave Rob oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item6]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Sue apples.<br>
+Sentence 2: Sam didn't give Sue oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item4]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen bananas.<br>
+Sentence 2: Sam also gave Mary bananas.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item3]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Mary grapes.<br>
+Sentence 2: Sam also gave Ellen grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item7]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Tom apples.<br>
+Sentence 2: Sam didn't give Tom grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns2_item0]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Bill grapes.<br>
+Sentence 2: Sam didn't give Bill oranges.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item0]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Bill grapes.<br>
+Sentence 2: Sam also gave Sue grapes.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns1_item3]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Tom oranges.<br>
+Sentence 2: Sam didn't give Tom bananas.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:speaker0_ns3_item4]]
+Given Sentence 1, what can we say about Sentence 2?<br><br>
+Sentence 1: Sam only gave Ellen apples.<br>
+Sentence 2: Sam also gave Rob apples.<br>
+[[Choices]]
+Sentence 2 must be true.
+Sentence 2 might be true.
+Sentence 2 must be false.
