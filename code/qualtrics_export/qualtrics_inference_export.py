@@ -22,7 +22,7 @@ Answer mapping:
     - C -> Sentence 2 must be false.
 
 Audio mapping:
-    - By default, the script looks for clips in data/clips/set2.
+    - By default, the script looks for clips in data/speakers/speaker0/clips.
     - If the input file is named like f1.json, question 1 maps to f1_item0.wav,
       question 2 maps to f1_item1.wav, etc.
     - For custom mixed subsets, include item-level metadata like source_json,
@@ -131,7 +131,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--clips-dir",
         type=Path,
-        default=Path("data/clips/set2"),
+        default=Path("data/speakers/speaker0/clips"),
         help="Directory containing audio clips for manual Qualtrics attachment",
     )
     parser.add_argument(

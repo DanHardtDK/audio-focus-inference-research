@@ -1,9 +1,9 @@
-question_number,question_id,label,focus,logic,alternative,s1,s2,audio_filename,audio_path,audio_exists
-1,f2_item6,A,2,NEG,2,Sam only gave Sue GRAPES.,Sam didn't give Sue apples.,f2_item6.wav,data/clips/set1/f2_item6.wav,yes
-2,f6_item4,C,2,POS,2,Sam only gave Rob ORANGES.,Sam also gave Rob bananas.,f6_item4.wav,data/clips/set1/f6_item4.wav,yes
-3,f1_item0,C,1,POS,1,Sam only gave BILL grapes.,Sam also gave Sue grapes.,f1_item0.wav,data/clips/set1/f1_item0.wav,yes
-4,f3_item6,B,1,POS,2,Sam only gave ROB oranges.,Sam also gave Rob apples.,f3_item6.wav,data/clips/set1/f3_item6.wav,yes
-5,f9_item8,B,2,POS,1,Sam only gave Bill GRAPES.,Sam also gave Rob grapes.,f9_item8.wav,data/clips/set1/f9_item8.wav,yes
-6,f10_item3,A,1,NEG,1,Sam only gave SUE apples.,Sam didn't give Rob apples.,f10_item3.wav,data/clips/set1/f10_item3.wav,yes
-7,f3_item4,B,2,NEG,1,Sam only gave Ellen APPLES.,Sam didn't give Bill apples.,f3_item4.wav,data/clips/set1/f3_item4.wav,yes
-8,f2_item5,B,1,NEG,2,Sam only gave SUE apples.,Sam didn't give Sue oranges.,f2_item5.wav,data/clips/set1/f2_item5.wav,yes
+question_number,question_id,speaker,source_json,source_item_index,label,focus,logic,alternative,s1,s2,audio_filename,audio_path,audio_exists
+1,f2_item6,speaker0,f2.json,6,A,2,NEG,2,Sam only gave Sue GRAPES.,Sam didn't give Sue apples.,f2_item6.wav,data/speakers/speaker0/clips/f2_item6.wav,yes
+2,f6_item4,speaker0,f6.json,4,C,2,POS,2,Sam only gave Rob ORANGES.,Sam also gave Rob bananas.,f6_item4.wav,data/speakers/speaker0/clips/f6_item4.wav,yes
+3,f1_item0,speaker0,f1.json,0,C,1,POS,1,Sam only gave BILL grapes.,Sam also gave Sue grapes.,f1_item0.wav,data/speakers/speaker0/clips/f1_item0.wav,yes
+4,f3_item6,speaker0,f3.json,6,B,1,POS,2,Sam only gave ROB oranges.,Sam also gave Rob apples.,f3_item6.wav,data/speakers/speaker0/clips/f3_item6.wav,yes
+5,f9_item8,speaker0,f9.json,8,B,2,POS,1,Sam only gave Bill GRAPES.,Sam also gave Rob grapes.,f9_item8.wav,data/speakers/speaker0/clips/f9_item8.wav,yes
+6,f10_item3,speaker0,f10.json,3,A,1,NEG,1,Sam only gave SUE apples.,Sam didn't give Rob apples.,f10_item3.wav,data/speakers/speaker0/clips/f10_item3.wav,yes
+7,f3_item4,speaker0,f3.json,4,B,2,NEG,1,Sam only gave Ellen APPLES.,Sam didn't give Bill apples.,f3_item4.wav,data/speakers/speaker0/clips/f3_item4.wav,yes
+8,f2_item5,speaker0,f2.json,5,B,1,NEG,2,Sam only gave SUE apples.,Sam didn't give Sue oranges.,f2_item5.wav,data/speakers/speaker0/clips/f2_item5.wav,yes

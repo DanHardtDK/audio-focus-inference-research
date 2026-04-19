@@ -1,9 +1,9 @@
-question_number,question_id,label,focus,logic,alternative,s1,s2,audio_filename,audio_path,audio_exists
-1,f4_item2,C,1,POS,1,Sam only gave MARY oranges.,Sam also gave Ellen oranges.,f4_item2.wav,data/clips/set2/f4_item2.wav,yes
-2,f8_item9,B,2,NEG,1,Sam only gave Ellen GRAPES.,Sam didn't give Rob grapes.,f8_item9.wav,data/clips/set2/f8_item9.wav,yes
-3,f1_item4,C,2,POS,2,Sam only gave Rob ORANGES.,Sam also gave Rob apples.,f1_item4.wav,data/clips/set2/f1_item4.wav,yes
-4,f8_item5,A,2,NEG,2,Sam only gave Rob ORANGES.,Sam didn't give Rob apples.,f8_item5.wav,data/clips/set2/f8_item5.wav,yes
-5,f9_item3,B,1,NEG,2,Sam only gave MARY apples.,Sam didn't give Mary grapes.,f9_item3.wav,data/clips/set2/f9_item3.wav,yes
-6,f10_item4,B,1,POS,2,Sam only gave BILL bananas.,Sam also gave Bill grapes.,f10_item4.wav,data/clips/set2/f10_item4.wav,yes
-7,f8_item4,B,2,POS,1,Sam only gave Ellen ORANGES.,Sam also gave Sue oranges.,f8_item4.wav,data/clips/set2/f8_item4.wav,yes
-8,f1_item5,A,1,NEG,1,Sam only gave SUE grapes.,Sam didn't give Tom grapes.,f1_item5.wav,data/clips/set2/f1_item5.wav,yes
+question_number,question_id,speaker,source_json,source_item_index,label,focus,logic,alternative,s1,s2,audio_filename,audio_path,audio_exists
+1,f4_item2,speaker0,f4.json,2,C,1,POS,1,Sam only gave MARY oranges.,Sam also gave Ellen oranges.,f4_item2.wav,data/speakers/speaker0/clips/f4_item2.wav,yes
+2,f8_item9,speaker0,f8.json,9,B,2,NEG,1,Sam only gave Ellen GRAPES.,Sam didn't give Rob grapes.,f8_item9.wav,data/speakers/speaker0/clips/f8_item9.wav,yes
+3,f1_item4,speaker0,f1.json,4,C,2,POS,2,Sam only gave Rob ORANGES.,Sam also gave Rob apples.,f1_item4.wav,data/speakers/speaker0/clips/f1_item4.wav,yes
+4,f8_item5,speaker0,f8.json,5,A,2,NEG,2,Sam only gave Rob ORANGES.,Sam didn't give Rob apples.,f8_item5.wav,data/speakers/speaker0/clips/f8_item5.wav,yes
+5,f9_item3,speaker0,f9.json,3,B,1,NEG,2,Sam only gave MARY apples.,Sam didn't give Mary grapes.,f9_item3.wav,data/speakers/speaker0/clips/f9_item3.wav,yes
+6,f10_item4,speaker0,f10.json,4,B,1,POS,2,Sam only gave BILL bananas.,Sam also gave Bill grapes.,f10_item4.wav,data/speakers/speaker0/clips/f10_item4.wav,yes
+7,f8_item4,speaker0,f8.json,4,B,2,POS,1,Sam only gave Ellen ORANGES.,Sam also gave Sue oranges.,f8_item4.wav,data/speakers/speaker0/clips/f8_item4.wav,yes
+8,f1_item5,speaker0,f1.json,5,A,1,NEG,1,Sam only gave SUE grapes.,Sam didn't give Tom grapes.,f1_item5.wav,data/speakers/speaker0/clips/f1_item5.wav,yes
