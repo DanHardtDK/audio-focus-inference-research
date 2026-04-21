@@ -97,3 +97,30 @@ Inference surveys:
 The Survey 1 audio map CSV files are sidecars for manual audio attachment in
 Qualtrics. They include question IDs, item metadata, source sentences, resolved
 audio paths, and whether each audio file exists.
+
+## Scoring Raw Inference Response CSVs
+
+To score a raw Qualtrics response CSV for the 24-item inference survey, run:
+
+```bash
+python3 code/qualtrics_export/score_inference_24_csv.py /path/to/Inference_Survey.csv
+```
+
+By default this writes two CSVs to
+`code/qualtrics_export/output/inference_scoring/`:
+
+- `<input>.scored_long.csv`: one row per answered question with the raw numeric
+  response, mapped `A/B/C` response, solution letter, and correctness flag.
+- `<input>.scored_summary.csv`: one row per retained response with total correct,
+  incorrect, accuracy, and whether the row contains all 24 survey answers.
+
+The scorer is specific to the production 24-item inference survey. It derives
+the solution key from `data/stimuli/ns1.json`, `ns2.json`, and `ns3.json`, and
+derives the survey order from
+`code/qualtrics_export/output/inference_24_by_speaker/speaker0_ns1-ns3_inference_survey.txt`.
+
+It expects Qualtrics recode values where:
+
+- `1` maps to `A`
+- `2` maps to `B`
+- `3` maps to `C`
