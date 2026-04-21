@@ -1,0 +1,4 @@
+source_row_index,StartDate,EndDate,Status,IPAddress,Progress,Duration (in seconds),Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage,UV1,UV2,UV3,BC1,BC2,speaker,answered_questions,correct_answers,incorrect_answers,accuracy_pct,is_full_24_item_response,incorrect_question_ids,incorrect_details
+5,2026-04-19 14:51:40,2026-04-19 14:59:59,0,2.110.88.253,100,499,1,2026-04-19 14:59:59,R_2zgJRcWJqITiQut,,,,,55.6769,12.5268,anonymous,EN,1,1,1,1,1,speaker0,24,24,0,100.00,1,,
+9,2026-04-20 13:14:00,2026-04-20 13:16:09,0,90.185.25.253,100,128,1,2026-04-20 13:16:09,R_2hiPtkAnCnt0oOT,,,,,55.6924,9.2624,anonymous,EN,1,1,1,1,1,speaker1,24,24,0,100.00,1,,
+10,2026-04-21 03:44:30,2026-04-21 03:48:33,0,130.226.41.19,100,243,1,2026-04-21 03:48:33,R_8YMnadzTfBecsGo,,,,,55.6769,12.5268,anonymous,EN,1,1,1,1,1,speaker1,24,24,0,100.00,1,,

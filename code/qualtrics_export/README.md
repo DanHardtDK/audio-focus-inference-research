@@ -124,3 +124,37 @@ It expects Qualtrics recode values where:
 - `1` maps to `A`
 - `2` maps to `B`
 - `3` maps to `C`
+
+The scorer ignores Qualtrics label/import rows that may appear below the header
+in some raw CSV exports and scores only actual response rows whose `ResponseId`
+looks like a Qualtrics record ID.
+
+## Scoring Raw Focus Response CSVs
+
+To score a raw Qualtrics response CSV for the 24-item focus survey, run:
+
+```bash
+python3 code/qualtrics_export/score_focus_24_csv.py /path/to/Focus_Survey.csv
+```
+
+By default this writes two CSVs to
+`code/qualtrics_export/output/focus_scoring/`:
+
+- `<input>.scored_long.csv`: one row per answered question with the response
+  code, the chosen word, the correct word, and a correctness flag.
+- `<input>.scored_summary.csv`: one row per retained response with totals,
+  accuracy, missed question IDs, and missed-item details.
+
+The scorer is specific to the production 24-item focus survey. It derives the
+shared focus key from `data/stimuli/ns1.json`, `ns2.json`, and `ns3.json`, and
+derives the survey order from
+`code/qualtrics_export/output/focus_24_by_speaker/speaker0_ns1-ns3_focus_survey.txt`.
+
+It expects focus responses where:
+
+- source JSON `focus=1` maps to CSV response `1`
+- source JSON `focus=2` maps to CSV response `2`
+
+The scorer ignores Qualtrics label/import rows that may appear below the header
+in some raw CSV exports and scores only actual response rows whose `ResponseId`
+looks like a Qualtrics record ID.
