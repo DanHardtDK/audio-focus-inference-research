@@ -1,0 +1,122 @@
+=== Log for ns3 (backend=openai, model=gpt-audio, run=20260428_152500, fold=) ===
+
+--- Attempt 1 for ns3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 says Sam only gave Rob bananas, and S2 says Sam also gave Rob oranges. The focus on "only" in S1 makes it clear that giving anything other than bananas to Rob would contradict S1.
+
+1  
+C  
+Because S1 says Sam only gave Mary apples, and S2 says Sam also gave Mary bananas. The focus on "only" in S1 means Mary received no other fruit besides apples, which makes S2 contradictory.
+
+2  
+A  
+Because S1 says Sam only gave Sue bananas, and S2 says Sam didn't give Rob bananas. The focus on "only" in S1 specifies that bananas were limited to Sue, so it follows that Rob didn’t get them, making S2 entailed.
+
+3  
+B  
+Because S1 says Sam only gave Mary grapes, and S2 says Sam also gave Ellen grapes. The focus on "only" indicates restriction to Mary in S1, while S2 introduces Ellen, making the two statements independent.
+
+4  
+B  
+Because S1 says Sam only gave Ellen apples, and S2 says Sam also gave Rob apples. The focus on "only" in S1 restricts apples to Ellen, and S2 adds that Rob got apples as well, which is independent from S1.
+
+5  
+A  
+Because S1 says Sam only gave Tom bananas, and S2 says Sam didn't give Tom oranges. The focus on "only" in S1 means that Tom received bananas and nothing else, so S2 is entailed.
+
+6  
+A  
+Because S1 says Sam only gave Sue apples, and S2 says Sam didn't give Sue oranges. The focus on "only" in S1 means Sue received just apples, so S2 is entailed.
+
+7  
+A  
+Because S1 says Sam only gave Bill apples, and S2 says Sam didn't give Mary apples. The focus on "only" in S1 means apples were limited to Bill, so Mary didn’t get them, making S2 entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns3: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing ns3
+  Results saved to: data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker2_FS0_20260428_152500.csv
+  Log saved to:     data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker2_FS0_20260428_152500.log
+

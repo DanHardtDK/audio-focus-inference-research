@@ -1,0 +1,122 @@
+=== Log for ns3 (backend=openai, model=gpt-audio, run=20260428_152454, fold=) ===
+
+--- Attempt 1 for ns3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 says Sam only gave Rob bananas, but S2 says Sam also gave Rob oranges. The focused word in S1 is “only,” indicating exclusivity. S2 contradicts that exclusivity by adding another item (oranges).  
+
+1  
+C  
+Because S1 says Sam only gave Mary apples, but S2 says Sam also gave Mary bananas. The prosodic focus on “only” in S1 excludes other items, so S2 contradicts that exclusivity by introducing bananas.  
+
+2  
+C  
+Because S1 says Sam only gave Sue bananas, but S2 says Sam didn’t give Rob bananas. The focus on “only” in S1 means Sue alone got the bananas, and no one else—including Rob—should have received bananas. However, S2 doesn’t contradict that exact exclusivity but instead says Rob didn’t get them. This narrows down who did not receive bananas, which appears to contradict the implicit expectation of S1 that no other recipients (like Rob) are mentioned.  
+
+3  
+A  
+Because S1 says Sam only gave Mary grapes, and S2 says Sam also gave Ellen grapes. The focus in S1 is on “Mary,” so it restricts the recipient of grapes to Mary. S2 does not contradict this but adds a second recipient, Ellen. While “only Mary” in S1 creates exclusivity, the presence of other people receiving grapes does not necessarily contradict that Sam gave Mary grapes. S2 is entailed since it extends the set of grape recipients. 
+
+4  
+B  
+Because S1 says Sam only gave Ellen apples, and S2 says Sam also gave Rob apples. In S1 the focus on “only Ellen” means Ellen is the exclusive recipient of apples. S2 introduces Rob as another recipient of apples. While S2 doesn’t contradict that Sam gave Ellen apples, it does contradict the exclusivity implied in S1. So the relationship is independent: the statements are about distinct distributions of apples to different individuals.  
+
+5  
+A  
+Because S1 says Sam only gave Tom bananas, and S2 says Sam didn’t give Tom oranges. The prosodic focus is on “only,” meaning no other fruit besides bananas was given to Tom. S2 confirms this by saying Tom didn’t get oranges. This statement aligns with S1, and no contradiction emerges.  
+
+6  
+A  
+Because S1 says Sam only gave Sue apples, and S2 says Sam didn’t give Sue oranges. The prosodic focus on “only” in S1 restricts the fruit given to Sue to apples. S2 confirms that Sue didn’t get oranges, which is consistent with that focused restriction. This means that S2 is fully entailed by S1.  
+
+7  
+B  
+Because S1 says Sam only gave Bill apples, and S2 says Sam didn’t give Mary apples. The focus on “only” signals that Bill was the exclusive recipient of apples, which doesn’t say anything about what Mary got. S2 says Mary did not receive apples, which doesn’t contradict or entail S1 directly. These two statements are independent because one is about Bill, and the other is about Mary. There’s no logical relation between the two.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns3: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing ns3
+  Results saved to: data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker1_FS0_20260428_152454.csv
+  Log saved to:     data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker1_FS0_20260428_152454.log
+

@@ -1,12 +1,13 @@
 # audioInput.py
 #
-# Examples (UNCHANGED):
-#   python audioInput.py --backend openai --model gpt-4o --mode baseline input/f1 input/f2 ... 0 10
-#   python audioInput.py --backend openai --model gpt-audio --mode audio input/f2 0 10
-#   python audioInput.py --backend openai --model gpt-4o --mode oracle input/f2 0 10
+# Examples:
+#   python audioInput.py --backend openai --model gpt-audio --mode audio f1 f2 f3
+#   python audioInput.py --backend openai --model gpt-audio --mode audio f11 f12 f13 --fewshot 0
+#   python audioInput.py --backend gemini --model gemini-2.0-flash --mode audio f1 --fewshot 2 --cv
 #
-# CV mode (NEW, optional):
-#   python audioInput.py --cv --backend openai --model gpt-audio --mode audio input/f1 ... 2 10
+# WAV files are looked up in --wav-dir (default: data/speakers/speaker0/raw)
+# JSON files are looked up in --json-dir (default: data/stimuli)
+# Total number of examples is determined automatically from each JSON file.
 #
 # Notes:
 # - Few-shot blocks are OPTIONAL for coverage (we warn if missing).
@@ -68,6 +69,8 @@ CSV_COLUMNS = [
 
     # NEW (optional): which CV fold produced this row (empty string if not --cv)
     "cv_fold",
+
+    "speaker",
 ]
 
 # ---------------------------------------------------------------
@@ -173,6 +176,31 @@ IMPORTANT:
 - You must infer S1 and S2 ONLY from the provided audio.
 """
 
+TASK_BLOCK_INFERENCE = """
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+"""
+
+TASK_BLOCK_TRANSCRIPTION = """
+Your task:
+1. Transcribe S1 and S2 from audio.
+2. Mark the prosodically focused word in S1 using UPPERCASE. All other words must be in normal casing.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- You must infer S1 and S2 ONLY from the provided audio.
+"""
+
 TASK_BLOCK_TEXT = """
 You are given text for S1 and S2.
 Your task is to classify S2 relative to S1:
@@ -195,7 +223,23 @@ You must follow this logic in determining the inference. You must
 also refer to this logic in producing the explanation.
 """
 
-def build_base_prompt(task_block: str, fewshot_text: str, focus_block: str, new_item_block: str) -> str:
+OUTPUT_FORMAT_BOTH = """<index>
+S1: ...
+S2: ...
+A
+Because <explanation>"""
+
+OUTPUT_FORMAT_INFERENCE = """<index>
+A
+Because <explanation>"""
+
+OUTPUT_FORMAT_TRANSCRIPTION = """<index>
+S1: ...
+S2: ..."""
+
+
+def build_base_prompt(task_block: str, fewshot_text: str, focus_block: str, new_item_block: str,
+                      output_format: str = OUTPUT_FORMAT_BOTH) -> str:
     return f"""
 You are performing a semantic classification task.
 
@@ -205,11 +249,7 @@ You are performing a semantic classification task.
 
 Your output must follow this structure:
 
-<index>
-S1: ...
-S2: ...
-A
-Because <explanation>
+{output_format}
 
 Do not add meta-comments or tool-use descriptions.
 
@@ -227,10 +267,23 @@ Begin now.
 
 
 def make_new_item_block_audio(examples):
-    # Always ask for all indices, so the model *can* answer everything.
     block = ""
     for ex in examples:
         block += f"{ex['idx']}\nS1:\nS2:\nA\nBecause...\n\n"
+    return block
+
+
+def make_new_item_block_inference(examples):
+    block = ""
+    for ex in examples:
+        block += f"{ex['idx']}\nA\nBecause...\n\n"
+    return block
+
+
+def make_new_item_block_transcription(examples):
+    block = ""
+    for ex in examples:
+        block += f"{ex['idx']}\nS1:\nS2:\n\n"
     return block
 
 
@@ -242,7 +295,7 @@ def make_new_item_block_text(examples, clean=False):
     return block
 
 
-def make_fewshot_item_block(fewshot_examples, total_num: int):
+def make_fewshot_item_block(fewshot_examples, total_num: int, task: str = "both"):
     """
     Few-shot items are *task items* with an answer shown.
     We still require the model to answer them (but coverage validation treats them as optional).
@@ -254,6 +307,24 @@ def make_fewshot_item_block(fewshot_examples, total_num: int):
     idxs = [ex["idx"] for ex in fewshot_examples]
     idxs_str = ", ".join(str(i) for i in idxs)
 
+    if task == "transcription":
+        task_reminder = (
+            f"- Transcribe S1 and S2 from the audio\n"
+            f"- Mark the focused element in S1 using UPPERCASE\n"
+        )
+    elif task == "inference":
+        task_reminder = (
+            f"- Provide your own classification (A, B, or C)\n"
+            f"- Provide an explanation\n"
+        )
+    else:
+        task_reminder = (
+            f"- Transcribe S1 and S2 from the audio\n"
+            f"- Mark the focused element in S1 using UPPERCASE\n"
+            f"- Provide your own classification (A, B, or C)\n"
+            f"- Provide an explanation\n"
+        )
+
     block = (
         f"The following numbered examples ALREADY INCLUDE a correct answer: {idxs_str}\n\n"
         f"IMPORTANT:\n"
@@ -262,20 +333,32 @@ def make_fewshot_item_block(fewshot_examples, total_num: int):
         f"- The presence of an answer does NOT mean you should skip them.\n"
         f"- You MUST produce a complete output block for EVERY numbered example (0–{total_num-1}).\n\n"
         f"For each numbered example (0–{total_num-1}), you must:\n"
-        f"- Transcribe S1 and S2 from the audio\n"
-        f"- Mark the focused element in S1 using UPPERCASE\n"
-        f"- Provide your own classification (A, B, or C)\n"
-        f"- Provide an explanation\n\n"
+        f"{task_reminder}\n"
     )
 
     for ex in fewshot_examples:
-        block += (
-            f"{ex['idx']}\n"
-            f"S1: {ex['S1']}\n"
-            f"S2: {ex['S2']}\n"
-            f"{ex['A']}\n"
-            f"Because...\n\n"
-        )
+        if task == "transcription":
+            block += (
+                f"{ex['idx']}\n"
+                f"S1: {ex['S1']}\n"
+                f"S2: {ex['S2']}\n\n"
+            )
+        elif task == "inference":
+            block += (
+                f"{ex['idx']}\n"
+                f"S1: {ex['S1']}\n"
+                f"S2: {ex['S2']}\n"
+                f"{ex['A']}\n"
+                f"Because...\n\n"
+            )
+        else:
+            block += (
+                f"{ex['idx']}\n"
+                f"S1: {ex['S1']}\n"
+                f"S2: {ex['S2']}\n"
+                f"{ex['A']}\n"
+                f"Because...\n\n"
+            )
     return block
 
 
@@ -283,13 +366,22 @@ def make_fewshot_item_block(fewshot_examples, total_num: int):
 # Model callers
 # ---------------------------------------------------------------
 def call_gemini(prompt, encoded_audio, model_name):
+    import time
+    from google.api_core.exceptions import ResourceExhausted
     model = genai.GenerativeModel(model_name)
     contents = [
         {"text": prompt},
         {"mime_type": "audio/wav", "data": base64.b64decode(encoded_audio)},
     ]
-    response = model.generate_content(contents, generation_config={"temperature": 0.0})
-    return response.text or ""
+    for attempt in range(8):
+        try:
+            response = model.generate_content(contents, generation_config={"temperature": 0.0})
+            return response.text or ""
+        except ResourceExhausted:
+            wait = 30 * (2 ** attempt)  # 30s, 60s, 120s, 240s …
+            print(f"  ⚠ Gemini 429 rate limit — waiting {wait}s before retry {attempt + 1}/8...")
+            time.sleep(wait)
+    raise RuntimeError(f"Gemini rate limit not resolved after 8 retries for model {model_name}")
 
 
 client = OpenAI()
@@ -367,55 +459,93 @@ def focus_position(sentence):
 # ---------------------------------------------------------------
 MAX_RETRIES = 4  # number of retries *after* the first attempt
 
-def split_into_blocks(output_text):
-    lines = [ln.rstrip("\n") for ln in output_text.splitlines()]
-    lines = [ln for ln in lines if ln.strip() != ""]  # remove blank lines
 
+def _strip_leading(s):
+    s = re.sub(r"^\s*\d+[\.\):]\s*", "", s).strip()
+    s = re.sub(r"^\s*(S1|S2|A)\s*:\s*", "", s, flags=re.IGNORECASE).strip()
+    s = re.sub(r"^\s*Because\s*:? ?", "", s, flags=re.IGNORECASE).strip()
+    return s
+
+
+def _prep_lines(output_text):
+    lines = [ln.rstrip("\n") for ln in output_text.splitlines()]
+    return [ln for ln in lines if ln.strip() != ""]
+
+
+def _split_blocks_both(lines):
+    """Parse 5-line blocks: index, S1, S2, A, explanation."""
     blocks = []
     i = 0
     n = len(lines)
-
-    def strip_leading_numbering(s):
-        s = re.sub(r"^\s*\d+[\.\):]\s*", "", s).strip()
-        s = re.sub(r"^\s*(S1|S2|A)\s*:\s*", "", s, flags=re.IGNORECASE).strip()
-        s = re.sub(r"^\s*Because\s*:? ?", "", s, flags=re.IGNORECASE).strip()
-        return s
-
     while i < n:
-        line = lines[i].strip()
-        nums = re.findall(r"\d+", line)
-
-        if nums:
-            try:
-                model_index = int(nums[-1])   # LAST integer on the line
-            except ValueError:
-                model_index = None
-
-            if i + 4 >= n:
-                break
-
-            s1_line = strip_leading_numbering(lines[i + 1])
-            s2_line = strip_leading_numbering(lines[i + 2])
-            ans_line = strip_leading_numbering(lines[i + 3])
-            expl_line = strip_leading_numbering(lines[i + 4])
-
+        nums = re.findall(r"\d+", lines[i].strip())
+        if nums and i + 4 < n:
+            model_index = int(nums[-1])
+            s1_line   = _strip_leading(lines[i + 1])
+            s2_line   = _strip_leading(lines[i + 2])
+            ans_line  = _strip_leading(lines[i + 3])
+            expl_line = _strip_leading(lines[i + 4])
             if ans_line in {"A", "B", "C"}:
-                blocks.append({
-                    "index": model_index,
-                    "S1": s1_line,
-                    "S2": s2_line,
-                    "A": ans_line,
-                    "explanation": expl_line,
-                })
+                blocks.append({"index": model_index, "S1": s1_line, "S2": s2_line,
+                                "A": ans_line, "explanation": expl_line})
                 i += 5
                 continue
-
         i += 1
-
     return blocks
 
 
-def validate_block_count(output_text, total_num, fewshot_indices, file_id, attempt, log_f):
+def _split_blocks_inference(lines):
+    """Parse 3-line blocks: index, A, explanation."""
+    blocks = []
+    i = 0
+    n = len(lines)
+    while i < n:
+        nums = re.findall(r"\d+", lines[i].strip())
+        if nums and i + 2 < n:
+            model_index = int(nums[-1])
+            ans_line  = _strip_leading(lines[i + 1])
+            expl_line = _strip_leading(lines[i + 2])
+            if ans_line in {"A", "B", "C"}:
+                blocks.append({"index": model_index, "S1": "", "S2": "",
+                                "A": ans_line, "explanation": expl_line})
+                i += 3
+                continue
+        i += 1
+    return blocks
+
+
+def _split_blocks_transcription(lines):
+    """Parse 3-line blocks: index, S1, S2."""
+    blocks = []
+    i = 0
+    n = len(lines)
+    while i < n:
+        nums = re.findall(r"\d+", lines[i].strip())
+        if nums and i + 2 < n:
+            model_index = int(nums[-1])
+            s1_line = _strip_leading(lines[i + 1])
+            s2_line = _strip_leading(lines[i + 2])
+            if s1_line not in {"A", "B", "C"} and s2_line not in {"A", "B", "C"}:
+                blocks.append({"index": model_index, "S1": s1_line, "S2": s2_line,
+                                "A": "", "explanation": ""})
+                i += 3
+                continue
+        i += 1
+    return blocks
+
+
+def split_into_blocks(output_text, task="both"):
+    lines = _prep_lines(output_text)
+    if task == "inference":
+        return _split_blocks_inference(lines)
+    elif task == "transcription":
+        return _split_blocks_transcription(lines)
+    else:
+        return _split_blocks_both(lines)
+
+
+def validate_block_count(output_text, total_num, fewshot_indices, file_id, attempt, log_f,
+                         task="both"):
     """
     Validate model output coverage.
 
@@ -429,7 +559,7 @@ def validate_block_count(output_text, total_num, fewshot_indices, file_id, attem
     Returns:
       True if coverage is acceptable, else False.
     """
-    blocks = split_into_blocks(output_text)
+    blocks = split_into_blocks(output_text, task=task)
 
     if not blocks:
         print(f"❌ ERROR [attempt {attempt}] for {file_id}: no parseable blocks found.", file=log_f)
@@ -483,12 +613,12 @@ def validate_block_count(output_text, total_num, fewshot_indices, file_id, attem
     return True
 
 
-def parse_model_outputs(output_text, examples):
+def parse_model_outputs(output_text, examples, task="both"):
     """
     Align model output blocks to gold examples by the model-declared index.
     examples must have ex["idx"] = 0..total_num-1.
     """
-    blocks = split_into_blocks(output_text)
+    blocks = split_into_blocks(output_text, task=task)
     if not blocks:
         return []
 
@@ -544,10 +674,11 @@ def write_results_csv(results, csv_path, fieldnames=None):
 # ---------------------------------------------------------------
 # Evaluation
 # ---------------------------------------------------------------
-def evaluate(parsed_examples, fewshot_indices_set):
+def evaluate(parsed_examples, fewshot_indices_set, task="both"):
     """
     parsed_examples: list from parse_model_outputs()
     fewshot_indices_set: set of indices that were few-shot for this run/fold
+    task: "both", "inference", or "transcription" — controls which fields are scored
     """
     results = []
 
@@ -563,19 +694,27 @@ def evaluate(parsed_examples, fewshot_indices_set):
         model_A  = ex["A_model"].strip()
         model_explanation = ex.get("explanation", "").strip()
 
-        gold_pos = ex["focus"]
-        model_pos = focus_position(model_S1)
+        if task in ("both", "transcription"):
+            gold_pos  = ex["focus"]
+            model_pos = focus_position(model_S1)
+            trans_correct = int(
+                model_pos in (FOCUS_FIRST, FOCUS_SECOND)
+                and gold_pos in (FOCUS_FIRST, FOCUS_SECOND)
+                and model_pos == gold_pos
+            )
+            s1_edit_norm = normalized_edit_distance(true_S1, model_S1)
+            s2_edit_norm = normalized_edit_distance(true_S2, model_S2)
+        else:
+            trans_correct = ""
+            s1_edit_norm  = ""
+            s2_edit_norm  = ""
 
-        trans_correct = int(
-            model_pos in (FOCUS_FIRST, FOCUS_SECOND)
-            and gold_pos in (FOCUS_FIRST, FOCUS_SECOND)
-            and model_pos == gold_pos
-        )
-
-        s1_edit_norm = normalized_edit_distance(true_S1, model_S1)
-        s2_edit_norm = normalized_edit_distance(true_S2, model_S2)
-
-        inf_correct = int(model_A == true_A)
+        if task in ("both", "inference"):
+            inf_correct = int(model_A == true_A)
+        else:
+            inf_correct = ""
+            model_A = ""
+            model_explanation = ""
 
         results.append({
             "example_index": dataset_index,
@@ -633,13 +772,13 @@ def make_cv_folds(total_num: int, fewshot_num: int):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("input_paths", nargs="+", help="Path prefix(es) for .wav and .json files")
+    parser.add_argument("input_paths", nargs="+", help="File IDs (e.g. f11 f12 f13) or path prefixes")
 
     parser.add_argument("--backend", choices=["openai", "gemini"], default="openai")
     parser.add_argument("--model", required=True, help="Model name for the chosen backend")
 
-    parser.add_argument("fewshot_num", type=int, help="Number of few-shot examples")
-    parser.add_argument("total_num", type=int, help="Total number of examples per file")
+    parser.add_argument("--fewshot", type=int, default=0, dest="fewshot_num",
+                        help="Number of few-shot examples (default: 0)")
 
     parser.add_argument(
         "--mode",
@@ -648,6 +787,19 @@ def main():
         help="Experiment mode: audio (default), baseline (no accent), oracle (uppercase accent).",
     )
 
+    parser.add_argument("--wav-dir", default="data/speakers/speaker0/raw",
+                        help="Directory containing .wav files (default: data/speakers/speaker0/raw)")
+    parser.add_argument("--json-dir", default="data/stimuli",
+                        help="Directory containing .json files (default: data/stimuli)")
+    parser.add_argument("--speaker", default="",
+                        help="Speaker label included in output filenames and CSV (e.g. speaker0, speaker1)")
+
+    parser.add_argument(
+        "--task",
+        choices=["both", "inference", "transcription"],
+        default="both",
+        help="Which task to run: both (default), inference only, or transcription only.",
+    )
     parser.add_argument("--use_focus_hint", action="store_true")
     parser.add_argument(
         "--cv",
@@ -662,39 +814,37 @@ def main():
     if args.backend == "gemini":
         genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-    os.makedirs("results", exist_ok=True)
+    os.makedirs("data/output", exist_ok=True)
 
     master_results = []
     run_timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
 
-    # Decide folds
-    if args.cv and args.fewshot_num > 0:
-        folds = make_cv_folds(args.total_num, args.fewshot_num)
-    else:
-        folds = [(None, list(range(0, args.fewshot_num)))]  # classic: first fewshot_num are few-shot
-
     for prefix in args.input_paths:
         print(f"\n=== Processing {prefix} ===")
 
-        audio_path = prefix + ".wav"
-        json_path = prefix + ".json"
-
         file_id = os.path.basename(prefix)
 
-        # Load JSON once
+        # Resolve paths: if prefix already contains a directory separator use it directly,
+        # otherwise look in the configured directories.
+        if os.sep in prefix or "/" in prefix:
+            audio_path = prefix + ".wav"
+            json_path = prefix + ".json"
+        else:
+            audio_path = os.path.join(args.wav_dir, prefix + ".wav")
+            json_path = os.path.join(args.json_dir, prefix + ".json")
+
+        # Load JSON once and determine total_num from actual file length
         examples_all = load_examples(json_path)
-
-        if len(examples_all) != args.total_num:
-            print(
-                f"⚠️ WARNING: {file_id} has {len(examples_all)} examples but CLI total_num is {args.total_num}. "
-                "Using CLI total_num for coverage."
-            )
-
-        # Truncate/align if needed (safety)
-        examples_all = examples_all[:args.total_num]
+        total_num = len(examples_all)
 
         # Load audio once
         encoded_audio = load_audio(audio_path) if args.mode == "audio" else None
+
+        # Decide folds (per-file, since total_num varies)
+        if args.cv and args.fewshot_num > 0:
+            folds = make_cv_folds(total_num, args.fewshot_num)
+        else:
+            folds = [(None, list(range(0, args.fewshot_num)))]
 
         for (fold_id, fewshot_indices) in folds:
             fold_tag = f"_cv{fold_id}" if fold_id is not None else ""
@@ -702,9 +852,10 @@ def main():
 
             FH_TEXT = "_focusHint" if args.use_focus_hint else ""
             CV_TEXT = "_CV" if (args.cv and args.fewshot_num > 0) else ""
+            SP_TEXT = f"_SP{args.speaker}" if args.speaker else ""
 
-            runID = f"{args.mode}_{args.backend}_{args.model}_FS{args.fewshot_num}{FH_TEXT}{CV_TEXT}{fold_tag}_{run_timestamp}"
-            log_path = f"results/{file_id}_{runID}.log"
+            runID = f"{args.task}_{args.mode}_{args.backend}_{args.model}{SP_TEXT}_FS{args.fewshot_num}{FH_TEXT}{CV_TEXT}{fold_tag}_{run_timestamp}"
+            log_path = f"data/output/{file_id}_{runID}.log"
 
             log_f = open(log_path, "w", encoding="utf-8")
             print(
@@ -719,12 +870,30 @@ def main():
             focus_block = FOCUS_HINT_TEXT if (args.mode == "audio" and args.use_focus_hint) else ""
 
             if args.mode == "audio":
-                prompt = build_base_prompt(
-                    TASK_BLOCK_AUDIO,
-                    make_fewshot_item_block(few_shot, total_num=args.total_num),
-                    focus_block,
-                    make_new_item_block_audio(examples_all),
-                )
+                if args.task == "inference":
+                    prompt = build_base_prompt(
+                        TASK_BLOCK_INFERENCE,
+                        make_fewshot_item_block(few_shot, total_num=total_num, task="inference"),
+                        focus_block,
+                        make_new_item_block_inference(examples_all),
+                        output_format=OUTPUT_FORMAT_INFERENCE,
+                    )
+                elif args.task == "transcription":
+                    prompt = build_base_prompt(
+                        TASK_BLOCK_TRANSCRIPTION,
+                        make_fewshot_item_block(few_shot, total_num=total_num, task="transcription"),
+                        "",
+                        make_new_item_block_transcription(examples_all),
+                        output_format=OUTPUT_FORMAT_TRANSCRIPTION,
+                    )
+                else:  # both
+                    prompt = build_base_prompt(
+                        TASK_BLOCK_AUDIO,
+                        make_fewshot_item_block(few_shot, total_num=total_num, task="both"),
+                        focus_block,
+                        make_new_item_block_audio(examples_all),
+                        output_format=OUTPUT_FORMAT_BOTH,
+                    )
             elif args.mode == "baseline":
                 prompt = build_base_prompt(
                     TASK_BLOCK_TEXT,
@@ -774,11 +943,12 @@ def main():
                 # Validate coverage (test indices required; few-shot optional)
                 ok = validate_block_count(
                     output_text=output_text,
-                    total_num=args.total_num,
+                    total_num=total_num,
                     fewshot_indices=fewshot_indices,
                     file_id=file_id + fold_tag,
                     attempt=attempt,
                     log_f=log_f,
+                    task=args.task,
                 )
                 if not ok:
                     if attempt <= MAX_RETRIES:
@@ -792,8 +962,8 @@ def main():
                         break
 
                 # Parse + evaluate
-                parsed = parse_model_outputs(output_text, examples_all)
-                results = evaluate(parsed, fewshot_set)
+                parsed = parse_model_outputs(output_text, examples_all, task=args.task)
+                results = evaluate(parsed, fewshot_set, task=args.task)
                 success = True
                 break
 
@@ -812,6 +982,7 @@ def main():
                 "run_timestamp_utc": run_timestamp,
                 "response_id": getattr(completion, "id", "") if completion else "",
                 "cv_fold": cv_label,
+                "speaker": args.speaker,
             }
 
             results_with_meta = []
@@ -833,11 +1004,14 @@ def main():
     # ------------------------------------------------------------
     if master_results:
         parts = [
+            args.task,
             args.mode,
             args.backend,
             args.model,
-            f"FS{args.fewshot_num}",
         ]
+        if args.speaker:
+            parts.append(f"SP{args.speaker}")
+        parts.append(f"FS{args.fewshot_num}")
 
         if args.use_focus_hint:
             parts.append("FH")

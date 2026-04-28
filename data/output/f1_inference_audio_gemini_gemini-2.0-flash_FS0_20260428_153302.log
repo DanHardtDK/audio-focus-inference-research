@@ -1,0 +1,87 @@
+=== Log for f1 (backend=gemini, model=gemini-2.0-flash, run=20260428_153302, fold=) ===
+
+--- Attempt 1 for f1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+

@@ -1,0 +1,122 @@
+=== Log for ns2 (backend=gemini, model=gemini-2.5-flash, run=20260428_152454, fold=) ===
+
+--- Attempt 1 for ns2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+B
+Because S1 states that Bill was the only person Sam gave grapes to. It does not restrict what other items Sam might have given to Bill. Therefore, Sam could have given Bill oranges or not, and S1 would still be true. S2 is independent.
+
+1
+B
+Because S1 states that Ellen was the only person Sam gave grapes to. It does not restrict what other items Sam might have given to Ellen. Therefore, Sam could have given Ellen oranges or not, and S1 would still be true. S2 is independent.
+
+2
+A
+Because S1 states that Bill was the only person Sam gave bananas to. This implies that Sam did not give bananas to anyone else, including Tom. Therefore, S2 is entailed.
+
+3
+C
+Because S1 states that Ellen was the only person Sam gave oranges to. S2 states that Sam also gave Sue oranges, which contradicts the exclusivity implied by "only Ellen" in S1. Therefore, S2 is contradicted.
+
+4
+C
+Because S1 states that Tom was the only person Sam gave apples to. S2 states that Sam also gave Bill apples, which contradicts the exclusivity implied by "only Tom" in S1. Therefore, S2 is contradicted.
+
+5
+B
+Because S1 states that Bill was the only person Sam gave bananas to. It does not restrict what other items Sam might have given to Bill. Therefore, Sam could have given Bill grapes or not, and S1 would still be true. S2 is independent.
+
+6
+B
+Because S1 states that Ellen was the only person Sam gave bananas to. It does not restrict what other items Sam might have given to Ellen. Therefore, Sam could have given Ellen grapes or not, and S1 would still be true. S2 is independent.
+
+7
+A
+Because S1 states that Ellen was the only person Sam gave grapes to. This implies that Sam did not give grapes to anyone else, including Rob. Therefore, S2 is entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing ns2
+  Results saved to: data/output/ns2_inference_audio_gemini_gemini-2.5-flash_SPspeaker1_FS0_20260428_152454.csv
+  Log saved to:     data/output/ns2_inference_audio_gemini_gemini-2.5-flash_SPspeaker1_FS0_20260428_152454.log
+

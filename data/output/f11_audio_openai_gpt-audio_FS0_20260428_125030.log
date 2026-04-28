@@ -1,0 +1,181 @@
+=== Log for f11 (backend=openai, model=gpt-audio, run=20260428_125030, fold=) ===
+
+--- Attempt 1 for f11 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task has three parts:
+1. Transcribe S1 and S2 from audio.
+2. Mark prosodic focus in S1 using UPPERCASE.
+3. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- You must infer S1 and S2 ONLY from the provided audio.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1:
+S2:
+A
+Because...
+
+1
+S1:
+S2:
+A
+Because...
+
+2
+S1:
+S2:
+A
+Because...
+
+3
+S1:
+S2:
+A
+Because...
+
+4
+S1:
+S2:
+A
+Because...
+
+5
+S1:
+S2:
+A
+Because...
+
+6
+S1:
+S2:
+A
+Because...
+
+7
+S1:
+S2:
+A
+Because...
+
+8
+S1:
+S2:
+A
+Because...
+
+9
+S1:
+S2:
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave ROB oranges. Sam didn’t give Tom oranges.
+S2: Sam only gave SUE grapes. Sam didn’t give Bill grapes.
+B
+Because the second statement talks about a different person (Sue and grapes versus Rob and oranges) and doesn’t relate or contradict the first statement.
+
+1
+S1: Sam only gave SUE oranges. Sam didn’t give Mary oranges.
+S2: Sam only gave ELLEN bananas. Sam didn’t give Ellen grapes.
+B
+Because the second statement is about Ellen and bananas, while the first is about Sue and oranges. They are discussing different people and fruits, making them independent.
+
+2
+S1: Sam only gave ELLEN bananas. Sam didn’t give Ellen ORANGES.
+S2: Sam only gave ROB grapes. Sam didn’t give Rob apples.
+B
+Because the second statement involves Rob and grapes, which is unrelated to Ellen and bananas or oranges mentioned in the first, making them independent.
+
+3
+S1: Sam only gave ROB grapes. Sam didn’t give Rob APPLES.
+S2: Sam only gave BILL apples. Sam also gave Ellen apples.
+B
+Because the second statement describes Bill and Ellen getting apples, while the first describes Rob getting grapes and not apples. These are independent statements about different people.
+
+4
+S1: Sam only gave BILL APPLES. Sam also gave Ellen apples.
+S2: Sam only gave ELLEN apples. Sam also gave Sue apples.
+C
+Because the first statement focuses on Bill being the only one initially given apples (with Ellen receiving apples also), while the second focuses on Ellen being the sole initial receiver and Sue also getting them. This contradicts the first.
+
+5
+S1: Sam only gave ELLEN ORANGES. Sam also gave Rob oranges.
+S2: Sam only gave SUE apples. Sam also gave Bill apples.
+B
+Because the second talks about Sue and Bill getting apples, while the first talks about Ellen and Rob getting oranges. These are independent contexts.
+
+6
+S1: Sam only gave SUE APPLES. Sam also gave Bill apples.
+S2: Sam only gave ELLEN apples. Sam also gave Rob apples.
+C
+Because the first statement says Sue was the only unique initial receiver of apples (and adds Bill), while the second says Ellen was the sole initial receiver (and adds Rob). These focus statements contradict each other.
+
+7
+S1: Sam only gave ELLEN APPLES. Sam also gave Sue apples.
+S2: Sam only gave ELLEN ORANGES. Sam also gave Rob oranges.
+B
+Because the first statement is about apples tied to Ellen and Sue, while the second is about oranges tied to Ellen and Rob. They do not relate directly and are independent.
+
+8
+S1: Sam only gave SUE apples. Sam also gave BILL apples.
+S2: Sam only gave ELLEN apples. Sam also gave SUE apples.
+C
+Because the first says Sue was the only original receiver before adding Bill, while the second says Ellen was the only original receiver before adding Sue. This is a contradiction of focus.
+
+9
+S1: Sam only gave ELLEN apples. Sam also gave ROB oranges.
+S2: Sam only gave SUE apples. Sam also gave BILL apples.
+B
+Because the first discusses Ellen’s apples and Rob’s oranges, while the second talks about Sue’s apples and Bill’s apples, making them independent.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11: 10 parsed blocks; 10/10 indices in-range; all 10 required test indices present.
+
+✓ Finished processing f11
+  Results saved to: data/output/f11_audio_openai_gpt-audio_FS0_20260428_125030.csv
+  Log saved to:     data/output/f11_audio_openai_gpt-audio_FS0_20260428_125030.log
+
