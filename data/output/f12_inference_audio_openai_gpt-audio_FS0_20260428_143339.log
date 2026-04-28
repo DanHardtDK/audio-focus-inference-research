@@ -1,0 +1,138 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260428_143339, fold=) ===
+
+--- Attempt 1 for f12 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+B
+Because S1 says Sam only gave Bill grapes, which focuses on Bill and grapes, while S2 says Sam also gave Bill apples. The second sentence adds new information (apples) that is not entailed by the first. They are independent statements.
+
+1
+C
+Because S1 says Sam only gave Rob apples, focusing on Rob and apples, while S2 says Sam also gave Rob bananas. The second contradicts the exclusivity implied by “only” in the first sentence.
+
+2
+A
+Because S1 says Sam only gave Rob grapes, focusing on Rob and grapes, and S2 says Sam also gave Rob bananas. There is no contradiction or independence if the prosodic focus is on “grapes” in S1. The second sentence fits within the first because “only gave Rob grapes” doesn’t exclude adding bananas.
+
+3
+B
+Because S1 says Sam only gave Rob oranges, focusing on Rob and oranges, while S2 says Sam didn’t give Ellen oranges. The second sentence is independent since it’s about Ellen, who wasn’t mentioned in the first sentence.
+
+4
+C
+Because S1 says Sam only gave Sue apples, focusing on Sue and apples, while S2 says Sam didn’t give Rob apples. The first sentence involves Sue, but the second sentence talks about Rob, and no implication or entailment exists between them. Also, the exclusivity tied to “only” for Sue makes the scenario with Rob contradictory.
+
+5
+C
+Because S1 says Sam only gave Tom apples, focusing on Tom and apples, while S2 says Sam didn’t give Bill apples. The focus on Tom conflicts with the second sentence’s implication, contradicting the exclusivity of “only Tom.”
+
+6
+C
+Because S1 says Sam only gave Tom bananas, focusing on Tom and bananas, while S2 says Sam didn’t give Sue bananas. The exclusivity on Tom in S1 contradicts the mention of Sue in the second sentence.
+
+7
+B
+Because S1 says Sam only gave Sue apples, focusing on Sue and apples, while S2 says Sam didn’t give Sue oranges. These two statements are independent; the first is about apples entirely, and the second excludes oranges.
+
+8
+B
+Because S1 says Sam only gave Sue bananas, focusing on Sue and bananas, while S2 says Sam didn’t give Sue oranges. The two statements are compatible but not entailed. They are independent because the first sentence limits Sue to bananas, yet the second sentence talks about the absence of oranges, which is a separate detail.
+
+9
+C
+Because S1 says Sam only gave Sue oranges, focusing on Sue and oranges, while S2 says Sam didn’t give Sue bananas. The second sentence contradicts the exclusivity implied by the first prosodic focus on oranges: if Sue got only oranges, it’s already implied she didn’t get bananas, so the second sentence is not providing compatible or new information but contradicts the entailment pattern.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12: 10 parsed blocks; 10/10 indices in-range; all 10 required test indices present.
+
+✓ Finished processing f12
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_FS0_20260428_143339.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_FS0_20260428_143339.log
+

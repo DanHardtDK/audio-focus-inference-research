@@ -1,0 +1,157 @@
+=== Log for f13 (backend=gemini, model=gemini-3.1-pro-preview, run=20260428_141226, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task has three parts:
+1. Transcribe S1 and S2 from audio.
+2. Mark prosodic focus in S1 using UPPERCASE.
+3. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- You must infer S1 and S2 ONLY from the provided audio.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1:
+S2:
+A
+Because...
+
+1
+S1:
+S2:
+A
+Because...
+
+2
+S1:
+S2:
+A
+Because...
+
+3
+S1:
+S2:
+A
+Because...
+
+4
+S1:
+S2:
+A
+Because...
+
+5
+S1:
+S2:
+A
+Because...
+
+6
+S1:
+S2:
+A
+Because...
+
+7
+S1:
+S2:
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Tom bananas.
+B
+Because S1 restricts the items Sam gave to Ellen to bananas, but makes no claim about what Sam gave to Tom, meaning S2 is independent.
+
+1
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Rob oranges.
+B
+Because S1 restricts the items Sam gave to Ellen to oranges, but makes no claim about what Sam gave to Rob, meaning S2 is independent.
+
+2
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Ellen bananas.
+B
+Because S1 restricts the items Sam gave to Rob to bananas, but makes no claim about what Sam gave to Ellen, meaning S2 is independent.
+
+3
+S1: Sam only gave Tom BANANAS.
+S2: Sam also gave Mary bananas.
+B
+Because S1 restricts the items Sam gave to Tom to bananas, but makes no claim about what Sam gave to Mary, meaning S2 is independent.
+
+4
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Ellen apples.
+C
+Because S1 states that oranges were the only items Sam gave to Ellen, which contradicts S2's claim that Sam also gave her apples.
+
+5
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Rob oranges.
+C
+Because S1 states that bananas were the only items Sam gave to Rob, which contradicts S2's claim that Sam also gave him oranges.
+
+6
+S1: Sam only gave Sue ORANGES.
+S2: Sam also gave Sue bananas.
+C
+Because S1 states that oranges were the only items Sam gave to Sue, which contradicts S2's claim that Sam also gave her bananas.
+
+7
+S1: Sam only gave Tom APPLES.
+S2: Sam also gave Tom bananas.
+C
+Because S1 states that apples were the only items Sam gave to Tom, which contradicts S2's claim that Sam also gave him bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_audio_gemini_gemini-3.1-pro-preview_FS0_20260428_141226.csv
+  Log saved to:     data/output/f13_audio_gemini_gemini-3.1-pro-preview_FS0_20260428_141226.log
+

@@ -1,0 +1,122 @@
+=== Log for f13 (backend=openai, model=gpt-audio, run=20260428_143339, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 is "Sam only gave Ellen bananas" with prosodic focus on "Ellen," which means Sam didn't give bananas to anyone else. S2 is "Sam also gave Tom bananas," which directly contradicts S1 by stating that Sam did give bananas to someone else besides Ellen.
+
+1  
+B  
+Because S1 is "Sam only gave Ellen oranges" with focus on "oranges," meaning Ellen only got oranges and no other items, and no implication on others. S2 is "Sam also gave Rob oranges," which introduces Rob and is independent of the restriction in S1. It doesn’t contradict or follow from it—Ellen’s scenario is about what she received, while Rob’s involvement is separate.
+
+2  
+A  
+Because S1 is "Sam only gave Rob bananas" with focus on "Rob," meaning Sam gave bananas to Rob and to no one else. S2 is "Sam also gave Ellen bananas," which contradicts this by stating that Sam also gave bananas to Ellen. Thus S2 must be evaluated as contradicting S1.
+
+3  
+B  
+Because S1 is "Sam only gave Tom bananas" with focus on "Tom," meaning Tom got bananas and no one else did. S2 is "Sam also gave Mary bananas," which is independent of what Tom got. It talks about Mary, a different gift situation not covered in the same scenario. Hence, it’s independent.
+
+4  
+C  
+Because S1 is "Sam only gave Ellen oranges" with focus on "Ellen," indicating Ellen got only oranges and nothing else. S2 is "Sam also gave Ellen apples," which directly contradicts S1 by adding another item, apples, which was excluded by the original statement due to the exclusivity introduced by "only."
+
+5  
+C  
+Because S1 is "Sam only gave Rob bananas" with focus on "Rob," indicating that Rob alone got bananas. S2 is "Sam also gave Rob oranges," which contradicts the exclusivity: S1 implies that Rob received no other things than bananas, while S2 says Rob also got oranges.
+
+6  
+B  
+Because S1 is "Sam only gave Sue oranges" with focus on "oranges," suggesting Sue got nothing but oranges, and it does not restrict anyone else’s gifts. S2 is "Sam also gave Sue bananas," which discusses Sue receiving a different item (bananas) and is therefore talking about something separate from the original item mentioned. It is independent.
+
+7  
+A  
+Because S1 is "Sam only gave Tom apples" with focus on "apples," meaning Tom only got apples. S2 is "Sam also gave Tom bananas," which clearly introduces a second item Tom received, contradicting the exclusivity of S1. Thus it’s a contradiction.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_inference_audio_openai_gpt-audio_FS0_20260428_143339.csv
+  Log saved to:     data/output/f13_inference_audio_openai_gpt-audio_FS0_20260428_143339.log
+

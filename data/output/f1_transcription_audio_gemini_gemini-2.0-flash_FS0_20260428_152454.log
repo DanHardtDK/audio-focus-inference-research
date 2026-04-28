@@ -1,0 +1,84 @@
+=== Log for f1 (backend=gemini, model=gemini-2.0-flash, run=20260428_152454, fold=) ===
+
+--- Attempt 1 for f1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Transcribe S1 and S2 from audio.
+2. Mark the prosodically focused word in S1 using UPPERCASE. All other words must be in normal casing.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- You must infer S1 and S2 ONLY from the provided audio.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1:
+S2:
+
+1
+S1:
+S2:
+
+2
+S1:
+S2:
+
+3
+S1:
+S2:
+
+4
+S1:
+S2:
+
+5
+S1:
+S2:
+
+6
+S1:
+S2:
+
+7
+S1:
+S2:
+
+8
+S1:
+S2:
+
+9
+S1:
+S2:
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+

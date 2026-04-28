@@ -1,0 +1,11 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold
+0,0,Sam only gave ROB oranges.,Sam didn't give Tom oranges.,A,,,1,Sam only gave ROB oranges.,Sam didn't give Tom oranges.,,0.0,0.0,1,NEG,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+1,0,Sam only gave SUE grapes.,Sam didn't give Bill grapes.,A,,,1,Sam only gave SUE grapes.,Sam didn't give Bill grapes.,,0.0,0.0,1,NEG,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+2,0,Sam only gave SUE oranges.,Sam didn't give Mary oranges.,A,,,1,Sam only gave SUE oranges.,Sam didn't give Mary oranges.,,0.0,0.0,1,NEG,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+3,0,Sam only gave ELLEN bananas.,Sam didn't give Ellen grapes.,B,,,1,Sam only gave ELLEN bananas.,Sam didn't give Ellen grapes.,,0.0,0.0,1,NEG,2,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+4,0,Sam only gave ELLEN bananas.,Sam didn't give Ellen oranges.,B,,,1,Sam only gave ELLEN bananas.,Sam didn't give Ellen oranges.,,0.0,0.0,1,NEG,2,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+5,0,Sam only gave ROB grapes.,Sam didn't give Rob apples.,B,,,1,Sam only gave ROB grapes.,Sam didn't give Rob apples.,,0.0,0.0,1,NEG,2,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+6,0,Sam only gave BILL apples.,Sam also gave Ellen apples.,C,,,1,Sam only gave BILL apples.,Sam also gave Ellen apples.,,0.0,0.0,1,POS,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+7,0,Sam only gave ELLEN apples.,Sam also gave Sue apples.,C,,,1,Sam only gave ELLEN apples.,Sam also gave Sue apples.,,0.0,0.0,1,POS,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+8,0,Sam only gave ELLEN oranges.,Sam also gave Rob oranges.,C,,,1,Sam only gave ELLEN oranges.,Sam also gave Rob oranges.,,0.0,0.0,1,POS,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,
+9,0,Sam only gave SUE apples.,Sam also gave Bill apples.,C,,,1,Sam only gave SUE apples.,Sam also gave Bill apples.,,0.0,0.0,1,POS,1,f11,audio,gemini,gemini-2.5-flash,20260428_143342,,

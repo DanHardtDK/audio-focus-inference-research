@@ -1,0 +1,157 @@
+=== Log for f13 (backend=openai, model=gpt-audio, run=20260428_125030, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task has three parts:
+1. Transcribe S1 and S2 from audio.
+2. Mark prosodic focus in S1 using UPPERCASE.
+3. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- You must infer S1 and S2 ONLY from the provided audio.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1:
+S2:
+A
+Because...
+
+1
+S1:
+S2:
+A
+Because...
+
+2
+S1:
+S2:
+A
+Because...
+
+3
+S1:
+S2:
+A
+Because...
+
+4
+S1:
+S2:
+A
+Because...
+
+5
+S1:
+S2:
+A
+Because...
+
+6
+S1:
+S2:
+A
+Because...
+
+7
+S1:
+S2:
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave ELLEN bananas.
+S2: Sam also gave TOM bananas.
+C
+Because S1 states that bananas were given only to Ellen, but S2 states that bananas were given to Tom as well, which contradicts the exclusivity in S1.
+
+1
+S1: Sam only gave ELLEN oranges.
+S2: Sam also gave ROB oranges.
+C
+Because S1 claims oranges were given exclusively to Ellen, but S2 says oranges were also given to Rob, contradicting S1.
+
+2
+S1: Sam only gave ROB bananas.
+S2: Sam also gave ELLEN bananas.
+C
+Because S1 says bananas were only given to Rob, while S2 says they were given to Ellen too, which directly contradicts S1.
+
+3
+S1: Sam only gave TOM bananas.
+S2: Sam also gave MARY bananas.
+C
+Because S1 asserts that bananas were exclusively given to Tom, but S2 says they were given to Mary too, which contradicts S1.
+
+4
+S1: Sam only gave ELLEN oranges.
+S2: Sam also gave ELLEN apples.
+B
+Because S1 is about giving only oranges to Ellen, and S2 mentions apples, which is about a different kind of fruit, so the two statements are independent.
+
+5
+S1: Sam only gave ROB bananas.
+S2: Sam also gave ROB oranges.
+B
+Because S1 is only about bananas given to Rob, and S2 involves giving Rob oranges, which involves a different item, so they are independent.
+
+6
+S1: Sam only gave SUE oranges.
+S2: Sam also gave SUE bananas.
+C
+Because S1 states that only oranges were given to Sue, but S2 says bananas were given to Sue too, which contradicts the exclusivity in S1.
+
+7
+S1: Sam only gave TOM apples.
+S2: Sam also gave TOM bananas.
+C
+Because S1 claims that only apples were given to Tom, while S2 says bananas were also given to Tom, which contradicts S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_audio_openai_gpt-audio_FS0_20260428_125030.csv
+  Log saved to:     data/output/f13_audio_openai_gpt-audio_FS0_20260428_125030.log
+
