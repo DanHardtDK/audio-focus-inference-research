@@ -1,0 +1,119 @@
+=== Log for f4 (backend=openai, model=gpt-audio, run=20260503_143128, fold=0) ===
+
+--- Attempt 1 for f4_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+B
+Because...
+
+Example 3
+C
+Because...
+
+Example 4
+B
+Because...
+
+Example 5
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5  
+A  
+Because in S1, "Sam only gave Sue apples," the focus on "Sue" means that Sue is the only person Sam gave apples to. In S2, "Sam also gave Rob apples," this doesn’t contradict the focus. It’s possible that Sam gave Rob apples too, without contradicting that Sue was the only person to get apples in that compared set. Thus, S2 is entailed, as adding Rob doesn’t contradict the entailments about focus on Sue.  
+
+6  
+A  
+Because in S1, "Sam only gave Bill apples," the focus on "Bill" means that Bill is the only person Sam gave apples to. In S2, "Sam didn’t give Mary apples," this is entailed by S1 because it directly supports that no one else besides Bill received apples.  
+
+7  
+A  
+Because in S1, "Sam only gave Mary oranges," the focus on "Mary" entails that she is the only recipient of oranges in that context. In S2, "Sam also gave Ellen oranges," is entailed because this doesn’t contradict that Mary was the exclusive recipient in terms of that particular prosodic focus.  
+
+8  
+A  
+Because in S1, "Sam only gave Ellen apples," we focus on "Ellen" as the sole recipient of apples. In S2, "Sam didn’t give Tom apples," is entailed by the restriction placed on Ellen being the only receiver of apples.  
+
+9  
+A  
+Because in S1, "Sam only gave Rob bananas," the focus is that Rob is the sole person receiving bananas. In S2, "Sam also gave Rob oranges," does not contradict the banana-giving exclusivity. It’s entailed that Rob may receive something else (like oranges) without contradicting the focus that he’s the only one who got bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f4_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f4_cv0
+  Results saved to: data/output/f4_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.csv
+  Log saved to:     data/output/f4_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.log
+

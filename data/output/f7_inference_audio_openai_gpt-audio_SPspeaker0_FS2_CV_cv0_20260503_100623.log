@@ -1,0 +1,131 @@
+=== Log for f7 (backend=openai, model=gpt-audio, run=20260503_100623, fold=0) ===
+
+--- Attempt 1 for f7_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because the prosodic focus in S1 is on "bananas" in "Sam only gave Bill BANANAS," meaning no other items were given to Bill. S2, "Sam also gave Bill grapes," is entailed because giving grapes to Bill is consistent with additional items being allowed under "only bananas," as long as Bill also got bananas.  
+
+3  
+A  
+Because the prosodic focus in S1 is on "Mary" in "Sam only gave MARY apples," meaning Sam did not give apples to anyone else. S2, "Sam also gave Ellen apples," aligns with the scenario because Ellen isn't excluded from receiving apples, so it’s entailed.  
+
+4  
+A  
+Because the prosodic focus in S1 is on "Sue" in "Sam only gave SUE apples," meaning only Sue got apples. S2, "Sam also gave Tom apples," is compatible: Tom did not get apples here, only Sue did, so it’s entailed.  
+
+5  
+A  
+Because the prosodic focus in S1 is on "grapes" in "Sam only gave Bill GRAPES," meaning nothing other than grapes was given to Bill. S2, "Sam didn’t give Bill oranges," follows logically since Bill didn’t get oranges, only grapes, so it is entailed.  
+
+6  
+A  
+Because the prosodic focus in S1 is on "apples" in "Sam only gave Bill APPLES," meaning no other items were given to Bill. S2, "Sam didn’t give Bill bananas," matches this perfectly since it fits with Bill only receiving apples, so it’s entailed.  
+
+7  
+A  
+Because the prosodic focus in S1 is on "Sue" in "Sam only gave SUE apples," meaning Sue was the only one to receive apples. S2, "Sam didn’t give Sue bananas," is consistent with this scenario, as Sue didn’t get anything else, so it’s entailed.  
+
+8  
+A  
+Because the prosodic focus in S1 is on "Ellen" in "Sam only gave ELLEN oranges," meaning only Ellen got oranges. S2, "Sam didn’t give Tom oranges," is consistent because Tom wasn’t mentioned as receiving oranges, so it’s entailed.  
+
+9  
+A  
+Because the prosodic focus in S1 is on "Tom" in "Sam only gave TOM apples," meaning Tom was the only recipient of apples. S2, "Sam didn’t give Mary apples," agrees with this since Mary didn’t receive apples, so it’s entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f7_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f7_cv0
+  Results saved to: data/output/f7_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv0_20260503_100623.csv
+  Log saved to:     data/output/f7_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv0_20260503_100623.log
+

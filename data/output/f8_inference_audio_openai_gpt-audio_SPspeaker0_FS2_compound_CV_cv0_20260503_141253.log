@@ -1,0 +1,135 @@
+=== Log for f8 (backend=openai, model=gpt-audio, run=20260503_141253, fold=0) ===
+
+--- Attempt 1 for f8_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+Example 2
+S1: Sam only gave ROB grapes.
+S2: Sam also gave Rob oranges.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+B  
+Because S1 has prosodic focus on "Ellen" and says Sam only gave Ellen bananas. S2 introduces Rob receiving bananas, which is not entailed by S1. S2 is independent because it discusses giving bananas to someone else, not Ellen.
+
+3  
+B  
+Because S1 has prosodic focus on "Rob" and says Sam only gave Rob grapes, but S2 introduces oranges being given to Rob. The introduction of oranges is a different item, not entailed by the focus in S1, so S2 is independent.
+
+4  
+B  
+Because S1 has prosodic focus on "Tom" and says Sam only gave Tom apples. S2 introduces a new person, Bill, receiving apples. This does not contradict or follow from S1; it’s an independent statement.
+
+5  
+C  
+Because S1 has prosodic focus on "Mary" and says Sam only gave Mary apples. S2 mentions Mary being given bananas, which contradicts the exclusivity of giving her only apples. Therefore, S2 is contradicted by S1.
+
+6  
+B  
+Because S1 has prosodic focus on "Ellen" and says Sam only gave Ellen oranges. S2 introduces Sue also receiving oranges, which is not entailed by limiting gifts to Ellen in S1. Therefore, S2 is independent.
+
+7  
+C  
+Because S1 has prosodic focus on "Rob" and says Sam only gave Rob oranges. S2 explicitly says Sam didn’t give Rob apples, which is consistent with giving only oranges. This fits under the entailed category.
+
+8  
+C  
+Because S1 has prosodic focus on "Bill" and says Sam only gave Bill bananas. S2 says Sam didn’t give Ellen bananas, which logically follows because giving only Bill bananas excludes giving them to anyone else. So S2 is entailed by S1.
+
+9  
+B  
+Because S1 has prosodic focus on "Rob" and says Sam only gave Rob bananas. S2 says Sam also gave Sue bananas. This additional action contradicts the exclusivity in S1. Therefore, S2 is contradicted.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f8_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f8_cv0
+  Results saved to: data/output/f8_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.csv
+  Log saved to:     data/output/f8_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.log
+

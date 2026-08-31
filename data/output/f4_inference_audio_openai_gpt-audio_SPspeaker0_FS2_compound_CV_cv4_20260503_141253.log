@@ -1,0 +1,135 @@
+=== Log for f4 (backend=openai, model=gpt-audio, run=20260503_141253, fold=4) ===
+
+--- Attempt 1 for f4_cv4 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL bananas.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+Example 2
+S1: Sam only gave Sue ORANGES.
+S2: Sam didn't give Sue grapes.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "Sue," meaning Sam gave apples only to Sue and no one else. In S2, it says Sam also gave Rob apples, which directly contradicts the exclusivity asserted in S1.
+
+1  
+A  
+Because in S1, the prosodic focus is on "apples," meaning Sam only gave Bill apples and nothing else. In S2, it says Sam didn’t give Mary apples, which is consistent with and entailed by the exclusivity focus on apples for Bill in S1.
+
+2  
+C  
+Because in S1, the prosodic focus is on "Mary," meaning Sam only gave oranges to Mary and no one else. In S2, it says Sam also gave Ellen oranges, which contradicts the exclusivity of giving oranges only to Mary.
+
+3  
+A  
+Because in S1, the prosodic focus is on "Ellen," meaning Sam only gave apples to Ellen. In S2, it says Sam didn’t give Tom apples, which is part of the exclusivity and fully entailed by S1’s restriction that apples were only given to Ellen.
+
+4  
+C  
+Because in S1, the prosodic focus is on "bananas," meaning Sam only gave Rob bananas and nothing else. In S2, it says Sam also gave Rob oranges, contradicting the restriction that Rob only received bananas.
+
+5  
+A  
+Because in S1, the prosodic focus is on "bananas," meaning Sam only gave Bill bananas. In S2, it says Sam didn’t give Bill grapes, which is consistent with the exclusivity on bananas in S1.
+
+6  
+A  
+Because in S1 the prosodic focus is on "oranges," meaning Sam only gave Ellen oranges. In S2, it says Sam didn’t give Ellen grapes, which is entailed by the restriction in S1 that limits Ellen’s gift to oranges.
+
+7  
+A  
+Because in S1, the prosodic focus is on "Mary," meaning Sam only gave bananas to Mary. In S2, it says Sam didn’t give Ellen bananas, which fits the exclusivity to Mary and is entailed by S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f4_cv4: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f4_cv4
+  Results saved to: data/output/f4_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv4_20260503_141253.csv
+  Log saved to:     data/output/f4_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv4_20260503_141253.log
+

@@ -1,0 +1,119 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260503_143128, fold=1) ===
+
+--- Attempt 1 for f12_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+Example 3
+A
+Because...
+
+Example 4
+A
+Because...
+
+Example 5
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+A  
+Because the second sentence states that Sam also gave Bill apples, which is consistent with the first sentence saying Sam only gave Bill grapes. If Sam only gave Bill grapes, it doesn’t exclude that Sam could have given Bill other things (the focus of "only" is likely on Bill, not on grapes), making the second sentence entailed.
+
+1  
+A  
+Because the first sentence says Sam only gave Rob apples. The second sentence adds that Sam also gave Rob bananas, which is consistent if the focus in the first sentence is on "Rob" (meaning Rob is the only recipient being discussed, not necessarily limited to just apples). Therefore, the second is entailed.
+
+2  
+A  
+Because the first sentence states that Sam only gave Rob grapes. The second adds that Sam also gave Rob bananas, which fits with the first if the focus is on "Rob"—meaning Rob is the unique recipient. The second sentence is entailed.
+
+3  
+A  
+Because the first sentence says Sam only gave Rob oranges. The second sentence says Sam didn’t give Ellen oranges. This matches, as the first implies a focus on Rob being the only recipient of oranges, and it is thus entailed that Ellen didn’t get oranges.
+
+4  
+A  
+Because the first sentence says Sam only gave Sue apples. The second sentence says Sam didn’t give Rob apples, which is exactly what the first implies if we focus on "Sue"—meaning Sue alone received the apples. Therefore, the second sentence is entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv1: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f12_cv1
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv1_20260503_143128.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv1_20260503_143128.log
+

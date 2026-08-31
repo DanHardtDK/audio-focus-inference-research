@@ -1,0 +1,135 @@
+=== Log for f2 (backend=openai, model=gpt-audio, run=20260503_141253, fold=2) ===
+
+--- Attempt 1 for f2_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Tom ORANGES.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+Example 2
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Sue oranges.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "Rob" in "Sam only gave ROB bananas," meaning Rob is the only recipient of bananas. In S2, "Sam didn’t give Tom bananas" adds detail that no other recipient like Tom got bananas. This contradicts S1’s "only" focus on Rob. If Rob were the only recipient, S2 should follow logically, but the idea that some statement about Tom is needed indicates a contradiction in identifying exclusivity.
+
+1  
+A  
+Because in S1, the focus is on "Tom" in "Sam only gave TOM grapes," meaning Tom is the only recipient of grapes. In S2, "Sam didn’t give Tom oranges" is consistent with that exclusivity, confirming that Tom only received grapes and not oranges, which is an entailment.
+
+2  
+C  
+Because in S1, the focus is on "Sue" in "Sam only gave SUE oranges," meaning Sue is the only person who got oranges. In S2, "Sam also gave Sue apples" contradicts the exclusivity implied by "only" in S1. If Sue were the only recipient of oranges, she should not have also received apples.
+
+3  
+A  
+Because in S1, the focus is on "Sue" in "Sam only gave SUE bananas," meaning Sue is the only person who got bananas. In S2, "Sam didn’t give Rob bananas" follows from that, since if Sue was the sole recipient, then Rob logically didn’t receive any bananas. This is an entailment.
+
+6  
+A  
+Because in S1, the focus is on "Tom" in "Sam only gave TOM oranges," meaning Tom is the only person who received oranges. In S2, "Sam didn’t give Tom bananas" fits with that exclusivity, since the claim is Tom only got oranges and therefore did not receive bananas. This is an entailment.
+
+7  
+C  
+Because in S1, the focus is on "Sue" in "Sam only gave SUE apples," meaning Sue is the only person who got apples. In S2, "Sam didn’t give Sue oranges" is consistent with that, but the broader implication is she only received apples. However, if no mention of others is provided in S2, we may be introducing a contradiction. The prosodic focus on Sue suggests exclusivity, yet focusing on the absence of oranges contradicts the strict reading that she may have only gotten apples, creating tension and contradicting the original intent.
+
+8  
+A  
+Because in S1, the prosodic focus is on "Sue" in "Sam only gave SUE grapes," meaning she’s the exclusive recipient of grapes. In S2, "Sam didn’t give Sue apples" follows from that exclusivity focus. Since she only got grapes, it’s entailed that she didn’t receive any apples.
+
+9  
+C  
+Because in S1, the focus is on "Ellen" in "Sam only gave ELLEN oranges," meaning Ellen is the exclusive recipient of oranges. S2 states, "Sam also gave Ellen bananas," which contradicts the exclusivity implied by "only." If Ellen only got oranges, she shouldn’t have received bananas, creating a contradiction.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f2_cv2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f2_cv2
+  Results saved to: data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv2_20260503_141253.csv
+  Log saved to:     data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv2_20260503_141253.log
+

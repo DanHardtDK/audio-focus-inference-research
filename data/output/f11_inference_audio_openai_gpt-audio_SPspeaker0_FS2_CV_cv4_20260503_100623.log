@@ -1,0 +1,131 @@
+=== Log for f11 (backend=openai, model=gpt-audio, run=20260503_100623, fold=4) ===
+
+--- Attempt 1 for f11_cv4 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "Rob" in "Sam only gave ROB oranges." This means that Sam didn’t give oranges to anyone else. In S2, the sentence is "Sam didn’t give TOM oranges." This directly supports the focused meaning from S1 that Sam only gave oranges to Rob and not to someone like Tom. But S2 isn’t merely independent—it’s confirming the exclusion of others. This creates a contradiction when we look closely. If S1 is saying that only Rob got oranges, then mentioning Tom separately in S2—though implying something similar—isn’t just entailed. It’s a perspective that doesn’t hold independently either. Therefore, it ends up creating a subtle contradiction by emphasizing a different exclusion.
+
+1  
+C  
+Because in S1, there is prosodic focus on "Sue" in "Sam only gave SUE grapes." This means no one else got grapes. But in S2 we have "Sam didn’t give BILL grapes." This suggests Bill is an alternative to Sue who also didn’t get grapes. S2 is contradicting the implicature from the focus in S1 that Sue uniquely received the grapes, and it signals Bill as another excluded candidate, which wasn’t part of the original entailment. The focus doesn’t match the logic of the exclusion.
+
+2  
+A  
+Because in S1, the prosodic focus is on "Sue" in "Sam only gave SUE oranges." This means Sue is unique in getting oranges. In S2, "Sam didn’t give MARY oranges" simply reinforces that no one else except Sue got oranges. This is fully entailed by S1.
+
+3  
+A  
+Because the focus in S1 is on "Ellen" in "Sam only gave ELLEN bananas." This means Ellen alone received bananas. S2 says, "Sam didn’t give Ellen grapes," which directly supports and aligns with the entailment that the only thing Ellen got was bananas—not grapes. The exclusion of grapes fits under the entailments.
+
+4  
+A  
+Because S1 focuses on "bananas": "Sam only gave Ellen BANANAS." This means Ellen got bananas and nothing else. S2 states "Sam didn’t give Ellen ORANGES," which follows from the focus on bananas. If bananas were the only thing Ellen got, she wouldn’t have received oranges or anything else. Thus, S2 is entailed by S1.
+
+5  
+A  
+Because in S1 the prosodic focus is on "Rob" in "Sam only gave ROB grapes." This means Rob exclusively got grapes and not apples. S2 says "Sam didn’t give Rob apples." This is exactly entailed by S1’s meaning. It supports the exclusion of apples for Rob, making S2 entailed.
+
+6  
+B  
+Because in S1, prosodic focus is on "Bill" in "Sam only gave BILL apples." This means Bill alone received apples. In S2, "Sam also gave ELLEN apples" has a prosodic focus on Ellen, suggesting more than just Bill got apples. This is independent—the two statements are separate and not inherently contradictory nor entailed. S1 sets a scenario where focus is on Bill’s exclusivity, while S2 confirms additional distribution of apples now focused on Ellen. It’s not entailed, and it’s not a direct contradiction. It’s independent.
+
+7  
+B  
+Because in S1, prosodic focus is on "Ellen" in "Sam only gave ELLEN apples." This suggests Ellen got apples exclusively. In S2, "Sam also gave SUE apples" introduces a different focus and a new recipient. This doesn’t contradict S1 (there’s no direct denial of S1), and it’s not entailed either, because S1 stressed exclusivity. It is therefore independent.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11_cv4: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f11_cv4
+  Results saved to: data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv4_20260503_100623.csv
+  Log saved to:     data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv4_20260503_100623.log
+

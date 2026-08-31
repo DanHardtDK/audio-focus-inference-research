@@ -1,0 +1,131 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260503_100623, fold=4) ===
+
+--- Attempt 1 for f12_cv4 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because the first sentence says Sam only gave Bill grapes, focusing on “Bill,” while the second sentence says Sam also gave Bill apples. This adds new information about something else Sam gave Bill, rather than contradicting or entailing. They are independent.  
+
+1  
+C  
+Because the first sentence says Sam only gave Rob apples, focusing on “apples,” while the second sentence says Sam also gave Rob bananas. The second sentence contradicts the claim that Sam only gave Rob apples.  
+
+2  
+C  
+Because the first sentence says Sam only gave Rob grapes, focusing on “grapes,” while the second sentence says Sam also gave Rob bananas. The second sentence contradicts the exclusivity of the first.  
+
+3  
+B  
+Because the first sentence says Sam only gave Rob oranges, focusing on “Rob,” and the second sentence says Sam didn’t give Ellen oranges. The statements refer to different people’s relationship with oranges, making them independent.  
+
+4  
+C  
+Because the first sentence says Sam only gave Sue apples, focusing on “apples,” while the second sentence says Sam didn’t give Rob apples. The word “only” restricts the giving of apples to Sue, which contradicts the claim of not giving Rob apples.  
+
+5  
+C  
+Because the first sentence says Sam only gave Tom apples, focusing on “Tom,” while the second sentence says Sam didn’t give Bill apples. The exclusivity in the first sentence that limits giving apples only to Tom contradicts the idea that Sam just didn’t give Bill apples.  
+
+6  
+C  
+Because the first sentence says Sam only gave Tom bananas, focusing on “bananas,” while the second says Sam didn’t give Sue bananas. The exclusivity in the first sentence that only Tom got bananas contradicts the second sentence’s different negative statement about Sue.  
+
+7  
+C  
+Because the first sentence says Sam only gave Sue apples, focusing on “apples,” while the second sentence says Sam didn’t give Sue oranges. If Sam only gave Sue apples, the focus on apples rules out oranges, thereby entailing the negative statement.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv4: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f12_cv4
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv4_20260503_100623.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv4_20260503_100623.log
+

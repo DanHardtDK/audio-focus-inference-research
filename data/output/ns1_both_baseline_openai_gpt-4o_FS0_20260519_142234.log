@@ -1,0 +1,148 @@
+=== Log for ns1 (backend=openai, model=gpt-4o, run=20260519_142234, fold=) ===
+
+--- Attempt 1 for ns1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Bill grapes.
+S2: Sam also gave Sue grapes.
+A
+Because...
+
+1
+S1: Sam only gave Sue oranges.
+S2: Sam didn't give Rob oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob grapes.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+3
+S1: Sam only gave Tom oranges.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+4
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+5
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Tom grapes.
+A
+Because...
+
+6
+S1: Sam only gave Rob oranges.
+S2: Sam also gave Rob apples.
+A
+Because...
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam didn't give Tom grapes.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+S1: Sam only gave Bill grapes.  
+S2: Sam also gave Sue grapes.  
+C  
+Because if Sam only gave grapes to Bill, it implies he didn't give grapes to anyone else, including Sue.
+
+1  
+S1: Sam only gave Sue oranges.  
+S2: Sam didn't give Rob oranges.  
+A  
+Because if Sam only gave oranges to Sue, it follows that he didn't give oranges to anyone else, including Rob.
+
+2  
+S1: Sam only gave Rob grapes.  
+S2: Sam also gave Rob oranges.  
+B  
+Because the statement that Sam gave Rob grapes doesn't provide information about giving Rob any other fruit, like oranges.
+
+3  
+S1: Sam only gave Tom oranges.  
+S2: Sam didn't give Tom bananas.  
+A  
+Because if Sam only gave oranges to Tom, this implies he didn't give Tom any other fruit, including bananas.
+
+4  
+S1: Sam only gave Ellen bananas.  
+S2: Sam also gave Mary bananas.  
+C  
+Because if Sam only gave bananas to Ellen, it implies he didn't give bananas to anyone else, including Mary.
+
+5  
+S1: Sam only gave Ellen grapes.  
+S2: Sam didn't give Tom grapes.  
+A  
+Because if Sam only gave grapes to Ellen, it follows that he didn't give grapes to anyone else, including Tom.
+
+6  
+S1: Sam only gave Rob oranges.  
+S2: Sam also gave Rob apples.  
+B  
+Because the statement that Sam gave Rob oranges doesn't provide information about giving Rob any other fruit, like apples.
+
+7  
+S1: Sam only gave Tom apples.  
+S2: Sam didn't give Tom grapes.  
+A  
+Because if Sam only gave apples to Tom, this implies he didn't give Tom any other fruit, including grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing ns1
+  Results saved to: data/output/ns1_both_baseline_openai_gpt-4o_FS0_20260519_142234.csv
+  Log saved to:     data/output/ns1_both_baseline_openai_gpt-4o_FS0_20260519_142234.log
+

@@ -1,0 +1,172 @@
+=== Log for f3 (backend=openai, model=gpt-5.1, run=20260519_144204, fold=) ===
+
+--- Attempt 1 for f3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Tom grapes.
+A
+Because...
+
+1
+S1: Sam only gave Ellen apples.
+S2: Sam didn't give Ellen oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob grapes.
+S2: Sam also gave Ellen grapes.
+A
+Because...
+
+3
+S1: Sam only gave Rob apples.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+4
+S1: Sam only gave Ellen apples.
+S2: Sam didn't give Bill apples.
+A
+Because...
+
+5
+S1: Sam only gave Rob apples.
+S2: Sam didn't give Sue apples.
+A
+Because...
+
+6
+S1: Sam only gave Rob oranges.
+S2: Sam also gave Rob apples.
+A
+Because...
+
+7
+S1: Sam only gave Rob apples.
+S2: Sam also gave Rob grapes.
+A
+Because...
+
+8
+S1: Sam only gave Rob bananas.
+S2: Sam didn't give Ellen bananas.
+A
+Because...
+
+9
+S1: Sam only gave Mary apples.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Tom grapes.
+A
+Because "only gave Ellen grapes" means Ellen was the sole recipient of grapes, so Sam did not give grapes to Tom or anyone else.
+
+1
+S1: Sam only gave Ellen apples.
+S2: Sam didn't give Ellen oranges.
+B
+Because S1 restricts who got apples, not what fruits Ellen received; Ellen might still have gotten oranges from Sam, so S2 is not entailed or contradicted.
+
+2
+S1: Sam only gave Rob grapes.
+S2: Sam also gave Ellen grapes.
+C
+Because "only gave Rob grapes" entails that no one but Rob got grapes, so saying Sam also gave Ellen grapes contradicts S1.
+
+3
+S1: Sam only gave Rob apples.
+S2: Sam also gave Ellen apples.
+C
+Because "only gave Rob apples" entails that no one but Rob got apples, so saying Sam also gave Ellen apples contradicts S1.
+
+4
+S1: Sam only gave Ellen apples.
+S2: Sam didn't give Bill apples.
+A
+Because if Sam only gave apples to Ellen, then he necessarily did not give apples to Bill.
+
+5
+S1: Sam only gave Rob apples.
+S2: Sam didn't give Sue apples.
+A
+Because if Sam only gave apples to Rob, then he necessarily did not give apples to Sue.
+
+6
+S1: Sam only gave Rob oranges.
+S2: Sam also gave Rob apples.
+B
+Because S1 restricts what Rob got to oranges, not what else Sam might have given generally; S2 introduces apples, which are not ruled out by S1.
+
+7
+S1: Sam only gave Rob apples.
+S2: Sam also gave Rob grapes.
+B
+Because S1 says Rob was the only recipient of apples, not that apples were the only fruit he received; S2 adds grapes, which is compatible.
+
+8
+S1: Sam only gave Rob bananas.
+S2: Sam didn't give Ellen bananas.
+A
+Because if Sam only gave bananas to Rob, then he necessarily did not give bananas to Ellen.
+
+9
+S1: Sam only gave Mary apples.
+S2: Sam also gave Ellen apples.
+C
+Because "only gave Mary apples" entails that no one but Mary got apples, so giving Ellen apples contradicts S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f3: 10 parsed blocks; all 10 required test indices present.
+
+✓ Finished processing f3
+  Results saved to: data/output/f3_both_baseline_openai_gpt-5.1_FS0_20260519_144204.csv
+  Log saved to:     data/output/f3_both_baseline_openai_gpt-5.1_FS0_20260519_144204.log
+

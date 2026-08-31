@@ -1,0 +1,119 @@
+=== Log for ns1 (backend=openai, model=gpt-audio, run=20260503_142342, fold=2) ===
+
+--- Attempt 1 for ns1_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Mary bananas.
+B
+Because...
+
+Example 2
+S1: Sam only gave ELLEN grapes.
+S2: Sam didn't give Tom grapes.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because in S1, the prosodic focus is on “BILL” (Sam only gave BILL grapes), and S2 says Sam also gave SUE grapes. This doesn’t contradict the focus of S1, as “only giving BILL” contrasts with giving to others. There’s no direct entailment because S1 restricts the giving to BILL, and S2 introduces a new recipient. They are independent: S1 talked about BILL only, while S2 brings in another person SUE.  
+
+1  
+C  
+Because in S1, the prosodic focus is on “SUE” (Sam only gave SUE oranges), meaning oranges went exclusively to Sue and no one else. But S2 states Sam didn’t give ROB oranges. This contradicts the meaning of S1, which implies Sue got the oranges exclusively and doesn’t necessarily say anything about Rob regarding oranges. The “only gave SUE” entails that no one besides Sue got oranges. Saying Sam didn’t give Rob oranges is actually aligned with S1. So, S2 contradicts what would be expected if Rob’s status wasn’t excluded: if oranges only went to Sue, saying Sam didn’t give Rob oranges makes it an odd or contradicting statement in the overall frame of alternatives.  
+
+2  
+B  
+Because S1 focuses on “ROB” (Sam only gave ROB grapes), meaning grapes went only to Rob. S2 says Sam also gave ROB oranges. The two sentences discuss different gifts (grapes vs. oranges) and don’t clash. S1 restricts the grape-giving to Rob but makes no statement about oranges. Therefore, they are independent: talking about oranges in S2 doesn’t affect the truth of S1’s statement about grapes.  
+
+3  
+A  
+Because in S1, the focus is on “TOM” (Sam only gave TOM oranges). This means oranges were given exclusively to Tom and not to anyone else. S2 says Sam didn’t give TOM bananas. This follows logically from S1 because S1 restricted what was given to just oranges, so not giving bananas is entailed. There is no contradiction; it’s consistent.  
+
+6  
+B  
+Because in S1, the focus is on “ELLEN” (Sam only gave ELLEN grapes). This means grapes were given exclusively to Ellen. S2 says Sam didn’t give TOM grapes. There is no logical relationship between these statements other than that giving grapes was isolated to Ellen and didn’t involve Tom. S2 is a separate and independent statement.  
+
+7  
+B  
+Because in S1, the focus is on “ROB” (Sam only gave ROB oranges), meaning oranges were given exclusively to Rob. S2 says Sam also gave ROB apples. These two sentences are independent since S1 only restricts the giving of oranges; it doesn’t say anything about apples. Therefore, S2’s information about apples is not determined by S1 and stands alone.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1_cv2: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns1_cv2
+  Results saved to: data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker1_FS2_compound_CV_cv2_20260503_142342.csv
+  Log saved to:     data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker1_FS2_compound_CV_cv2_20260503_142342.log
+

@@ -1,0 +1,117 @@
+=== Log for ns1 (backend=openai, model=gpt-audio, run=20260503_101812, fold=0) ===
+
+--- Attempt 1 for ns1_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+C  
+Because in S1, “Sam only gave Bill grapes,” the focus is on Bill, meaning Sam didn’t give grapes to anyone else. In S2, “Sam also gave Sue grapes,” this contradicts the exclusivity implied by “only” in S1.
+
+3  
+C  
+Because in S1, “Sam only gave Sue oranges,” the focus is on Sue, meaning no one else got oranges. In S2, “Sam didn’t give Rob oranges,” this is consistent, but not entailed; it’s independent. Still, the main classification is contradicted by the continuation of events that weren’t entailed by the “only” focus in S1.
+
+4  
+C  
+Because in S1, “Sam only gave Rob grapes,” the focus on Rob means no one else got grapes. In S2, “Sam also gave Rob oranges,” this addition of oranges is independent, not entailed, and the presence of “only” in S1 does not cover giving oranges. The classification leans toward contradiction of the general exclusive implication.
+
+5  
+A  
+Because in S1, “Sam only gave Tom oranges,” this implies Tom got no other fruit. In S2, “Sam didn’t give Tom bananas,” this is logically consistent with the notion presented in S1, since Tom only got oranges and hence didn’t get bananas. This is entailed.
+
+6  
+C  
+Because in S1, “Sam only gave Ellen bananas,” this means Ellen received no other fruits. In S2, “Sam also gave Mary bananas,” this contradicts the interpretation in S1 that only Ellen received bananas. So it’s contradicted.
+
+7  
+C  
+Because in S1, “Sam only gave Ellen grapes,” Ellen got no other fruits. In S2, “Sam didn’t give Tom grapes,” that’s consistent but doesn’t follow from the exclusive focus in S1. There is no entailment that Tom must have been excluded from grapes, so these are independent. However, the main classification looks at whether the stated exclusivity holds. Subsequent information about Tom and fruits contradicts the exclusivity focused in S1.
+
+
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1_cv0: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns1_cv0
+  Results saved to: data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker2_FS2_CV_cv0_20260503_101812.csv
+  Log saved to:     data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker2_FS2_CV_cv0_20260503_101812.log
+

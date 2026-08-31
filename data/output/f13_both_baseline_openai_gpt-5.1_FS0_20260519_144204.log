@@ -1,0 +1,148 @@
+=== Log for f13 (backend=openai, model=gpt-5.1, run=20260519_144204, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+A
+Because...
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+A
+Because...
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+C
+Because S1 says Ellen is the only person Sam gave anything (bananas) to, so he cannot also have given bananas to Tom.
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+C
+Because S1 restricts the recipient of Sam’s giving to Ellen alone, so he cannot also have given oranges to Rob.
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+C
+Because S1 states Rob is the sole recipient, which rules out Sam also giving bananas to Ellen.
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+C
+Because “only Tom” as recipient excludes the possibility that Sam also gave bananas to Mary.
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+C
+Because “only gave Ellen oranges” implies Sam did not give Ellen anything other than oranges, so he could not also have given her apples.
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+C
+Because S1 says the only thing Sam gave Rob was bananas, so he could not also have given Rob oranges.
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+C
+Because S1 limits what Sam gave Sue to oranges alone, which conflicts with him also giving her bananas.
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+C
+Because S1 states that apples are the only thing Sam gave Tom, so he could not also have given him bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_both_baseline_openai_gpt-5.1_FS0_20260519_144204.csv
+  Log saved to:     data/output/f13_both_baseline_openai_gpt-5.1_FS0_20260519_144204.log
+

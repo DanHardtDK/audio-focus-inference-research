@@ -15,3 +15,14 @@
 # Python
 __pycache__/
 *.pyc
+
+# Claude Code session data
+.claude/
+
+# Raw survey data (contains PII)
+data/humanSurvey/raw/
+
+# Non-anonymized Qualtrics exports (contain respondent PII: name, email, IP, GPS)
+code/qualtrics_export/output/**/*scored_long.csv
+code/qualtrics_export/output/**/*scored_summary.csv
+!code/qualtrics_export/output/**/*_anon.csv

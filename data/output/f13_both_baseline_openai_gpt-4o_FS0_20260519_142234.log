@@ -1,0 +1,148 @@
+=== Log for f13 (backend=openai, model=gpt-4o, run=20260519_142234, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+A
+Because...
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+A
+Because...
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+C
+Because if Sam only gave Ellen bananas, it contradicts the statement that Sam gave bananas to Tom as well.
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+C
+Because if Sam only gave Ellen oranges, he could not have also given them to Rob.
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+C
+Because if Sam only gave bananas to Rob, he could not have given them to Ellen as well.
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+C
+Because if Sam only gave Tom bananas, he could not have given them to Mary as well.
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+C
+Because if Sam only gave Ellen oranges, he could not have also given her apples.
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+C
+Because if Sam only gave Rob bananas, he could not have given him oranges as well.
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+C
+Because if Sam only gave Sue oranges, he could not have given her bananas as well.
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+C
+Because if Sam only gave Tom apples, he could not have given him bananas as well.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_both_baseline_openai_gpt-4o_FS0_20260519_142234.csv
+  Log saved to:     data/output/f13_both_baseline_openai_gpt-4o_FS0_20260519_142234.log
+

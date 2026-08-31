@@ -1,0 +1,119 @@
+=== Log for ns2 (backend=openai, model=gpt-audio, run=20260503_142543, fold=1) ===
+
+--- Attempt 1 for ns2_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL bananas.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+Example 2
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Sue oranges.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the focus is on BILL as the only recipient of grapes, while in S2, it states that Bill didn’t receive grapes but received oranges. This directly contradicts the narrow focus established in S1.
+
+1  
+C  
+Because in S1, the focus is on ELLEN as the sole recipient of grapes, while in S2, it states that Ellen also received oranges. This contradicts the exclusivity implied in S1.
+
+4  
+A  
+Because in S1, only BILL is given bananas, and in S2, it says that Tom didn’t get bananas. This is entailed, as the exclusive focus in S1 implies that no one other than Bill, including Tom, got bananas.
+
+5  
+B  
+Because in S1, the focus is on ELLEN as the exclusive recipient of oranges, while in S2, it says that Sue also got oranges. This introduces additional information and is not entailed or contradicted; it is independent.
+
+6  
+B  
+Because in S1, only TOM was given apples, while in S2, it says that Bill also got apples. This is independent, as the two sentences provide information without direct entailment or contradiction.
+
+7  
+C  
+Because in S1, the focus is on BILL as the sole recipient of bananas, while in S2, it says Bill didn’t get bananas but instead got grapes. This contradicts the exclusivity of bananas being given to Bill in S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv1: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv1
+  Results saved to: data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker2_FS2_compound_CV_cv1_20260503_142543.csv
+  Log saved to:     data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker2_FS2_compound_CV_cv1_20260503_142543.log
+

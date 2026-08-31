@@ -1,0 +1,131 @@
+=== Log for f2 (backend=openai, model=gpt-audio, run=20260503_100327, fold=3) ===
+
+--- Attempt 1 for f2_cv3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+C
+Because S1 says Sam only gave Rob bananas, and S2 says Sam didn’t give Tom bananas, focusing on a different person receiving bananas. The statements contradict each other about who received bananas.
+
+1
+C
+Because S1 says Sam only gave Tom grapes, while S2 says Sam didn’t give Tom oranges. The focus in S1 is on “grapes” being the only thing Tom got, but S2 talks about the absence of oranges. This implied limitation in S1 conflicts with the negative in S2, resulting in a contradiction.
+
+2
+B
+Because S1 says Sam only gave Sue oranges, while S2 says Sam also gave Sue apples. There is no direct contradiction or entailment. They are independent since S1 focused on oranges only and S2 adds a different piece of information not strictly violating S1.
+
+3
+C
+Because S1 says Sam only gave Sue bananas, while S2 says Sam didn’t give Rob bananas. The focus on Sue and bananas in S1 contradicts the claim about Rob and bananas in S2, creating a contradiction about the distribution of bananas.
+
+4
+A
+Because S1 says Sam only gave Tom oranges, and S2 says Sam didn’t give Tom bananas. The statement in S2 is entailed by the focus in S1. If Sam only gave Tom oranges, then naturally he did not give Tom bananas.
+
+5
+A
+Because S1 says Sam only gave Sue apples, and S2 says Sam didn’t give Sue oranges. The focus on “only apples” in S1 entails there were no oranges given, so S2 follows logically.
+
+8
+B
+Because S1 says Sam only gave Ellen oranges, and S2 says Sam also gave Ellen bananas. The focus on “only oranges” in S1 and adding bananas in S2 makes them independent. S2 is a separate assertion that doesn’t follow from S1.
+
+9
+C
+Because S1 says Sam only gave Mary grapes, and S2 says Sam didn’t give Mary apples. S1 focuses on grapes, which implies no apples were given. But S2 directly states no apples were given. This is contradicted by S1 because the prosodic focus in S1 excludes the alternative implied in S2.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f2_cv3: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f2_cv3
+  Results saved to: data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv3_20260503_100327.csv
+  Log saved to:     data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv3_20260503_100327.log
+

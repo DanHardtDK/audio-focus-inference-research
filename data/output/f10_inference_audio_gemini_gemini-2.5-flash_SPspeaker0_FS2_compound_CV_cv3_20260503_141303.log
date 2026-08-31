@@ -1,0 +1,135 @@
+=== Log for f10 (backend=gemini, model=gemini-2.5-flash, run=20260503_141303, fold=3) ===
+
+--- Attempt 1 for f10_cv3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave SUE grapes.
+S2: Sam also gave Tom grapes.
+C
+Because...
+
+Example 2
+S1: Sam only gave ELLEN grapes.
+S2: Sam didn't give Rob grapes.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+A
+Because S1 states that Sam only gave Tom apples, implying that apples were the sole item given to Tom by Sam. For S2, "Sam also gave Tom grapes," to be entailed, it must be the case that giving apples to Tom necessarily includes giving grapes to Tom, or that the term "apples" in this context implicitly covers "grapes." This is a non-standard semantic interpretation where "only X" does not exclude Y, but rather implies a broader set of items including Y.
+
+1
+A
+Because S1 states "Sam only gave Mary BANANAS," with prosodic focus on "BANANAS." However, for S2, "Sam didn't give Bill bananas," to be entailed, the "only" must be interpreted as restricting the *recipient* of bananas, meaning Sam gave bananas *only to Mary* and to no one else. Under this interpretation, if Sam only gave bananas to Mary, it logically follows that he did not give bananas to Bill.
+
+2
+A
+Because S1 states "Sam only gave Mary APPLES," with prosodic focus on "APPLES." For S2, "Sam also gave Mary bananas," to be entailed, the "only" must be interpreted in a non-exclusive way regarding the object, such that "only apples" does not preclude other items like bananas being given to the same person. This implies that the statement "Sam only gave Mary apples" means Sam gave Mary apples, and this act is part of a broader set of items given to Mary, which includes bananas.
+
+3
+A
+Because S1 states "Sam only gave Sue APPLES," with prosodic focus on "APPLES." For S2, "Sam didn't give Rob apples," to be entailed, the "only" must be interpreted as restricting the *recipient* of apples, meaning Sam gave apples *only to Sue* and to no one else. Under this interpretation, if Sam only gave apples to Sue, it logically follows that he did not give apples to Rob.
+
+4
+A
+Because S1 states "Sam only gave Bill BANANAS," with prosodic focus on "BANANAS." For S2, "Sam also gave Bill grapes," to be entailed, the "only" must be interpreted in a non-exclusive way regarding the object, such that "only bananas" does not preclude other items like grapes being given to the same person. This implies that the statement "Sam only gave Bill bananas" means Sam gave Bill bananas, and this act is part of a broader set of items given to Bill, which includes grapes.
+
+5
+A
+Because S1 states "Sam only gave Rob GRAPES," with prosodic focus on "GRAPES." For S2, "Sam didn't give Rob apples," to be entailed, the "only" must be interpreted in a non-exclusive way regarding the object, such that "only grapes" does not preclude other items like apples being given to the same person. This implies that the statement "Sam only gave Rob grapes" means Sam gave Rob grapes, and this act is part of a broader set of items given to Rob, which includes apples. This is a non-standard interpretation where "only X" implies "X and not Y" is false, and instead implies "X and possibly Y".
+
+8
+A
+Because S1 states "Sam only gave Sue GRAPES," with prosodic focus on "GRAPES." For S2, "Sam also gave Tom grapes," to be entailed, the "only" must be interpreted as restricting the *recipient* of grapes, meaning Sam gave grapes *only to Sue* and to no one else. Under this interpretation, if Sam only gave grapes to Sue, it logically follows that he did not give grapes to Tom. This is a non-standard interpretation where the prosodic focus on the object is overridden by a recipient-focused "only".
+
+9
+A
+Because S1 states "Sam only gave Ellen GRAPES," with prosodic focus on "GRAPES." For S2, "Sam didn't give Rob grapes," to be entailed, the "only" must be interpreted as restricting the *recipient* of grapes, meaning Sam gave grapes *only to Ellen* and to no one else. Under this interpretation, if Sam only gave grapes to Ellen, it logically follows that he did not give grapes to Rob. This is a non-standard interpretation where the prosodic focus on the object is overridden by a recipient-focused "only".
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv3: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f10_cv3
+  Results saved to: data/output/f10_inference_audio_gemini_gemini-2.5-flash_SPspeaker0_FS2_compound_CV_cv3_20260503_141303.csv
+  Log saved to:     data/output/f10_inference_audio_gemini_gemini-2.5-flash_SPspeaker0_FS2_compound_CV_cv3_20260503_141303.log
+

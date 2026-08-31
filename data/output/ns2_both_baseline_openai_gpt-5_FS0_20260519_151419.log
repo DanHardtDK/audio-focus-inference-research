@@ -1,0 +1,148 @@
+=== Log for ns2 (backend=openai, model=gpt-5, run=20260519_151419, fold=) ===
+
+--- Attempt 1 for ns2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Bill grapes.
+S2: Sam didn't give Bill oranges.
+A
+Because...
+
+1
+S1: Sam only gave Ellen grapes.
+S2: Sam also gave Ellen oranges.
+A
+Because...
+
+2
+S1: Sam only gave Bill bananas.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+3
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Sue oranges.
+A
+Because...
+
+4
+S1: Sam only gave Tom apples.
+S2: Sam also gave Bill apples.
+A
+Because...
+
+5
+S1: Sam only gave Bill bananas.
+S2: Sam didn't give Bill grapes.
+A
+Because...
+
+6
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Ellen grapes.
+A
+Because...
+
+7
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Rob grapes.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Bill grapes.
+S2: Sam didn't give Bill oranges.
+A
+Because “only” means the only thing Bill got from Sam was grapes, so he didn’t get oranges.
+
+1
+S1: Sam only gave Ellen grapes.
+S2: Sam also gave Ellen oranges.
+C
+Because “only” means Ellen got nothing but grapes from Sam, so she couldn’t also get oranges.
+
+2
+S1: Sam only gave Bill bananas.
+S2: Sam didn't give Tom bananas.
+B
+Because S1 restricts what Bill received, not what Tom received; it doesn’t tell us about Tom.
+
+3
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Sue oranges.
+B
+Because S1 restricts what Ellen received, not whether others (e.g., Sue) also got oranges.
+
+4
+S1: Sam only gave Tom apples.
+S2: Sam also gave Bill apples.
+B
+Because S1 restricts what Tom received, not whether Bill also received apples.
+
+5
+S1: Sam only gave Bill bananas.
+S2: Sam didn't give Bill grapes.
+A
+Because Bill got only bananas from Sam, so he didn’t get grapes.
+
+6
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Ellen grapes.
+C
+Because “only” means Ellen got nothing but bananas from Sam, so she couldn’t also get grapes.
+
+7
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Rob grapes.
+B
+Because S1 restricts what Ellen received, not whether Rob received grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing ns2
+  Results saved to: data/output/ns2_both_baseline_openai_gpt-5_FS0_20260519_151419.csv
+  Log saved to:     data/output/ns2_both_baseline_openai_gpt-5_FS0_20260519_151419.log
+

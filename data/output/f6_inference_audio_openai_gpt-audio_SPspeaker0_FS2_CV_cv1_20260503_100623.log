@@ -1,0 +1,131 @@
+=== Log for f6 (backend=openai, model=gpt-audio, run=20260503_100623, fold=1) ===
+
+--- Attempt 1 for f6_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "ROB" (Sam only gave ROB apples), implying exclusivity that only Rob got apples, not Sue. In S2, it says Sam didn’t give Sue apples. This contradicts S1 since S1 already implies that Sue didn’t get apples.
+
+1  
+A  
+Because in S1, the focus is on "only gave SUE grapes." In S2, it says Sam also gave Sue oranges. This is consistent (entailed) because Sam giving Sue oranges can coexist with the exclusive focus on grapes from S1 without contradiction.
+
+4  
+C  
+Because in S1, the focus is on "Mary" (Sam only gave MARY grapes), implying exclusivity. In S2, it states Sam also gave Ellen grapes. That contradicts the exclusivity of giving grapes only to Mary.
+
+5  
+C  
+Because in S1, the prosodic focus is on "ROB" (Sam only gave ROB oranges), implying exclusivity. In S2, it says Sam also gave Rob bananas. This contradicts the exclusivity of giving Rob only oranges.
+
+6  
+A  
+Because in S1, the focus is on "Sue" (Sam only gave SUE bananas), implying Sue only got bananas. In S2, it says Sam didn’t give Sue grapes, which is consistent with the idea that Sue only got bananas and not other fruits.
+
+7  
+A  
+Because in S1, the focus is on "TOM" (Sam only gave TOM grapes), implying exclusivity to Tom and grapes. In S2, it states Sam didn’t give Tom apples. That’s entailed, meaning it’s consistent with Tom only getting grapes, not apples.
+
+8  
+A  
+Because in S1, the focus is on "bananas" (Sam only gave TOM BANANAS). In S2, it says Sam didn’t give Tom grapes. This is consistent (entailed) with the idea that Tom only got bananas and not other fruits.
+
+9  
+B  
+Because in S1, the focus is on "ROB" (Sam only gave ROB apples), meaning only Rob got apples. In S2, it says Sam also gave Rob grapes. This is independent from S1 because S1 only restricts apples to Rob, not other fruits. So giving Rob grapes doesn’t interfere with or entail the exclusivity over apples.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f6_cv1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f6_cv1
+  Results saved to: data/output/f6_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.csv
+  Log saved to:     data/output/f6_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.log
+

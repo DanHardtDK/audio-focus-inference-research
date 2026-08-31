@@ -1,0 +1,115 @@
+=== Log for f13 (backend=openai, model=gpt-4o-audio-preview, run=20260503_102245, fold=1) ===
+
+--- Attempt 1 for f13_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because the first sentence says Sam only gave Ellen bananas, which focuses on Ellen. The second sentence introduces a new person, Tom, without contradicting or entailing the focus on Ellen.
+
+1  
+B  
+Because the first sentence focuses on Ellen receiving only oranges. The second sentence introduces Rob receiving oranges, making the two statements independent as they cover different people.
+
+4  
+C  
+Because the first sentence says Sam only gave Rob bananas. The second sentence says Sam also gave Rob oranges, which contradicts the focus on only bananas in the first sentence.
+
+5  
+A  
+Because the first sentence says Sam only gave Tom bananas. The second sentence says Sam also gave Mary bananas, which does not contradict or change the focus on Tom, but adds information that is entailed by the first.
+
+6  
+C  
+Because the first sentence says Sam only gave Ellen oranges. The second sentence says Sam also gave Ellen apples, directly contradicting the focus on only oranges.
+
+7  
+C  
+Because the first sentence says Sam only gave Rob bananas. The second sentence says Sam also gave Rob oranges, contradicting the exclusivity stated in the first sentence.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13_cv1: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing f13_cv1
+  Results saved to: data/output/f13_inference_audio_openai_gpt-4o-audio-preview_SPspeaker0_FS2_CV_cv1_20260503_102245.csv
+  Log saved to:     data/output/f13_inference_audio_openai_gpt-4o-audio-preview_SPspeaker0_FS2_CV_cv1_20260503_102245.log
+

@@ -1,0 +1,115 @@
+=== Log for f13 (backend=gemini, model=gemini-3.1-pro-preview, run=20260502_181129, fold=1) ===
+
+--- Attempt 1 for f13_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+B
+Because the prosodic focus in S1 is on "bananas", meaning Sam gave Ellen nothing other than bananas. This does not restrict what Sam gave to Tom, making S2 independent.
+
+1
+B
+Because the prosodic focus in S1 is on "oranges", meaning Sam gave Ellen nothing other than oranges. This does not restrict what Sam gave to Rob, making S2 independent.
+
+4
+C
+Because the prosodic focus in S1 is on "oranges", meaning Sam gave Ellen nothing other than oranges. This contradicts S2, which states Sam also gave Ellen apples.
+
+5
+C
+Because the prosodic focus in S1 is on "bananas", meaning Sam gave Rob nothing other than bananas. This contradicts S2, which states Sam also gave Rob oranges.
+
+6
+C
+Because the prosodic focus in S1 is on "oranges", meaning Sam gave Sue nothing other than oranges. This contradicts S2, which states Sam also gave Sue bananas.
+
+7
+C
+Because the prosodic focus in S1 is on "apples", meaning Sam gave Tom nothing other than apples. This contradicts S2, which states Sam also gave Tom bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13_cv1: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing f13_cv1
+  Results saved to: data/output/f13_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv1_20260502_181129.csv
+  Log saved to:     data/output/f13_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv1_20260502_181129.log
+

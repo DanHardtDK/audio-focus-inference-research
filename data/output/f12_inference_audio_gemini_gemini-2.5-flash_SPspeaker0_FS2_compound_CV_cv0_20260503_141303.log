@@ -1,0 +1,135 @@
+=== Log for f12 (backend=gemini, model=gemini-2.5-flash, run=20260503_141303, fold=0) ===
+
+--- Attempt 1 for f12_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Bill apples.
+B
+Because...
+
+Example 2
+S1: Sam only gave ROB apples.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2
+A
+Because S1 states that grapes were the exclusive item Sam gave to Rob, and S2 specifies an additional item given to Rob, which is implicitly allowed by a non-exhaustive interpretation of 'only' in this context.
+
+3
+A
+Because S1 states that Rob was the only person Sam gave oranges to. Therefore, Sam did not give oranges to Ellen.
+
+4
+A
+Because S1 states that Sue was the only person Sam gave apples to. Therefore, Sam did not give apples to Rob.
+
+5
+A
+Because S1 states that Tom was the only person Sam gave apples to. Therefore, Sam did not give apples to Bill.
+
+6
+A
+Because S1 states that Tom was the only person Sam gave bananas to. Therefore, Sam did not give bananas to Sue.
+
+7
+A
+Because S1 states that apples were the only thing Sam gave to Sue. Therefore, Sam did not give Sue oranges.
+
+8
+A
+Because S1 states that bananas were the only thing Sam gave to Sue. Therefore, Sam did not give Sue oranges.
+
+9
+A
+Because S1 states that oranges were the only thing Sam gave to Sue. Therefore, Sam did not give Sue bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f12_cv0
+  Results saved to: data/output/f12_inference_audio_gemini_gemini-2.5-flash_SPspeaker0_FS2_compound_CV_cv0_20260503_141303.csv
+  Log saved to:     data/output/f12_inference_audio_gemini_gemini-2.5-flash_SPspeaker0_FS2_compound_CV_cv0_20260503_141303.log
+

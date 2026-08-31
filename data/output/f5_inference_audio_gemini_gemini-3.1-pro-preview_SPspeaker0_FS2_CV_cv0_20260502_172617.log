@@ -1,0 +1,131 @@
+=== Log for f5 (backend=gemini, model=gemini-3.1-pro-preview, run=20260502_172617, fold=0) ===
+
+--- Attempt 1 for f5_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2
+C
+Because S1 places prosodic focus on "Ellen", meaning she is the only person who received apples. S2 states that Rob also received apples, which contradicts S1.
+
+3
+B
+Because S1 places prosodic focus on "Mary", meaning she is the only person who received oranges. This does not restrict what other items Mary might have received, making S2 independent.
+
+4
+C
+Because S1 places prosodic focus on "Mary", meaning she is the only person who received oranges. S2 states that Tom also received oranges, which contradicts S1.
+
+5
+B
+Because S1 places prosodic focus on "oranges", meaning they are the only item Mary received. This provides no information about what Tom received, making S2 independent.
+
+6
+C
+Because S1 places prosodic focus on "grapes", meaning they are the only item Mary received. S2 states that she also received apples, which contradicts S1.
+
+7
+C
+Because S1 places prosodic focus on "Sue", meaning she is the only person who received apples. S2 states that Mary also received apples, which contradicts S1.
+
+8
+C
+Because S1 places prosodic focus on "oranges", meaning they are the only item Bill received. S2 states that he also received bananas, which contradicts S1.
+
+9
+C
+Because S1 places prosodic focus on "bananas", meaning they are the only item Ellen received. S2 states that she also received grapes, which contradicts S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f5_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f5_cv0
+  Results saved to: data/output/f5_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv0_20260502_172617.csv
+  Log saved to:     data/output/f5_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv0_20260502_172617.log
+

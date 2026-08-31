@@ -1,0 +1,141 @@
+=== Log for f9 (backend=gemini, model=gemini-3.1-pro-preview, run=20260502_181129, fold=0) ===
+
+--- Attempt 1 for f9_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+1
+B
+Because the prosodic focus in S1 is on "Ellen", meaning Sam gave bananas to no one else. This does not restrict what other items Sam might have given to Ellen, making S2 independent.
+
+2
+B
+Because the prosodic focus in S1 is on "Mary", meaning Sam gave apples to no one else. This does not restrict what other items Sam might have given to Mary, making S2 independent.
+
+3
+B
+Because the prosodic focus in S1 is on "Tom", meaning Sam gave bananas to no one else. This does not restrict what other items Sam might have given to Tom, making S2 independent.
+
+4
+B
+Because the prosodic focus in S1 is on "Mary", meaning Sam gave apples to no one else. This does not restrict what other items Sam might have given to Mary, making S2 independent.
+
+5
+A
+Because the prosodic focus in S1 is on "oranges", meaning Sam gave Mary no other fruit. This entails S2, which states that Sam didn't give Mary apples.
+
+6
+B
+Because the prosodic focus in S1 is on "apples", meaning Sam gave Rob no other fruit. This does not restrict what Sam might have given to Mary, making S2 independent.
+
+7
+C
+Because the prosodic focus in S1 is on "Rob", meaning Sam gave apples to no one else. This contradicts S2, which states that Sam also gave Tom apples.
+
+8
+A
+Because the prosodic focus in S1 is on "oranges", meaning Sam gave Rob no other fruit. This entails S2, which states that Sam didn't give Rob bananas.
+
+9
+B
+Because the prosodic focus in S1 is on "grapes", meaning Sam gave Bill no other fruit. This does not restrict what Sam might have given to Rob, making S2 independent.
+
+10
+C
+Because the prosodic focus in S1 is on "grapes", meaning Sam gave Rob no other fruit. This contradicts S2, which states that Sam also gave Rob bananas.
+
+--- End of Raw Model Output ---
+
+⚠️ WARNING [attempt 1] for f9_cv0: model produced output for demonstration items [1] — ignored.
+⚠️ WARNING [attempt 1] for f9_cv0: extra indices outside 0..9: [10]
+✓ Output coverage OK [attempt 1] for f9_cv0: 10 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f9_cv0
+  Results saved to: data/output/f9_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv0_20260502_181129.csv
+  Log saved to:     data/output/f9_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv0_20260502_181129.log
+

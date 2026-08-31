@@ -1,0 +1,161 @@
+=== Log for f13 (backend=openai, model=gpt-5.1, run=20260519_145258, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+The prosodically focused word in S1 is marked with UPPERCASE. Use this focus marking to determine the correct inference.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+---------------------------------------------------------------
+FOCUS GUIDANCE
+---------------------------------------------------------------
+The classification depends on the focused element in S1, because of
+the presence of 'only', in the following way: 'Sam only gave TOM
+oranges' entails that Sam did not give anyone else oranges. On the
+other hand, 'Sam only gave Tom ORANGES' entails that Sam didn't give
+anything else to Tom.
+
+You must follow this logic in determining the inference. You must
+also refer to this logic in producing the explanation.
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+1
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Ellen bananas.
+A
+Because...
+
+3
+S1: Sam only gave Tom BANANAS.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+4
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+5
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+6
+S1: Sam only gave Sue ORANGES.
+S2: Sam also gave Sue bananas.
+A
+Because...
+
+7
+S1: Sam only gave Tom APPLES.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Tom bananas.
+B
+Because the focus on “BANANAS” means: Ellen got no fruit other than bananas from Sam. It does not restrict whom else Sam may have given bananas to, so it neither entails nor contradicts that Sam also gave Tom bananas.
+
+1
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Rob oranges.
+B
+Because the focus on “ORANGES” means: Ellen got no fruit other than oranges from Sam. It does not say Sam gave oranges only to Ellen, so it neither entails nor contradicts that Sam also gave Rob oranges.
+
+2
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Ellen bananas.
+B
+Because the focus on “BANANAS” means: Rob got no fruit other than bananas from Sam. It does not restrict whether Sam also gave bananas to Ellen, so S2 is independent.
+
+3
+S1: Sam only gave Tom BANANAS.
+S2: Sam also gave Mary bananas.
+B
+Because the focus on “BANANAS” means: Tom got no fruit other than bananas from Sam. It does not say that only Tom received bananas, so it neither entails nor contradicts that Mary also got bananas.
+
+4
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Ellen apples.
+C
+Because the focus on “ORANGES” means: Ellen got no fruit other than oranges from Sam. Saying Sam also gave Ellen apples introduces another fruit for Ellen, contradicting S1.
+
+5
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Rob oranges.
+C
+Because the focus on “BANANAS” means: Rob got no fruit other than bananas from Sam. Saying Sam also gave Rob oranges contradicts this.
+
+6
+S1: Sam only gave Sue ORANGES.
+S2: Sam also gave Sue bananas.
+C
+Because the focus on “ORANGES” means: Sue got no fruit other than oranges from Sam. Claiming Sam also gave Sue bananas contradicts that.
+
+7
+S1: Sam only gave Tom APPLES.
+S2: Sam also gave Tom bananas.
+C
+Because the focus on “APPLES” means: Tom got no fruit other than apples from Sam. Saying he also got bananas from Sam contradicts this.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_both_oracle_openai_gpt-5.1_FS0_20260519_145258.csv
+  Log saved to:     data/output/f13_both_oracle_openai_gpt-5.1_FS0_20260519_145258.log
+

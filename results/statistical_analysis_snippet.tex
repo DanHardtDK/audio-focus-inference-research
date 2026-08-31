@@ -1,0 +1,135 @@
+% =============================================================================
+% Statistical analysis snippet -- drop-in LaTeX for the Inference Task results.
+% Requires: \usepackage{booktabs}  (add to preamble if not already present)
+%
+% This file is organized as independent blocks (prose + one table each).
+% Pick whichever subset fits your space budget; they don't have to go together.
+% All numbers come from build_dataset.py / inference_stats_v2.py in code/,
+% run on the raw per-item data in data/output/ (see companion .docx report).
+% =============================================================================
+
+
+% -----------------------------------------------------------------------------
+% BLOCK 1: Prose paragraph introducing the significance testing (place in
+% Section 5, e.g. as a new "5.x Statistical Significance" subsection, or
+% folded into 5.1).
+% -----------------------------------------------------------------------------
+\subsection{Statistical Significance}
+\label{sec:stats}
+
+Because all four models were tested on the identical 128 items (Speaker~0,
+FS=0), model-vs-model comparisons can be evaluated with McNemar's exact test
+on matched pairs rather than an independent-samples test. Every
+Gemini-vs-GPT comparison is significant (all $p<.001$), while the two GPT
+models do not differ significantly from each other ($p=.25$); see
+Table~\ref{tab:mcnemar}. For the few-shot manipulation, each FS=2 item is
+evaluated across 3--4 cross-validation folds, so trials are not independent;
+we therefore fit a GEE logistic regression with cluster-robust standard
+errors (item as cluster) rather than treating fold-repeated trials as
+independent observations. No model shows a statistically reliable few-shot
+trend on the inference task (all $p>.2$; Table~\ref{tab:fewshot}).
+
+
+% -----------------------------------------------------------------------------
+% BLOCK 2: Model-vs-model McNemar table
+% -----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Comparison} & \textbf{Acc.\,1} & \textbf{Acc.\,2} & \textbf{$p$ (McNemar)} \\
+\midrule
+Gem3.1 vs.\ Gem2.5   & 87.5 & 68.8 & $<.0001$ \\
+Gem3.1 vs.\ GPT4o    & 87.5 & 46.1 & $<.0001$ \\
+Gem3.1 vs.\ GPTaudio & 87.5 & 39.1 & $<.0001$ \\
+Gem2.5 vs.\ GPT4o    & 68.8 & 46.1 & $.0003$  \\
+Gem2.5 vs.\ GPTaudio & 68.8 & 39.1 & $<.0001$ \\
+GPT4o vs.\ GPTaudio  & 46.1 & 39.1 & $.2529$  \\
+\bottomrule
+\end{tabular}
+\caption{Inference accuracy (\%) and McNemar's exact test $p$-values for all
+model pairs (Speaker~0, FS=0, $N=128$ matched items).}
+\label{tab:mcnemar}
+\end{table}
+
+
+% -----------------------------------------------------------------------------
+% BLOCK 3: Speaker 1 vs Speaker 2 paired comparison
+% -----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Sp1} & \textbf{Sp2} & \textbf{$p$ (McNemar)} \\
+\midrule
+gemini-3.1-pro & 91.7 & 54.2 & $.0039$ \\
+gemini-2.5-flash & 58.3 & 41.7 & $.388$ \\
+gpt-4o-audio & 20.8 & 41.7 & $.0625$ \\
+gpt-audio & 29.2 & 37.5 & $.753$ \\
+\bottomrule
+\end{tabular}
+\caption{Inference accuracy (\%) by speaker and McNemar's exact test
+$p$-values (Speakers 1 and 2 share the same 24 items, FS=0).}
+\label{tab:speaker-mcnemar}
+\end{table}
+
+
+% -----------------------------------------------------------------------------
+% BLOCK 4: Few-shot GEE trend table
+% -----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{FS0} & \textbf{FS2} & \textbf{FS5} & \textbf{$p$ (trend)} \\
+\midrule
+gemini-3.1-pro   & 87.5 & 82.5 & 90.0 & $.226$ \\
+gemini-2.5-flash & 68.8 & 53.6 & 60.0 & $.240$ \\
+gpt-4o-audio     & 46.1 & 42.3 & 49.2 & $.422$ \\
+gpt-audio        & 39.1 & 39.1 & 45.0 & $.256$ \\
+\bottomrule
+\end{tabular}
+\caption{Inference accuracy (\%) by few-shot setting (Speaker~0), and
+$p$-value for the linear few-shot trend from a GEE logistic regression
+clustered by item.}
+\label{tab:fewshot}
+\end{table}
+
+
+% -----------------------------------------------------------------------------
+% BLOCK 5: Human survey vs. model (real per-respondent data)
+% -----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Speaker} & \textbf{$n$} & \textbf{Human} & \textbf{gemini-3.1-pro} & \textbf{$p$} \\
+\midrule
+0 & 3 & 86.1 (6.4)  & 87.5 & $.742$ \\
+1 & 4 & 63.5 (18.1) & 91.7 & $.053$ \\
+2 & 5 & 60.0 (33.3) & 54.2 & $.715$ \\
+\bottomrule
+\end{tabular}
+\caption{Human survey accuracy (\% mean (SD) per respondent) vs.\
+gemini-3.1-pro accuracy, by speaker. $p$-values from a one-sample $t$-test
+on the $n$ individual respondent accuracy scores.}
+\label{tab:survey-ttest}
+\end{table}
+
+
+% -----------------------------------------------------------------------------
+% BLOCK 6 (optional): a cautious one-liner for the human-survey subsection,
+% if you cite the model-beats-humans-on-Speaker-1 result -- softens it to
+% match what the n=4 t-test actually supports.
+% -----------------------------------------------------------------------------
+% Suggested replacement sentence for Section 5.4 / 6:
+%
+% "A one-sample $t$-test on the four Speaker-1 respondents' accuracy scores
+% suggests gemini-3.1-pro-preview may exceed human performance for this
+% speaker (91.7\% vs.\ a respondent mean of 63.5\%, $t=-3.10$, $p=.053$),
+% though with only four respondents this should be read as suggestive
+% rather than conclusive."

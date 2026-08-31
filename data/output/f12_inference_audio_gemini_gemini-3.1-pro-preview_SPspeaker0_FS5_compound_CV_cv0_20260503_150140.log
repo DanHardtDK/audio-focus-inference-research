@@ -1,0 +1,129 @@
+=== Log for f12 (backend=gemini, model=gemini-3.1-pro-preview, run=20260503_150140, fold=0) ===
+
+--- Attempt 1 for f12_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Bill apples.
+B
+Because...
+
+Example 2
+S1: Sam only gave ROB apples.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+Example 3
+S1: Sam only gave ROB grapes.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+Example 4
+S1: Sam only gave Rob ORANGES.
+S2: Sam didn't give Ellen oranges.
+B
+Because...
+
+Example 5
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Rob apples.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5
+A
+Because the prosodic focus in S1 is on "Tom" ("Sam only gave TOM apples"), meaning Tom is the only person who received apples. Therefore, it entails S2, that Sam didn't give Bill apples.
+
+6
+A
+Because the prosodic focus in S1 is on "Tom" ("Sam only gave TOM bananas"), meaning Tom is the only person who received bananas. Therefore, it entails S2, that Sam didn't give Sue bananas.
+
+7
+A
+Because the prosodic focus in S1 is on "apples" ("Sam only gave Sue APPLES"), meaning apples are the only things Sam gave Sue. Therefore, it entails S2, that Sam didn't give Sue oranges.
+
+8
+A
+Because the prosodic focus in S1 is on "bananas" ("Sam only gave Sue BANANAS"), meaning bananas are the only things Sam gave Sue. Therefore, it entails S2, that Sam didn't give Sue oranges.
+
+9
+A
+Because the prosodic focus in S1 is on "oranges" ("Sam only gave Sue ORANGES"), meaning oranges are the only things Sam gave Sue. Therefore, it entails S2, that Sam didn't give Sue bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f12_cv0
+  Results saved to: data/output/f12_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS5_compound_CV_cv0_20260503_150140.csv
+  Log saved to:     data/output/f12_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS5_compound_CV_cv0_20260503_150140.log
+

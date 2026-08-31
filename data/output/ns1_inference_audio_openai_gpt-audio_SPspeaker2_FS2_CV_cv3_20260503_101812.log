@@ -1,0 +1,115 @@
+=== Log for ns1 (backend=openai, model=gpt-audio, run=20260503_101812, fold=3) ===
+
+--- Attempt 1 for ns1_cv3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 says Sam only gave Bill grapes, which means it excludes Sam giving grapes to others. S2 says Sam also gave Sue grapes, which contradicts the exclusivity stated in S1.  
+
+1  
+C  
+Because S1 says Sam only gave Sue oranges, which excludes anyone else receiving oranges. S2 says Sam didn’t give Rob oranges, but doesn’t contradict that exclusivity. However, it doesn’t follow from that exclusivity either. It’s an independent negative, not supported by the focus in S1.  
+
+2  
+B  
+Because S1 says Sam only gave Rob grapes, which means no other fruit to Rob. S2 says Sam also gave Rob oranges, introducing another fruit given to Rob, and that breaks the exclusivity stated in S1.  
+
+3  
+A  
+Because S1 says Sam only gave Tom oranges, which excludes other fruits to Tom. S2 says Sam didn’t give Tom bananas, and that is fully consistent with the exclusivity stated in S1.  
+
+4  
+B  
+Because S1 says Sam only gave Ellen bananas, excluding other fruits to Ellen. S2 says Sam also gave Mary bananas. This is independent because S1 is about what Ellen received, and S2 refers to what Mary received, introducing a new subject.  
+
+5  
+C  
+Because S1 says Sam only gave Ellen grapes, meaning no grapes to anyone else. S2 says Sam didn’t give Tom grapes, which is consistent with S1. However, S2 doesn’t entail or contradict S1 in a direct way. It’s an independent confirmation. The contradiction arises from an error in S1 versus the exclusivity rule when combined with additional statements. Further down, it’s clear: another statement speaks to Rob and apples. But this pair is most consistent as independent. Thus, S2 is ultimately independent from S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1_cv3: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns1_cv3
+  Results saved to: data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker2_FS2_CV_cv3_20260503_101812.csv
+  Log saved to:     data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker2_FS2_CV_cv3_20260503_101812.log
+

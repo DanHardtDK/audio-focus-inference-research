@@ -1,0 +1,135 @@
+=== Log for f10 (backend=openai, model=gpt-audio, run=20260503_141253, fold=1) ===
+
+--- Attempt 1 for f10_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave MARY apples.
+S2: Sam also gave Mary bananas.
+B
+Because...
+
+Example 2
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Rob apples.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, “Sam only gave TOM apples” means that Tom was the only recipient and apples were the only item. In S2, “Sam also gave Tom grapes” contradicts that exclusivity by adding another item (grapes), which violates the meaning of “only” in S1, so S2 is contradicted.
+
+1  
+C  
+Because in S1, “Sam only gave MARY bananas” means Mary was the only recipient of the only item, bananas. In S2, “Sam didn’t give BILL bananas” is consistent with that, but it entails something weaker (about Bill rather than Mary). The focus is crucial: Mary is the focus, not Bill. That makes S2’s claim about Bill irrelevant or independent. However, the correct classification is “A” as per the label. The entailment happens because if Mary is the only recipient of bananas, it must follow that no one else, including Bill, received bananas. Hence, S1 entails S2.
+
+4  
+C  
+Because in S1, “Sam only gave MARY apples” means Mary is the sole recipient of apples and no other items were given to her. In S2, “Sam also gave Mary bananas” introduces a new item that Mary received, which contradicts the exclusivity set by “only” in S1. Therefore, S2 contradicts S1.
+
+5  
+A  
+Because in S1, “Sam only gave SUE apples” means Sue is the exclusive recipient of apples and no one else got apples. In S2, “Sam didn’t give ROB apples” is entailed by S1 because if Sue is the only one who received apples, then it necessarily follows that Rob wasn’t given any apples. So S2 is entailed by S1.
+
+6  
+C  
+Because in S1, “Sam only gave BILL bananas” means Bill exclusively got bananas (no one else got bananas) and he didn’t get any other items. In S2, “Sam also gave Bill grapes” contradicts that, as it introduces another item Bill received, grapes, breaking the exclusivity. Thus, S2 is contradicted by S1.
+
+7  
+A  
+Because in S1, “Sam only gave ROB grapes” means Rob is the sole recipient of grapes and he got nothing else. In S2, “Sam didn’t give Rob apples” is entailed by S1 because no other items, such as apples, were given to Rob. Since Rob only got grapes, it follows naturally that he didn’t receive apples. So S2 is entailed by S1.
+
+8  
+C  
+Because in S1, “Sam only gave SUE grapes” means Sue exclusively got grapes and no one else did. In S2, “Sam also gave TOM grapes” contradicts that, as it introduces another recipient of grapes, Tom, breaking the exclusivity set by “only” in S1. Therefore, S2 is contradicted by S1.
+
+9  
+A  
+Because in S1, “Sam only gave ELLEN grapes” means Ellen exclusively received grapes, and no one else got grapes. In S2, “Sam didn’t give ROB grapes” is entailed by S1 because if Ellen is the only one who received grapes, it must follow that Rob didn’t receive any grapes. Therefore, S2 is entailed by S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f10_cv1
+  Results saved to: data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.csv
+  Log saved to:     data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.log
+

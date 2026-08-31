@@ -1,0 +1,124 @@
+=== Log for ns2 (backend=openai, model=gpt-audio, run=20260503_101640, fold=0) ===
+
+--- Attempt 1 for ns2_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+C  
+Because in S1 “Sam only gave Bill grapes” means Bill and only Bill received grapes. In S2 “Sam didn’t give Bill oranges” contradicts the focus on grapes in S1, since S1 didn’t mention oranges. Hence, the assertion about oranges contradicts the exclusivity about grapes.  
+
+3  
+B  
+Because in S1 “Sam only gave Ellen grapes” implies Ellen is the sole recipient of grapes. In S2 “Sam also gave Ellen oranges” introduces a completely new piece of information. It is independent, as S1 only focuses on grapes, while S2 states something additional about oranges.  
+
+4  
+C  
+Because in S1 “Sam only gave Bill bananas” implies Bill and only Bill got bananas. In S2 “Sam didn’t give Tom bananas” contradicts the presupposition. S1’s focus only asserts that bananas went to Bill, but S2’s negative statement about Tom is outside this scope and thus is contradictory.  
+
+5  
+B  
+Because in S1 “Sam only gave Ellen oranges” sets Ellen as the only recipient of oranges. In S2 “Sam also gave Sue oranges” adds new information about Sue, which is completely independent. This new information isn’t addressed or ruled out in S1 and thus it’s independent.  
+
+6  
+B  
+Because in S1 “Sam only gave Tom apples” places focus on Tom and apples. In S2 “Sam also gave Bill apples” introduces a new person (Bill), making S2 a new piece of information not presupposed by S1. The statement about Bill is not entailed or contradicted by S1, rather independent.  
+
+7  
+C  
+Because in S1 “Sam only gave Bill bananas” implies that Bill got bananas and no one else did. In S2 “Sam didn’t give Bill grapes” contradicts this because the focus in S1 was solely on bananas, and introducing the absence of grapes contradicts the exclusive focus in S1.  
+
+8  
+B  
+Because in S1 “Sam only gave Ellen bananas” places focus on Ellen as the sole recipient of bananas. In S2 “Sam also gave Ellen grapes” introduces a new category of fruit—grapes—which is entirely independent from what’s stated in S1. There’s no contradiction or entailment, making it independent.  
+
+9  
+A  
+Because in S1 “Sam only gave Ellen grapes” implies Ellen is the only one who received grapes. In S2 “Sam didn’t give Rob grapes” is directly entailed by S1, since if Ellen is the only recipient of grapes, Rob cannot have been given grapes. Thus, S2 is entailed by S1.
+
+--- End of Raw Model Output ---
+
+⚠️ WARNING [attempt 1] for ns2_cv0: extra indices outside 0..7: [8, 9]
+✓ Output coverage OK [attempt 1] for ns2_cv0: 8 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv0
+  Results saved to: data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker1_FS2_CV_cv0_20260503_101640.csv
+  Log saved to:     data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker1_FS2_CV_cv0_20260503_101640.log
+

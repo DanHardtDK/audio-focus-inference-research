@@ -1,0 +1,119 @@
+=== Log for ns2 (backend=gemini, model=gemini-2.5-flash, run=20260503_164028, fold=0) ===
+
+--- Attempt 1 for ns2_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL grapes.
+S2: Sam didn't give Bill oranges.
+B
+Because...
+
+Example 2
+S1: Sam only gave Ellen GRAPES.
+S2: Sam also gave Ellen oranges.
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2
+A
+Because S1 states that Bill is the *only* person Sam gave bananas to. Since Tom is not Bill, it is entailed that Sam didn't give Tom bananas.
+
+3
+B
+Because S1 states that oranges are the *only* thing Sam gave to Ellen. This does not restrict what Sam gave to other people, such as Sue. Therefore, S2 is independent of S1.
+
+4
+C
+Because S1 states that Tom is the *only* person Sam gave apples to. S2 claims that Sam also gave Bill apples, which contradicts S1's assertion that Tom was the exclusive recipient of apples.
+
+5
+B
+Because S1 states that Bill is the *only* person Sam gave bananas to. This does not restrict what other items Sam might or might not have given to Bill. Therefore, S2 is independent of S1.
+
+6
+B
+Because S1 states that Ellen is the *only* person Sam gave bananas to. This does not restrict what other items Sam might have given to Ellen. Therefore, S2 is independent of S1.
+
+7
+B
+Because S1 states that grapes are the *only* thing Sam gave to Ellen. This does not restrict what Sam gave or didn't give to other people, such as Rob. Therefore, S2 is independent of S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv0: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv0
+  Results saved to: data/output/ns2_inference_audio_gemini_gemini-2.5-flash_SPspeaker2_FS2_compound_CV_cv0_20260503_164028.csv
+  Log saved to:     data/output/ns2_inference_audio_gemini_gemini-2.5-flash_SPspeaker2_FS2_compound_CV_cv0_20260503_164028.log
+

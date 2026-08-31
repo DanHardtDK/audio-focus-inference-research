@@ -1,0 +1,119 @@
+=== Log for f10 (backend=openai, model=gpt-audio, run=20260503_143128, fold=1) ===
+
+--- Attempt 1 for f10_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+C
+Because...
+
+Example 3
+A
+Because...
+
+Example 4
+B
+Because...
+
+Example 5
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 says Sam only gave Tom apples, which means no other items were given to Tom. But S2 says Sam also gave Tom grapes, which contradicts the statement that only apples were given.
+
+1  
+B  
+Because S1 says Sam only gave Mary bananas, which focuses on what Mary received. S2 says Sam didn’t give Bill bananas, which is a separate fact about Bill, making the statements independent.
+
+2  
+C  
+Because S1 says Sam only gave Mary apples, meaning no other items were given to Mary. But S2 says Sam also gave Mary bananas, which directly contradicts that only apples were given.
+
+3  
+A  
+Because S1 says Sam only gave Sue apples, meaning no other items were given to Sue. S2 says Sam didn’t give Rob apples, which doesn’t contradict or add any unexpected information to the relationship with Sue. The limitation on Sue aligns with not giving apples to others like Rob, so it’s entailed.
+
+4  
+A  
+Because S1 says Sam only gave Bill bananas, meaning no other items were given to Bill. S2 says Sam also gave Bill grapes, which fits perfectly because the "only" focus in S1 is on bananas, and adding grapes doesn’t contradict that. The statement is entailed by the broader pattern allowed by the focus.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv1: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f10_cv1
+  Results saved to: data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv1_20260503_143128.csv
+  Log saved to:     data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv1_20260503_143128.log
+

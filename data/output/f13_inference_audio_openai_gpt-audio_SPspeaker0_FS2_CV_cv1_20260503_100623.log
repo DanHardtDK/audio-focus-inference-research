@@ -1,0 +1,115 @@
+=== Log for f13 (backend=openai, model=gpt-audio, run=20260503_100623, fold=1) ===
+
+--- Attempt 1 for f13_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because the first sentence says Sam only gave Ellen bananas (with prosodic focus on "Ellen"), while the second sentence says Sam also gave Tom bananas. This introduces a new person, Tom, contradicting the exclusiveness implied by "only Ellen" receiving bananas. However, it does not directly contradict the fact that Ellen got bananas—rather, it introduces new information. So the two are best classified as independent, with the second adding new context, not directly entailed or strictly contradicting the first.
+
+1  
+B  
+Because the first sentence says Sam only gave Ellen oranges (with prosodic focus on "Ellen"), while the second sentence says Sam also gave Rob oranges. This shows the same structure as before: "only Ellen" implies exclusivity, but the second sentence adds a new individual, Rob, as also receiving oranges. This does not strictly contradict the content about Ellen but rather adds a new element, so the second sentence is best classified as independent of the first. It neither strictly confirms nor strictly denies it completely.
+
+4  
+C  
+Because the first sentence says Sam only gave Ellen oranges (with prosodic focus on "Ellen"), and the second sentence says Sam also gave Ellen apples. This directly contradicts the exclusivity implied by "only Ellen oranges." If Ellen received apples as well, then it is not true that Sam gave her only oranges. The second sentence breaks the exclusive condition, so it is a direct contradiction.
+
+5  
+C  
+Because the first sentence says Sam only gave Rob bananas (with prosodic focus on "Rob"), and the second sentence says Sam also gave Rob oranges. This contradicts the exclusivity. If Rob received something besides bananas (here, oranges), then it is not true that Sam gave Rob only bananas. Therefore, the second sentence is a direct contradiction.
+
+6  
+A  
+Because the first sentence says Sam only gave Sue oranges (with prosodic focus on "Sue"), and the second sentence says Sam also gave Sue bananas. This appears contradictory at first. However, we must focus on the prosodic emphasis. The exclusive claim focused on Sue means that no one else besides Sue got oranges—it doesn’t exclude what other things Sue might have received. The second sentence adds that Sue also got bananas. This does not contradict the first sentence’s claim about the exclusivity of who got oranges. No other person is mentioned as receiving oranges. Therefore, the second sentence is fully compatible with the first. It expands on what Sue received, but does not deny the exclusivity about oranges. The second sentence is entailed by the possible broader interpretation of the first.
+
+7  
+B  
+Because the first sentence says Sam only gave Tom apples (with prosodic focus on "Tom"), and the second sentence says Sam also gave Tom bananas. The exclusivity here relates to who received apples, not what Tom received altogether. The second sentence talks about what Tom received (bananas in addition), which does not affect the exclusivity of who received apples. Therefore, the second sentence is independent from the first. It does not confirm nor contradict the information about apples and Tom’s exclusive status in receiving them. It is new, separate information.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13_cv1: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing f13_cv1
+  Results saved to: data/output/f13_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.csv
+  Log saved to:     data/output/f13_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.log
+

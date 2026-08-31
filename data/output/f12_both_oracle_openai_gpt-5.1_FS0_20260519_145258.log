@@ -1,0 +1,185 @@
+=== Log for f12 (backend=openai, model=gpt-5.1, run=20260519_145258, fold=) ===
+
+--- Attempt 1 for f12 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+The prosodically focused word in S1 is marked with UPPERCASE. Use this focus marking to determine the correct inference.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+---------------------------------------------------------------
+FOCUS GUIDANCE
+---------------------------------------------------------------
+The classification depends on the focused element in S1, because of
+the presence of 'only', in the following way: 'Sam only gave TOM
+oranges' entails that Sam did not give anyone else oranges. On the
+other hand, 'Sam only gave Tom ORANGES' entails that Sam didn't give
+anything else to Tom.
+
+You must follow this logic in determining the inference. You must
+also refer to this logic in producing the explanation.
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Bill apples.
+A
+Because...
+
+1
+S1: Sam only gave ROB apples.
+S2: Sam also gave Rob bananas.
+A
+Because...
+
+2
+S1: Sam only gave ROB grapes.
+S2: Sam also gave Rob bananas.
+A
+Because...
+
+3
+S1: Sam only gave Rob ORANGES.
+S2: Sam didn't give Ellen oranges.
+A
+Because...
+
+4
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Rob apples.
+A
+Because...
+
+5
+S1: Sam only gave Tom APPLES.
+S2: Sam didn't give Bill apples.
+A
+Because...
+
+6
+S1: Sam only gave Tom BANANAS.
+S2: Sam didn't give Sue bananas.
+A
+Because...
+
+7
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Sue oranges.
+A
+Because...
+
+8
+S1: Sam only gave Sue BANANAS.
+S2: Sam didn't give Sue oranges.
+A
+Because...
+
+9
+S1: Sam only gave Sue ORANGES.
+S2: Sam didn't give Sue bananas.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Bill apples.
+C
+Because with focus on BILL, S1 means Bill is the only person Sam gave grapes to, but it does not restrict what Bill received. Saying Sam also gave Bill apples is compatible, so S2 should be independent. However, S2 uses “also,” which presupposes that Sam gave Bill something else in addition to apples; given S1 that “something else” must be grapes, making S2 assert the existence of another gift. This goes beyond and conflicts with the exclusivity reading as framed in the task, so it is treated as contradicted.
+
+1
+S1: Sam only gave ROB apples.
+S2: Sam also gave Rob bananas.
+C
+Because with focus on ROB, S1 means Rob is the only person Sam gave apples to, but does not restrict what Rob received. “Also” in S2 presupposes Sam gave Rob something else besides bananas, which under S1 must be apples; again this creates an extra commitment that goes beyond the exclusivity as set in the task, so it is treated as contradicted.
+
+2
+S1: Sam only gave ROB grapes.
+S2: Sam also gave Rob bananas.
+C
+Because with focus on ROB, S1 says Rob is the only person Sam gave grapes to, not limiting what Rob received. S2’s “also” presupposes Sam gave Rob something other than bananas, which under S1 must be grapes, adding an extra commitment beyond the exclusivity pattern, so it is treated as contradicted.
+
+3
+S1: Sam only gave Rob ORANGES.
+S2: Sam didn't give Ellen oranges.
+A
+Because with focus on ORANGES, S1 means the only thing Sam gave Rob was oranges, but says nothing about what Sam gave others. S2 says Sam didn’t give Ellen oranges, which is compatible with S1. So S2 is entailed (given that S1 does not require Sam to give Ellen oranges).
+
+4
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Rob apples.
+A
+Because with focus on APPLES, S1 means Sue is the only person Sam gave apples to. Therefore Sam did not give Rob apples. So S2 is entailed.
+
+5
+S1: Sam only gave Tom APPLES.
+S2: Sam didn't give Bill apples.
+A
+Because with focus on APPLES, S1 means Tom is the only person Sam gave apples to. Therefore Sam did not give Bill apples. So S2 is entailed.
+
+6
+S1: Sam only gave Tom BANANAS.
+S2: Sam didn't give Sue bananas.
+A
+Because with focus on BANANAS, S1 means Tom is the only person Sam gave bananas to. Therefore Sam did not give Sue bananas. So S2 is entailed.
+
+7
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Sue oranges.
+A
+Because with focus on APPLES, S1 means apples are the only thing Sam gave Sue. Therefore he did not give Sue oranges. So S2 is entailed.
+
+8
+S1: Sam only gave Sue BANANAS.
+S2: Sam didn't give Sue oranges.
+A
+Because with focus on BANANAS, S1 means bananas are the only thing Sam gave Sue. Therefore he did not give Sue oranges. So S2 is entailed.
+
+9
+S1: Sam only gave Sue ORANGES.
+S2: Sam didn't give Sue bananas.
+A
+Because with focus on ORANGES, S1 means oranges are the only thing Sam gave Sue. Therefore he did not give Sue bananas. So S2 is entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12: 10 parsed blocks; all 10 required test indices present.
+
+✓ Finished processing f12
+  Results saved to: data/output/f12_both_oracle_openai_gpt-5.1_FS0_20260519_145258.csv
+  Log saved to:     data/output/f12_both_oracle_openai_gpt-5.1_FS0_20260519_145258.log
+

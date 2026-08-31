@@ -1,0 +1,135 @@
+=== Log for f4 (backend=openai, model=gpt-audio, run=20260503_141253, fold=0) ===
+
+--- Attempt 1 for f4_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave SUE apples.
+S2: Sam also gave Rob apples.
+C
+Because...
+
+Example 2
+S1: Sam only gave Bill APPLES.
+S2: Sam didn't give Mary apples.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because in S1, "Sam only gave MARY oranges," the focus is on "MARY," meaning Mary is the only recipient of oranges. In S2, "Sam also gave Ellen oranges," this means that there’s an expansion of the set of recipients. But if S1 says Mary is the only one, then adding Ellen contradicts that claim. Therefore, the second sentence negates the exclusivity, showing that S2 must be entailed by the focus that "only gave Mary" is denying—adding another recipient breaks the exclusivity and makes the entailment complete.
+
+3  
+A  
+Because in S1, "Sam only gave ELLEN apples," the prosodic focus is on "ELLEN," meaning Ellen is the sole recipient of apples. S2, "Sam didn't give Tom apples," is entailed because it’s consistent with the exclusivity: if Ellen is the only apple recipient, then Tom is certainly not an apple recipient. There’s no contradiction, and the second sentence aligns with the first.
+
+4  
+A  
+Because in S1, "Sam only gave ROB bananas," the focus is on "ROB" as the single recipient of bananas. S2, "Sam also gave Rob oranges," does not contradict this: it’s about a different fruit, oranges, not bananas. Thus, the exclusivity in S1 relates only to the bananas, and it’s entailed that Rob may have received other things like oranges. The second sentence is consistent and supported by the first.
+
+5  
+A  
+Because in S1, "Sam only gave BILL bananas," the prosodic focus on "BILL" indicates that Bill is the sole recipient of bananas. S2, "Sam didn't give Bill grapes," simply states that Bill did not receive grapes. This fits the scenario in S1, where we are only discussing Bill getting bananas and no mention of grapes. Therefore, S2 is entailed by S1.
+
+6  
+A  
+Because in S1, "Sam only gave ELLEN oranges," the prosodic focus is on "ELLEN," meaning Ellen is the only recipient of oranges. In S2, "Sam didn't give Ellen grapes," this is consistent with S1, which only talks about Ellen receiving oranges and does not mention grapes. This negative statement on grapes is entailed by the narrow focus on what Ellen did receive. So S2 logically follows from S1.
+
+7  
+A  
+Because in S1, "Sam only gave MARY bananas," the focus on "MARY" means Mary is the exclusive recipient of bananas. S2, "Sam didn't give Ellen bananas," is consistent: if only Mary received bananas, then naturally Ellen did not receive bananas. This is an entailment, as the exclusivity in S1 rules out Ellen getting bananas, making S2 entailed.
+
+8  
+A  
+Because in S1, "Sam only gave BILL bananas," the focus on "BILL" means Bill is the only recipient of bananas. S2, "Sam didn't give Tom bananas," follows from this: if Bill is the only one, then Tom cannot have received bananas. Therefore, S2 is perfectly consistent with S1, and is entailed by the exclusive focus.
+
+9  
+A  
+Because in S1, "Sam only gave SUE oranges," the focus on "SUE" means Sue is the only person who got oranges. S2, "Sam didn't give Sue grapes," is consistent with that exclusivity. S1 says Sue received oranges, but nothing about her getting grapes, so S2’s statement that Sue didn’t get grapes aligns perfectly. This means S2 is entailed by S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f4_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f4_cv0
+  Results saved to: data/output/f4_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.csv
+  Log saved to:     data/output/f4_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.log
+

@@ -1,0 +1,136 @@
+=== Log for f7 (backend=openai, model=gpt-audio, run=20260503_100623, fold=1) ===
+
+--- Attempt 1 for f7_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on “bananas” in “Sam only gave Bill bananas,” meaning Bill was given bananas and nothing else. In S2, “Sam also gave Bill grapes” contradicts this, as it introduces an additional item (grapes), while S1 implies Bill received no other fruit.  
+
+1  
+C  
+Because in S1, the prosodic focus is on “Mary” in “Sam only gave Mary apples,” meaning only Mary got apples. In S2, “Sam also gave Ellen apples” contradicts this, as it introduces another recipient, Ellen, who also got apples.  
+
+4  
+C  
+Because in S1, the prosodic focus is on “Sue” in “Sam only gave Sue apples,” meaning only Sue was given apples. In S2, “Sam also gave Tom apples” contradicts this, as it introduces another recipient of apples, Tom, which breaks the exclusivity expressed by the focus on Sue.  
+
+5  
+A  
+Because in S1, the prosodic focus is on “grapes” in “Sam only gave Bill grapes,” meaning Bill was given grapes and nothing else. In S2, “Sam didn’t give Bill oranges” is entailed, since if only grapes were given to Bill, it follows that Bill didn’t receive oranges.  
+
+6  
+A  
+Because in S1, the prosodic focus is on “apples” in “Sam only gave Bill apples,” meaning Bill was given only apples and no other fruit. In S2, “Sam didn’t give Bill bananas” is entailed, as this directly follows from Bill only receiving apples.  
+
+7  
+A  
+Because in S1, the prosodic focus is on “Sue” in “Sam only gave Sue apples,” meaning only Sue received apples. In S2, “Sam didn’t give Sue bananas” is entailed, as Sue was only given apples, so it’s consistent that she wasn’t given bananas.  
+
+8  
+C  
+Because in S1, the prosodic focus is on “Ellen” in “Sam only gave Ellen oranges,” meaning only Ellen received oranges. In S2, “Sam didn’t give Tom oranges” is contradicted, because S1 says nothing about Tom, and it specifically excludes others from receiving oranges, but there’s no explicit restriction on other fruits. An exclusive focus on Ellen contradicts the idea that Tom might be included.  
+
+9  
+B  
+Because in S1, the prosodic focus is on “Tom” in “Sam only gave Tom apples,” meaning only Tom received apples. In S2, “Sam also gave Bill apples” is independent, as the exclusivity was on Tom receiving apples—not on whether Bill received something else. There’s no direct contradiction or entailment.  
+
+10  
+A  
+Because in S1, the prosodic focus is on “Sue” in “Sam only gave Sue bananas,” meaning only Sue received bananas. In S2, “Sam didn’t give Tom bananas” is entailed, because if Sue was the only one who received bananas, it follows that Tom did not receive any bananas.
+
+--- End of Raw Model Output ---
+
+⚠️ WARNING [attempt 1] for f7_cv1: extra indices outside 0..9: [10]
+✓ Output coverage OK [attempt 1] for f7_cv1: 9 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f7_cv1
+  Results saved to: data/output/f7_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.csv
+  Log saved to:     data/output/f7_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.log
+

@@ -1,0 +1,22 @@
+
+=== ACOUSTIC SUMMARY BY SPEAKER (ns1–ns3 clips) ===
+
+Speaker         N    Duration    F0 mean    F0 range    F0 std   Int range   Int std
+-------------------------------------------------------------------------------------
+speaker0       24        4.90s      117.6Hz       366.5Hz      65.1Hz        57.2dB      16.5dB
+speaker1       24        6.07s      149.1Hz       190.9Hz      30.7Hz        46.0dB      14.0dB
+speaker2       24        4.74s      193.0Hz       451.2Hz      81.3Hz        25.3dB       6.6dB
+
+=== BY SPEAKER × FOCUS POSITION ===
+
+Speaker       Focus    N    F0 range    F0 std    Duration
+------------------------------------------------------------
+speaker0          1   12       328.7Hz      60.8Hz        5.04s
+speaker0          2   12       404.3Hz      69.4Hz        4.77s
+
+speaker1          1   12       180.0Hz      30.3Hz        6.15s
+speaker1          2   12       201.8Hz      31.1Hz        5.98s
+
+speaker2          1   12       470.6Hz      88.0Hz        5.03s
+speaker2          2   12       431.9Hz      74.7Hz        4.46s
+

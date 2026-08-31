@@ -1,0 +1,135 @@
+=== Log for f11 (backend=openai, model=gpt-audio, run=20260503_141253, fold=2) ===
+
+--- Attempt 1 for f11_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave ELLEN bananas.
+S2: Sam didn't give Ellen oranges.
+B
+Because...
+
+Example 2
+S1: Sam only gave ROB grapes.
+S2: Sam didn't give Rob apples.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "ROB" indicating exclusivity—that Sam only gave Rob oranges. S2 says Sam didn’t give Tom oranges. If Sam only gave Rob oranges, then it must be true that Tom did not get oranges. So S2 is entailed by S1. But if the prosodic focus changes to contradict the exclusivity (for example, if it originally sounded like multiple recipients were implied), it could contradict. Given the focus on "ROB," stating Tom didn’t get oranges matches the exclusivity. However, noting differences in prosody might shift the interpretation slightly.
+
+1  
+C  
+Because in S1, the prosodic focus was on "SUE," meaning Sam only gave grapes to Sue. S2 claims that Sam didn’t give grapes to Bill. If Sam only gave grapes to Sue, it follows that Bill didn’t get grapes. The prosodic focus on Sue creates the exclusivity, making S2 directly entailed. If the focus had been otherwise, it might differ. But with a clear focus on Sue, the exclusivity stands.
+
+2  
+A  
+Because in S1, the prosodic focus is on "SUE," so Sam only gave oranges to Sue. S2 says that Sam didn’t give oranges to Mary. This is entailed, because if Sue was the only recipient of oranges, then Mary could not have received oranges. The prosodic focus secures the inference.
+
+3  
+C  
+Because in S1, the prosodic focus is on "ELLEN," indicating Sam only gave bananas to Ellen. S2 says Sam didn’t give Ellen grapes. This is entailed, since if Ellen only got bananas, she didn’t get other fruits, like grapes. The focus on Ellen and the word "bananas" confirms the exclusive reading. Thus, S2 logically follows from S1.
+
+6  
+B  
+Because in S1, the prosodic focus is on "BILL," indicating Sam only gave apples to Bill. S2 says Sam also gave Ellen apples, which directly contradicts the exclusivity introduced by the focus. If it’s true that Sam only gave apples to Bill, then it cannot also be true that Sam gave apples to Ellen. Hence, S2 contradicts S1.
+
+7  
+B  
+Because in S1, the prosodic focus is on "ELLEN," pointing out that Sam only gave apples to Ellen. S2 says Sam also gave apples to Sue. This contradicts the exclusivity implied by focusing on Ellen. If Sam gave apples only to Ellen, it cannot be that Sue got apples too. Thus, S2 contradicts S1.
+
+8  
+B  
+Because in S1, the prosodic focus is on "ELLEN," indicating that Sam only gave Ellen oranges. S2 says Sam also gave Rob oranges. This contradicts the exclusivity established by the focus. If Sam only gave oranges to Ellen, it cannot be true that Rob also received oranges.
+
+9  
+B  
+Because in S1, the prosodic focus is on "SUE," establishing that Sam only gave apples to Sue. S2 says Sam also gave apples to Bill. This contradicts the exclusivity. If apples were only meant for Sue, then Bill could not also receive apples. Therefore, S2 directly contradicts S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11_cv2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f11_cv2
+  Results saved to: data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv2_20260503_141253.csv
+  Log saved to:     data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv2_20260503_141253.log
+

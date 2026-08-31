@@ -1,0 +1,129 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260503_144711, fold=0) ===
+
+--- Attempt 1 for f12_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Bill apples.
+B
+Because...
+
+Example 2
+S1: Sam only gave ROB apples.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+Example 3
+S1: Sam only gave ROB grapes.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+Example 4
+S1: Sam only gave Rob ORANGES.
+S2: Sam didn't give Ellen oranges.
+B
+Because...
+
+Example 5
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Rob apples.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5  
+B  
+Because in S1 the focus is on "BILL," meaning the restriction is that Sam only gave grapes to Bill and no one else. In S2, the information is about what was given to Bill (apples), but S1 was only restricting the recipient, not the item given. Therefore, S2 is independent of S1.  
+
+6  
+B  
+Because in S1 the focus is on "ROB," meaning the restriction is that Sam only gave apples to Rob and no one else. In S2, the sentence talks about something else that Rob received (bananas). The restriction in S1 applied to who received the apples, not that Rob only received apples. Therefore, S2 is independent of S1.  
+
+7  
+B  
+Because in S1 the focus is on "ROB," meaning the restriction was about Rob being the only recipient of grapes. In S2, however, we are dealing with a different fruit (bananas) that was also given to Rob. S1’s restriction does not apply to what else Rob received, only to who received the grapes. Therefore, S2 is independent of S1.  
+
+8  
+B  
+Because in S1 the focus is on "ORANGES," meaning the restriction is that oranges were only given to Rob. S2 talks about oranges not given to Ellen, which is an independent statement. S1 restricts the distribution of oranges, but does not speak to who else did or did not receive them beyond the exclusive focus on Rob. Therefore, S2 is independent of S1.  
+
+9  
+B  
+Because in S1 the focus is on "APPLES," meaning the restriction is that only Sue received apples. S2 says that Rob did not receive apples, which is fully consistent with the restriction in S1, but does not add or contradict further information. Therefore, S2 is independent of S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f12_cv0
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS5_compound_CV_cv0_20260503_144711.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS5_compound_CV_cv0_20260503_144711.log
+

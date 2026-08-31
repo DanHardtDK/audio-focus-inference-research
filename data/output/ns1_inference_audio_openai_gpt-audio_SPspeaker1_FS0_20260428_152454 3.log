@@ -1,0 +1,122 @@
+=== Log for ns1 (backend=openai, model=gpt-audio, run=20260428_152454, fold=) ===
+
+--- Attempt 1 for ns1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because the first sentence says Sam only gives Bill grapes, while the second sentence says Sam also gives Sue grapes. These two statements don’t contradict each other directly, nor does one entail the other. They are independent facts.
+
+1  
+C  
+Because the first sentence states Sam also gives Sue grapes, while the second says Sam only gives Sue oranges. The word "only" implies exclusivity. If Sue only gets oranges, then she cannot also get grapes. The second sentence contradicts the first.
+
+2  
+A  
+Because the first sentence says Sam didn’t give Rob oranges, and the second says Sam only gave Rob grapes. If Rob only got grapes, that means he didn’t get oranges. The second sentence entails the first.
+
+3  
+B  
+Because the first sentence states Sam also gave Rob oranges, while the second says Sam only gave Tom oranges. These statements are about different people—Rob versus Tom—so they don’t directly entail or contradict each other. They are independent.
+
+4  
+A  
+Because the first sentence says Sam didn’t give Tom bananas, and the second says Sam only gave Ellen bananas. If Ellen was the only one to receive bananas, then it’s entailed that Tom didn’t get bananas. So the second sentence entails the first.
+
+5  
+B  
+Because the first sentence states Sam also gave Mary bananas, while the second says Sam only gave Ellen grapes. These two statements refer to different people (Mary vs. Ellen) and different objects (bananas vs. grapes). There’s no direct entailment or contradiction, so they are independent.
+
+6  
+C  
+Because the first sentence says Sam didn’t give Tom grapes, and the second says Sam only gave Rob oranges. If Rob only got oranges and Tom didn’t get grapes, those statements relate to different people without a direct contradiction or entailment. However, the prosodic focus on “Tom” in S1 and “Rob” in S2 highlights a contrast on who did or didn’t get something. The exclusivity of “only Rob oranges” leaves no room for Tom getting anything. So the second contradicts the first by ruling out any possibility of Tom getting grapes.
+
+7  
+A  
+Because the first sentence says Sam also gave Rob apples, and the second says Sam only gave Tom apples. For Tom to be the exclusive recipient of apples, the first statement about Rob also getting apples must be false. So the second sentence contradicts the first.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing ns1
+  Results saved to: data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker1_FS0_20260428_152454.csv
+  Log saved to:     data/output/ns1_inference_audio_openai_gpt-audio_SPspeaker1_FS0_20260428_152454.log
+

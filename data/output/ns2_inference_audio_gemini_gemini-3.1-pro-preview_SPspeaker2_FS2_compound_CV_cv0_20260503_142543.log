@@ -1,0 +1,119 @@
+=== Log for ns2 (backend=gemini, model=gemini-3.1-pro-preview, run=20260503_142543, fold=0) ===
+
+--- Attempt 1 for ns2_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL grapes.
+S2: Sam didn't give Bill oranges.
+B
+Because...
+
+Example 2
+S1: Sam only gave Ellen GRAPES.
+S2: Sam also gave Ellen oranges.
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2
+A
+Because the prosodic focus on "BILL" in S1 indicates that Bill was the only person who received bananas, which entails S2 that Tom did not receive bananas.
+
+3
+B
+Because the prosodic focus on "ORANGES" in S1 indicates that oranges were the only thing Ellen received, but this provides no information about whether Sue received oranges, making S2 independent.
+
+4
+C
+Because the prosodic focus on "TOM" in S1 indicates that Tom was the only person who received apples, which contradicts S2 that Bill also received apples.
+
+5
+A
+Because the prosodic focus on "BANANAS" in S1 indicates that bananas were the only thing Bill received, which entails S2 that he did not receive grapes.
+
+6
+B
+Because the prosodic focus on "ELLEN" in S1 indicates that Ellen was the only person who received bananas, but this provides no information about whether she also received grapes, making S2 independent.
+
+7
+A
+Because the prosodic focus on "ELLEN" in S1 indicates that Ellen was the only person who received grapes, which entails S2 that Rob did not receive grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv0: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv0
+  Results saved to: data/output/ns2_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker2_FS2_compound_CV_cv0_20260503_142543.csv
+  Log saved to:     data/output/ns2_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker2_FS2_compound_CV_cv0_20260503_142543.log
+

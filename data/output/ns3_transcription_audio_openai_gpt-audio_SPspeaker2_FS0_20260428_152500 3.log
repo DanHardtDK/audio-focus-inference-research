@@ -1,0 +1,119 @@
+=== Log for ns3 (backend=openai, model=gpt-audio, run=20260428_152500, fold=) ===
+
+--- Attempt 1 for ns3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Transcribe S1 and S2 from audio.
+2. Mark the prosodically focused word in S1 using UPPERCASE. All other words must be in normal casing.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- You must infer S1 and S2 ONLY from the provided audio.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1:
+S2:
+
+1
+S1:
+S2:
+
+2
+S1:
+S2:
+
+3
+S1:
+S2:
+
+4
+S1:
+S2:
+
+5
+S1:
+S2:
+
+6
+S1:
+S2:
+
+7
+S1:
+S2:
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave ROB bananas.
+S2: Sam also gave Rob oranges.
+
+1
+S1: Sam only gave MARY apples.
+S2: Sam also gave Mary bananas.
+
+2
+S1: Sam only gave SUE bananas.
+S2: Sam didn't give Rob bananas.
+
+3
+S1: Sam only gave MARY grapes.
+S2: Sam also gave Ellen grapes.
+
+4
+S1: Sam only gave ELLEN apples.
+S2: Sam also gave Rob apples.
+
+5
+S1: Sam only gave TOM bananas.
+S2: Sam didn't give Tom oranges.
+
+6
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Sue oranges.
+
+7
+S1: Sam only gave BILL apples.
+S2: Sam didn't give Mary apples.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns3: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing ns3
+  Results saved to: data/output/ns3_transcription_audio_openai_gpt-audio_SPspeaker2_FS0_20260428_152500.csv
+  Log saved to:     data/output/ns3_transcription_audio_openai_gpt-audio_SPspeaker2_FS0_20260428_152500.log
+

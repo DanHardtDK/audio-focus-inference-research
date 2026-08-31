@@ -1,0 +1,131 @@
+=== Log for f10 (backend=openai, model=gpt-audio, run=20260503_100623, fold=1) ===
+
+--- Attempt 1 for f10_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1: "Sam only gave TOM apples." (focused on "TOM"), and S2: "Sam also gave Tom grapes." This contradicts the exclusivity implied by the focus on "Tom" and "apples" in S1. S1 means Sam gave Tom only apples, and nothing else, so giving Tom grapes is a contradiction.  
+
+1  
+C  
+Because S1: "Sam only gave MARY bananas." (focused on "MARY"), and S2: "Sam didn’t give Bill bananas." The focus in S1 is on Mary, meaning only Mary got bananas, so for Bill not receiving bananas is consistent with that. However, S1 strongly implies no one else got bananas. So S2 is independent from S1’s specific focus and core meaning regarding Mary. This yields a contradiction because Bill would not be expected to get bananas under S1’s conditions.  
+
+4  
+B  
+Because S1: "Sam only gave SUE apples." (focused on "SUE"), and S2: "Sam didn’t give Rob apples." These two statements do not contradict each other. S1 says Sue exclusively received apples, and S2 simply says Rob did not get apples. That does not violate the exclusivity focused on Sue. Both can be true independently, so they are independent.  
+
+5  
+C  
+Because S1: "Sam only gave BILL bananas." (focused on "BILL"), and S2: "Sam also gave Bill grapes." S1 implies Bill exclusively got bananas. If S2 says Bill got grapes as well, that contradicts S1’s exclusivity for bananas.  
+
+6  
+A  
+Because S1: "Sam only gave ROB grapes." (focused on "ROB"), and S2: "Sam didn’t give Rob apples." This is consistent because S1 says Rob only got grapes, so Rob not receiving apples is entailed by that exclusivity.  
+
+7  
+B  
+Because S1: "Sam only gave SUE grapes." (focused on "SUE"), and S2: "Sam also gave Tom grapes." S1’s exclusivity concerns Sue (only Sue got grapes), but S2 says Tom also got grapes. That neither logically follows nor directly contradicts S1. It’s independent because it doesn’t involve Sue’s exclusivity focus, it deals with whether others got grapes too.  
+
+8  
+A  
+Because S1: "Sam only gave ELLEN grapes." (focused on "ELLEN"), and S2: "Sam didn’t give Rob grapes." This is entailed. If only Ellen got grapes, it follows that Rob did not.  
+
+9  
+A  
+Because S1: "Sam only gave MARY grapes." (focused on "MARY"), and S2: "Sam also gave Mary bananas." The focus in S1 is on Mary’s exclusivity of receiving grapes alone. But S2 states Mary got bananas too, which fits within S1's framing of exclusivity. This condition doesn’t violate the grape exclusivity. Both statements can be true together, so it’s entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f10_cv1
+  Results saved to: data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.csv
+  Log saved to:     data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100623.log
+
