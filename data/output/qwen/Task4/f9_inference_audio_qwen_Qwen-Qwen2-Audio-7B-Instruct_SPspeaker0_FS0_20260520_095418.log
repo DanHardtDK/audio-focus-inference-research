@@ -1,0 +1,27 @@
+=== Log for f9 fold=None fewshot=[] ===
+  [0] Sam only gave ELLEN bananas. / Sam also gave Ellen grapes.
+    pred=B  
+  [1] Sam only gave MARY apples. / Sam didn't give Mary oranges.
+    pred=B  independent.
+  [2] Sam only gave TOM bananas. / Sam also gave Tom apples.
+    pred=B  
+  [3] Sam only gave MARY apples. / Sam didn't give Mary grapes.
+    pred=C  contradicted. 
+
+In sentence S1, it is stated that Sam only gave Mary apples. This means that Sam did not give Mary grapes. However, in sentence S2, it is stated that Sam didn't give Mary anything. This contradicts the information provided in sentence S1. Therefore, we can conclude that S2 contradicts S1.
+  [4] Sam only gave Mary ORANGES. / Sam didn't give Mary apples.
+    pred=C  
+  [5] Sam only gave Rob APPLES. / Sam also gave Mary apples.
+    pred=B  
+  [6] Sam only gave ROB apples. / Sam also gave Tom apples.
+    pred=B  
+  [7] Sam only gave Rob ORANGES. / Sam didn't give Rob bananas.
+    pred=C  contradicted. 
+
+In sentence S1, it is stated that Sam only gave Rob oranges. This means that Rob did not receive bananas from Sam. However, in sentence S2, it is stated that Sam didn't give Rob bananas. This contradicts the information provided in sentence S1, as it suggests that Sam gave Rob something other than oranges. Therefore, S2 contradicts S1.
+  [8] Sam only gave Bill GRAPES. / Sam also gave Rob grapes.
+    pred=C  
+  [9] Sam only gave Rob GRAPES. / Sam also gave Rob bananas.
+    pred=B  
+  f9: 4/10 correct on test items (40.0%)
+  CSV: data\output\qwen\f9_inference_audio_qwen_Qwen-Qwen2-Audio-7B-Instruct_SPspeaker0_FS0_20260520_095418.csv

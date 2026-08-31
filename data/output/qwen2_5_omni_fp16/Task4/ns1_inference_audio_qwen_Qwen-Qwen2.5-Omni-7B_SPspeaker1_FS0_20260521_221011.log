@@ -1,0 +1,19 @@
+=== Log for ns1 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam also gave Sue grapes.
+    pred=B  
+  [1] Sam only gave Sue ORANGES. / Sam didn't give Rob oranges.
+    pred=B  
+  [2] Sam only gave ROB grapes. / Sam also gave Rob oranges.
+    pred=B  
+  [3] Sam only gave Tom ORANGES. / Sam didn't give Tom bananas.
+    pred=A  Sam only gave Tom oranges implies that Sam didn't give Tom bananas.
+  [4] Sam only gave Ellen BANANAS. / Sam also gave Mary bananas.
+    pred=B  
+  [5] Sam only gave ELLEN grapes. / Sam didn't give Tom grapes.
+    pred=B  
+  [6] Sam only gave Rob ORANGES. / Sam also gave Rob apples.
+    pred=B  S2 is independent of S1 because it introduces new information about apples, which is not mentioned in S1.
+  [7] Sam only gave TOM apples. / Sam didn't give Tom grapes.
+    pred=A  S2 is entailed by S1 because if Sam only gave Tom apples, then it is true that Sam didn't give Tom grapes.
+  ns1: 4/8 correct on test items (50.0%)
+  CSV: data/output/qwen2_5_omni_fp16/Task4/ns1_inference_audio_qwen_Qwen-Qwen2.5-Omni-7B_SPspeaker1_FS0_20260521_221011.csv

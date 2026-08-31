@@ -1,0 +1,19 @@
+=== Log for ns2 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam didn't give Bill oranges.
+    pred=A  S2 is entailed by S1 because if Sam only gave Bill grapes, then it is true that Sam didn't give Bill oranges.
+  [1] Sam only gave Ellen GRAPES. / Sam also gave Ellen oranges.
+    pred=B  
+  [2] Sam only gave BILL bananas. / Sam didn't give Tom bananas.
+    pred=A  S2 is entailed by S1 because it is consistent with the information provided in S1.
+  [3] Sam only gave Ellen ORANGES. / Sam also gave Sue oranges.
+    pred=B  S2 is independent of S1 because it introduces a new person, Sue, who is not mentioned in S1.
+  [4] Sam only gave TOM apples. / Sam also gave Bill apples.
+    pred=B  
+  [5] Sam only gave Bill BANANAS. / Sam didn't give Bill grapes.
+    pred=A  
+  [6] Sam only gave ELLEN bananas. / Sam also gave Ellen grapes.
+    pred=B  
+  [7] Sam only gave Ellen GRAPES. / Sam didn't give Rob grapes.
+    pred=B  
+  ns2: 5/8 correct on test items (62.5%)
+  CSV: data/output/qwen2_5_omni_fp16/Task4/ns2_inference_audio_qwen_Qwen-Qwen2.5-Omni-7B_SPspeaker2_FS0_20260521_221040.csv

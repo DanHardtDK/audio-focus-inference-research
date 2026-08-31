@@ -15,6 +15,7 @@
 # Python
 __pycache__/
 *.pyc
+venv*/
 
 # Claude Code session data
 .claude/

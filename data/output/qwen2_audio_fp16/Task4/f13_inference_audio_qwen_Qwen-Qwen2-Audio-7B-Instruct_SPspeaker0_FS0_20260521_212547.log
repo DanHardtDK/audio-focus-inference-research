@@ -1,0 +1,19 @@
+=== Log for f13 fold=None fewshot=[] ===
+  [0] Sam only gave Ellen BANANAS. / Sam also gave Tom bananas.
+    pred=B  
+  [1] Sam only gave Ellen ORANGES. / Sam also gave Rob oranges.
+    pred=B  
+  [2] Sam only gave Rob BANANAS. / Sam also gave Ellen bananas.
+    pred=B  
+  [3] Sam only gave Tom BANANAS. / Sam also gave Mary bananas.
+    pred=B  
+  [4] Sam only gave Ellen ORANGES. / Sam also gave Ellen apples.
+    pred=B  
+  [5] Sam only gave Rob BANANAS. / Sam also gave Rob oranges.
+    pred=B  
+  [6] Sam only gave Sue ORANGES. / Sam also gave Sue bananas.
+    pred=B  
+  [7] Sam only gave Tom APPLES. / Sam also gave Tom bananas.
+    pred=B  
+  f13: 4/8 correct on test items (50.0%)
+  CSV: data/output/qwen2_audio_fp16/Task4/f13_inference_audio_qwen_Qwen-Qwen2-Audio-7B-Instruct_SPspeaker0_FS0_20260521_212547.csv

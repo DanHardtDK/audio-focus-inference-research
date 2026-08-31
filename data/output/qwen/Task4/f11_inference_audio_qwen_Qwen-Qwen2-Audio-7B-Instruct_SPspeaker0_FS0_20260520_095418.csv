@@ -1,0 +1,11 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave ROB oranges.,Sam didn't give Tom oranges.,A,0,C,,,,,,,1,NEG,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+1,0,Sam only gave SUE grapes.,Sam didn't give Bill grapes.,A,0,B,,,,,,,1,NEG,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+2,0,Sam only gave SUE oranges.,Sam didn't give Mary oranges.,A,0,C,,,,,,,1,NEG,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+3,0,Sam only gave ELLEN bananas.,Sam didn't give Ellen grapes.,B,0,A,,,,) Entailed.,,,1,NEG,2,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+4,0,Sam only gave ELLEN bananas.,Sam didn't give Ellen oranges.,B,0,C,,,,,,,1,NEG,2,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+5,0,Sam only gave ROB grapes.,Sam didn't give Rob apples.,B,0,C,,,,,,,1,NEG,2,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+6,0,Sam only gave BILL apples.,Sam also gave Ellen apples.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+7,0,Sam only gave ELLEN apples.,Sam also gave Sue apples.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+8,0,Sam only gave ELLEN oranges.,Sam also gave Rob oranges.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+9,0,Sam only gave SUE apples.,Sam also gave Bill apples.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0

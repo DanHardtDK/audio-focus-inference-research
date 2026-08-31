@@ -1,0 +1,23 @@
+=== Log for f3 fold=None fewshot=[] ===
+  [0] Sam only gave ELLEN grapes. / Sam didn't give Tom grapes.
+    pred=B  
+  [1] Sam only gave Ellen APPLES. / Sam didn't give Ellen apples.
+    pred=C  S2 contradicts S1 because it states that Sam did not give Ellen apples, which is the opposite of what S1 claims.
+  [2] Sam only gave Rob GRAPES. / Sam also gave Ellen grapes.
+    pred=B  
+  [3] Sam only gave Rob APPLES. / Sam also gave Ellen apples.
+    pred=B  
+  [4] Sam only gave Ellen APPLES. / Sam didn't give Bill apples.
+    pred=B  
+  [5] Sam only gave Rob APPLES. / Sam didn't give Sue apples.
+    pred=B  
+  [6] Sam only gave ROB oranges. / Sam also gave Rob apples.
+    pred=B  S2 is independent of S1 because it introduces a new piece of information about apples, which is not mentioned in S1.
+  [7] Sam only gave ROB apples. / Sam also gave Rob grapes.
+    pred=B  
+  [8] Sam only gave ROB bananas. / Sam didn't give Ellen bananas.
+    pred=A  Sam only gave Rob bananas, so it's entailed that Sam didn't give Ellen bananas.
+  [9] Sam only gave Mary APPLES. / Sam also gave Ellen apples.
+    pred=B  
+  f3: 9/10 correct on test items (90.0%)
+  CSV: data/output/qwen2_5_omni_fp16/Task4/f3_inference_audio_qwen_Qwen-Qwen2.5-Omni-7B_SPspeaker0_FS0_20260521_220841.csv

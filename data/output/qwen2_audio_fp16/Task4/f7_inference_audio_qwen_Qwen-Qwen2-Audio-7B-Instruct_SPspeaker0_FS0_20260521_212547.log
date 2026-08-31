@@ -1,0 +1,23 @@
+=== Log for f7 fold=None fewshot=[] ===
+  [0] Sam only gave Bill BANANAS. / Sam also gave Bill grapes.
+    pred=B  
+  [1] Sam only gave MARY apples. / Sam also gave Ellen apples.
+    pred=B  
+  [2] Sam only gave Sue APPLES. / Sam also gave Tom apples.
+    pred=B  
+  [3] Sam only gave BILL grapes. / Sam didn't give Bill oranges.
+    pred=C  
+  [4] Sam only gave BILL apples. / Sam didn't give Bill bananas.
+    pred=C  
+  [5] Sam only gave SUE apples. / Sam didn't give Sue bananas.
+    pred=C  
+  [6] Sam only gave ELLEN oranges. / Sam didn't give Tom oranges.
+    pred=C  
+  [7] Sam only gave TOM apples. / Sam didn't give Mary apples.
+    pred=C  
+  [8] Sam only gave Tom APPLES. / Sam also gave Bill apples.
+    pred=B  
+  [9] Sam only gave Sue BANANAS. / Sam didn't give Tom bananas.
+    pred=C  
+  f7: 2/10 correct on test items (20.0%)
+  CSV: data/output/qwen2_audio_fp16/Task4/f7_inference_audio_qwen_Qwen-Qwen2-Audio-7B-Instruct_SPspeaker0_FS0_20260521_212547.csv

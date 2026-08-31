@@ -1,0 +1,19 @@
+=== Log for f13 fold=None fewshot=[] ===
+  [0] Sam only gave Ellen BANANAS. / Sam also gave Tom bananas.
+    pred=C  The focus on "only" in S1 implies Sam gave bananas to no one else besides Ellen. S2 contradicts this by stating Sam also gave bananas to Tom.
+  [1] Sam only gave Ellen ORANGES. / Sam also gave Rob oranges.
+    pred=A  The prosodic focus on "oranges" in S1 emphasizes the type of item given, and S2 adds that Rob also received the same item, which is consistent with S1.
+  [2] Sam only gave Rob BANANAS. / Sam also gave Ellen bananas.
+    pred=C  S1 states that Sam gave Rob bananas and implies he did not give bananas to anyone else. S2 contradicts this by stating Sam also gave Ellen bananas.
+  [3] Sam only gave Tom BANANAS. / Sam also gave Mary bananas.
+    pred=C  The word "only" in S1 implies Sam gave bananas to Tom and no one else. S2 states Sam also gave bananas to Mary, which contradicts the exclusivity implied by "only".
+  [4] Sam only gave Ellen ORANGES. / Sam also gave Ellen apples.
+    pred=C  S2 contradicts S1 because S1 states Sam "only" gave Ellen oranges, implying no other fruits, while S2 claims Sam also gave her apples.
+  [5] Sam only gave Rob BANANAS. / Sam also gave Rob oranges.
+    pred=C  The word "only" in S1 implies that Sam did not give Rob anything other than bananas. S2 states that Sam also gave Rob oranges, which contradicts the exclusivity implied by "only".
+  [6] Sam only gave Sue ORANGES. / Sam also gave Sue bananas.
+    pred=C  S2 contradicts S1 because S1 states Sam *only* gave Sue oranges (implying no other fruits), while S2 claims Sam also gave her bananas.
+  [7] Sam only gave Tom APPLES. / Sam also gave Tom bananas.
+    pred=C  The focus on "only" in S1 implies Sam gave Tom nothing but apples, contradicting S2 which states Sam also gave bananas.
+  f13: 4/8 correct on test items (50.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/f13_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker0_FS0_20260522_144948.csv

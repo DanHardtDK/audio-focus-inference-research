@@ -1,4 +1,5 @@
 openai
-google-genai
+google-generativeai
 openai-whisper
 torch
+matplotlib

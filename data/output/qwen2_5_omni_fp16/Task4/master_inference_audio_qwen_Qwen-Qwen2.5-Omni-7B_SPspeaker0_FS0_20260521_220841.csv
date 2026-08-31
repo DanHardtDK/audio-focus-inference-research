@@ -1,0 +1,129 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave BILL grapes.,Sam also gave Sue grapes.,C,0,B,,,,,,,1,POS,1,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave SUE oranges.,Sam also gave Rob oranges.,C,0,B,,,,,,,1,POS,1,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave SUE grapes.,Sam didn't give Ellen grapes.,A,0,B,,,,,,,1,NEG,1,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave TOM apples.,Sam didn't give Tom grapes.,B,0,A,,,,"S2 is entailed by S1 because if Sam only gave Tom apples, then it is true that Sam didn't give Tom grapes.",,,1,NEG,2,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Rob ORANGES.,Sam also gave Rob apples.,C,0,B,,,,,,,2,POS,2,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave SUE grapes.,Sam didn't give Tom grapes.,A,1,A,,,,,,,1,NEG,1,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Ellen BANANAS.,Sam also gave Mary bananas.,B,1,B,,,,,,,2,POS,1,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave ROB bananas.,Sam didn't give Rob oranges.,B,0,A,,,,"S2 is entailed by S1 because if Sam only gave Rob bananas, then it is true that Sam didn't give Rob oranges.",,,1,NEG,2,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Mary BANANAS.,Sam also gave Mary apples.,C,0,B,,,,"S2 is independent of S1 because it introduces a new piece of information about Sam giving Mary apples, which is not entailed by the fact that Sam gave Mary bananas.",,,2,POS,2,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Sue ORANGES.,Sam didn't give Rob oranges.,B,1,B,,,,,,,2,NEG,1,f1,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave ROB bananas.,Sam didn't give Tom bananas.,A,0,B,,,,,,,1,NEG,1,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave TOM grapes.,Sam didn't give Tom oranges.,B,0,A,,,,,,,1,NEG,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave SUE oranges.,Sam also gave Sue apples.,B,0,C,,,,"S2 contradicts S1 because S1 states that Sam only gave Sue oranges, while S2 states that Sam also gave Sue apples.",,,1,POS,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave SUE bananas.,Sam didn't give Rob bananas.,A,1,A,,,,"Sam only gave Sue bananas, so it's implied that Sam didn't give Rob bananas.",,,1,NEG,1,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Tom ORANGES.,Sam didn't give Tom bananas.,A,1,A,,,,"Sam only gave Tom oranges, so it's implied that Sam didn't give Tom bananas.",,,2,NEG,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave SUE apples.,Sam didn't give Sue oranges.,B,0,A,,,,,,,1,NEG,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Sue GRAPES.,Sam didn't give Sue apples.,A,1,A,,,,,,,2,NEG,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave ELLEN oranges.,Sam also gave Ellen bananas.,B,1,B,,,,,,,1,POS,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave MARY grapes.,Sam didn't give Mary apples.,B,0,A,,,,S2 is entailed by S1 because it is consistent with the information provided in S1.,,,1,NEG,2,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave BILL oranges.,Sam also gave Mary oranges.,C,0,B,,,,,,,1,POS,1,f2,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave ELLEN grapes.,Sam didn't give Tom grapes.,A,0,B,,,,,,,1,NEG,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave Ellen APPLES.,Sam didn't give Ellen apples.,C,1,C,,,,"S2 contradicts S1 because it states that Sam did not give Ellen apples, which is the opposite of what S1 claims.",,,2,NEG,0,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave Rob GRAPES.,Sam also gave Ellen grapes.,B,1,B,,,,,,,2,POS,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave Rob APPLES.,Sam also gave Ellen apples.,B,1,B,,,,,,,2,POS,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Ellen APPLES.,Sam didn't give Bill apples.,B,1,B,,,,,,,2,NEG,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Rob APPLES.,Sam didn't give Sue apples.,B,1,B,,,,,,,2,NEG,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave ROB oranges.,Sam also gave Rob apples.,B,1,B,,,,"S2 is independent of S1 because it introduces a new piece of information about apples, which is not mentioned in S1.",,,1,POS,2,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave ROB apples.,Sam also gave Rob grapes.,B,1,B,,,,,,,1,POS,2,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave ROB bananas.,Sam didn't give Ellen bananas.,A,1,A,,,,"Sam only gave Rob bananas, so it's entailed that Sam didn't give Ellen bananas.",,,1,NEG,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Mary APPLES.,Sam also gave Ellen apples.,B,1,B,,,,,,,2,POS,1,f3,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave SUE apples.,Sam also gave Rob apples.,C,0,B,,,,,,,1,POS,1,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave Bill APPLES.,Sam didn't give Mary apples.,B,1,B,,,,,,,2,NEG,1,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave MARY oranges.,Sam also gave Ellen oranges.,C,0,B,,,,,,,1,POS,1,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave Ellen APPLES.,Sam didn't give Tom apples.,B,1,B,,,,,,,2,NEG,1,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave ROB bananas.,Sam also gave Rob oranges.,B,1,B,,,,,,,1,POS,2,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Bill BANANAS.,Sam didn't give Bill grapes.,A,1,A,,,,,,,2,NEG,2,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Ellen ORANGES.,Sam didn't give Ellen grapes.,A,1,A,,,,,,,2,NEG,2,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave Mary BANANAS.,Sam didn't give Ellen bananas.,B,1,B,,,,,,,2,NEG,1,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave BILL bananas.,Sam didn't give Tom bananas.,A,0,B,,,,,,,1,NEG,1,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Sue ORANGES.,Sam didn't give Sue grapes.,A,1,A,,,,,,,2,NEG,2,f4,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave Ellen GRAPES.,Sam also gave Ellen oranges.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave ELLEN apples.,Sam also gave Rob apples.,C,0,B,,,,,,,1,POS,1,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave MARY oranges.,Sam didn't give Mary bananas.,B,0,A,,,,Sam only gave Mary oranges implies that Sam didn't give Mary bananas.,,,1,NEG,2,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave MARY oranges.,Sam also gave Tom oranges.,C,0,B,,,,,,,1,POS,1,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Mary ORANGES.,Sam didn't give Tom oranges.,B,0,A,,,,"Sam only gave Mary oranges, so it's implied that Sam didn't give Tom oranges.",,,2,NEG,1,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Mary GRAPES.,Sam also gave Mary apples.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave SUE apples.,Sam also gave Mary apples.,C,0,B,,,,,,,1,POS,1,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave Bill ORANGES.,Sam also gave Bill bananas.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Ellen BANANAS.,Sam also gave Ellen grapes.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Tom BANANAS.,Sam didn't give Tom oranges.,A,1,A,,,,,,,2,NEG,2,f5,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave ROB apples.,Sam didn't give Sue apples.,A,0,B,,,,,,,1,NEG,1,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave SUE grapes.,Sam also gave Sue oranges.,B,1,B,,,,,,,1,POS,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave SUE grapes.,Sam didn't give Sue bananas.,B,0,A,,,,,,,1,NEG,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave Mary GRAPES.,Sam also gave Ellen grapes.,B,1,B,,,,,,,2,POS,1,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Rob ORANGES.,Sam also gave Rob bananas.,C,0,B,,,,,,,2,POS,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Sue BANANAS.,Sam didn't give Sue grapes.,A,1,A,,,,"S2 is entailed by S1 because if Sam only gave Sue bananas, then it is true that Sam didn't give Sue grapes.",,,2,NEG,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Tom GRAPES.,Sam didn't give Tom apples.,A,1,A,,,,Sam only gave Tom grapes implies that Sam didn't give Tom apples.,,,2,NEG,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave TOM bananas.,Sam didn't give Tom grapes.,B,1,B,,,,,,,1,NEG,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Rob APPLES.,Sam also gave Rob grapes.,C,0,B,,,,,,,2,POS,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave ELLEN grapes.,Sam also gave Ellen oranges.,B,1,B,,,,,,,1,POS,2,f6,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave Bill BANANAS.,Sam also gave Bill grapes.,C,0,B,,,,,,,2,POS,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave MARY apples.,Sam also gave Ellen apples.,C,0,B,,,,,,,1,POS,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave Sue APPLES.,Sam also gave Tom apples.,B,1,B,,,,,,,2,POS,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave BILL grapes.,Sam didn't give Bill oranges.,B,0,A,,,,S2 is entailed by S1 because it is consistent with the information given in S1.,,,1,NEG,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave BILL apples.,Sam didn't give Bill bananas.,B,1,B,,,,,,,1,NEG,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave SUE apples.,Sam didn't give Sue bananas.,B,0,A,,,,S2 is entailed by S1 because it is consistent with the information provided in S1.,,,1,NEG,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave ELLEN oranges.,Sam didn't give Tom oranges.,A,1,A,,,,"Sam only gave Ellen oranges, so it's implied that Sam didn't give Tom oranges.",,,1,NEG,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave TOM apples.,Sam didn't give Mary apples.,A,1,A,,,,Sam only gave Tom apples implies that Sam didn't give Mary apples.,,,1,NEG,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Tom APPLES.,Sam also gave Bill apples.,B,1,B,,,,,,,2,POS,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Sue BANANAS.,Sam didn't give Tom bananas.,B,1,B,,,,,,,2,NEG,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave Ellen BANANAS.,Sam also gave Rob bananas.,B,1,B,,,,,,,2,POS,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave ROB grapes.,Sam also gave Rob oranges.,B,1,B,,,,"S2 is independent of S1 because it introduces a new piece of information about Sam giving Rob oranges, which is not entailed by the fact that Sam gave Rob grapes.",,,1,POS,2,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave TOM apples.,Sam also gave Bill apples.,C,0,B,,,,,,,1,POS,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave Mary APPLES.,Sam also gave Mary bananas.,C,0,B,,,,,,,2,POS,2,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Ellen ORANGES.,Sam also gave Sue oranges.,B,1,B,,,,,,,2,POS,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Rob ORANGES.,Sam didn't give Rob apples.,A,1,A,,,,"S2 is entailed by S1 because if Sam only gave Rob oranges, then it is true that Sam didn't give Rob apples.",,,2,NEG,2,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Bill BANANAS.,Sam didn't give Ellen bananas.,B,0,A,,,,Sam only gave Bill bananas implies that Sam didn't give Ellen bananas.,,,2,NEG,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave Rob BANANAS.,Sam also gave Sue bananas.,B,1,B,,,,,,,2,POS,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Bill BANANAS.,Sam didn't give Mary bananas.,B,1,B,,,,,,,2,NEG,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Ellen GRAPES.,Sam didn't give Rob grapes.,B,1,B,,,,,,,2,NEG,1,f8,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave ELLEN bananas.,Sam also gave Ellen grapes.,B,1,B,,,,,,,1,POS,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave MARY apples.,Sam didn't give Mary oranges.,B,0,A,,,,Sam only gave Mary apples implies that Sam didn't give Mary oranges.,,,1,NEG,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave TOM bananas.,Sam also gave Tom apples.,B,1,B,,,,,,,1,POS,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave MARY apples.,Sam didn't give Mary grapes.,B,0,A,,,,,,,1,NEG,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Mary ORANGES.,Sam didn't give Mary apples.,A,1,A,,,,Sam only gave Mary oranges implies that Sam didn't give Mary apples.,,,2,NEG,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Rob APPLES.,Sam also gave Mary apples.,B,1,B,,,,,,,2,POS,1,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave ROB apples.,Sam also gave Tom apples.,C,0,B,,,,,,,1,POS,1,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave Rob ORANGES.,Sam didn't give Rob bananas.,A,0,B,,,,,,,2,NEG,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Bill GRAPES.,Sam also gave Rob grapes.,B,1,B,,,,,,,2,POS,1,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Rob GRAPES.,Sam also gave Rob bananas.,C,0,B,,,,,,,2,POS,2,f9,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave Tom APPLES.,Sam also gave Tom grapes.,C,0,B,,,,,,,2,POS,2,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave Mary BANANAS.,Sam didn't give Bill bananas.,B,1,B,,,,,,,2,NEG,1,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave MARY apples.,Sam also gave Mary bananas.,B,1,B,,,,,,,1,POS,2,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave SUE apples.,Sam didn't give Rob apples.,A,0,B,,,,,,,1,NEG,1,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave BILL bananas.,Sam also gave Bill grapes.,B,1,B,,,,,,,1,POS,2,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Rob GRAPES.,Sam didn't give Rob apples.,A,1,A,,,,"Sam only gave Rob grapes, so it's entailed that Sam didn't give Rob apples.",,,2,NEG,2,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave SUE grapes.,Sam also gave Tom grapes.,C,0,B,,,,,,,1,POS,1,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave ELLEN grapes.,Sam didn't give Rob grapes.,A,0,B,,,,,,,1,NEG,1,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave MARY grapes.,Sam also gave Mary bananas.,B,1,B,,,,,,,1,POS,2,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave SUE apples.,Sam didn't give Bill apples.,A,0,B,,,,,,,1,NEG,1,f10,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave ROB oranges.,Sam didn't give Tom oranges.,A,0,B,,,,S2 is independent of S1 because it does not follow from or contradict the information given in S1.,,,1,NEG,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave SUE grapes.,Sam didn't give Bill grapes.,A,0,B,,,,,,,1,NEG,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave SUE oranges.,Sam didn't give Mary oranges.,A,1,A,,,,"Sam only gave Sue oranges, so it's entailed that Sam didn't give Mary oranges.",,,1,NEG,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave ELLEN bananas.,Sam didn't give Ellen grapes.,B,0,A,,,,Sam only gave Ellen bananas implies that Sam didn't give Ellen grapes.,,,1,NEG,2,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave ELLEN bananas.,Sam didn't give Ellen oranges.,B,0,A,,,,,,,1,NEG,2,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave ROB grapes.,Sam didn't give Rob apples.,B,0,A,,,,,,,1,NEG,2,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave BILL apples.,Sam also gave Ellen apples.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave ELLEN apples.,Sam also gave Sue apples.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave ELLEN oranges.,Sam also gave Rob oranges.,C,0,B,,,,"S2 is independent of S1 because it introduces a new person, Rob, who is not mentioned in S1.",,,1,POS,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave SUE apples.,Sam also gave Bill apples.,C,0,B,,,,,,,1,POS,1,f11,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave BILL grapes.,Sam also gave Bill apples.,B,1,B,,,,,,,1,POS,2,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave ROB apples.,Sam also gave Rob bananas.,B,1,B,,,,,,,1,POS,2,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave ROB grapes.,Sam also gave Rob bananas.,B,1,B,,,,,,,1,POS,2,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave Rob ORANGES.,Sam didn't give Ellen oranges.,B,1,B,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Sue APPLES.,Sam didn't give Rob apples.,B,1,B,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Tom APPLES.,Sam didn't give Bill apples.,B,1,B,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Tom BANANAS.,Sam didn't give Sue bananas.,B,1,B,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave Sue APPLES.,Sam didn't give Sue oranges.,A,1,A,,,,,,,2,NEG,2,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Sue BANANAS.,Sam didn't give Sue oranges.,A,1,A,,,,,,,2,NEG,2,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Sue ORANGES.,Sam didn't give Sue bananas.,A,1,A,,,,"Sam only gave Sue oranges, so it is entailed that Sam didn't give Sue bananas.",,,2,NEG,2,f12,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+0,0,Sam only gave Ellen BANANAS.,Sam also gave Tom bananas.,B,1,B,,,,,,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave Ellen ORANGES.,Sam also gave Rob oranges.,B,1,B,,,,"S2 is independent of S1 because it introduces a new subject, Rob, who is not mentioned in S1.",,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave Rob BANANAS.,Sam also gave Ellen bananas.,B,1,B,,,,S2 is independent of S1 because it does not follow logically from the information given in S1.,,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave Tom BANANAS.,Sam also gave Mary bananas.,B,1,B,,,,,,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave Ellen ORANGES.,Sam also gave Ellen apples.,C,0,B,,,,"S2 is independent of S1 because it introduces new information about apples, which is not mentioned in S1.",,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave Rob BANANAS.,Sam also gave Rob oranges.,C,0,B,,,,,,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave Sue ORANGES.,Sam also gave Sue bananas.,C,1,C,,,,"S2 contradicts S1 because it states that Sam gave Sue bananas, which is not mentioned in S1.",,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave Tom APPLES.,Sam also gave Tom bananas.,C,0,B,,,,,,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0

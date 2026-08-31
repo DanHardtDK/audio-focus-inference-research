@@ -1,0 +1,11 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave Bill BANANAS.,Sam also gave Bill grapes.,C,0,B,,,,,,,2,POS,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+1,0,Sam only gave MARY apples.,Sam also gave Ellen apples.,C,0,B,,,,,,,1,POS,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+2,0,Sam only gave Sue APPLES.,Sam also gave Tom apples.,B,1,B,,,,,,,2,POS,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+3,0,Sam only gave BILL grapes.,Sam didn't give Bill oranges.,B,0,A,,,,S2 is entailed by S1 because it is consistent with the information given in S1.,,,1,NEG,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+4,0,Sam only gave BILL apples.,Sam didn't give Bill bananas.,B,1,B,,,,,,,1,NEG,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+5,0,Sam only gave SUE apples.,Sam didn't give Sue bananas.,B,0,A,,,,S2 is entailed by S1 because it is consistent with the information provided in S1.,,,1,NEG,2,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+6,0,Sam only gave ELLEN oranges.,Sam didn't give Tom oranges.,A,1,A,,,,"Sam only gave Ellen oranges, so it's implied that Sam didn't give Tom oranges.",,,1,NEG,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+7,0,Sam only gave TOM apples.,Sam didn't give Mary apples.,A,1,A,,,,Sam only gave Tom apples implies that Sam didn't give Mary apples.,,,1,NEG,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+8,0,Sam only gave Tom APPLES.,Sam also gave Bill apples.,B,1,B,,,,,,,2,POS,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0
+9,0,Sam only gave Sue BANANAS.,Sam didn't give Tom bananas.,B,1,B,,,,,,,2,NEG,1,f7,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220841,,,speaker0

@@ -1,0 +1,23 @@
+=== Log for f8 fold=None fewshot=[] ===
+  [0] Sam only gave Ellen BANANAS. / Sam also gave Rob bananas.
+    pred=B  
+  [1] Sam only gave ROB grapes. / Sam also gave Rob oranges.
+    pred=B  S2 is independent of S1 because it introduces a new piece of information about Sam giving Rob oranges, which is not entailed by the fact that Sam gave Rob grapes.
+  [2] Sam only gave TOM apples. / Sam also gave Bill apples.
+    pred=B  
+  [3] Sam only gave Mary APPLES. / Sam also gave Mary bananas.
+    pred=B  
+  [4] Sam only gave Ellen ORANGES. / Sam also gave Sue oranges.
+    pred=B  
+  [5] Sam only gave Rob ORANGES. / Sam didn't give Rob apples.
+    pred=A  S2 is entailed by S1 because if Sam only gave Rob oranges, then it is true that Sam didn't give Rob apples.
+  [6] Sam only gave Bill BANANAS. / Sam didn't give Ellen bananas.
+    pred=A  Sam only gave Bill bananas implies that Sam didn't give Ellen bananas.
+  [7] Sam only gave Rob BANANAS. / Sam also gave Sue bananas.
+    pred=B  
+  [8] Sam only gave Bill BANANAS. / Sam didn't give Mary bananas.
+    pred=B  
+  [9] Sam only gave Ellen GRAPES. / Sam didn't give Rob grapes.
+    pred=B  
+  f8: 7/10 correct on test items (70.0%)
+  CSV: data/output/qwen2_5_omni_fp16/Task4/f8_inference_audio_qwen_Qwen-Qwen2.5-Omni-7B_SPspeaker0_FS0_20260521_220841.csv

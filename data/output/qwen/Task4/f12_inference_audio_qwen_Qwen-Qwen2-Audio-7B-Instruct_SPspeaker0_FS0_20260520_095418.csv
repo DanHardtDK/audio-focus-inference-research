@@ -1,0 +1,13 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave BILL grapes.,Sam also gave Bill apples.,B,0,C,,,,,,,1,POS,2,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+1,0,Sam only gave ROB apples.,Sam also gave Rob bananas.,B,1,B,,,,,,,1,POS,2,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+2,0,Sam only gave ROB grapes.,Sam also gave Rob bananas.,B,1,B,,,,,,,1,POS,2,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+3,0,Sam only gave Rob ORANGES.,Sam didn't give Ellen oranges.,B,1,B,,,,"The sentence ""Sam only gave Rob oranges"" does not provide any information about whether Sam gave anything to Ellen. Therefore, it is impossible to determine the relationship between what Sam gave to Rob and what he gave to Ellen based on this sentence alone. 
+
+Hence, the answer is unknown (X).",,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+4,0,Sam only gave Sue APPLES.,Sam didn't give Rob apples.,B,0,C,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+5,0,Sam only gave Tom APPLES.,Sam didn't give Bill apples.,B,1,B,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+6,0,Sam only gave Tom BANANAS.,Sam didn't give Sue bananas.,B,0,C,,,,,,,2,NEG,1,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+7,0,Sam only gave Sue APPLES.,Sam didn't give Sue oranges.,A,0,C,,,,,,,2,NEG,2,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+8,0,Sam only gave Sue BANANAS.,Sam didn't give Sue oranges.,A,0,B,,,,,,,2,NEG,2,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0
+9,0,Sam only gave Sue ORANGES.,Sam didn't give Sue bananas.,A,0,C,,,,,,,2,NEG,2,f12,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260520_095418,,,speaker0

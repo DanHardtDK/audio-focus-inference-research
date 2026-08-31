@@ -1,0 +1,11 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave Ellen GRAPES.,Sam also gave Ellen oranges.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+1,0,Sam only gave ELLEN apples.,Sam also gave Rob apples.,C,0,B,,,,,,,1,POS,1,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+2,0,Sam only gave MARY oranges.,Sam didn't give Mary bananas.,B,0,C,,,,,,,1,NEG,2,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+3,0,Sam only gave MARY oranges.,Sam also gave Tom oranges.,C,0,B,,,,,,,1,POS,1,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+4,0,Sam only gave Mary ORANGES.,Sam didn't give Tom oranges.,B,0,C,,,,,,,2,NEG,1,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+5,0,Sam only gave Mary GRAPES.,Sam also gave Mary apples.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+6,0,Sam only gave SUE apples.,Sam also gave Mary apples.,C,0,B,,,,,,,1,POS,1,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+7,0,Sam only gave Bill ORANGES.,Sam also gave Bill bananas.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+8,0,Sam only gave Ellen BANANAS.,Sam also gave Ellen grapes.,C,0,B,,,,,,,2,POS,2,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0
+9,0,Sam only gave Tom BANANAS.,Sam didn't give Tom oranges.,A,0,C,,,,,,,2,NEG,2,f5,audio,qwen,Qwen/Qwen2-Audio-7B-Instruct,20260521_212547,,,speaker0

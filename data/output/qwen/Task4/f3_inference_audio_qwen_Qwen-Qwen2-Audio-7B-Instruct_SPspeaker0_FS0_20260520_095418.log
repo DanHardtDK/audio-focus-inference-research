@@ -1,0 +1,23 @@
+=== Log for f3 fold=None fewshot=[] ===
+  [0] Sam only gave ELLEN grapes. / Sam didn't give Tom grapes.
+    pred=C  
+  [1] Sam only gave Ellen APPLES. / Sam didn't give Ellen apples.
+    pred=C  
+  [2] Sam only gave Rob GRAPES. / Sam also gave Ellen grapes.
+    pred=C  
+  [3] Sam only gave Rob APPLES. / Sam also gave Ellen apples.
+    pred=C  
+  [4] Sam only gave Ellen APPLES. / Sam didn't give Bill apples.
+    pred=C  
+  [5] Sam only gave Rob APPLES. / Sam didn't give Sue apples.
+    pred=C  
+  [6] Sam only gave ROB oranges. / Sam also gave Rob apples.
+    pred=B  
+  [7] Sam only gave ROB apples. / Sam also gave Rob grapes.
+    pred=B  
+  [8] Sam only gave ROB bananas. / Sam didn't give Ellen bananas.
+    pred=C  
+  [9] Sam only gave Mary APPLES. / Sam also gave Ellen apples.
+    pred=B  
+  f3: 4/10 correct on test items (40.0%)
+  CSV: data\output\qwen\f3_inference_audio_qwen_Qwen-Qwen2-Audio-7B-Instruct_SPspeaker0_FS0_20260520_095418.csv

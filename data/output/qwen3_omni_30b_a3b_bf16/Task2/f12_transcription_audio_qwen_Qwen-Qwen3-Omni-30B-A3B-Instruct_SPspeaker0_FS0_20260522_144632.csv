@@ -1,0 +1,11 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave BILL grapes.,Sam also gave Bill apples.,B,,,1,Sam only gave BILL grapes.,,,0.0,,1,POS,2,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+1,0,Sam only gave ROB apples.,Sam also gave Rob bananas.,B,,,1,Sam only gave ROB apples.,,,0.0,,1,POS,2,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+2,0,Sam only gave ROB grapes.,Sam also gave Rob bananas.,B,,,1,Sam only gave ROB grapes.,,,0.0,,1,POS,2,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+3,0,Sam only gave Rob ORANGES.,Sam didn't give Ellen oranges.,B,,,0,Sam only gave ROB oranges.,,,0.0,,2,NEG,1,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+4,0,Sam only gave Sue APPLES.,Sam didn't give Rob apples.,B,,,0,Sam only gave SUE apples.,,,0.0,,2,NEG,1,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+5,0,Sam only gave Tom APPLES.,Sam didn't give Bill apples.,B,,,0,Sam only gave TOM apples.,,,0.0,,2,NEG,1,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+6,0,Sam only gave Tom BANANAS.,Sam didn't give Sue bananas.,B,,,0,Sam only gave TOM bananas.,,,0.0,,2,NEG,1,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+7,0,Sam only gave Sue APPLES.,Sam didn't give Sue oranges.,A,,,1,Sam only gave Sue APPLES.,,,0.0,,2,NEG,2,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+8,0,Sam only gave Sue BANANAS.,Sam didn't give Sue oranges.,A,,,1,Sam only gave Sue BANANAS.,,,0.0,,2,NEG,2,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
+9,0,Sam only gave Sue ORANGES.,Sam didn't give Sue bananas.,A,,,1,Sam only gave Sue ORANGES.,,,0.0,,2,NEG,2,f12,audio,qwen,Qwen/Qwen3-Omni-30B-A3B-Instruct,20260522_144632,,,speaker0
