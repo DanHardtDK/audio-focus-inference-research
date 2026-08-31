@@ -1,0 +1,119 @@
+=== Log for f13 (backend=openai, model=gpt-audio, run=20260503_141253, fold=1) ===
+
+--- Attempt 1 for f13_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Ellen bananas.
+B
+Because...
+
+Example 2
+S1: Sam only gave Tom BANANAS.
+S2: Sam also gave Mary bananas.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, "Sam only gave Ellen bananas," it focuses on Ellen as the exclusive recipient. In S2, "Sam also gave Tom bananas," this contradicts the exclusivity implied in S1, since another person (Tom) also received bananas.
+
+1  
+C  
+Because in S1, "Sam only gave Ellen oranges," the prosodic focus on Ellen indicates that Ellen is the only person receiving oranges. In S2, "Sam also gave Rob oranges," this contradicts the exclusivity of S1, as Rob also receives oranges.
+
+4  
+B  
+Because in S1, "Sam only gave Ellen oranges," the focus is on Ellen as the sole recipient of oranges. In S2, "Sam also gave Ellen apples," there is no contradiction since the statement adds information about what Ellen also received. They are independent as the fruit type is not restricted by S1.
+
+5  
+A  
+Because in S1, "Sam only gave Rob bananas," it focuses on Rob as the sole recipient of bananas. In S2, "Sam also gave Rob oranges," this is entailed because the exclusivity applies to the kind of item (bananas) and S2 states another kind of item (oranges), which does not contradict S1.
+
+6  
+A  
+Because in S1, "Sam only gave Sue oranges," Sue is the exclusive recipient of oranges. In S2, "Sam also gave Sue bananas," this is entailed as S1 does not restrict other items being given to Sue, only that oranges were exclusive to Sue.
+
+7  
+A  
+Because in S1, "Sam only gave Tom apples," it focuses on apples as the exclusive item given to Tom. In S2, "Sam also gave Tom bananas," this is entailed because S1 does not exclude the possibility of giving other items (like bananas) to Tom as well.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13_cv1: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing f13_cv1
+  Results saved to: data/output/f13_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.csv
+  Log saved to:     data/output/f13_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.log
+

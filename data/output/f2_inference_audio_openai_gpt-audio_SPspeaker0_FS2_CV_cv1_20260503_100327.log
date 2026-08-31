@@ -1,0 +1,131 @@
+=== Log for f2 (backend=openai, model=gpt-audio, run=20260503_100327, fold=1) ===
+
+--- Attempt 1 for f2_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 states that Sam only gave Rob bananas and not Tom, while S2 states that Sam only gave Tom grapes and not oranges. The specific focus in S1 on "Rob" as the sole recipient of bananas contradicts the second sentence in S2, which shifts the recipient to Tom. The two scenarios contradict each other since they specify the exclusivity of different recipients and items.
+
+1  
+C  
+Because S1 states that Sam only gave Tom grapes and not oranges, while S2 says Sam only gave Sue oranges and also apples. The focus in S1 on "Tom" getting only grapes contrasts with S2 stating that Sue got oranges and apples, thus contradicting the scope and recipient of the gifts. 
+
+4  
+C  
+Because S1 states that Sam only gave Sue bananas and not Rob, and S2 states that Sam only gave Tom oranges and not bananas. The exclusivity and focus on Sue in the first sentence contradicts the focus on Tom and a different item set in the second sentence.
+
+5  
+C  
+Because S1 states that Sam only gave Tom oranges and not bananas, while S2 states Sam only gave Sue apples and not oranges. The prosodic focus here changes the recipient and excludes different sets of fruits, leading to a contradiction between the two statements.
+
+6  
+C  
+Because S1 states that Sam only gave Sue apples and not oranges, while S2 says Sam only gave Sue grapes and not apples. The focus on apples (excluded in the second) versus only apples (included in the first) creates a direct contradiction.
+
+7  
+C  
+Because S1 states that Sam only gave Sue grapes and not apples, while S2 states that Sam only gave Ellen oranges and also bananas. The prosodic focus on Sue and the fruit set in S1 contradicts S2’s mention of Ellen and a different set of fruits, making the second sentence contradict the first.
+
+8  
+C  
+Because S1 states that Sam only gave Ellen oranges and also bananas, while S2 states that Sam only gave Mary grapes and not apples. The prosodic focus on Ellen’s oranges and bananas in S1 contradicts S2, which specifies Mary as the recipient of different fruit, creating a contradiction.
+
+9  
+C  
+Because S1 states that Sam only gave Mary grapes and not apples, while S2 states that Sam only gave Bill oranges and also gave Mary oranges. The prosodic focus on Mary’s grapes in S1 contradicts S2 where Mary gets oranges, resulting in a contradiction.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f2_cv1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f2_cv1
+  Results saved to: data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100327.csv
+  Log saved to:     data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv1_20260503_100327.log
+

@@ -1,0 +1,161 @@
+=== Log for ns2 (backend=openai, model=gpt-5, run=20260519_150444, fold=) ===
+
+--- Attempt 1 for ns2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+The prosodically focused word in S1 is marked with UPPERCASE. Use this focus marking to determine the correct inference.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+---------------------------------------------------------------
+FOCUS GUIDANCE
+---------------------------------------------------------------
+The classification depends on the focused element in S1, because of
+the presence of 'only', in the following way: 'Sam only gave TOM
+oranges' entails that Sam did not give anyone else oranges. On the
+other hand, 'Sam only gave Tom ORANGES' entails that Sam didn't give
+anything else to Tom.
+
+You must follow this logic in determining the inference. You must
+also refer to this logic in producing the explanation.
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave BILL grapes.
+S2: Sam didn't give Bill oranges.
+A
+Because...
+
+1
+S1: Sam only gave Ellen GRAPES.
+S2: Sam also gave Ellen oranges.
+A
+Because...
+
+2
+S1: Sam only gave BILL bananas.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+3
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Sue oranges.
+A
+Because...
+
+4
+S1: Sam only gave TOM apples.
+S2: Sam also gave Bill apples.
+A
+Because...
+
+5
+S1: Sam only gave Bill BANANAS.
+S2: Sam didn't give Bill grapes.
+A
+Because...
+
+6
+S1: Sam only gave ELLEN bananas.
+S2: Sam also gave Ellen grapes.
+A
+Because...
+
+7
+S1: Sam only gave Ellen GRAPES.
+S2: Sam didn't give Rob grapes.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave BILL grapes.
+S2: Sam didn't give Bill oranges.
+B
+Because with 'only' focused on BILL, S1 says no one but Bill got grapes; it says nothing about what else Bill received, so S2 is not determined.
+
+1
+S1: Sam only gave Ellen GRAPES.
+S2: Sam also gave Ellen oranges.
+C
+Because with 'only' focused on GRAPES, S1 says Ellen got nothing but grapes; S2 says she also got oranges, which contradicts this.
+
+2
+S1: Sam only gave BILL bananas.
+S2: Sam didn't give Tom bananas.
+A
+Because with 'only' focused on BILL, S1 says no one but Bill got bananas; therefore Tom didn’t get bananas.
+
+3
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Sue oranges.
+B
+Because with 'only' focused on ORANGES, S1 restricts what Ellen got, not who else got oranges; S2 is compatible and not entailed.
+
+4
+S1: Sam only gave TOM apples.
+S2: Sam also gave Bill apples.
+C
+Because with 'only' focused on TOM, S1 says no one but Tom got apples; S2 claims Bill did too, contradicting this.
+
+5
+S1: Sam only gave Bill BANANAS.
+S2: Sam didn't give Bill grapes.
+A
+Because with 'only' focused on BANANAS, S1 says Bill got nothing but bananas; hence he didn’t get grapes.
+
+6
+S1: Sam only gave ELLEN bananas.
+S2: Sam also gave Ellen grapes.
+B
+Because with 'only' focused on ELLEN, S1 says no one but Ellen got bananas; it doesn’t prohibit giving Ellen other items, so S2 is independent.
+
+7
+S1: Sam only gave Ellen GRAPES.
+S2: Sam didn't give Rob grapes.
+B
+Because with 'only' focused on GRAPES, S1 limits Ellen’s items to grapes; it says nothing about whether others (like Rob) got grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing ns2
+  Results saved to: data/output/ns2_both_oracle_openai_gpt-5_FS0_20260519_150444.csv
+  Log saved to:     data/output/ns2_both_oracle_openai_gpt-5_FS0_20260519_150444.log
+

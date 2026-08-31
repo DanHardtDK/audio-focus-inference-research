@@ -1,0 +1,138 @@
+=== Log for f1 (backend=openai, model=gpt-4o-audio-preview, run=20260428_152454, fold=) ===
+
+--- Attempt 1 for f1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because "Sam only gave Bill grapes" does not imply anything about giving grapes to Sue. The second sentence states that he gave grapes to Sue as well, which is new information not entailed or contradicted by the first.
+
+1  
+C  
+Because "Sam only gave Sue oranges" implies he didn’t give oranges to anyone else. The second sentence says he also gave oranges to Rob, which contradicts the first sentence.
+
+2  
+A  
+Because "Sam only gave Sue grapes" focuses on Sue as the only recipient of grapes. The second sentence, stating Sam didn’t give Ellen grapes, is consistent with that.
+
+3  
+A  
+Because "Sam only gave Tom apples" means Tom is the only one who received apples. The fact that Sam didn’t give Tom grapes does not contradict or add to that specific focus, so it is entailed.
+
+4  
+C  
+Because "Sam only gave Rob oranges" means he exclusively gave Rob oranges. The second sentence says Sam also gave Rob apples, which contradicts the exclusivity implied by the first sentence.
+
+5  
+A  
+Because "Sam only gave Sue grapes" means Sue is the sole recipient of grapes. The second sentence, which states Sam didn’t give Tom grapes, is consistent with that focus.
+
+6  
+B  
+Because "Sam only gave Ellen bananas" means Ellen is the only recipient of bananas. However, the second sentence states Sam also gave Mary bananas. This is new information unrelated to Ellen’s exclusive banana allocation and thus is independent.
+
+7  
+A  
+Because "Sam only gave Rob bananas" focuses on Rob as the sole recipient of bananas. The second sentence says Sam didn’t give Rob oranges, which aligns with the idea that Rob only received bananas, not other fruits.
+
+8  
+A  
+Because "Sam only gave Mary bananas" means Mary is the only recipient of bananas. The second sentence, saying Sam also gave Mary apples, does not contradict or alter that specific focus on bananas.
+
+9  
+A  
+Because "Sam only gave Sue oranges" means Sue is the only recipient of oranges. The second sentence, stating Sam didn’t give Rob oranges, does not contradict that focus and is consistent with it.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f1: 10 parsed blocks; 10/10 indices in-range; all 10 required test indices present.
+
+✓ Finished processing f1
+  Results saved to: data/output/f1_inference_audio_openai_gpt-4o-audio-preview_FS0_20260428_152454.csv
+  Log saved to:     data/output/f1_inference_audio_openai_gpt-4o-audio-preview_FS0_20260428_152454.log
+

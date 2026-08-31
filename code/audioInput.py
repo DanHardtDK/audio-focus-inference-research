@@ -23,7 +23,6 @@ import re
 from datetime import datetime
 
 import openai
-import google.generativeai as genai
 from openai import OpenAI
 
 # ---------------------------------------------------------------
@@ -66,6 +65,7 @@ CSV_COLUMNS = [
     "model_name",
     "run_timestamp_utc",
     "response_id",
+    "resolved_model",
 
     # NEW (optional): which CV fold produced this row (empty string if not --cv)
     "cv_fold",
@@ -209,6 +209,20 @@ Your task is to classify S2 relative to S1:
    C = contradicted.
 """
 
+TASK_BLOCK_ORACLE = """
+You are given text for S1 and S2.
+The prosodically focused word in S1 is marked with UPPERCASE. Use this focus marking to determine the correct inference.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+"""
+
+TASK_BLOCK_TEXT_FOCUS = """
+You are given text for S1 and S2.
+Your task is to identify the prosodically focused word in S1 and mark it with UPPERCASE. All other words must be in normal casing.
+"""
+
 FOCUS_HINT_TEXT = """
 ---------------------------------------------------------------
 FOCUS GUIDANCE
@@ -240,6 +254,10 @@ S2: ..."""
 
 def build_base_prompt(task_block: str, fewshot_text: str, focus_block: str, new_item_block: str,
                       output_format: str = OUTPUT_FORMAT_BOTH) -> str:
+    sep = "---------------------------------------------------------------"
+
+    pre = f"{fewshot_text}\n{sep}\n" if fewshot_text else f"{sep}\n"
+
     return f"""
 You are performing a semantic classification task.
 
@@ -253,11 +271,8 @@ Your output must follow this structure:
 
 Do not add meta-comments or tool-use descriptions.
 
-{fewshot_text}
-
----------------------------------------------------------------
-NEW INPUT EXAMPLES
----------------------------------------------------------------
+{pre}TEST ITEMS
+{sep}
 <BEGIN_NEW>
 {new_item_block}
 <END_NEW>
@@ -266,23 +281,32 @@ Begin now.
 """
 
 
-def make_new_item_block_audio(examples):
+def make_new_item_block_audio(examples, fewshot_indices=None):
+    fewshot_set = set(fewshot_indices or [])
     block = ""
     for ex in examples:
+        if ex["idx"] in fewshot_set:
+            continue
         block += f"{ex['idx']}\nS1:\nS2:\nA\nBecause...\n\n"
     return block
 
 
-def make_new_item_block_inference(examples):
+def make_new_item_block_inference(examples, fewshot_indices=None):
+    fewshot_set = set(fewshot_indices or [])
     block = ""
     for ex in examples:
+        if ex["idx"] in fewshot_set:
+            continue
         block += f"{ex['idx']}\nA\nBecause...\n\n"
     return block
 
 
-def make_new_item_block_transcription(examples):
+def make_new_item_block_transcription(examples, fewshot_indices=None):
+    fewshot_set = set(fewshot_indices or [])
     block = ""
     for ex in examples:
+        if ex["idx"] in fewshot_set:
+            continue
         block += f"{ex['idx']}\nS1:\nS2:\n\n"
     return block
 
@@ -295,65 +319,53 @@ def make_new_item_block_text(examples, clean=False):
     return block
 
 
-def make_fewshot_item_block(fewshot_examples, total_num: int, task: str = "both"):
-    """
-    Few-shot items are *task items* with an answer shown.
-    We still require the model to answer them (but coverage validation treats them as optional).
+def make_new_item_block_text_focus(examples):
+    block = ""
+    for ex in examples:
+        S1 = remove_focus_from_S1(ex["S1"])
+        block += f"{ex['idx']}\nS1: {S1}\nS2: {ex['S2']}\n\n"
+    return block
+
+
+def make_fewshot_item_block(fewshot_examples, task: str = "both", style: str = "simple"):
+    """Demonstration examples shown before the test items.
+
+    style only affects the inference task:
+      simple   - label only (no S1/S2 text)
+      compound - S1 uppercase text + label (reveals focus)
     """
     n = len(fewshot_examples)
     if n == 0:
         return ""
 
-    idxs = [ex["idx"] for ex in fewshot_examples]
-    idxs_str = ", ".join(str(i) for i in idxs)
-
-    if task == "transcription":
-        task_reminder = (
-            f"- Transcribe S1 and S2 from the audio\n"
-            f"- Mark the focused element in S1 using UPPERCASE\n"
-        )
-    elif task == "inference":
-        task_reminder = (
-            f"- Provide your own classification (A, B, or C)\n"
-            f"- Provide an explanation\n"
-        )
-    else:
-        task_reminder = (
-            f"- Transcribe S1 and S2 from the audio\n"
-            f"- Mark the focused element in S1 using UPPERCASE\n"
-            f"- Provide your own classification (A, B, or C)\n"
-            f"- Provide an explanation\n"
-        )
-
     block = (
-        f"The following numbered examples ALREADY INCLUDE a correct answer: {idxs_str}\n\n"
-        f"IMPORTANT:\n"
-        f"- These examples are NOT demonstrations.\n"
-        f"- They are full task items, just like the later ones.\n"
-        f"- The presence of an answer does NOT mean you should skip them.\n"
-        f"- You MUST produce a complete output block for EVERY numbered example (0–{total_num-1}).\n\n"
-        f"For each numbered example (0–{total_num-1}), you must:\n"
-        f"{task_reminder}\n"
+        f"The following {n} example{'s' if n > 1 else ''} "
+        f"show{'s' if n == 1 else ''} the correct answer format:\n\n"
     )
 
-    for ex in fewshot_examples:
+    for i, ex in enumerate(fewshot_examples, start=1):
+        block += f"Example {i}\n"
         if task == "transcription":
             block += (
-                f"{ex['idx']}\n"
                 f"S1: {ex['S1']}\n"
                 f"S2: {ex['S2']}\n\n"
             )
         elif task == "inference":
+            if style == "compound":
+                block += (
+                    f"S1: {ex['S1']}\n"
+                    f"S2: {ex['S2']}\n"
+                    f"{ex['A']}\n"
+                    f"Because...\n\n"
+                )
+            else:
+                # simple: label only — showing S1 uppercase would reveal focus
+                block += (
+                    f"{ex['A']}\n"
+                    f"Because...\n\n"
+                )
+        else:  # both
             block += (
-                f"{ex['idx']}\n"
-                f"S1: {ex['S1']}\n"
-                f"S2: {ex['S2']}\n"
-                f"{ex['A']}\n"
-                f"Because...\n\n"
-            )
-        else:
-            block += (
-                f"{ex['idx']}\n"
                 f"S1: {ex['S1']}\n"
                 f"S2: {ex['S2']}\n"
                 f"{ex['A']}\n"
@@ -365,23 +377,50 @@ def make_fewshot_item_block(fewshot_examples, total_num: int, task: str = "both"
 # ---------------------------------------------------------------
 # Model callers
 # ---------------------------------------------------------------
-def call_gemini(prompt, encoded_audio, model_name):
+def call_gemini(prompt, encoded_audio, model_name, thinking_budget=None, thinking_level=None):
     import time
-    from google.api_core.exceptions import ResourceExhausted
-    model = genai.GenerativeModel(model_name)
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+    audio_bytes = base64.b64decode(encoded_audio)
     contents = [
-        {"text": prompt},
-        {"mime_type": "audio/wav", "data": base64.b64decode(encoded_audio)},
+        types.Part(text=prompt),
+        types.Part(inline_data=types.Blob(mime_type="audio/wav", data=audio_bytes)),
     ]
+
+    thinking_config = None
+    if thinking_budget is not None:
+        thinking_config = types.ThinkingConfig(thinking_budget=thinking_budget)
+    elif thinking_level is not None:
+        thinking_config = types.ThinkingConfig(thinking_level=thinking_level)
+
+    config = types.GenerateContentConfig(
+        temperature=0.0,
+        thinking_config=thinking_config,
+    )
+
     for attempt in range(8):
         try:
-            response = model.generate_content(contents, generation_config={"temperature": 0.0})
+            response = client.models.generate_content(
+                model=model_name,
+                contents=contents,
+                config=config,
+            )
             return response.text or ""
-        except ResourceExhausted:
-            wait = 30 * (2 ** attempt)  # 30s, 60s, 120s, 240s …
-            print(f"  ⚠ Gemini 429 rate limit — waiting {wait}s before retry {attempt + 1}/8...")
-            time.sleep(wait)
-    raise RuntimeError(f"Gemini rate limit not resolved after 8 retries for model {model_name}")
+        except Exception as e:
+            msg = str(e).lower()
+            if any(x in msg for x in ("429", "resource exhausted", "quota")):
+                wait = 30 * (2 ** attempt)
+                print(f"  ⚠ Gemini 429 rate limit — waiting {wait}s before retry {attempt + 1}/8...")
+                time.sleep(wait)
+            elif any(x in msg for x in ("504", "deadline", "timeout")):
+                wait = 30 * (2 ** attempt)
+                print(f"  ⚠ Gemini 504 timeout — waiting {wait}s before retry {attempt + 1}/8...")
+                time.sleep(wait)
+            else:
+                raise
+    raise RuntimeError(f"Gemini API not resolved after 8 retries for model {model_name}")
 
 
 client = OpenAI()
@@ -550,14 +589,13 @@ def validate_block_count(output_text, total_num, fewshot_indices, file_id, attem
     Validate model output coverage.
 
     Rules:
-    - Indices come from split_into_blocks() (model's own index).
     - REQUIRED = all indices in 0..total_num-1 except fewshot_indices.
-    - OPTIONAL = fewshot_indices (warn only if missing).
+    - Few-shot items are demonstrations only and must not appear in the output.
+      If the model produces them anyway they are warned about and ignored.
     - Duplicate indices are ALWAYS an error.
-    - Extra indices outside 0..total_num-1 are allowed (warn), ignored for coverage.
 
     Returns:
-      True if coverage is acceptable, else False.
+      True if all required test indices are present, else False.
     """
     blocks = split_into_blocks(output_text, task=task)
 
@@ -583,13 +621,16 @@ def validate_block_count(output_text, total_num, fewshot_indices, file_id, attem
         return False
 
     model_index_set = set(model_indices)
-
-    expected_all = set(range(0, total_num))
     fewshot_set = set(fewshot_indices)
-    required_test = expected_all - fewshot_set
-    optional_fs = fewshot_set
+    required_test = set(range(0, total_num)) - fewshot_set
 
-    extra = model_index_set - expected_all
+    # Warn if model echoed any few-shot demonstration items
+    echoed_fs = model_index_set & fewshot_set
+    if echoed_fs:
+        print(f"⚠️ WARNING [attempt {attempt}] for {file_id}: model produced output for demonstration items {sorted(echoed_fs)} — ignored.", file=log_f)
+
+    # Warn on indices completely outside expected range (not few-shot, not test)
+    extra = model_index_set - set(range(0, total_num))
     if extra:
         print(f"⚠️ WARNING [attempt {attempt}] for {file_id}: extra indices outside 0..{total_num-1}: {sorted(extra)}", file=log_f)
 
@@ -599,15 +640,9 @@ def validate_block_count(output_text, total_num, fewshot_indices, file_id, attem
         print(f"   Model indices found: {sorted(model_indices)}", file=log_f)
         return False
 
-    missing_fs = optional_fs - model_index_set
-    if missing_fs:
-        print(f"⚠️ WARNING [attempt {attempt}] for {file_id}: missing few-shot indices (optional): {sorted(missing_fs)}", file=log_f)
-
-    num_in_range = len(model_index_set & expected_all)
     print(
         f"✓ Output coverage OK [attempt {attempt}] for {file_id}: "
-        f"{len(blocks)} parsed blocks; {num_in_range}/{total_num} indices in-range; "
-        f"all {len(required_test)} required test indices present.",
+        f"{len(blocks)} parsed blocks; all {len(required_test)} required test indices present.",
         file=log_f,
     )
     return True
@@ -684,6 +719,8 @@ def evaluate(parsed_examples, fewshot_indices_set, task="both"):
 
     for ex in parsed_examples:
         dataset_index = ex["index"]
+        if dataset_index in fewshot_indices_set:
+            continue  # demonstrations are never scored
 
         true_S1 = ex["S1_true"].strip()
         true_S2 = ex["S2_true"].strip()
@@ -782,9 +819,9 @@ def main():
 
     parser.add_argument(
         "--mode",
-        choices=["audio", "baseline", "oracle"],
+        choices=["audio", "baseline", "oracle", "text_focus"],
         default="audio",
-        help="Experiment mode: audio (default), baseline (no accent), oracle (uppercase accent).",
+        help="Experiment mode: audio (default), baseline (no accent), oracle (uppercase accent), text_focus (focus ID from text).",
     )
 
     parser.add_argument("--wav-dir", default="data/speakers/speaker0/raw",
@@ -801,18 +838,32 @@ def main():
         help="Which task to run: both (default), inference only, or transcription only.",
     )
     parser.add_argument("--use_focus_hint", action="store_true")
+    parser.add_argument("--thinking-budget", type=int, default=None, dest="thinking_budget",
+                        help="Gemini thinking token budget (0=off, omit=model default). For gemini-2.5-flash.")
+    parser.add_argument("--thinking-level", choices=["low", "medium", "high"], default=None, dest="thinking_level",
+                        help="Gemini thinking level (low/medium/high, omit=model default). For gemini-3.1-pro-preview.")
     parser.add_argument(
         "--cv",
         action="store_true",
         help="Enable n-fold rotation of few-shot indices (requires total_num divisible by fewshot_num).",
     )
+    parser.add_argument(
+        "--fewshot-style",
+        choices=["simple", "compound"],
+        default="simple",
+        dest="fewshot_style",
+        help="Few-shot example style for inference task: simple (label only) or compound (S1 text + label).",
+    )
 
     args = parser.parse_args()
 
+    if args.thinking_budget is not None and args.thinking_level is not None:
+        parser.error("--thinking-budget and --thinking-level cannot be used together.")
+    if (args.thinking_budget is not None or args.thinking_level is not None) and args.backend != "gemini":
+        parser.error("--thinking-budget and --thinking-level are only valid with --backend gemini.")
+
     # API keys
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    if args.backend == "gemini":
-        genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
     os.makedirs("data/output", exist_ok=True)
 
@@ -853,8 +904,15 @@ def main():
             FH_TEXT = "_focusHint" if args.use_focus_hint else ""
             CV_TEXT = "_CV" if (args.cv and args.fewshot_num > 0) else ""
             SP_TEXT = f"_SP{args.speaker}" if args.speaker else ""
+            STYLE_TEXT = f"_{args.fewshot_style}" if args.fewshot_num > 0 else ""
+            if args.thinking_budget is not None:
+                THINK_TEXT = f"_TB{args.thinking_budget}"
+            elif args.thinking_level is not None:
+                THINK_TEXT = f"_TL{args.thinking_level}"
+            else:
+                THINK_TEXT = ""
 
-            runID = f"{args.task}_{args.mode}_{args.backend}_{args.model}{SP_TEXT}_FS{args.fewshot_num}{FH_TEXT}{CV_TEXT}{fold_tag}_{run_timestamp}"
+            runID = f"{args.task}_{args.mode}_{args.backend}_{args.model}{SP_TEXT}_FS{args.fewshot_num}{STYLE_TEXT}{FH_TEXT}{THINK_TEXT}{CV_TEXT}{fold_tag}_{run_timestamp}"
             log_path = f"data/output/{file_id}_{runID}.log"
 
             log_f = open(log_path, "w", encoding="utf-8")
@@ -867,31 +925,31 @@ def main():
             fewshot_set = set(fewshot_indices)
             few_shot = [ex for ex in examples_all if ex["idx"] in fewshot_set]
 
-            focus_block = FOCUS_HINT_TEXT if (args.mode == "audio" and args.use_focus_hint) else ""
+            focus_block = FOCUS_HINT_TEXT if (args.mode == "oracle" or (args.mode == "audio" and args.use_focus_hint)) else ""
 
             if args.mode == "audio":
                 if args.task == "inference":
                     prompt = build_base_prompt(
                         TASK_BLOCK_INFERENCE,
-                        make_fewshot_item_block(few_shot, total_num=total_num, task="inference"),
+                        make_fewshot_item_block(few_shot, task="inference", style=args.fewshot_style),
                         focus_block,
-                        make_new_item_block_inference(examples_all),
+                        make_new_item_block_inference(examples_all, fewshot_indices=fewshot_indices),
                         output_format=OUTPUT_FORMAT_INFERENCE,
                     )
                 elif args.task == "transcription":
                     prompt = build_base_prompt(
                         TASK_BLOCK_TRANSCRIPTION,
-                        make_fewshot_item_block(few_shot, total_num=total_num, task="transcription"),
+                        make_fewshot_item_block(few_shot, task="transcription"),
                         "",
-                        make_new_item_block_transcription(examples_all),
+                        make_new_item_block_transcription(examples_all, fewshot_indices=fewshot_indices),
                         output_format=OUTPUT_FORMAT_TRANSCRIPTION,
                     )
                 else:  # both
                     prompt = build_base_prompt(
                         TASK_BLOCK_AUDIO,
-                        make_fewshot_item_block(few_shot, total_num=total_num, task="both"),
+                        make_fewshot_item_block(few_shot, task="both"),
                         focus_block,
-                        make_new_item_block_audio(examples_all),
+                        make_new_item_block_audio(examples_all, fewshot_indices=fewshot_indices),
                         output_format=OUTPUT_FORMAT_BOTH,
                     )
             elif args.mode == "baseline":
@@ -903,10 +961,18 @@ def main():
                 )
             elif args.mode == "oracle":
                 prompt = build_base_prompt(
-                    TASK_BLOCK_TEXT,
+                    TASK_BLOCK_ORACLE,
                     "",
-                    "",
+                    focus_block,
                     make_new_item_block_text(examples_all, clean=False),
+                )
+            elif args.mode == "text_focus":
+                prompt = build_base_prompt(
+                    TASK_BLOCK_TEXT_FOCUS,
+                    "",
+                    "",
+                    make_new_item_block_text_focus(examples_all),
+                    output_format=OUTPUT_FORMAT_TRANSCRIPTION,
                 )
             else:
                 raise ValueError(f"Unknown mode: {args.mode}")
@@ -930,10 +996,17 @@ def main():
                         output_text = extract_output_text(completion)
                     else:
                         completion = None
-                        output_text = call_gemini(prompt, encoded_audio, args.model)
+                        output_text = call_gemini(prompt, encoded_audio, args.model,
+                                                  thinking_budget=args.thinking_budget,
+                                                  thinking_level=args.thinking_level)
                 else:
                     completion = None
                     output_text = run_text_model(prompt, args.model)
+
+                # Log resolved model version (OpenAI returns this in completion.model)
+                resolved = getattr(completion, "model", None) if completion else None
+                if resolved and resolved != args.model:
+                    print(f"\n--- Resolved model: {resolved} ---\n", file=log_f)
 
                 # Log raw output
                 print("\n--- Raw Model Output ---\n", file=log_f)
@@ -981,6 +1054,7 @@ def main():
                 "model_name": args.model,
                 "run_timestamp_utc": run_timestamp,
                 "response_id": getattr(completion, "id", "") if completion else "",
+                "resolved_model": getattr(completion, "model", "") if completion else "",
                 "cv_fold": cv_label,
                 "speaker": args.speaker,
             }
@@ -1012,9 +1086,16 @@ def main():
         if args.speaker:
             parts.append(f"SP{args.speaker}")
         parts.append(f"FS{args.fewshot_num}")
+        if args.fewshot_num > 0:
+            parts.append(args.fewshot_style)
 
         if args.use_focus_hint:
             parts.append("FH")
+
+        if args.thinking_budget is not None:
+            parts.append(f"TB{args.thinking_budget}")
+        elif args.thinking_level is not None:
+            parts.append(f"TL{args.thinking_level}")
 
         if args.cv and args.fewshot_num > 0:
             parts.append("CV")

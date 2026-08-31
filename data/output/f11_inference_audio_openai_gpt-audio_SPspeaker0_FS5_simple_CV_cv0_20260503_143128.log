@@ -1,0 +1,119 @@
+=== Log for f11 (backend=openai, model=gpt-audio, run=20260503_143128, fold=0) ===
+
+--- Attempt 1 for f11_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+A
+Because...
+
+Example 3
+A
+Because...
+
+Example 4
+B
+Because...
+
+Example 5
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5
+A
+Because the prosodic focus in S1 is on "Rob" in "Sam only gave ROB oranges," emphasizing that Rob and not someone else got oranges. S2 states "Sam didn't give TOM oranges," which aligns with the idea that the only person who got oranges was Rob, and Tom did not. This is an entailment.
+
+6
+A
+Because the prosodic focus in S1 is on "Sue" in "Sam only gave SUE grapes," meaning Sue exclusively was given grapes. S2 says "Sam didn't give BILL grapes," which is logically entailed by S1, as Sue is the only recipient of grapes, and Bill is not.
+
+7
+A
+Because the prosodic focus in S1 is on "Sue" in "Sam only gave SUE oranges," conveying that Sue exclusively received oranges. S2 states "Sam didn't give MARY oranges," which is entailed by S1, as it must be true that no one but Sue received oranges.
+
+8
+A
+Because the prosodic focus in S1 is on "bananas" in "Sam only gave Ellen BANANAS," indicating that bananas are the sole fruit Ellen received. S2 says "Sam didn't give Ellen GRAPES," which directly follows from S1 since no other fruit besides bananas were given to Ellen.
+
+9
+A
+Because the prosodic focus in S1 is on "oranges" in "Sam only gave Ellen ORANGES," meaning that oranges were exclusively given to Ellen. S2 states "Sam didn't give Ellen APPLES," which is entailed by S1 as no apples were given to Ellen.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f11_cv0
+  Results saved to: data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.csv
+  Log saved to:     data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.log
+

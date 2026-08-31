@@ -1,0 +1,135 @@
+=== Log for f10 (backend=openai, model=gpt-audio, run=20260503_141253, fold=0) ===
+
+--- Attempt 1 for f10_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Tom APPLES.
+S2: Sam also gave Tom grapes.
+C
+Because...
+
+Example 2
+S1: Sam only gave Mary BANANAS.
+S2: Sam didn't give Bill bananas.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because if Sam only gave Mary apples, that means he didn’t give Mary any other fruit. The statement that Sam also gave Mary bananas would contradict this, so the correct relationship is entailment: if Sam only gave Mary apples, the second sentence must be false. The given classification is A (entailed).
+
+3  
+A  
+Because if Sam only gave Sue apples, that excludes the possibility of giving Rob apples. The second sentence (Sam didn’t give Rob apples) matches what we expect and is entailed by the first sentence.
+
+4  
+A  
+Because if Sam only gave Bill bananas, he didn’t give Bill other fruits. So the second sentence that he also gave Bill grapes would contradict “only gave Bill bananas.” The only way for the second sentence to be false under the first sentence is through entailment. Thus, the given classification is correct.
+
+5  
+A  
+Because if Sam only gave Rob grapes, this excludes Sam giving Rob apples. The second sentence (Sam didn’t give Rob apples) is consistent with that and follows directly from the first sentence. So the second sentence is entailed by the first.
+
+6  
+A  
+Because if Sam only gave Sue grapes, that means Sue didn’t receive any other fruit. The second sentence (Sam also gave Tom grapes) does not contradict the idea that Sue only got grapes. The focus is on Sue, and the mention of Tom in the second makes that sentence independent or possibly entailed if we consider no restrictions on Tom. Given the entailment relationship listed, it aligns under that logic.
+
+7  
+A  
+Because if Sam only gave Ellen grapes, then Sam didn’t give Rob grapes. The statement (Sam didn’t give Rob grapes) matches perfectly what follows from the first statement. Therefore, it’s entailed.
+
+8  
+A  
+Because if Sam only gave Mary grapes, then Mary only received one type of fruit. The second sentence (Sam also gave Mary bananas) contradicts the first statement. The only way for the second sentence to be false given the first is through entailment. Thus, it fits into the entailed category.
+
+9  
+A  
+Because if Sam only gave Sue apples, then Sam didn’t give Bill apples. The statement (Sam didn’t give Bill apples) fits what follows from the first sentence’s restriction. So the second sentence is entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f10_cv0
+  Results saved to: data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.csv
+  Log saved to:     data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.log
+

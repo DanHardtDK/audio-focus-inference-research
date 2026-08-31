@@ -1,0 +1,119 @@
+=== Log for ns2 (backend=openai, model=gpt-audio, run=20260503_142342, fold=2) ===
+
+--- Attempt 1 for ns2_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave TOM apples.
+S2: Sam also gave Bill apples.
+C
+Because...
+
+Example 2
+S1: Sam only gave Bill BANANAS.
+S2: Sam didn't give Bill grapes.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+A  
+Because if Sam only gave Bill grapes, it follows that Sam didn’t give Bill oranges.  
+
+1  
+C  
+Because if Sam only gave Ellen grapes, it contradicts that Sam also gave Ellen oranges.  
+
+2  
+C  
+Because if Sam only gave Bill bananas, it contradicts that Sam didn’t give Tom bananas.  
+
+3  
+B  
+Because saying Sam only gave Ellen oranges is independent of saying Sam also gave Sue oranges.  
+
+6  
+C  
+Because if Sam only gave Tom apples, it contradicts that Sam also gave Bill apples.  
+
+7  
+C  
+Because if Sam only gave Bill bananas, it contradicts that Sam didn’t give Bill grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv2: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv2
+  Results saved to: data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker1_FS2_compound_CV_cv2_20260503_142342.csv
+  Log saved to:     data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker1_FS2_compound_CV_cv2_20260503_142342.log
+

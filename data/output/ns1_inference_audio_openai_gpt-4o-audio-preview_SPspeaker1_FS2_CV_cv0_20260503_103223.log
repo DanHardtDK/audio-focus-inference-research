@@ -1,0 +1,115 @@
+=== Log for ns1 (backend=openai, model=gpt-4o-audio-preview, run=20260503_103223, fold=0) ===
+
+--- Attempt 1 for ns1_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because S2 states that Sam also gave Sue grapes. The prosodic focus in S1 ("Sam only gave Bill grapes") means that Bill exclusively got grapes, but it doesn't exclude that others may get grapes too. Giving Sue grapes doesn't contradict S1, and it logically follows that others can also receive grapes.  
+
+3  
+A  
+Because S2 says Sam only gave Sue oranges. The prosodic focus in S1 on "Bill" means Bill only got grapes, not other fruits. S2's statement about Sue getting only oranges is about a different person and different fruit, so it fits within the information and does not contradict S1.  
+
+4  
+A  
+Because S2 says Sam didn’t give Rob oranges. The prosodic focus in S1 is on Bill and grapes, so the statement that Sam didn’t give Rob oranges doesn’t contradict or change that fact. It’s consistent and adds more detail about what Rob did not receive.  
+
+5  
+A  
+Because S2 states that Sam only gave Rob grapes. The prosodic focus in S1 is on Bill, and it only fixes what Bill received. Saying that Rob only got grapes too is fully consistent with that focus and does not contradict it.  
+
+6  
+A  
+Because S2 says Sam also gave Rob oranges. The prosodic focus of S1 is on Bill and grapes, so this does not contradict S1. It simply adds that another person, Rob, also received oranges.  
+
+7  
+A  
+Because S2 states that Sam only gave Tom oranges. The prosodic focus in S1 is that Bill only got grapes. This means that Bill specifically didn’t receive oranges, but it doesn’t restrict Tom’s case. Saying Tom only got oranges is consistent with the focus on Bill’s grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1_cv0: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns1_cv0
+  Results saved to: data/output/ns1_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS2_CV_cv0_20260503_103223.csv
+  Log saved to:     data/output/ns1_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS2_CV_cv0_20260503_103223.log
+

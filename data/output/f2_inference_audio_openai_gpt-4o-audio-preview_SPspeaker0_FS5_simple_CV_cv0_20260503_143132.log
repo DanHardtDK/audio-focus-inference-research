@@ -1,0 +1,119 @@
+=== Log for f2 (backend=openai, model=gpt-4o-audio-preview, run=20260503_143132, fold=0) ===
+
+--- Attempt 1 for f2_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+B
+Because...
+
+Example 3
+B
+Because...
+
+Example 4
+A
+Because...
+
+Example 5
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5  
+A  
+Because both sentences indicate that Sue received something from Sam but not Rob. They emphasize different items given to Sue and confirm that Rob did not receive bananas.
+
+6  
+A  
+Because both sentences indicate that Tom received something from Sam but not bananas. The focus is on Tom receiving oranges, and the negative statement about not receiving bananas stays consistent.
+
+7  
+A  
+Because both sentences indicate Sue received apples but not oranges. The prosodic focus confirms the same items were given to Sue and the same items were excluded.
+
+8  
+A  
+Because both sentences indicate Sue received grapes but not apples. The prosodic focus confirms what Sue got and what she didn't get are consistent across both statements.
+
+9  
+A  
+Because both sentences indicate Ellen received both oranges and bananas, while Mary received grapes but not apples. The focus on the recipients is consistent and confirms the same events in both sentences.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f2_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f2_cv0
+  Results saved to: data/output/f2_inference_audio_openai_gpt-4o-audio-preview_SPspeaker0_FS5_simple_CV_cv0_20260503_143132.csv
+  Log saved to:     data/output/f2_inference_audio_openai_gpt-4o-audio-preview_SPspeaker0_FS5_simple_CV_cv0_20260503_143132.log
+

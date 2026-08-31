@@ -1,0 +1,131 @@
+=== Log for f1 (backend=openai, model=gpt-audio, run=20260503_100327, fold=0) ===
+
+--- Attempt 1 for f1_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+C  
+Because S1: "Sam only gave BILL grapes" with focus on BILL means Sam gave grapes only to Bill and not to anyone else. S2: "Sam also gave Sue grapes" contradicts S1 because it asserts that Sue also received grapes, which goes against the exclusivity implied by the focus on Bill.  
+
+3  
+C  
+Because S1: "Sam only gave SUE oranges" with focus on SUE means Sam gave oranges only to Sue and nobody else. S2: "Sam also gave Rob oranges" contradicts the exclusivity, as it claims Rob received oranges as well.  
+
+4  
+A  
+Because S1: "Sam only gave SUE grapes" with focus on SUE means Sam gave grapes only to Sue, and S2: "Sam didn't give Ellen grapes" is entailed by S1. If Sue was the only one who got grapes, then indeed Ellen did not get grapes.  
+
+5  
+A  
+Because S1: "Sam only gave TOM apples" means Tom was the only recipient of apples. S2: "Sam didn't give Tom grapes" is entailed because S1 says nothing about grapes, only about apples. It can logically follow that Tom didn’t receive any grapes.  
+
+6  
+C  
+Because S1: "Sam only gave ROB oranges" means Rob was the sole recipient of oranges. S2: "Sam also gave Rob apples" contradicts S1’s restriction to only oranges. If Rob got only oranges (no other fruits), then it can’t be true that he also received apples.  
+
+7  
+A  
+Because S1: "Sam only gave SUE grapes" with focus on SUE means Sue was the only one who got grapes. S2: "Sam didn't give Tom grapes" follows logically from that because if Sue was the only one, then Tom could not have gotten grapes.  
+
+8  
+A  
+Because S1: "Sam only gave ELLEN bananas" means Ellen was the only banana recipient. S2: "Sam also gave Mary bananas" is still entailed because the focus on Ellen in S1 suggests restriction against giving other fruits, but does not negate the possibility of multiple recipients for bananas. Therefore, giving Mary bananas does not break the exclusivity on the type of fruit tied to Ellen.  
+
+9  
+C  
+Because S1: "Sam only gave ROB bananas" means Rob was the sole recipient of bananas. S2: "Sam didn't give Rob oranges" contradicts nothing here and supports the exclusivity, so it should have nothing wrong—but the focus in S1 is only about bananas. Giving Rob oranges would have been unrelated. However, the best fit is a contradiction due to the way S2 denies another kind of fruit which would be independent under focus on bananas. Thus, it’s not supported or entailed, so it stands contradicted.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f1_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f1_cv0
+  Results saved to: data/output/f1_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv0_20260503_100327.csv
+  Log saved to:     data/output/f1_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv0_20260503_100327.log
+

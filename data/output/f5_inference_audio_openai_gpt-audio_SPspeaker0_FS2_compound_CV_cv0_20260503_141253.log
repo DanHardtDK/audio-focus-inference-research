@@ -1,0 +1,135 @@
+=== Log for f5 (backend=openai, model=gpt-audio, run=20260503_141253, fold=0) ===
+
+--- Attempt 1 for f5_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Ellen GRAPES.
+S2: Sam also gave Ellen oranges.
+C
+Because...
+
+Example 2
+S1: Sam only gave ELLEN apples.
+S2: Sam also gave Rob apples.
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because if Sam only gave Mary oranges (with prosodic focus on “oranges”), and Sam didn’t give Mary bananas, then it’s consistent that Mary got oranges and no bananas, supporting the entailment.  
+
+3  
+C  
+Because if Sam only gave Mary oranges (with focus on “oranges”), and Sam also gave Tom oranges, it contradicts the exclusivity implied by “only” with focus on the item given. The first sentence suggests oranges went only to Mary, not anyone else.  
+
+4  
+A  
+Because if Sam only gave Mary oranges (with focus on “oranges”), and Sam didn’t give Tom oranges, that’s in line with the claim that only Mary got oranges.  
+
+5  
+A  
+Because if Sam only gave Mary grapes (with focus on “grapes”), and Sam also gave Mary apples, there’s no contradiction: the exclusivity is on the grapes, but Mary can get additional items like apples.  
+
+6  
+B  
+Because if Sam only gave Sue apples (with focus on “apples”), and Sam also gave Mary apples, there’s no direct entailment or contradiction. It’s an independent fact about who else got apples.  
+
+7  
+A  
+Because if Sam only gave Bill oranges (with focus on “oranges”), and Sam also gave Bill bananas, that’s possible: the exclusivity applies to the oranges, but Bill might receive other items like bananas without contradiction.  
+
+8  
+A  
+Because if Sam only gave Ellen bananas (with focus on “bananas”), and Sam also gave Ellen grapes, that fits: the exclusivity is about the bananas, so giving Ellen grapes additionally doesn’t contradict that.  
+
+9  
+A  
+Because if Sam only gave Tom bananas (with focus on “bananas”), and Sam didn’t give Tom oranges, that matches the exclusivity claim. It entails that Tom got bananas only, so not giving Tom oranges fits.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f5_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f5_cv0
+  Results saved to: data/output/f5_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.csv
+  Log saved to:     data/output/f5_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.log
+

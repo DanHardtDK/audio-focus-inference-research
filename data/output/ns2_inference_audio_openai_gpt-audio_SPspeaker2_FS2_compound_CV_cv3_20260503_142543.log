@@ -1,0 +1,119 @@
+=== Log for ns2 (backend=openai, model=gpt-audio, run=20260503_142543, fold=3) ===
+
+--- Attempt 1 for ns2_cv3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave ELLEN bananas.
+S2: Sam also gave Ellen grapes.
+B
+Because...
+
+Example 2
+S1: Sam only gave Ellen GRAPES.
+S2: Sam didn't give Rob grapes.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+A  
+Because in S1, "Sam only gave BILL grapes" means Bill is the only recipient of grapes. S2, "Sam didn’t give Bill oranges," follows naturally since if Bill only got grapes, it’s entailed that he didn’t get oranges.  
+
+1  
+C  
+Because in S1, "Sam only gave ELLEN grapes" means Ellen got only grapes and not other items. S2, "Sam also gave Ellen oranges," contradicts that by asserting that Ellen received oranges as well, contradicting the exclusivity implied by "only."  
+
+2  
+B  
+Because in S1, "Sam only gave BILL bananas" means that Bill got only bananas and no one else is mentioned in S1. S2, "Sam didn’t give Tom bananas," is independent of that statement. S1 talks about Bill’s exclusive bananas, but says nothing about Tom, so S2 introduces new information unrelated to S1.  
+
+3  
+B  
+Because in S1, "Sam only gave ELLEN oranges" means Ellen got only oranges and nobody else is involved. S2, "Sam also gave Sue oranges," is independent. S1 sets limits on Ellen’s receipt, but does not rule out Sam giving oranges to others. The focus on Ellen does not exclude Sue, so these statements are independent.  
+
+4  
+C  
+Because in S1, "Sam only gave TOM apples" means Tom is the only recipient of apples. S2, "Sam also gave Bill apples," contradicts that exclusivity by asserting that Bill also got apples. This contradicts S1’s focus on Tom as the exclusive recipient of apples.  
+
+5  
+A  
+Because in S1, "Sam only gave BILL bananas" means Bill got only bananas and no other fruits. S2, "Sam didn’t give Bill grapes," is entailed by the exclusivity implied in S1. If Bill got only bananas, he did not get grapes as well.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv3: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv3
+  Results saved to: data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker2_FS2_compound_CV_cv3_20260503_142543.csv
+  Log saved to:     data/output/ns2_inference_audio_openai_gpt-audio_SPspeaker2_FS2_compound_CV_cv3_20260503_142543.log
+

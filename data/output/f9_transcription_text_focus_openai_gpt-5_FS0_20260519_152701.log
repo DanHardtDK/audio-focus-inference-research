@@ -1,0 +1,127 @@
+=== Log for f9 (backend=openai, model=gpt-5, run=20260519_152701, fold=) ===
+
+--- Attempt 1 for f9 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to identify the prosodically focused word in S1 and mark it with UPPERCASE. All other words must be in normal casing.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Ellen grapes.
+
+1
+S1: Sam only gave Mary apples.
+S2: Sam didn't give Mary oranges.
+
+2
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Tom apples.
+
+3
+S1: Sam only gave Mary apples.
+S2: Sam didn't give Mary grapes.
+
+4
+S1: Sam only gave Mary oranges.
+S2: Sam didn't give Mary apples.
+
+5
+S1: Sam only gave Rob apples.
+S2: Sam also gave Mary apples.
+
+6
+S1: Sam only gave Rob apples.
+S2: Sam also gave Tom apples.
+
+7
+S1: Sam only gave Rob oranges.
+S2: Sam didn't give Rob bananas.
+
+8
+S1: Sam only gave Bill grapes.
+S2: Sam also gave Rob grapes.
+
+9
+S1: Sam only gave Rob grapes.
+S2: Sam also gave Rob bananas.
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Ellen grapes.
+
+1
+S1: Sam only gave Mary APPLES.
+S2: Sam didn't give Mary oranges.
+
+2
+S1: Sam only gave Tom BANANAS.
+S2: Sam also gave Tom apples.
+
+3
+S1: Sam only gave Mary APPLES.
+S2: Sam didn't give Mary grapes.
+
+4
+S1: Sam only gave Mary ORANGES.
+S2: Sam didn't give Mary apples.
+
+5
+S1: Sam only gave ROB apples.
+S2: Sam also gave Mary apples.
+
+6
+S1: Sam only gave ROB apples.
+S2: Sam also gave Tom apples.
+
+7
+S1: Sam only gave Rob ORANGES.
+S2: Sam didn't give Rob bananas.
+
+8
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Rob grapes.
+
+9
+S1: Sam only gave Rob GRAPES.
+S2: Sam also gave Rob bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f9: 10 parsed blocks; all 10 required test indices present.
+
+✓ Finished processing f9
+  Results saved to: data/output/f9_transcription_text_focus_openai_gpt-5_FS0_20260519_152701.csv
+  Log saved to:     data/output/f9_transcription_text_focus_openai_gpt-5_FS0_20260519_152701.log
+

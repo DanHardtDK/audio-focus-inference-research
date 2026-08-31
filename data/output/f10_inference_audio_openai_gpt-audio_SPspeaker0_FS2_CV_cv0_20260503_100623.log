@@ -1,0 +1,131 @@
+=== Log for f10 (backend=openai, model=gpt-audio, run=20260503_100623, fold=0) ===
+
+--- Attempt 1 for f10_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because the first sentence "Sam only gave Tom APPLES" (with the prosodic focus on "apples") is consistent with the second sentence "Sam also gave Tom GRAPES." The focus on "apples" in S1 indicates exclusivity with respect to what Sam gave Tom. The addition of "grapes" in S2 entails that "only" was not excluding other fruits. So S2 is entailed by S1.
+
+3  
+A  
+Because the first sentence "Sam only gave MARY bananas" (with prosodic focus on "Mary") means Sam didn’t give bananas to anyone else except Mary. The second sentence "Sam didn’t give BILL bananas" naturally follows from this—since S1 says only Mary received bananas, it entails Bill did not. So S2 is entailed by S1.
+
+4  
+A  
+Because the first sentence "Sam only gave Mary APPLES" (with focus on "apples") is about exclusivity regarding the type of fruit Sam gave Mary. The second sentence "Sam also gave Mary BANANAS" expands the set of fruits Sam gave Mary. This is compatible with focusing on apples while not excluding other fruits. Therefore S2 is entailed by S1.
+
+5  
+A  
+Because the first sentence "Sam only gave SUE apples" (with focus on "Sue") means no one else besides Sue got apples. The second sentence "Sam didn’t give ROB apples" is consistent with this exclusivity focus on Sue. Since only Sue got apples, it entails that Rob did not. So S2 is entailed by S1.
+
+6  
+A  
+Because the first sentence "Sam only gave BILL bananas" (with prosodic focus on "Bill") means nobody else got bananas except Bill. The second sentence "Sam also gave Bill GRAPES" does not contradict this—it adds another fruit but doesn’t dispute the exclusivity of who received the bananas. So S2 is entailed by S1.
+
+7  
+A  
+Because the first sentence "Sam only gave ROB grapes" (with focus on "Rob") entails that only Rob received grapes. The second sentence "Sam didn’t give ROB apples" aligns with the exclusivity established in S1. If the focus of giving was only grapes to Rob, not apples, then it’s entailed that Rob didn’t get apples. So S2 is entailed by S1.
+
+8  
+A  
+Because the first sentence "Sam only gave SUE grapes" (with focus on "Sue") means no one else got grapes except Sue. The second sentence "Sam also gave TOM grapes" expands the idea and introduces an additive fact consistent with how the first sentence is phrased. It doesn’t contradict the exclusivity focus on Sue’s grapes. So S2 is entailed by S1.
+
+9  
+A  
+Because the first sentence "Sam only gave ELLEN grapes" (with prosodic focus on "Ellen") establishes exclusivity in whom Sam gave grapes to. The second sentence "Sam didn’t give ROB grapes" is consistent with that exclusivity because if only Ellen got grapes, then Rob did not. So S2 is entailed by S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f10_cv0
+  Results saved to: data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv0_20260503_100623.csv
+  Log saved to:     data/output/f10_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv0_20260503_100623.log
+

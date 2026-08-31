@@ -1,0 +1,131 @@
+=== Log for f1 (backend=openai, model=gpt-audio, run=20260503_100404, fold=2) ===
+
+--- Attempt 1 for f1_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because the first sentence says Sam only gave Bill grapes, which means no one else got grapes. The second sentence says Sam also gave Sue grapes, which contradicts the first statement.
+
+1  
+C  
+Because the first sentence says Sam only gave Sue oranges, which means he didn’t give oranges to anyone else. The second sentence says Sam also gave Rob oranges, contradicting that exclusivity.
+
+2  
+A  
+Because the first sentence says Sam only gave Sue grapes, meaning he didn’t give grapes to anyone else. The second sentence says Sam didn’t give Ellen grapes, which is consistent with the idea that Sue was the only one who got grapes.
+
+3  
+A  
+Because the first sentence says Sam only gave Tom apples, which means Tom didn’t get anything else. The second sentence says Sam didn’t give Tom grapes, which fits perfectly with Tom only having apples—no contradiction.
+
+6  
+B  
+Because the first sentence says Sam only gave Sue grapes, meaning Sue is the sole recipient of grapes. The second sentence says Sam didn’t give Tom grapes, which doesn’t add or contradict information about Sue or grapes—it’s independent information about Tom.
+
+7  
+A  
+Because the first sentence says Sam only gave Ellen bananas, meaning Ellen was the only banana recipient. The second sentence says Sam also gave Mary bananas, which entails that Ellen isn’t the sole banana recipient, so the exact meaning of “only” in the first sentence focuses on Ellen getting bananas, not excluding others getting them.
+
+8  
+A  
+Because the first sentence says Sam only gave Rob bananas, meaning Rob got no other fruit. The second sentence says Sam didn’t give Rob oranges, which confirms that Rob indeed only got bananas.
+
+9  
+B  
+Because the first sentence says Sam only gave Mary bananas, meaning Mary didn’t get anything else. The second sentence says Sam also gave Mary apples, which is independent: it doesn’t mention whether others got bananas, it’s about apples, and doesn’t contradict or fully entail the banana statement. It adds new information outside the focus.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f1_cv2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f1_cv2
+  Results saved to: data/output/f1_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100404.csv
+  Log saved to:     data/output/f1_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100404.log
+

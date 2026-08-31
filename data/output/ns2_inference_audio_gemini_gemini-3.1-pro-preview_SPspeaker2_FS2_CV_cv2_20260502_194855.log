@@ -1,0 +1,115 @@
+=== Log for ns2 (backend=gemini, model=gemini-3.1-pro-preview, run=20260502_194855, fold=2) ===
+
+--- Attempt 1 for ns2_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+A
+Because S1 focuses on "grapes", meaning grapes were the only thing Sam gave to Bill, which entails that he didn't give him oranges.
+
+1
+C
+Because S1 focuses on "grapes", meaning grapes were the only thing Sam gave to Ellen, which contradicts the claim that he also gave her oranges.
+
+2
+A
+Because S1 focuses on "Bill", meaning Bill was the only person Sam gave bananas to, which entails that he didn't give bananas to Tom.
+
+3
+C
+Because S1 focuses on "Ellen", meaning Ellen was the only person Sam gave oranges to, which contradicts the claim that he also gave oranges to Sue.
+
+6
+C
+Because S1 focuses on "bananas", meaning bananas were the only thing Sam gave to Ellen, which contradicts the claim that he also gave her grapes.
+
+7
+A
+Because S1 focuses on "Ellen", meaning Ellen was the only person Sam gave grapes to, which entails that he didn't give grapes to Rob.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv2: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv2
+  Results saved to: data/output/ns2_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker2_FS2_CV_cv2_20260502_194855.csv
+  Log saved to:     data/output/ns2_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker2_FS2_CV_cv2_20260502_194855.log
+

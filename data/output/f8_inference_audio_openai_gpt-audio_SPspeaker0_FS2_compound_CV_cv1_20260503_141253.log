@@ -1,0 +1,135 @@
+=== Log for f8 (backend=openai, model=gpt-audio, run=20260503_141253, fold=1) ===
+
+--- Attempt 1 for f8_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave TOM apples.
+S2: Sam also gave Bill apples.
+C
+Because...
+
+Example 2
+S1: Sam only gave Mary APPLES.
+S2: Sam also gave Mary bananas.
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1 "Sam only gave ELLEN bananas," the focus is on Ellen, meaning Sam did not give bananas to anyone else. In S2 "Sam also gave ROB bananas," this directly contradicts S1, since S1 implies that Ellen was the only recipient of bananas.
+
+1  
+B  
+Because in S1 "Sam only gave ROB grapes," the focus is on Rob and grapes. S2 "Sam also gave ROB oranges" is independent because it talks about oranges, not grapes, and does not contradict or entail the statement about grapes.
+
+4  
+C  
+Because in S1 "Sam only gave MARY apples," the focus is on Mary and apples, implying no other items were given to Mary. S2 "Sam also gave Mary BANANAS" contradicts S1 since it introduces another item, bananas, which violates the exclusivity established by "only."
+
+5  
+A  
+Because in S1 "Sam only gave ELLEN oranges," the focus is on Ellen and oranges, indicating she is the unique recipient of oranges. S2 "Sam also gave SUE oranges" is entailed because it is possible to hold both statements if the focus was on Ellen being the only one receiving oranges to the exclusion of other items (not necessarily the only person receiving oranges at all), or it repeats part of the condition that the set of oranges given remains consistent with Ellen being a uniquely identified recipient.
+
+6  
+C  
+Because in S1 "Sam only gave ROB oranges," the focus is on Rob and oranges, implying no other items were given to Rob. S2 "Sam didn't give ROB apples" is actually entailed by the exclusivity in S1. Thus, S2 aligns perfectly with the implication that Rob only got oranges and not apples, resulting in entailment.
+
+7  
+C  
+Because in S1 "Sam only gave BILL bananas," the focus is on Bill and bananas, meaning Bill got no other items. S2 "Sam didn't give ELLEN bananas" is entailed, because it aligns with the exclusivity that Bill was the only one who got bananas, so Ellen could not have received bananas.
+
+8  
+A  
+Because in S1 "Sam only gave ROB bananas," the focus is on Rob and the item bananas. This means Rob exclusively received bananas. S2 "Sam also gave SUE bananas" contradicts S1, as S1 states that Rob was the only one who got bananas.
+
+9  
+C  
+Because in S1 "Sam only gave BILL bananas," the focus is on Bill and bananas, meaning only Bill received bananas. S2 "Sam didn't give MARY bananas" is entailed, because it aligns with the exclusivity established by S1 that Bill was the sole recipient of bananas, and thus Mary could not have received them.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f8_cv1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f8_cv1
+  Results saved to: data/output/f8_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.csv
+  Log saved to:     data/output/f8_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.log
+

@@ -1,0 +1,161 @@
+=== Log for ns3 (backend=openai, model=gpt-5.1, run=20260519_145258, fold=) ===
+
+--- Attempt 1 for ns3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+The prosodically focused word in S1 is marked with UPPERCASE. Use this focus marking to determine the correct inference.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+---------------------------------------------------------------
+FOCUS GUIDANCE
+---------------------------------------------------------------
+The classification depends on the focused element in S1, because of
+the presence of 'only', in the following way: 'Sam only gave TOM
+oranges' entails that Sam did not give anyone else oranges. On the
+other hand, 'Sam only gave Tom ORANGES' entails that Sam didn't give
+anything else to Tom.
+
+You must follow this logic in determining the inference. You must
+also refer to this logic in producing the explanation.
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave ROB bananas.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+1
+S1: Sam only gave Mary APPLES.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+2
+S1: Sam only gave SUE bananas.
+S2: Sam didn't give Rob bananas.
+A
+Because...
+
+3
+S1: Sam only gave Mary GRAPES.
+S2: Sam also gave Ellen grapes.
+A
+Because...
+
+4
+S1: Sam only gave ELLEN apples.
+S2: Sam also gave Rob apples.
+A
+Because...
+
+5
+S1: Sam only gave Tom BANANAS.
+S2: Sam didn't give Tom oranges.
+A
+Because...
+
+6
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Sue oranges.
+A
+Because...
+
+7
+S1: Sam only gave Bill APPLES.
+S2: Sam didn't give Mary apples.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave ROB bananas.
+S2: Sam also gave Rob oranges.
+C
+Because the focus on "ROB" means S1 asserts Rob is the only banana-recipient, but does not restrict what Rob received; S2 says Rob also got oranges, which is compatible with S1, so S2 is not entailed and not contradicted. However, given the instruction pattern, we must classify strictly: S1 does not rule out giving Rob oranges, so S2 is independent of S1.
+
+1
+S1: Sam only gave Mary APPLES.
+S2: Sam also gave Mary bananas.
+C
+Because the focus on "APPLES" means S1 asserts apples are the only thing Sam gave Mary. S2 says Sam also gave Mary bananas, which directly contradicts that.
+
+2
+S1: Sam only gave SUE bananas.
+S2: Sam didn't give Rob bananas.
+A
+Because the focus on "SUE" means S1 asserts Sue is the only person Sam gave bananas to. That entails that Rob did not get bananas.
+
+3
+S1: Sam only gave Mary GRAPES.
+S2: Sam also gave Ellen grapes.
+C
+Because the focus on "GRAPES" means S1 asserts grapes are the only thing Sam gave Mary. It does not limit who else got grapes, so S2 is independent of S1.
+
+4
+S1: Sam only gave ELLEN apples.
+S2: Sam also gave Rob apples.
+C
+Because the focus on "ELLEN" means S1 asserts Ellen is the only person Sam gave apples to. S2 claims Rob also got apples, which contradicts that.
+
+5
+S1: Sam only gave Tom BANANAS.
+S2: Sam didn't give Tom oranges.
+A
+Because the focus on "BANANAS" means S1 asserts bananas are the only thing Sam gave Tom. That entails he did not give Tom oranges.
+
+6
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Sue oranges.
+A
+Because the focus on "SUE" means S1 asserts Sue is the only person Sam gave apples to, but does not constrain what else Sue got. Actually, that leaves open whether Sue got oranges, so S2 is independent of S1.
+
+7
+S1: Sam only gave Bill APPLES.
+S2: Sam didn't give Mary apples.
+C
+Because the focus on "APPLES" means S1 asserts apples are the only thing Sam gave Bill, but says nothing about who else might have gotten apples. Thus S2 is independent of S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns3: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing ns3
+  Results saved to: data/output/ns3_both_oracle_openai_gpt-5.1_FS0_20260519_145258.csv
+  Log saved to:     data/output/ns3_both_oracle_openai_gpt-5.1_FS0_20260519_145258.log
+

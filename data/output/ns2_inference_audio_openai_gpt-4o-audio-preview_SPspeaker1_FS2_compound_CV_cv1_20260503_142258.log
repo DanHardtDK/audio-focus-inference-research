@@ -1,0 +1,119 @@
+=== Log for ns2 (backend=openai, model=gpt-4o-audio-preview, run=20260503_142258, fold=1) ===
+
+--- Attempt 1 for ns2_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL bananas.
+S2: Sam didn't give Tom bananas.
+A
+Because...
+
+Example 2
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Sue oranges.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+A  
+Because if Sam only gave Bill grapes, then it is entailed that Sam didn't give Bill oranges. The focus on "only" and "Bill grapes" excludes other items like oranges.
+
+1  
+A  
+Because if Sam only gave Ellen grapes, then it is entailed that Sam did not give her oranges. The semantic meaning of "only" in S1 excludes oranges.
+
+4  
+A  
+Because if Sam only gave Tom apples, then it's entailed that Sam gave apples only to Tom, so giving apples to Bill is still possible and doesn't contradict nor depend independently.
+
+5  
+A  
+Because if Sam only gave Bill bananas, then it is entailed that he didn't give Bill grapes. The exclusivity in S1 rules out other fruit given to Bill.
+
+6  
+A  
+Because if Sam only gave Ellen bananas, then giving Ellen grapes in addition is impossible, so S2 contradicts S1.
+
+7  
+A  
+Because if Sam only gave Ellen grapes, then it follows that Sam did not give Rob grapes. The exclusivity applies to both the recipient (Ellen) and the item (grapes).
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2_cv1: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns2_cv1
+  Results saved to: data/output/ns2_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS2_compound_CV_cv1_20260503_142258.csv
+  Log saved to:     data/output/ns2_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS2_compound_CV_cv1_20260503_142258.log
+

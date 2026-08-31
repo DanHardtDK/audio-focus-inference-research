@@ -1,0 +1,129 @@
+=== Log for f10 (backend=gemini, model=gemini-3.1-pro-preview, run=20260503_150140, fold=1) ===
+
+--- Attempt 1 for f10_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Rob GRAPES.
+S2: Sam didn't give Rob apples.
+A
+Because...
+
+Example 2
+S1: Sam only gave SUE grapes.
+S2: Sam also gave Tom grapes.
+C
+Because...
+
+Example 3
+S1: Sam only gave ELLEN grapes.
+S2: Sam didn't give Rob grapes.
+A
+Because...
+
+Example 4
+S1: Sam only gave MARY grapes.
+S2: Sam also gave Mary bananas.
+B
+Because...
+
+Example 5
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Bill apples.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+C
+Because S1 focuses on "APPLES", meaning Sam gave Tom apples and nothing else. S2 states that Sam also gave Tom grapes, which contradicts S1.
+
+1
+B
+Because S1 focuses on "BANANAS", meaning Sam gave Mary bananas and nothing else. This provides no information about what Sam gave Bill, making S2 independent.
+
+2
+B
+Because S1 focuses on "MARY", meaning Mary was the only person Sam gave apples to. This provides no information about whether Sam gave Mary other fruits like bananas, making S2 independent.
+
+3
+A
+Because S1 focuses on "SUE", meaning Sue was the only person Sam gave apples to. This entails that Sam did not give apples to anyone else, including Rob, which is exactly what S2 states.
+
+4
+B
+Because S1 focuses on "BILL", meaning Bill was the only person Sam gave bananas to. This provides no information about whether Sam gave Bill other fruits like grapes, making S2 independent.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10_cv1: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f10_cv1
+  Results saved to: data/output/f10_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS5_compound_CV_cv1_20260503_150140.csv
+  Log saved to:     data/output/f10_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS5_compound_CV_cv1_20260503_150140.log
+

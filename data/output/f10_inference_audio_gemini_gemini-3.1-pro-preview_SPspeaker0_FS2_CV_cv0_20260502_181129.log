@@ -1,0 +1,141 @@
+=== Log for f10 (backend=gemini, model=gemini-3.1-pro-preview, run=20260502_181129, fold=0) ===
+
+--- Attempt 1 for f10_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+1
+C
+Because S1 focuses on "apples", meaning Sam gave Tom nothing else. S2 states that Sam also gave Tom grapes, which contradicts S1.
+
+2
+B
+Because S1 focuses on "bananas", meaning Sam gave Mary nothing else. This provides no information about what Sam gave Bill, making S2 independent.
+
+3
+B
+Because S1 focuses on "Mary", meaning Sam gave apples to no one else. This provides no information about what else Sam gave Mary, making S2 independent.
+
+4
+A
+Because S1 focuses on "Sue", meaning Sam gave apples to no one else. Therefore, it entails S2, that Sam didn't give Rob apples.
+
+5
+B
+Because S1 focuses on "Bill", meaning Sam gave bananas to no one else. This provides no information about what else Sam gave Bill, making S2 independent.
+
+6
+A
+Because S1 focuses on "grapes", meaning Sam gave Rob nothing else. Therefore, it entails S2, that Sam didn't give Rob apples.
+
+7
+C
+Because S1 focuses on "Sue", meaning Sam gave grapes to no one else. S2 states that Sam also gave Tom grapes, which contradicts S1.
+
+8
+A
+Because S1 focuses on "Ellen", meaning Sam gave grapes to no one else. Therefore, it entails S2, that Sam didn't give Rob grapes.
+
+9
+B
+Because S1 focuses on "Mary", meaning Sam gave grapes to no one else. This provides no information about what else Sam gave Mary, making S2 independent.
+
+10
+A
+Because S1 focuses on "Sue", meaning Sam gave apples to no one else. Therefore, it entails S2, that Sam didn't give Bill apples.
+
+--- End of Raw Model Output ---
+
+⚠️ WARNING [attempt 1] for f10_cv0: model produced output for demonstration items [1] — ignored.
+⚠️ WARNING [attempt 1] for f10_cv0: extra indices outside 0..9: [10]
+✓ Output coverage OK [attempt 1] for f10_cv0: 10 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f10_cv0
+  Results saved to: data/output/f10_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv0_20260502_181129.csv
+  Log saved to:     data/output/f10_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS2_CV_cv0_20260502_181129.log
+

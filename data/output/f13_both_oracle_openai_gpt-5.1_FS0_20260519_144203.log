@@ -1,0 +1,148 @@
+=== Log for f13 (backend=openai, model=gpt-5.1, run=20260519_144203, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen BANANAS.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+1
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Ellen bananas.
+A
+Because...
+
+3
+S1: Sam only gave Tom BANANAS.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+4
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+5
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+6
+S1: Sam only gave Sue ORANGES.
+S2: Sam also gave Sue bananas.
+A
+Because...
+
+7
+S1: Sam only gave Tom APPLES.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+S1: Sam only gave Ellen BANANAS.  
+S2: Sam also gave Tom bananas.  
+C  
+Because S1 says Sam gave bananas only to Ellen (no one else), while S2 says he also gave bananas to Tom, which contradicts the “only Ellen” restriction.
+
+1  
+S1: Sam only gave Ellen ORANGES.  
+S2: Sam also gave Rob oranges.  
+C  
+Because S1 states that the only recipient of oranges was Ellen, but S2 claims that Rob also received oranges, which conflicts with “only Ellen.”
+
+2  
+S1: Sam only gave Rob BANANAS.  
+S2: Sam also gave Ellen bananas.  
+C  
+Because S1 restricts banana recipients to Rob alone, while S2 adds Ellen as another banana recipient, contradicting “only Rob.”
+
+3  
+S1: Sam only gave Tom BANANAS.  
+S2: Sam also gave Mary bananas.  
+C  
+Because S1 says Tom is the only one who got bananas, but S2 says Mary got bananas too, which contradicts the exclusivity.
+
+4  
+S1: Sam only gave Ellen ORANGES.  
+S2: Sam also gave Ellen apples.  
+B  
+Because “only gave Ellen oranges” constrains what fruit Sam gave Ellen, not what else he might have given her; S2 adds apples without conflicting with S1, and it is not entailed by S1.
+
+5  
+S1: Sam only gave Rob BANANAS.  
+S2: Sam also gave Rob oranges.  
+B  
+Because S1 specifies bananas as the only thing Sam gave Rob; S2 introduces oranges, which conflicts if “only” ranges over all gifts. However, that makes S2 contradict S1, not follow from it, and S1 does not entail S2. So they are not entailed; they are incompatible, hence independent for this task framework.
+
+6  
+S1: Sam only gave Sue ORANGES.  
+S2: Sam also gave Sue bananas.  
+B  
+Because S1 restricts the fruit given to Sue to oranges, while S2 adds bananas; S2 is not entailed by S1 and instead introduces an incompatible possibility, so it is independent here.
+
+7  
+S1: Sam only gave Tom APPLES.  
+S2: Sam also gave Tom bananas.  
+B  
+Because S1 says Tom received only apples from Sam; S2 says he also received bananas, which is not entailed and instead incompatible, so it is classified as independent in this scheme.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_both_oracle_openai_gpt-5.1_FS0_20260519_144203.csv
+  Log saved to:     data/output/f13_both_oracle_openai_gpt-5.1_FS0_20260519_144203.log
+

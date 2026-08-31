@@ -1,0 +1,135 @@
+=== Log for f9 (backend=openai, model=gpt-audio, run=20260503_141253, fold=2) ===
+
+--- Attempt 1 for f9_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Mary ORANGES.
+S2: Sam didn't give Mary apples.
+A
+Because...
+
+Example 2
+S1: Sam only gave Rob APPLES.
+S2: Sam also gave Mary apples.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 says Sam only gave Ellen bananas, implying he did not give her anything else. S2 states Sam also gave Ellen grapes, which contradicts the exclusivity implied in S1.
+
+1  
+A  
+Because S1 says Sam only gave Mary apples, meaning no other kind of fruit. S2 says Sam didn’t give Mary oranges, which is consistent with the idea that apples were the only fruit given.
+
+2  
+C  
+Because S1 says Sam only gave Tom bananas, meaning no other fruit was given. S2 says Sam also gave Tom apples, which clearly contradicts S1.
+
+3  
+A  
+Because S1 says Sam only gave Mary apples, meaning no other kind of fruit besides apples. S2 says Sam didn’t give Mary grapes, which is consistent with the claim that he only gave her apples.
+
+6  
+C  
+Because S1 says Sam only gave Rob apples, so no other items were given. S2 says Sam also gave Tom apples, which contradicts the original exclusivity that Rob was the sole recipient.
+
+7  
+B  
+Because S1 says Sam only gave Rob apples, meaning Rob didn’t receive other items. S2 says Sam also gave Tom apples, which is independent information and does not contradict or entail anything about the exclusive giving to Rob.
+
+8  
+A  
+Because S1 says Sam only gave Rob oranges, so no other fruit was given. S2 says Sam didn’t give Rob bananas, which is consistent with the claim that only oranges were given.
+
+9  
+B  
+Because S1 says Sam only gave Bill grapes, meaning no other recipient got anything. S2 says Sam also gave Rob grapes, which introduces independent information unrelated to Bill. This is not entailed or contradicted by S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f9_cv2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f9_cv2
+  Results saved to: data/output/f9_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv2_20260503_141253.csv
+  Log saved to:     data/output/f9_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv2_20260503_141253.log
+

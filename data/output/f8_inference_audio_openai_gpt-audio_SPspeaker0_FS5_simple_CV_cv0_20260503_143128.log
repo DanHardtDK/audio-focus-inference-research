@@ -1,0 +1,119 @@
+=== Log for f8 (backend=openai, model=gpt-audio, run=20260503_143128, fold=0) ===
+
+--- Attempt 1 for f8_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+Example 3
+C
+Because...
+
+Example 4
+C
+Because...
+
+Example 5
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5  
+A  
+Because in S1, the prosodic focus is on "Ellen" and in S2 "Rob" is mentioned similarly. Both sentences indicate that Sam gave the same item—bananas—to both individuals. The second sentence is entailed because it is consistent with the first sentence.  
+
+6  
+A  
+Because in S1, the focus is on "Rob" and what is given—grapes. In S2, "Rob" is mentioned again with something else—oranges—but this does not contradict the first sentence. It simply adds information. It entails that Rob also received oranges in addition to grapes, making it an entailment.  
+
+7  
+A  
+Because in S1, the focus is on "Tom" and on "apples." S2 mentions "Bill" with the same item—apples. S2 is included within the scope of S1’s broader claim, that Sam gave apples to Tom. The additional fact that Bill also received apples entails rather than contradicts or stands apart.  
+
+8  
+A  
+Because in S1, the focus is on "Mary" and the item "apples." S2 mentions "Mary" again, adding a second item—bananas. This entails additional detail about Mary receiving bananas too. It does not contradict and is not independent; it fits under the broader umbrella of what Mary received.  
+
+9  
+A  
+Because in S1, the focus is on "Ellen" and the item "oranges." S2 repeats the item—"oranges"—but references a different person, "Sue." This entails additional information: Sue was also given oranges. It is not contradicting or independent, just providing supplementary detail.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f8_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f8_cv0
+  Results saved to: data/output/f8_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.csv
+  Log saved to:     data/output/f8_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.log
+

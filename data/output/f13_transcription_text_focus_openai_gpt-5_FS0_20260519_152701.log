@@ -1,0 +1,111 @@
+=== Log for f13 (backend=openai, model=gpt-5, run=20260519_152701, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to identify the prosodically focused word in S1 and mark it with UPPERCASE. All other words must be in normal casing.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave ELLEN bananas.
+S2: Sam also gave Tom bananas.
+
+1
+S1: Sam only gave ELLEN oranges.
+S2: Sam also gave Rob oranges.
+
+2
+S1: Sam only gave ROB bananas.
+S2: Sam also gave Ellen bananas.
+
+3
+S1: Sam only gave TOM bananas.
+S2: Sam also gave Mary bananas.
+
+4
+S1: Sam only gave Ellen ORANGES.
+S2: Sam also gave Ellen apples.
+
+5
+S1: Sam only gave Rob BANANAS.
+S2: Sam also gave Rob oranges.
+
+6
+S1: Sam only gave Sue ORANGES.
+S2: Sam also gave Sue bananas.
+
+7
+S1: Sam only gave Tom APPLES.
+S2: Sam also gave Tom bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_transcription_text_focus_openai_gpt-5_FS0_20260519_152701.csv
+  Log saved to:     data/output/f13_transcription_text_focus_openai_gpt-5_FS0_20260519_152701.log
+

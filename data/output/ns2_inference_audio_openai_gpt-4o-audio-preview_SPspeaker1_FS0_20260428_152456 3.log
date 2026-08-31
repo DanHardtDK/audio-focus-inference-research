@@ -1,0 +1,122 @@
+=== Log for ns2 (backend=openai, model=gpt-4o-audio-preview, run=20260428_152456, fold=) ===
+
+--- Attempt 1 for ns2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+
+
+---------------------------------------------------------------
+NEW INPUT EXAMPLES
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because the first sentence asserts that Sam gave Bill only grapes and nothing else, while the second sentence asserts that Sam didn’t give Bill oranges. The second sentence is already implied by the first, so the specific negation of oranges is redundant.
+
+1  
+C  
+Because the first sentence says Sam only gave Ellen grapes. This excludes any other items. The second sentence contradicts this by saying Sam also gave Ellen oranges.
+
+2  
+B  
+Because the first sentence talks about Sam giving Bill only bananas, while the second sentence talks about Sam not giving Tom bananas. These statements involve different people and are independent of each other.
+
+3  
+C  
+Because the first sentence says Sam only gave Ellen oranges, meaning no other items were given. The second sentence contradicts this by saying Sam also gave Sue oranges.
+
+4  
+B  
+Because the first sentence talks about Sam giving only Tom apples, while the second sentence talks about Sam also giving Bill apples. These are two separate statements about different people.
+
+5  
+C  
+Because the first sentence says Sam only gave Bill bananas, which means he didn’t give him any other fruit. The second sentence contradicts this by saying Sam didn’t give Bill grapes, which is redundant and unnecessary since the first sentence already implies that fact.
+
+6  
+C  
+Because the first sentence says Sam only gave Ellen bananas. The second sentence contradicts this by saying Sam also gave Ellen grapes, which breaks the exclusivity.
+
+7  
+C  
+Because the first sentence says Sam only gave Ellen grapes, meaning no one else received grapes from Sam. The second sentence contradicts this by saying Sam didn’t give Rob grapes, which is redundant since the first sentence already excludes giving grapes to anyone but Ellen.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns2: 8 parsed blocks; 8/8 indices in-range; all 8 required test indices present.
+
+✓ Finished processing ns2
+  Results saved to: data/output/ns2_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS0_20260428_152456.csv
+  Log saved to:     data/output/ns2_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS0_20260428_152456.log
+

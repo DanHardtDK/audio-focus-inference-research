@@ -1,0 +1,119 @@
+=== Log for ns3 (backend=openai, model=gpt-audio, run=20260503_142342, fold=0) ===
+
+--- Attempt 1 for ns3_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave ROB bananas.
+S2: Sam also gave Rob oranges.
+B
+Because...
+
+Example 2
+S1: Sam only gave Mary APPLES.
+S2: Sam also gave Mary bananas.
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because in S1, "Sam only gave ROB bananas" means Rob was the only person to receive bananas. S2, "Sam also gave Rob oranges," does not conflict with this and expands on what Rob received, matching the original focus on ROB. Thus, S2 is entailed by S1.
+
+3  
+A  
+Because in S1, "Sam only gave Mary APPLES" means the only thing Mary got were apples. S2, "Sam also gave Mary bananas," is contradictory at first sight, but here the focus was on apples as the only thing Mary received. The combination is that no fruits other than apples were given to Mary, meaning any mention of other items Mary received reinforces that apples are the sole known item. Hence, S2 respects S1’s focus structure and is entailed.
+
+4  
+A  
+Because in S1, "Sam only gave SUE bananas" emphasizes that Sue was the only receiver of bananas. S2, "Sam didn't give Rob bananas," fits perfectly with that condition. If Sue got them all, naturally Rob got none, entailing S2.
+
+5  
+A  
+Because in S1, "Sam only gave MARY grapes" focuses on the recipient being Mary as the sole receiver of grapes. S2, "Sam also gave Ellen grapes," doesn’t contradict this – both Mary and Ellen could still have received grapes, so S2 fits within the meaning. S2 is therefore entailed.
+
+6  
+A  
+Because in S1, "Sam only gave ELLEN apples" means Ellen is the exclusive recipient of apples. S2, "Sam also gave Rob apples," shows that Rob was also an apple recipient, which doesn't contradict or stand independent of S1 – it’s entailed since Sam’s act of giving apples to any single recipient doesn’t negate that Ellen was the only exclusive recipient in a focused sense.
+
+7  
+A  
+Because in S1, "Sam only gave TOM bananas" focuses on Tom as the sole receiver of bananas. S2, "Sam didn't give Tom oranges," aligns with this – if Tom only got bananas, he logically didn’t get oranges. Thus, S2 is entailed by S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns3_cv0: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns3_cv0
+  Results saved to: data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker1_FS2_compound_CV_cv0_20260503_142342.csv
+  Log saved to:     data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker1_FS2_compound_CV_cv0_20260503_142342.log
+

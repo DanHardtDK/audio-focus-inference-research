@@ -1,4 +1,4 @@
 openai
-google-generativeai
+google-genai
 openai-whisper
 torch

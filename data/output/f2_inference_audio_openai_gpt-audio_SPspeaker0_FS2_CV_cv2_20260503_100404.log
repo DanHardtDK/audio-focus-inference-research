@@ -1,0 +1,131 @@
+=== Log for f2 (backend=openai, model=gpt-audio, run=20260503_100404, fold=2) ===
+
+--- Attempt 1 for f2_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "Rob," indicating that Sam only gave Rob bananas, and not Tom. In S2, the focus is on "Tom," indicating that Sam only gave Tom grapes, and not oranges. This contradicts S1, because S1 implies something exclusive about Rob and bananas, while S2 implies something exclusive and different about Tom and grapes.
+
+1  
+C  
+Because in S1, the prosodic focus is on "Tom" for the second gift: Sam only gave Tom grapes and not oranges. In S2, the focus is also on "Tom," but the gifts are reversed: Sam only gave Tom oranges, not bananas. The statements contradict each other because the gifts associated with Tom differ.
+
+2  
+B  
+Because in S1, the prosodic focus is on "Sue," and it states that Sam only gave Sue oranges and also gave Sue apples. In S2, the focus is still on "Sue," but the gifts are bananas and mention that Sam didn’t give Rob bananas. These two statements are independent, as they involve different individuals (Sue in S1 and both Sue and Rob in S2) and different sets of gifts, and they do not logically entail or contradict each other.
+
+3  
+C  
+Because in S1, the prosodic focus is on "Sue," indicating that Sam only gave Sue bananas and didn’t give Rob bananas. In S2, the focus moves to "Tom," stating that Sam only gave Tom oranges and not bananas. This contradicts S1 because S1 was about Sue getting something exclusive, while S2 now places exclusivity on Tom with a different gift relationship.
+
+6  
+A  
+Because in S1, the prosodic focus is on "Mary," indicating that Sam only gave Mary grapes and didn’t give Mary apples. In S2, the focus is still on "Mary," and the statement is simply that Sam also gave Mary oranges. These two align: S1 focuses on the exclusivity of grapes versus apples, and S2 adds an independent fact that does not contradict. Thus, S2 is entailed by the scenario where Mary and her specific gifts are being discussed.
+
+7  
+A  
+Because in S1, the prosodic focus is on "Sue," stating that Sam only gave Sue grapes and didn’t give Sue apples. In S2, the focus remains on the same person, "Sue," with the addition that Sam didn’t give Sue apples. This directly supports the information in S1, and thus S2 is entailed by S1.
+
+8  
+B  
+Because in S1, the prosodic focus is on "Ellen," indicating that Sam only gave Ellen oranges and also gave Ellen bananas. In S2, the focus is now on "Mary," indicating that Sam only gave Mary grapes and didn’t give Mary apples. These statements are independent, involving different individuals and different gifts. There is no entailment or contradiction.
+
+9  
+C  
+Because in S1, the prosodic focus is on "Bill," specifying that Sam only gave Bill oranges and also gave Mary oranges. In S2, the focus shifts to "Mary," stating that Sam only gave Mary grapes and didn’t give Mary apples. This is a direct contradiction because S1 states Mary got oranges, while S2 states Mary only got grapes.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f2_cv2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f2_cv2
+  Results saved to: data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100404.csv
+  Log saved to:     data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100404.log
+

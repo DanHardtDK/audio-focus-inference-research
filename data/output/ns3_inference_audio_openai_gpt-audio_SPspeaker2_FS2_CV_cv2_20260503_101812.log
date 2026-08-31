@@ -1,0 +1,115 @@
+=== Log for ns3 (backend=openai, model=gpt-audio, run=20260503_101812, fold=2) ===
+
+--- Attempt 1 for ns3_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because S1 says Sam only gave Rob bananas, and S2 says Sam also gave Rob oranges. This contradicts the exclusivity implied by "only" in S1.  
+
+1  
+B  
+Because S1 says Sam only gave Mary apples, and S2 says Sam also gave Mary bananas. This expands the set of things given to Mary beyond apples, meaning S2 is independent and presents new information.  
+
+2  
+C  
+Because S1 says Sam only gave Sue bananas, and S2 says Sam didn’t give Rob bananas. These statements involve different recipients (Sue vs. Rob) and the focus in S1 is on Sue. The exclusivity to Sue suggests that no one else, including Rob, got bananas, so S2 is consistent with S1. However, focusing on the negation implies rob could have been another recipient, hence contradicting the exclusivity of S1.  
+
+3  
+B  
+Because S1 says Sam only gave Mary grapes, and S2 says Sam also gave Ellen grapes. The focus in S1 is on Mary, so the fact that Ellen received grapes as well adds additional information without contradiction.  
+
+6  
+A  
+Because S1 says Sam only gave Tom bananas, and S2 says Sam didn’t give Tom oranges. The focus is on Tom and what was given. If the only thing given to Tom was bananas, it follows that Tom did not receive oranges.  
+
+7  
+A  
+Because S1 says Sam only gave Sue apples, and S2 says Sam didn’t give Sue oranges. The prosodic focus on Sue and the exclusivity on apples implies the absence of other fruits like oranges. Thus S2 is entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns3_cv2: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns3_cv2
+  Results saved to: data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker2_FS2_CV_cv2_20260503_101812.csv
+  Log saved to:     data/output/ns3_inference_audio_openai_gpt-audio_SPspeaker2_FS2_CV_cv2_20260503_101812.log
+

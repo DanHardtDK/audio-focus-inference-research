@@ -1,0 +1,135 @@
+=== Log for f11 (backend=openai, model=gpt-audio, run=20260503_141253, fold=0) ===
+
+--- Attempt 1 for f11_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave ROB oranges.
+S2: Sam didn't give Tom oranges.
+A
+Because...
+
+Example 2
+S1: Sam only gave SUE grapes.
+S2: Sam didn't give Bill grapes.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+A  
+Because in S1, the prosodic focus is on "SUE," meaning Sam only gave Sue grapes, excluding others from receiving grapes. S2 states that Sam didn't give Bill grapes, which is entailed by S1 since the exclusivity placed on Sue implies that no one else received grapes, including Bill.
+
+3  
+A  
+Because in S1, the prosodic focus is on "SUE," meaning Sam only gave Sue oranges, excluding others from receiving oranges. S2 states Sam didn't give Mary oranges, which is entailed by S1 since the exclusivity on Sue means Mary also did not receive oranges.
+
+4  
+A  
+Because in S1, the prosodic focus is on "ELLEN," meaning Sam only gave Ellen bananas, excluding others from receiving bananas. S2 states Sam didn't give Ellen grapes, which is entailed by S1, as the exclusivity implies Ellen received bananas and not anything else, including grapes.
+
+5  
+A  
+Because in S1, the prosodic focus is on "BANANAS," meaning Sam only gave Ellen bananas, excluding all other items given to Ellen. S2 states Sam didn't give Ellen oranges, which is entailed by S1 as it excludes oranges due to the exclusivity on bananas.
+
+6  
+A  
+Because in S1, the prosodic focus is on "ROB," meaning Sam only gave Rob grapes, excluding others from receiving grapes. S2 states Sam didn't give Rob apples, which is entailed by S1 as giving Rob something other than grapes, such as apples, is ruled out by the exclusivity on grapes.
+
+7  
+C  
+Because in S1, the prosodic focus is on "BILL," meaning Sam only gave Bill apples, excluding others from receiving apples. S2 states Sam also gave Ellen apples, which contradicts S1 because S1 excludes anyone other than Bill receiving apples.
+
+8  
+C  
+Because in S1, the prosodic focus is on "ELLEN," meaning Sam only gave Ellen apples, excluding others from receiving apples. S2 states Sam also gave Sue apples, which contradicts S1 by asserting that another person, Sue, also received apples.
+
+9  
+C  
+Because in S1, the prosodic focus is on "ELLEN," meaning Sam only gave Ellen oranges, excluding others from receiving oranges. S2 states Sam also gave Rob oranges, which contradicts the exclusivity implied in S1 by adding another recipient, Rob.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f11_cv0
+  Results saved to: data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.csv
+  Log saved to:     data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.log
+

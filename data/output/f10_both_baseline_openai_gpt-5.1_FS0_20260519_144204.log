@@ -1,0 +1,172 @@
+=== Log for f10 (backend=openai, model=gpt-5.1, run=20260519_144204, fold=) ===
+
+--- Attempt 1 for f10 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom grapes.
+A
+Because...
+
+1
+S1: Sam only gave Mary bananas.
+S2: Sam didn't give Bill bananas.
+A
+Because...
+
+2
+S1: Sam only gave Mary apples.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+3
+S1: Sam only gave Sue apples.
+S2: Sam didn't give Rob apples.
+A
+Because...
+
+4
+S1: Sam only gave Bill bananas.
+S2: Sam also gave Bill grapes.
+A
+Because...
+
+5
+S1: Sam only gave Rob grapes.
+S2: Sam didn't give Rob apples.
+A
+Because...
+
+6
+S1: Sam only gave Sue grapes.
+S2: Sam also gave Tom grapes.
+A
+Because...
+
+7
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Rob grapes.
+A
+Because...
+
+8
+S1: Sam only gave Mary grapes.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+9
+S1: Sam only gave Sue apples.
+S2: Sam didn't give Bill apples.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom grapes.
+C
+Because S1 says apples are the only thing Sam gave Tom, while S2 says Sam also gave him grapes, which contradicts the “only apples” claim.
+
+1
+S1: Sam only gave Mary bananas.
+S2: Sam didn't give Bill bananas.
+B
+Because S1 restricts banana-giving to Mary, but does not explicitly mention Bill; S2 talks about Bill, which is consistent but not entailed by S1.
+
+2
+S1: Sam only gave Mary apples.
+S2: Sam also gave Mary bananas.
+C
+Because S1 says the only thing Sam gave Mary was apples, while S2 adds bananas, contradicting the “only apples” restriction.
+
+3
+S1: Sam only gave Sue apples.
+S2: Sam didn't give Rob apples.
+B
+Because S1 concerns what Sam gave Sue, not Rob; S2 introduces Rob, which is compatible but not entailed or contradicted by S1.
+
+4
+S1: Sam only gave Bill bananas.
+S2: Sam also gave Bill grapes.
+C
+Because S1 says the only thing given to Bill was bananas, while S2 says he also got grapes, which conflicts with “only bananas.”
+
+5
+S1: Sam only gave Rob grapes.
+S2: Sam didn't give Rob apples.
+A
+Because if Sam only gave Rob grapes, then he did not give Rob any other fruit, including apples.
+
+6
+S1: Sam only gave Sue grapes.
+S2: Sam also gave Tom grapes.
+B
+Because S1 concerns what Sue received and doesn’t specify what Tom received; S2’s claim about Tom is not determined by S1.
+
+7
+S1: Sam only gave Ellen grapes.
+S2: Sam didn't give Rob grapes.
+B
+Because S1 restricts grape-giving to Ellen, but says nothing explicitly about Rob; that Rob got no grapes is compatible but not strictly entailed.
+
+8
+S1: Sam only gave Mary grapes.
+S2: Sam also gave Mary bananas.
+C
+Because S1 says grapes were the only thing Sam gave Mary, while S2 adds bananas, which contradicts “only grapes.”
+
+9
+S1: Sam only gave Sue apples.
+S2: Sam didn't give Bill apples.
+B
+Because S1 is about what Sue received; it doesn’t state whether Bill received apples, so S2 is compatible but not entailed.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f10: 10 parsed blocks; all 10 required test indices present.
+
+✓ Finished processing f10
+  Results saved to: data/output/f10_both_baseline_openai_gpt-5.1_FS0_20260519_144204.csv
+  Log saved to:     data/output/f10_both_baseline_openai_gpt-5.1_FS0_20260519_144204.log
+

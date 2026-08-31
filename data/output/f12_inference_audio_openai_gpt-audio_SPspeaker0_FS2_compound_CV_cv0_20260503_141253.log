@@ -1,0 +1,135 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260503_141253, fold=0) ===
+
+--- Attempt 1 for f12_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave BILL grapes.
+S2: Sam also gave Bill apples.
+B
+Because...
+
+Example 2
+S1: Sam only gave ROB apples.
+S2: Sam also gave Rob bananas.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+2  
+B  
+Because S1 states that Sam only gave ROB grapes, which excludes the possibility of giving Rob bananas. S2 states that Sam also gave Rob bananas, which is not entailed by the restrictive focus on grapes in S1. This makes the two statements independent, as S2 introduces additional information not implied by S1. 
+
+3  
+A  
+Because S1 states that Sam only gave ROB apples, meaning other people did not receive apples. S2 states that Sam also gave Rob bananas, and this does not contradict the information in S1. There’s no restriction on what other items Rob received, so S2 is entailed.
+
+4  
+B  
+Because S1 states that Sam only gave ROB grapes, meaning he did not give Rob other fruits or items. S2 says Sam also gave Rob bananas, which is independent because S2 adds information that is not entailed by or ruled out by S1. Hence, the statements are independent.
+
+5  
+C  
+Because S1 states that Sam only gave ROB oranges, which means Rob and only Rob received oranges. S2 says Sam didn’t give Ellen oranges, which is entailed by S1. However, focusing on prosody: if S1 prosodically focuses on “ROB,” it restricts oranges to Rob only. Thus, saying Sam didn’t give Ellen oranges is consistent rather than contradicted. But by strict classification, S2 might appear redundant and could indicate contradiction if prosody shifts focus. In the clearest semantic sense, it entails.
+
+6  
+C  
+Because S1 states that Sam only gave SUE apples, meaning no one else, including Rob, received apples. S2 says that Sam didn’t give Rob apples, which follows directly from S1. This makes S2 entailed by S1.
+
+7  
+C  
+Because S1 states that Sam only gave TOM apples, restricting apples exclusively to Tom. S2 says Sam didn’t give Bill apples, which is directly supported by the exclusivity in S1. Thus, S2 is entailed by S1.
+
+8  
+C  
+Because S1 states that Sam only gave TOM bananas, restricting bananas exclusively to Tom. S2 says that Sam didn’t give Sue bananas, which follows from the restriction in S1. Therefore, S2 is entailed by S1.
+
+9  
+A  
+Because S1 states that Sam only gave SUE apples, meaning Sue alone got apples. S2 says Sam didn’t give Sue oranges. This is independent, as S1 places restrictions on apples, not oranges. S2 adds new information about oranges, unrelated to the apple restriction in S1, making them independent.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv0: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f12_cv0
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv0_20260503_141253.log
+

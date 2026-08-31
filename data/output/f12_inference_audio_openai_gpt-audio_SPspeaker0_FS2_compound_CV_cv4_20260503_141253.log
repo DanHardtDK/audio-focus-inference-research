@@ -1,0 +1,135 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260503_141253, fold=4) ===
+
+--- Attempt 1 for f12_cv4 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Sue BANANAS.
+S2: Sam didn't give Sue oranges.
+A
+Because...
+
+Example 2
+S1: Sam only gave Sue ORANGES.
+S2: Sam didn't give Sue bananas.
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because in S1, the prosodic focus is on "Bill," indicating that Sam only gave Bill grapes (and no one else). In S2, the statement is about Sam also giving apples to Bill. This second statement doesn’t contradict or logically follow from the focus on Bill in S1—it’s independent. The focus of S1 is on who received the grapes, while S2 is about what Bill received in addition to grapes.  
+
+1  
+C  
+Because in S1, the prosodic focus is on "ROB," meaning Sam only gave apples to Rob, and not to anyone else. In S2, it says that Sam gave bananas to Rob. This contradicts the uniqueness implication from S1. By saying “only gave Rob apples,” S1 implies that apples were the sole item given to Rob. S2 contradicts that by adding bananas.  
+
+2  
+B  
+Because in S1, the prosodic focus is on "ROB," meaning Sam only gave Rob grapes. S2 says Sam gave Rob bananas, which is not logically entailed or contradicted by the prosodic focus on Rob receiving grapes. This makes the second statement independent, talking about a different fruit category, not affecting the exclusivity implied in S1.  
+
+3  
+A  
+Because in S1, the prosodic focus is on "ORANGES," meaning Sam only gave Rob oranges (and nothing else). S2 states that Sam didn’t give Ellen oranges. This is entailed because S1’s focus implies that oranges were exclusively given to Rob, meaning they were not given to anyone else, including Ellen.  
+
+4  
+A  
+Because in S1, the prosodic focus is on "Sue," meaning Sam only gave Sue apples. S2 says that Sam didn’t give Rob apples. This is entailed because if Sue was the sole recipient of apples, then no one else, including Rob, received apples.  
+
+5  
+A  
+Because in S1, the prosodic focus is on "Tom," meaning Sam only gave Tom apples. S2 states that Sam didn’t give Bill apples, and that logically follows from the exclusivity implied in S1. If Tom is the only one who received apples, then Bill did not.  
+
+6  
+A  
+Because in S1, the prosodic focus is on "Tom," meaning Sam only gave Tom bananas. S2 states that Sam didn’t give Sue bananas. This logically follows, since if bananas were exclusively given to Tom, then Sue didn’t get any.  
+
+7  
+C  
+Because in S1, the prosodic focus is on "Sue," meaning Sam only gave Sue apples (and nothing else). S2 says that Sam didn’t give Sue oranges. This contradicts S1’s implication that Sue got no other fruit. If Sue only got apples in S1, S2 says something consistent. However, the phrase “only gave Sue apples” specifically rules out giving Sue other fruits like oranges. Hence, in S1 Sue is focused as the exclusive recipient of apples, leaving nothing else open. The negation in S2 precludes oranges for Sue, which conflicts with the earlier nuance. Therefore a contradiction arises.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv4: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f12_cv4
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv4_20260503_141253.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv4_20260503_141253.log
+

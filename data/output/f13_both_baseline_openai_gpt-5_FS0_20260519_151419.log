@@ -1,0 +1,148 @@
+=== Log for f13 (backend=openai, model=gpt-5, run=20260519_151419, fold=) ===
+
+--- Attempt 1 for f13 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+A
+Because...
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+A
+Because...
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+A
+Because...
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+A
+Because...
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+A
+Because...
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Ellen bananas.
+S2: Sam also gave Tom bananas.
+C
+Because “only gave Ellen bananas” means no one other than Ellen received bananas from Sam; giving Tom bananas contradicts this.
+
+1
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Rob oranges.
+C
+Because “only gave Ellen oranges” means only Ellen received oranges from Sam; giving Rob oranges contradicts this.
+
+2
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Ellen bananas.
+C
+Because “only gave Rob bananas” means only Rob received bananas from Sam; giving Ellen bananas contradicts this.
+
+3
+S1: Sam only gave Tom bananas.
+S2: Sam also gave Mary bananas.
+C
+Because “only gave Tom bananas” means only Tom received bananas from Sam; giving Mary bananas contradicts this.
+
+4
+S1: Sam only gave Ellen oranges.
+S2: Sam also gave Ellen apples.
+C
+Because “only gave Ellen oranges” means Ellen received nothing but oranges from Sam; giving her apples contradicts this.
+
+5
+S1: Sam only gave Rob bananas.
+S2: Sam also gave Rob oranges.
+C
+Because “only gave Rob bananas” means Rob received nothing but bananas from Sam; giving him oranges contradicts this.
+
+6
+S1: Sam only gave Sue oranges.
+S2: Sam also gave Sue bananas.
+C
+Because “only gave Sue oranges” means Sue received nothing but oranges from Sam; giving her bananas contradicts this.
+
+7
+S1: Sam only gave Tom apples.
+S2: Sam also gave Tom bananas.
+C
+Because “only gave Tom apples” means Tom received nothing but apples from Sam; giving him bananas contradicts this.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f13
+  Results saved to: data/output/f13_both_baseline_openai_gpt-5_FS0_20260519_151419.csv
+  Log saved to:     data/output/f13_both_baseline_openai_gpt-5_FS0_20260519_151419.log
+

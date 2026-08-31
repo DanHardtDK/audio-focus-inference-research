@@ -1,0 +1,119 @@
+=== Log for ns1 (backend=openai, model=gpt-4o-audio-preview, run=20260503_142258, fold=3) ===
+
+--- Attempt 1 for ns1_cv3 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Rob ORANGES.
+S2: Sam also gave Rob apples.
+C
+Because...
+
+Example 2
+S1: Sam only gave TOM apples.
+S2: Sam didn't give Tom grapes.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because the first sentence ("Sam only gave Bill grapes") focuses on Bill as the exclusive recipient of grapes, suggesting no one else got grapes. The second sentence ("Sam also gave Sue grapes") introduces Sue as another recipient of grapes, which contradicts the exclusivity of Bill but not necessarily the focus. Therefore, they are independent since the contradiction comes from a different aspect (recipients) not targeted by the prosodic focus (Bill in S1).
+
+1  
+B  
+Because the first sentence ("Sam only gave Sue oranges") focuses on Sue as the exclusive recipient of oranges. The second sentence ("Sam didn't give Rob oranges") is about Rob and oranges, which is different and doesn't interact directly with the exclusivity on Sue. Hence, the two statements are independent.
+
+2  
+B  
+Because the first sentence ("Sam only gave Rob grapes") focuses on Rob as the exclusive recipient of grapes. The second sentence ("Sam also gave Rob oranges") introduces a different type of fruit given to Rob (oranges), which does not contradict or entail the exclusivity in the first sentence. They talk about different sets of items, so they are independent.
+
+3  
+A  
+Because the first sentence ("Sam only gave Tom oranges") focuses on Tom as the exclusive recipient of oranges. The second sentence ("Sam didn't give Tom bananas") fits perfectly with the exclusivity in the first sentence—if Tom only got oranges, he didn't get any other fruit like bananas. Therefore, the second sentence is entailed by the first.
+
+4  
+C  
+Because the first sentence ("Sam only gave Ellen bananas") focuses on Ellen as the exclusive recipient of bananas. The second sentence ("Sam also gave Mary bananas") contradicts that exclusivity, because if Ellen is the only one who got bananas, Mary should not have received them. Hence, the sentences are contradicted.
+
+5  
+A  
+Because the first sentence ("Sam only gave Ellen grapes") focuses on Ellen as the exclusive recipient of grapes. The second sentence ("Sam didn't give Tom grapes") is consistent with that exclusivity. If only Ellen got grapes, then Tom definitely did not get any. So the second sentence is entailed by the first.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for ns1_cv3: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing ns1_cv3
+  Results saved to: data/output/ns1_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS2_compound_CV_cv3_20260503_142258.csv
+  Log saved to:     data/output/ns1_inference_audio_openai_gpt-4o-audio-preview_SPspeaker1_FS2_compound_CV_cv3_20260503_142258.log
+

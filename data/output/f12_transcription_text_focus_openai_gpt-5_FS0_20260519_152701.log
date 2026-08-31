@@ -1,0 +1,127 @@
+=== Log for f12 (backend=openai, model=gpt-5, run=20260519_152701, fold=) ===
+
+--- Attempt 1 for f12 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+You are given text for S1 and S2.
+Your task is to identify the prosodically focused word in S1 and mark it with UPPERCASE. All other words must be in normal casing.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+S1: ...
+S2: ...
+
+Do not add meta-comments or tool-use descriptions.
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+S1: Sam only gave Bill grapes.
+S2: Sam also gave Bill apples.
+
+1
+S1: Sam only gave Rob apples.
+S2: Sam also gave Rob bananas.
+
+2
+S1: Sam only gave Rob grapes.
+S2: Sam also gave Rob bananas.
+
+3
+S1: Sam only gave Rob oranges.
+S2: Sam didn't give Ellen oranges.
+
+4
+S1: Sam only gave Sue apples.
+S2: Sam didn't give Rob apples.
+
+5
+S1: Sam only gave Tom apples.
+S2: Sam didn't give Bill apples.
+
+6
+S1: Sam only gave Tom bananas.
+S2: Sam didn't give Sue bananas.
+
+7
+S1: Sam only gave Sue apples.
+S2: Sam didn't give Sue oranges.
+
+8
+S1: Sam only gave Sue bananas.
+S2: Sam didn't give Sue oranges.
+
+9
+S1: Sam only gave Sue oranges.
+S2: Sam didn't give Sue bananas.
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+S1: Sam only gave Bill GRAPES.
+S2: Sam also gave Bill apples.
+
+1
+S1: Sam only gave Rob APPLES.
+S2: Sam also gave Rob bananas.
+
+2
+S1: Sam only gave Rob GRAPES.
+S2: Sam also gave Rob bananas.
+
+3
+S1: Sam only gave ROB oranges.
+S2: Sam didn't give Ellen oranges.
+
+4
+S1: Sam only gave SUE apples.
+S2: Sam didn't give Rob apples.
+
+5
+S1: Sam only gave TOM apples.
+S2: Sam didn't give Bill apples.
+
+6
+S1: Sam only gave TOM bananas.
+S2: Sam didn't give Sue bananas.
+
+7
+S1: Sam only gave Sue APPLES.
+S2: Sam didn't give Sue oranges.
+
+8
+S1: Sam only gave Sue BANANAS.
+S2: Sam didn't give Sue oranges.
+
+9
+S1: Sam only gave Sue ORANGES.
+S2: Sam didn't give Sue bananas.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12: 10 parsed blocks; all 10 required test indices present.
+
+✓ Finished processing f12
+  Results saved to: data/output/f12_transcription_text_focus_openai_gpt-5_FS0_20260519_152701.csv
+  Log saved to:     data/output/f12_transcription_text_focus_openai_gpt-5_FS0_20260519_152701.log
+

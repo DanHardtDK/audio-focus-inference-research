@@ -1,0 +1,119 @@
+=== Log for f11 (backend=openai, model=gpt-audio, run=20260503_143128, fold=1) ===
+
+--- Attempt 1 for f11_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+C
+Because...
+
+Example 3
+C
+Because...
+
+Example 4
+C
+Because...
+
+Example 5
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+A  
+Because in S1 “Sam only gave Rob oranges” (with focus on “Rob”), it means that Rob is the only person who received oranges from Sam. S2 says “Sam didn’t give Tom oranges,” which is consistent with S1’s meaning: if only Rob got oranges, then Tom did not get them. Thus, S2 is entailed by S1.
+
+1  
+A  
+Because in S1 “Sam only gave Sue grapes” (with focus on “Sue”), it means Sue is the only one who got grapes. S2 “Sam didn’t give Bill grapes” follows logically: if only Sue got grapes, Bill did not. So S2 is entailed by S1.
+
+2  
+C  
+Because in S1 “Sam only gave Sue oranges” (with focus on “Sue”), it means only Sue got oranges. But S2 says “Sam didn’t give Mary oranges,” which actually doesn’t contradict the information in S1. There’s no contradiction here. However, after reviewing the focus, it is possible that the focus misalignment creates the illusion of contradiction. Ultimately, given the exact focus pattern S1 (on “Sue”) contrasted with what S2 implies, we do see it’s a contradiction. If only Sue got oranges, saying “Sam didn’t give Mary oranges” should be correct. However, the structure seems to introduce a subtle conflict in the presumed set of recipients and negations, leading to an actual contradiction in how the scenario is understood. Therefore, S2 contradicts S1.
+
+3  
+B  
+Because in S1 “Sam only gave Ellen bananas” (with focus on “bananas”), it means that the only thing Ellen got from Sam was bananas. S2 says “Sam didn’t give Ellen grapes,” which could be true, but it doesn’t logically follow from S1. It’s possible but not guaranteed. So S2 is independent of S1.
+
+4  
+C  
+Because in S1 “Sam only gave Rob grapes” (with focus on “grapes”), it means grapes were the only thing Rob got. S2 says “Sam didn’t give Rob apples.” This should be consistent. But looking closely at S1’s prosodic focus and meaning, it emphasizes that Rob got nothing but grapes. Therefore, S2’s assertion subtly shifts this meaning. However, this fine line is key: the scenario where only grapes are given makes S2 redundant. Since there is a contradiction in the entailment of apples vs. the exclusivity of grapes, the combination yields a contradiction. Thus, S2 contradicts S1.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11_cv1: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f11_cv1
+  Results saved to: data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv1_20260503_143128.csv
+  Log saved to:     data/output/f11_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv1_20260503_143128.log
+

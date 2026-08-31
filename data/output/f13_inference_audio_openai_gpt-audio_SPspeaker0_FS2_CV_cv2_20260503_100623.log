@@ -1,0 +1,115 @@
+=== Log for f13 (backend=openai, model=gpt-audio, run=20260503_100623, fold=2) ===
+
+--- Attempt 1 for f13_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+C
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+C
+Because S1 states Sam only gave Ellen bananas, while S2 says Sam also gave Tom bananas, which contradicts the exclusivity implied by "only" in S1.
+
+1
+C
+Because S1 states Sam only gave Ellen oranges, while S2 says Sam also gave Rob oranges, which contradicts the exclusivity implied by "only" in S1.
+
+2
+B
+Because S1 states Sam only gave Rob bananas, and S2 states Sam also gave Ellen bananas. There's no direct contradiction or entailment here, as the sentence is about a different recipient.
+
+3
+B
+Because S1 states Sam only gave Tom bananas, and S2 states Sam also gave Mary bananas. These statements are independent, as they involve different people.
+
+6
+C
+Because S1 states Sam only gave Rob bananas, while S2 says Sam also gave Rob oranges, which contradicts the idea that Sam gave Rob only bananas.
+
+7
+C
+Because S1 states Sam only gave Sue oranges, while S2 says Sam also gave Sue bananas, contradicting the idea that Sue received only oranges.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f13_cv2: 6 parsed blocks; all 6 required test indices present.
+
+✓ Finished processing f13_cv2
+  Results saved to: data/output/f13_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100623.csv
+  Log saved to:     data/output/f13_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100623.log
+

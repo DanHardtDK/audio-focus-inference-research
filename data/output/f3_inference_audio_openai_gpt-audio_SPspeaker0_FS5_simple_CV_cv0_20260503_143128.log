@@ -1,0 +1,119 @@
+=== Log for f3 (backend=openai, model=gpt-audio, run=20260503_143128, fold=0) ===
+
+--- Attempt 1 for f3_cv0 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+A
+Because...
+
+Example 3
+B
+Because...
+
+Example 4
+B
+Because...
+
+Example 5
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+5  
+C  
+Because in S1, the prosodic focus is on "Ellen" (Sam only gave Ellen grapes), indicating that Sam didn't give grapes to anyone else. In S2, it says Sam only gave Rob grapes, which directly contradicts the focus and meaning of S1.
+
+6  
+C  
+Because in S1, the prosodic focus is on "Ellen" (Sam only gave Ellen apples), but S2 says Sam didn't give Sue apples, which contradicts S1’s emphasis that Ellen was the sole recipient.
+
+7  
+B  
+Because in S1, the prosodic focus is on "Rob" (Sam only gave Rob oranges), while in S2, it states Sam also gave Rob apples. These two sentences introduce different fruits and do not contradict or entail each other—they provide independent information.
+
+8  
+B  
+Because in S1, the prosodic focus is on "Rob" (Sam only gave Rob apples), and S2 states Sam also gave Rob grapes. The first focuses on apples while the second offers new information about grapes, so they are independent.
+
+9  
+A  
+Because in S1, the prosodic focus is on "bananas" (Sam only gave Rob bananas), meaning Rob is the only recipient of bananas. S2 states Sam didn’t give Ellen bananas, which is entailed by S1’s focus and meaning.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f3_cv0: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f3_cv0
+  Results saved to: data/output/f3_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.csv
+  Log saved to:     data/output/f3_inference_audio_openai_gpt-audio_SPspeaker0_FS5_simple_CV_cv0_20260503_143128.log
+

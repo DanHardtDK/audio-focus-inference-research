@@ -1,0 +1,131 @@
+=== Log for f12 (backend=openai, model=gpt-audio, run=20260503_100623, fold=2) ===
+
+--- Attempt 1 for f12_cv2 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+B  
+Because S1: "Sam only gave BILL grapes." (focus on "Bill") means Bill is the sole recipient of grapes. S2: "Sam also gave Bill apples." presents new information about Bill getting apples, which does not contradict Bill being the only recipient of grapes. The sentence is independent because it introduces an additional fact about apples, which are a different item from grapes, and does not logically follow from or contradict the first statement.  
+
+1  
+B  
+Because S1: "Sam only gave ROB apples." (focus on "Rob") means Rob is the only recipient of apples. S2: "Sam also gave Rob bananas." talks about bananas, a different item, and does not contradict or follow from the first statement about apples. This provides new, independent information about Rob receiving bananas in addition to apples.  
+
+2  
+C  
+Because S1: "Sam only gave ROB grapes." (focus on "Rob") means Rob is the sole recipient of grapes. S2: "Sam also gave Rob bananas." introduces bananas, a different item. However, the first sentence’s use of "only" is focused on the exclusivity of grapes to Rob and does not prohibit Rob from receiving other things such as bananas. Therefore, this additional information does not contradict the first statement. Hence, the sentences are actually independent and should not be classified as contradicted.  
+
+3  
+C  
+Because S1: "Sam only gave ROB oranges." (focus on "Rob") means Rob is the exclusive recipient of oranges. S2: "Sam didn’t give ELLEN oranges." (focus on "Ellen") also states that Ellen did not receive any oranges. This follows directly from the first sentence, because if Rob was the only one to receive oranges, then it logically entails that Ellen got no oranges. Therefore, this is actually entailed.  
+
+6  
+A  
+Because S1: "Sam only gave SUE apples." (focus on "Sue") means Sue is the only one who received apples. S2: "Sam didn’t give ROB apples." logically follows from this, as if Sue was the only recipient of apples, then naturally Rob did not get any.  
+
+7  
+A  
+Because S1: "Sam only gave TOM apples." (focus on "Tom") means Tom is the only person who received apples. S2: "Sam didn’t give BILL apples." is entailed by the first sentence, since if only Tom got apples, then of course Bill did not.  
+
+8  
+A  
+Because S1: "Sam only gave TOM bananas." (focus on "Tom") means Tom is the exclusive recipient of bananas. S2: "Sam didn’t give SUE bananas." is directly entailed by the first sentence, since if Tom was the only one to get bananas, then Sue did not get any.  
+
+9  
+A  
+Because S1: "Sam only gave SUE apples." (focus on "Sue") means Sue is the only recipient of apples. S2: "Sam didn’t give SUE oranges." does not contradict or extend what was stated about apples. This is actually independent information because the first sentence only spoke about apples, while the second introduces a statement about oranges, a different item. Hence, this should be independent.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f12_cv2: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f12_cv2
+  Results saved to: data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100623.csv
+  Log saved to:     data/output/f12_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv2_20260503_100623.log
+

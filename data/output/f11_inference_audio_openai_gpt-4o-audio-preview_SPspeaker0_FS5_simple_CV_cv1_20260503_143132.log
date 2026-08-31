@@ -1,0 +1,119 @@
+=== Log for f11 (backend=openai, model=gpt-4o-audio-preview, run=20260503_143132, fold=1) ===
+
+--- Attempt 1 for f11_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+C
+Because...
+
+Example 3
+C
+Because...
+
+Example 4
+C
+Because...
+
+Example 5
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because the first sentence says Sam gave Rob oranges and not Tom, while the second sentence says that Sam gave Sue oranges and not Mary. This contradicts the first sentence by changing both the recipient and the fruit.
+
+1  
+C  
+Because in the first sentence Sam gave sue grapes, but not Bill, while in the second sentence Sam gave Ellen bananas, not grapes. The contradiction is in both the recipient and the type of fruit.
+
+2  
+C  
+Because the first sentence says Sam gave Ellen bananas and ruled out grapes, whereas the second sentence says Sam gave Ellen bananas but ruled out oranges. The fruit that was excluded changed, which contradicts the first sentence.
+
+3  
+B  
+Because the first sentence focuses on Rob receiving grapes and not apples, while the second sentence adds independent information about Bill and Ellen receiving apples. There is no direct contradiction or entailment here.
+
+4  
+B  
+Because the first sentence talks about Ellen and Sue receiving apples, while the second sentence focuses on Ellen and Rob receiving oranges. These are independent details that do not contradict or entail each other.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f11_cv1: 5 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f11_cv1
+  Results saved to: data/output/f11_inference_audio_openai_gpt-4o-audio-preview_SPspeaker0_FS5_simple_CV_cv1_20260503_143132.csv
+  Log saved to:     data/output/f11_inference_audio_openai_gpt-4o-audio-preview_SPspeaker0_FS5_simple_CV_cv1_20260503_143132.log
+

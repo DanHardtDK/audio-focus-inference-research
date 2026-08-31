@@ -1,0 +1,131 @@
+=== Log for f2 (backend=openai, model=gpt-audio, run=20260503_100327, fold=4) ===
+
+--- Attempt 1 for f2_cv4 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+B
+Because...
+
+Example 2
+C
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "Rob" (Sam only gave Rob bananas), while in S2, the focus is on "Tom" (Sam didn’t give Tom bananas). The second statement contradicts the first because the first clearly states it was Rob who received bananas, implying others like Tom did not. Therefore, S2 contradicts S1.
+
+1  
+C  
+Because in S1, the prosodic focus is on "Tom" (Sam only gave Tom grapes), and S2 negates that by asserting Sam didn’t give Tom oranges. The first sentence implies that Tom received only grapes and nothing else, so S2 supports that Tom didn’t get oranges, making them entailed.
+
+2  
+C  
+Because in S1, the prosodic focus is on "Sue" (Sam only gave Sue oranges). In S2, the statement claims Sam also gave Sue apples, directly contradicting the exclusive claim in S1 that Sue only got oranges.
+
+3  
+A  
+Because in S1, the prosodic focus is on "Sue" (Sam only gave Sue bananas), meaning Sue and no one else got bananas. S2 is consistent with this by saying Sam didn’t give Rob bananas. This follows from S1’s exclusive focus on Sue, so S2 is entailed.
+
+4  
+C  
+Because in S1, the prosodic focus is on "Tom" (Sam only gave Tom oranges). S2 says Sam didn’t give Tom bananas, which supports that if Tom only got oranges, he didn’t receive anything else like bananas, making S2 entailed by S1.
+
+5  
+A  
+Because in S1, the prosodic focus is on "Sue" (Sam only gave Sue apples). S2 states Sam didn’t give Sue oranges, which follows because if Sue only got apples, she must not have received oranges or anything else. Therefore, S2 is entailed by S1.
+
+6  
+A  
+Because in S1, the prosodic focus is on "Sue" (Sam only gave Sue grapes). S2 says Sam didn’t give Sue apples, which is consistent because if Sue only got grapes, she didn’t get apples or any other fruit. So S2 is entailed by S1.
+
+7  
+B  
+Because in S1, the prosodic focus is on "Ellen" (Sam only gave Ellen oranges), and S2 states Sam also gave Ellen bananas. This contradicts the exclusivity implied by “only” in S1, so S2 contradicts S1. Therefore, the relationship between S1 and S2 is contradicted.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f2_cv4: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f2_cv4
+  Results saved to: data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv4_20260503_100327.csv
+  Log saved to:     data/output/f2_inference_audio_openai_gpt-audio_SPspeaker0_FS2_CV_cv4_20260503_100327.log
+

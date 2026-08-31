@@ -1,0 +1,140 @@
+=== Log for f10 (backend=gemini, model=gemini-3.1-pro-preview, run=20260503_144750, fold=1) ===
+
+--- Attempt 1 for f10_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 5 examples show the correct answer format:
+
+Example 1
+A
+Because...
+
+Example 2
+C
+Because...
+
+Example 3
+A
+Because...
+
+Example 4
+B
+Because...
+
+Example 5
+A
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+2
+A
+Because...
+
+3
+A
+Because...
+
+4
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0
+C
+Because S1 places prosodic focus on "APPLES", meaning apples were the only thing Sam gave Tom. S2 states that Sam also gave Tom grapes, which contradicts S1.
+
+1
+B
+Because S1 places prosodic focus on "BANANAS", meaning bananas were the only thing Sam gave Mary. S2 is about whether Sam gave Bill bananas, which is independent of S1.
+
+2
+B
+Because S1 places prosodic focus on "MARY", meaning Mary was the only person Sam gave apples to. S2 is about Sam giving Mary bananas, which is independent of S1.
+
+3
+A
+Because S1 places prosodic focus on "SUE", meaning Sue was the only person Sam gave apples to. S2 states that Sam didn't give Rob apples, which is logically entailed by S1.
+
+4
+B
+Because S1 places prosodic focus on "BILL", meaning Bill was the only person Sam gave bananas to. S2 is about Sam giving Bill grapes, which is independent of S1.
+
+5
+A
+Because S1 places prosodic focus on "GRAPES", meaning grapes were the only thing Sam gave Rob. S2 states that Sam didn't give Rob apples, which is logically entailed by S1.
+
+6
+C
+Because S1 places prosodic focus on "SUE", meaning Sue was the only person Sam gave grapes to. S2 states that Sam also gave Tom grapes, which contradicts S1.
+
+7
+A
+Because S1 places prosodic focus on "ELLEN", meaning Ellen was the only person Sam gave grapes to. S2 states that Sam didn't give Rob grapes, which is logically entailed by S1.
+
+8
+B
+Because S1 places prosodic focus on "MARY", meaning Mary was the only person Sam gave grapes to. S2 is about Sam giving Mary bananas, which is independent of S1.
+
+9
+A
+Because S1 places prosodic focus on "SUE", meaning Sue was the only person Sam gave apples to. S2 states that Sam didn't give Bill apples, which is logically entailed by S1.
+
+--- End of Raw Model Output ---
+
+⚠️ WARNING [attempt 1] for f10_cv1: model produced output for demonstration items [5, 6, 7, 8, 9] — ignored.
+✓ Output coverage OK [attempt 1] for f10_cv1: 10 parsed blocks; all 5 required test indices present.
+
+✓ Finished processing f10_cv1
+  Results saved to: data/output/f10_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS5_simple_CV_cv1_20260503_144750.csv
+  Log saved to:     data/output/f10_inference_audio_gemini_gemini-3.1-pro-preview_SPspeaker0_FS5_simple_CV_cv1_20260503_144750.log
+

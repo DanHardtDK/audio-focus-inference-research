@@ -1,0 +1,11 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave ELLEN grapes.,Sam didn't give Tom grapes.,A,,,1,Sam only gave ELLEN grapes.,Sam didn't give Tom grapes.,,0.0,0.0,1,NEG,1,f3,text_focus,openai,gpt-5,20260519_152701,,,
+1,0,Sam only gave Ellen APPLES.,Sam didn't give Ellen oranges.,A,,,1,Sam only gave Ellen APPLES.,Sam didn't give Ellen oranges.,,0.0,0.0,2,NEG,2,f3,text_focus,openai,gpt-5,20260519_152701,,,
+2,0,Sam only gave Rob GRAPES.,Sam also gave Ellen grapes.,B,,,0,Sam only gave ROB grapes.,Sam also gave Ellen grapes.,,0.0,0.0,2,POS,1,f3,text_focus,openai,gpt-5,20260519_152701,,,
+3,0,Sam only gave Rob APPLES.,Sam also gave Ellen apples.,B,,,0,Sam only gave ROB apples.,Sam also gave Ellen apples.,,0.0,0.0,2,POS,1,f3,text_focus,openai,gpt-5,20260519_152701,,,
+4,0,Sam only gave Ellen APPLES.,Sam didn't give Bill apples.,B,,,0,Sam only gave ELLEN apples.,Sam didn't give Bill apples.,,0.0,0.0,2,NEG,1,f3,text_focus,openai,gpt-5,20260519_152701,,,
+5,0,Sam only gave Rob APPLES.,Sam didn't give Sue apples.,B,,,0,Sam only gave ROB apples.,Sam didn't give Sue apples.,,0.0,0.0,2,NEG,1,f3,text_focus,openai,gpt-5,20260519_152701,,,
+6,0,Sam only gave ROB oranges.,Sam also gave Rob apples.,B,,,0,Sam only gave Rob ORANGES.,Sam also gave Rob apples.,,0.0,0.0,1,POS,2,f3,text_focus,openai,gpt-5,20260519_152701,,,
+7,0,Sam only gave ROB apples.,Sam also gave Rob grapes.,B,,,0,Sam only gave Rob APPLES.,Sam also gave Rob grapes.,,0.0,0.0,1,POS,2,f3,text_focus,openai,gpt-5,20260519_152701,,,
+8,0,Sam only gave ROB bananas.,Sam didn't give Ellen bananas.,A,,,1,Sam only gave ROB bananas.,Sam didn't give Ellen bananas.,,0.0,0.0,1,NEG,1,f3,text_focus,openai,gpt-5,20260519_152701,,,
+9,0,Sam only gave Mary APPLES.,Sam also gave Ellen apples.,B,,,0,Sam only gave MARY apples.,Sam also gave Ellen apples.,,0.0,0.0,2,POS,1,f3,text_focus,openai,gpt-5,20260519_152701,,,

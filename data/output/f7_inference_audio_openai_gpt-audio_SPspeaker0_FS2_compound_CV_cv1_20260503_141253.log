@@ -1,0 +1,135 @@
+=== Log for f7 (backend=openai, model=gpt-audio, run=20260503_141253, fold=1) ===
+
+--- Attempt 1 for f7_cv1 ---
+
+--- Prompt sent to model ---
+
+
+You are performing a semantic classification task.
+
+
+Your task:
+1. Listen to S1 and S2 from audio.
+2. Classify S2 relative to S1:
+   A = entailed
+   B = independent
+   C = contradicted.
+
+IMPORTANT:
+- The audio for ALL examples is ALREADY INCLUDED with this message.
+- You must NOT ask for audio or wait for additional input.
+- Pay close attention to which word is prosodically focused in S1.
+
+
+
+
+Your output must follow this structure:
+
+<index>
+A
+Because <explanation>
+
+Do not add meta-comments or tool-use descriptions.
+
+The following 2 examples show the correct answer format:
+
+Example 1
+S1: Sam only gave Sue APPLES.
+S2: Sam also gave Tom apples.
+B
+Because...
+
+Example 2
+S1: Sam only gave BILL grapes.
+S2: Sam didn't give Bill oranges.
+B
+Because...
+
+
+---------------------------------------------------------------
+TEST ITEMS
+---------------------------------------------------------------
+<BEGIN_NEW>
+0
+A
+Because...
+
+1
+A
+Because...
+
+4
+A
+Because...
+
+5
+A
+Because...
+
+6
+A
+Because...
+
+7
+A
+Because...
+
+8
+A
+Because...
+
+9
+A
+Because...
+
+
+<END_NEW>
+
+Begin now.
+
+
+--- End of prompt ---
+
+
+--- Raw Model Output ---
+
+0  
+C  
+Because in S1, the prosodic focus is on "BANANAS," indicating that Sam gave Bill only bananas and nothing else. In S2, it says Sam also gave Bill grapes. This directly contradicts S1’s meaning since S1 implies no other fruit was given to Bill.  
+
+1  
+C  
+Because in S1, the prosodic focus is on "MARY," which means Sam gave only Mary apples, and no one else received apples. S2 says that Sam also gave Ellen apples. This contradicts S1 since S1 excludes the possibility of anyone else receiving apples.  
+
+4  
+A  
+Because in S1, the prosodic focus is on "APPLES," meaning Sam gave Bill only apples. S2 says Sam didn’t give Bill bananas. This is entailed by S1, as giving only apples means no other fruits, such as bananas, were given.  
+
+5  
+A  
+Because in S1, the prosodic focus is on "APPLES," meaning Sam gave Bill only apples. S2 says Sam didn’t give Bill bananas. This is entailed by S1, as giving only apples means no other fruits, such as bananas, were given.  
+
+6  
+A  
+Because in S1, the prosodic focus is on "APPLES," meaning Sam gave Sue only apples. S2 says Sam didn’t give Sue bananas. This is entailed by S1, as giving only apples means no other fruits, such as bananas, were given.  
+
+7  
+B  
+Because in S1, the prosodic focus is on "ELLEN," meaning Sam gave only Ellen the oranges. S2 says Sam didn’t give Tom oranges. This is independent because S1 says nothing about who might or might not have received oranges besides Ellen—S1 does not entail or contradict the statement about Tom.  
+
+8  
+B  
+Because in S1, the prosodic focus is on "TOM," meaning Sam gave only Tom apples. S2 says Sam didn’t give Mary apples. This is independent because S1 focuses on Tom receiving apples and does not entail or contradict whether Mary got apples. The two statements are separate.  
+
+9  
+C  
+Because in S1, the prosodic focus is on "TOM," meaning Sam gave only Tom apples. S2 says Sam also gave Bill apples. This contradicts S1, as S1 excludes the possibility of anyone else (like Bill) getting apples.
+
+--- End of Raw Model Output ---
+
+✓ Output coverage OK [attempt 1] for f7_cv1: 8 parsed blocks; all 8 required test indices present.
+
+✓ Finished processing f7_cv1
+  Results saved to: data/output/f7_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.csv
+  Log saved to:     data/output/f7_inference_audio_openai_gpt-audio_SPspeaker0_FS2_compound_CV_cv1_20260503_141253.log
+
