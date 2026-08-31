@@ -1,0 +1,19 @@
+=== Log for ns2 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam didn't give Bill oranges.
+    pred=A  The prosodic focus on "grapes" in S1 emphasizes that grapes were the only fruit given to Bill, making S2 (not giving oranges) logically entailed.
+  [1] Sam only gave Ellen GRAPES. / Sam also gave Ellen oranges.
+    pred=C  The word "only" in S1 implies that Sam did not give Ellen anything other than grapes. S2 states that Sam also gave oranges, which contradicts the exclusivity implied by "only".
+  [2] Sam only gave BILL bananas. / Sam didn't give Tom bananas.
+    pred=A  The prosodic focus on "Bill" in S1 emphasizes that Bill was the only recipient, making S2 (Sam didn't give Tom bananas) logically entailed.
+  [3] Sam only gave Ellen ORANGES. / Sam also gave Sue oranges.
+    pred=C  The word "only" in S1 implies that Ellen was the sole recipient of oranges from Sam, which contradicts S2 stating that Sue also received oranges.
+  [4] Sam only gave TOM apples. / Sam also gave Bill apples.
+    pred=C  The focus on "Tom" in S1 implies Sam gave apples only to Tom and no one else. S2 states Sam also gave apples to Bill, which contradicts the exclusivity implied in S1.
+  [5] Sam only gave Bill BANANAS. / Sam didn't give Bill grapes.
+    pred=A  The prosodic focus on "bananas" in S1 emphasizes that only bananas were given, making it entailed that grapes were not given.
+  [6] Sam only gave ELLEN bananas. / Sam also gave Ellen grapes.
+    pred=C  The focus on "Ellen" in S1 implies Sam gave bananas *only* to Ellen, so giving grapes to Ellen contradicts the exclusivity implied by "only."
+  [7] Sam only gave Ellen GRAPES. / Sam didn't give Rob grapes.
+    pred=A  The prosodic focus on "only" in S1 emphasizes that Ellen was the sole recipient of grapes, making S2 (Sam didn't give Rob grapes) a logical consequence.
+  ns2: 4/8 correct on test items (50.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/ns2_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker1_FS0_20260522_145416.csv

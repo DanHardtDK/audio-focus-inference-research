@@ -1,0 +1,19 @@
+=== Log for ns2 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam didn't give Bill oranges.
+    pred=A  The prosodic focus on "grapes" in S1 emphasizes that only grapes were given to Bill, making S2 a logical consequence.
+  [1] Sam only gave Ellen GRAPES. / Sam also gave Ellen oranges.
+    pred=C  S2 contradicts S1 because S1 states Sam "only" gave Ellen grapes, implying no other fruits, while S2 claims Sam also gave her oranges.
+  [2] Sam only gave BILL bananas. / Sam didn't give Tom bananas.
+    pred=A  The prosodic focus on "Bill" in S1 emphasizes that Bill was the only recipient, making S2 (Sam didn't give Tom bananas) a logical consequence.
+  [3] Sam only gave Ellen ORANGES. / Sam also gave Sue oranges.
+    pred=C  S1 states Sam gave oranges to Ellen and only Ellen, implying no one else received oranges. S2 contradicts this by stating Sam also gave oranges to Sue.
+  [4] Sam only gave TOM apples. / Sam also gave Bill apples.
+    pred=C  The focus on "only" in S1 implies Sam gave apples to Tom and no one else, which is contradicted by S2 stating Sam also gave apples to Bill.
+  [5] Sam only gave Bill BANANAS. / Sam didn't give Bill grapes.
+    pred=A  The focus on "bananas" in S1 emphasizes that this was the only fruit given, making S2 a logical consequence.
+  [6] Sam only gave ELLEN bananas. / Sam also gave Ellen grapes.
+    pred=C  S2 contradicts S1 because S1 states Sam only gave Ellen bananas (implying no other fruits), while S2 claims Sam also gave her grapes.
+  [7] Sam only gave Ellen GRAPES. / Sam didn't give Rob grapes.
+    pred=C  The focus on "Ellen" in S1 implies that Sam gave grapes to someone other than Ellen, but S2 states Sam didn't give grapes to Rob, which contradicts the implication that Rob might have received them.
+  ns2: 4/8 correct on test items (50.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/ns2_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker2_FS0_20260522_145523.csv

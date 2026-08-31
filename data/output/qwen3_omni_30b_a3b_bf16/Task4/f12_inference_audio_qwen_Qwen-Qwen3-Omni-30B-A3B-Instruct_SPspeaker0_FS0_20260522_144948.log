@@ -1,0 +1,23 @@
+=== Log for f12 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam also gave Bill apples.
+    pred=C  The focus on "Bill" in S1 implies that Bill was the only recipient of grapes, making S2 (which states Sam gave Bill apples) contradictory if interpreted as implying Sam gave Bill something else besides grapes. However, since S2 introduces a new food (apples), it's not strictly contradictory unless we assume Sam only gave grapes. But given the focus on "Bill," the implication is exclusivity, so adding another item to Bill's gifts contradicts the exclusivity implied by "only."
+  [1] Sam only gave ROB apples. / Sam also gave Rob bananas.
+    pred=C  S2 contradicts S1 because S1 states Sam "only" gave Rob apples, implying no other fruits, while S2 claims Sam also gave Rob bananas.
+  [2] Sam only gave ROB grapes. / Sam also gave Rob bananas.
+    pred=A  The focus on "Rob" in S1 emphasizes that Rob was the only recipient of grapes, but this doesn't exclude Sam from giving Rob other things like bananas. Thus, S2 is entailed.
+  [3] Sam only gave Rob ORANGES. / Sam didn't give Ellen oranges.
+    pred=A  The prosodic focus on "oranges" in S1 emphasizes the type of item given, and S2 states that Ellen was not given that same item, which is consistent with Sam only giving oranges to Rob.
+  [4] Sam only gave Sue APPLES. / Sam didn't give Rob apples.
+    pred=A  The prosodic focus on "apples" in S1 emphasizes the type of item given, and S2 states that Rob was not given apples, which is consistent with Sam only giving apples to Sue. Thus, S2 is entailed by S1.
+  [5] Sam only gave Tom APPLES. / Sam didn't give Bill apples.
+    pred=A  The prosodic focus on "Tom" in S1 emphasizes that Tom is the recipient of the apples, which is consistent with S2 stating that Bill did not receive them. This supports the entailment that only Tom got apples.
+  [6] Sam only gave Tom BANANAS. / Sam didn't give Sue bananas.
+    pred=A  The prosodic focus on "only" in S1 emphasizes that Sam gave bananas to Tom and no one else, which entails that Sue was not given bananas.
+  [7] Sam only gave Sue APPLES. / Sam didn't give Sue oranges.
+    pred=A  The prosodic focus on "apples" in S1 emphasizes that apples were the only fruit given, making S2 a logical consequence.
+  [8] Sam only gave Sue BANANAS. / Sam didn't give Sue oranges.
+    pred=A  The prosodic focus on "bananas" in S1 emphasizes that Sue received only bananas and nothing else. S2 states that Sam didn't give Sue oranges, which is consistent with the idea that only bananas were given. Thus, S2 is entailed by S1.
+  [9] Sam only gave Sue ORANGES. / Sam didn't give Sue bananas.
+    pred=A  The prosodic focus on "oranges" in S1 emphasizes that oranges were the only fruit Sam gave Sue, making S2 (Sam didn't give Sue bananas) logically entailed, as it's consistent with the exclusive action described.
+  f12: 3/10 correct on test items (30.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/f12_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker0_FS0_20260522_144948.csv

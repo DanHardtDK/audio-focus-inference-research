@@ -1,0 +1,19 @@
+=== Log for ns2 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam didn't give Bill oranges.
+    pred=C  
+  [1] Sam only gave Ellen GRAPES. / Sam also gave Ellen oranges.
+    pred=B  
+  [2] Sam only gave BILL bananas. / Sam didn't give Tom bananas.
+    pred=C  
+  [3] Sam only gave Ellen ORANGES. / Sam also gave Sue oranges.
+    pred=B  
+  [4] Sam only gave TOM apples. / Sam also gave Bill apples.
+    pred=B  
+  [5] Sam only gave Bill BANANAS. / Sam didn't give Bill grapes.
+    pred=C  
+  [6] Sam only gave ELLEN bananas. / Sam also gave Ellen grapes.
+    pred=B  
+  [7] Sam only gave Ellen GRAPES. / Sam didn't give Rob grapes.
+    pred=B  
+  ns2: 3/8 correct on test items (37.5%)
+  CSV: data/output/qwen2_audio_fp16/Task4/ns2_inference_audio_qwen_Qwen-Qwen2-Audio-7B-Instruct_SPspeaker1_FS0_20260521_212632.csv

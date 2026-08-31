@@ -1,0 +1,23 @@
+=== Log for f3 fold=None fewshot=[] ===
+  [0] Sam only gave ELLEN grapes. / Sam didn't give Tom grapes.
+    pred=A  The prosodic focus on "Ellen" in S1 emphasizes that she was the only recipient, making S2 (Sam didn't give Tom grapes) a logical consequence.
+  [1] Sam only gave Ellen APPLES. / Sam didn't give Ellen apples.
+    pred=C  S2 contradicts S1 because the prosodic focus on "apples" in S1 emphasizes that apples were the only thing given, while S2 denies that apples were given at all.
+  [2] Sam only gave Rob GRAPES. / Sam also gave Ellen grapes.
+    pred=A  The word "only" in S1 is prosodically focused, indicating that Sam gave grapes to Rob and no one else. S2 states that Sam also gave grapes to Ellen, which contradicts the exclusivity implied by "only." Therefore, S2 is contradicted by S1.
+  [3] Sam only gave Rob APPLES. / Sam also gave Ellen apples.
+    pred=C  The focus on "only" in S1 implies Sam gave apples to Rob and no one else, contradicting S2 which states Sam also gave apples to Ellen.
+  [4] Sam only gave Ellen APPLES. / Sam didn't give Bill apples.
+    pred=A  The prosodic focus on "apples" in S1 emphasizes the type of item given, and S2 states that Bill was not given apples, which is consistent with Sam only giving apples to Ellen. Thus, S2 is entailed by S1.
+  [5] Sam only gave Rob APPLES. / Sam didn't give Sue apples.
+    pred=A  The prosodic focus on "apples" in S1 emphasizes the type of item given, and S2 states that Sue was not given that same item, which is consistent with Sam only giving Rob apples.
+  [6] Sam only gave ROB oranges. / Sam also gave Rob apples.
+    pred=A  The focus on "Rob" in S1 emphasizes that Rob was the recipient of the oranges, but does not exclude the possibility that Sam gave Rob other things, like apples. S2 adds information consistent with S1, so it is entailed.
+  [7] Sam only gave ROB apples. / Sam also gave Rob grapes.
+    pred=A  The focus on "Rob" in S1 emphasizes that Rob was the recipient of apples, and S2 adds that Rob also received grapes, which is consistent with the information in S1.
+  [8] Sam only gave ROB bananas. / Sam didn't give Ellen bananas.
+    pred=A  The prosodic focus on "Rob" in S1 emphasizes that Rob is the only recipient, making S2 (Sam didn't give Ellen bananas) logically entailed, as it aligns with the exclusivity implied by "only."
+  [9] Sam only gave Mary APPLES. / Sam also gave Ellen apples.
+    pred=C  S1 states that Sam gave apples to Mary and only Mary, while S2 claims Sam also gave apples to Ellen, contradicting the exclusivity implied by "only".
+  f3: 3/10 correct on test items (30.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/f3_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker0_FS0_20260522_144948.csv

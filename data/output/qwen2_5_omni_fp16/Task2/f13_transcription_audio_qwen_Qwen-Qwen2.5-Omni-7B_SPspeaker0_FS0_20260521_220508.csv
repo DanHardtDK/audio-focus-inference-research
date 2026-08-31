@@ -1,0 +1,9 @@
+example_index,is_few_shot,true_S1,true_S2,true_A,inf_correct,model_A,trans_correct,model_S1,model_S2,model_explanation,s1_edit_norm,s2_edit_norm,focus,logic,alternative,file_id,mode,backend,model_name,run_timestamp_utc,response_id,cv_fold,speaker
+0,0,Sam only gave Ellen BANANAS.,Sam also gave Tom bananas.,B,,,0,Sam only gave BILL bananas.,,,0.1429,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+1,0,Sam only gave Ellen ORANGES.,Sam also gave Rob oranges.,B,,,0,Sam only gave ELLen oranges.,,,0.0,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+2,0,Sam only gave Rob BANANAS.,Sam also gave Ellen bananas.,B,,,0,Sam only gave ROB bananas.,,,0.0,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+3,0,Sam only gave Tom BANANAS.,Sam also gave Mary bananas.,B,,,0,Sam only gave TOM bananas.,,,0.0,,2,POS,1,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+4,0,Sam only gave Ellen ORANGES.,Sam also gave Ellen apples.,C,,,1,Sam only gave Ellen ORANGES.,,,0.0,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+5,0,Sam only gave Rob BANANAS.,Sam also gave Rob oranges.,C,,,0,Sam only gave ROB bananas.,,,0.0,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+6,0,Sam only gave Sue ORANGES.,Sam also gave Sue bananas.,C,,,0,Sam only gave SUE oranges.,,,0.0,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0
+7,0,Sam only gave Tom APPLES.,Sam also gave Tom bananas.,C,,,0,Sam only gave TOM apples.,,,0.0,,2,POS,2,f13,audio,qwen,Qwen/Qwen2.5-Omni-7B,20260521_220508,,,speaker0

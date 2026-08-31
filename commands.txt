@@ -1,0 +1,152 @@
+# =============================================================================
+# Qwen audio variants — paste-ready commands for all 4 Tasks
+# =============================================================================
+#
+# Conventions:
+#   * Run from the repo root.
+#   * Output for each variant is written to data/output/<variant_tag>/
+#     with subfolders Task1, Task2, Task3, Task4, internals/
+#   * The original 4-bit pipeline (data/output/qwen/Task1..4) is untouched —
+#     run_qwen_variant.py never writes there unless you set
+#     --variant-tag qwen.
+#   * `python` here means whatever interpreter you have activated. On Lambda
+#     Labs Linux that is typically `python` (after `source venv/bin/activate`);
+#     on local Windows replace with `.\.venv\Scripts\python.exe` if needed.
+#
+# Each section below is one self-contained variant. Pick the section you want
+# and paste the command. To run several variants in sequence just paste them
+# one after another — the runner is idempotent per output dir.
+#
+# =============================================================================
+# Prereqs (Linux, Lambda Labs A10 24GB recommended for the fp16 7B variants)
+# =============================================================================
+#
+#   git clone <repo> && cd audio-focus-inference-research
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install -U pip
+#   pip install -r requirements.txt
+#   pip install -U "transformers>=4.50" accelerate bitsandbytes \
+#                  soundfile librosa scikit-learn pandas
+#
+# (Qwen2.5-Omni requires transformers>=4.50; bitsandbytes is only needed for
+#  4bit/8bit precision.)
+#
+#
+# =============================================================================
+# 0. Sanity check — re-run the original 4-bit Qwen2-Audio pipeline
+#    (verifies the refactor matches your previous results)
+# =============================================================================
+python code/qwen/run_qwen_variant.py \
+    --model        Qwen/Qwen2-Audio-7B-Instruct \
+    --precision    4bit \
+    --variant-tag  qwen2_audio_4bit \
+    --speaker      speaker0 \
+    --files        f1 f2 f3 f4 f5 f6 f7 f8 f9 f10
+
+
+# =============================================================================
+# 1. Qwen2-Audio-7B-Instruct at fp16 (no quantisation)
+#    -> isolates whether 4-bit hurts performance vs full precision
+#    -> output: data/output/qwen2_audio_fp16/{Task1,Task2,Task3,Task4}
+# =============================================================================
+python code/qwen/run_qwen_variant.py \
+    --model        Qwen/Qwen2-Audio-7B-Instruct \
+    --precision    fp16 \
+    --variant-tag  qwen2_audio_fp16 \
+    --speaker      speaker0 \
+    --files        f1 f2 f3 f4 f5 f6 f7 f8 f9 f10
+
+
+# =============================================================================
+# 2. Qwen2.5-Omni-7B at fp16 (newer multimodal architecture)
+#    -> output: data/output/qwen2_5_omni_fp16/{Task1,Task2,Task3,Task4}
+# =============================================================================
+python code/qwen/run_qwen_variant.py \
+    --model        Qwen/Qwen2.5-Omni-7B \
+    --precision    fp16 \
+    --variant-tag  qwen2_5_omni_fp16 \
+    --speaker      speaker0 \
+    --files        f1 f2 f3 f4 f5 f6 f7 f8 f9 f10
+
+
+# =============================================================================
+# 3. Optional: include cross-speaker held-out probe data (speaker1, speaker2)
+#    Adds Task1/Task3 cross-speaker test columns + plot lines.
+# =============================================================================
+python code/qwen/run_qwen_variant.py \
+    --model           Qwen/Qwen2-Audio-7B-Instruct \
+    --precision       fp16 \
+    --variant-tag     qwen2_audio_fp16 \
+    --speaker         speaker0 \
+    --files           f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 \
+    --cross-speakers  speaker1 speaker2 \
+    --ns-files        ns1 ns2 ns3
+
+
+# =============================================================================
+# 4. Optional: also run Task 4 with --focus-hint as a separate condition
+# =============================================================================
+python code/qwen/run_qwen_variant.py \
+    --model        Qwen/Qwen2-Audio-7B-Instruct \
+    --precision    fp16 \
+    --variant-tag  qwen2_audio_fp16 \
+    --speaker      speaker0 \
+    --files        f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 \
+    --focus-hint-too
+
+
+# =============================================================================
+# 5. Run only one Task (any of 1,2,3,4) — useful to redo a single step
+#    Example: re-run only Task 4 (A/B/C inference) for the fp16 variant
+# =============================================================================
+python code/qwen/run_qwen_variant.py \
+    --model        Qwen/Qwen2-Audio-7B-Instruct \
+    --precision    fp16 \
+    --variant-tag  qwen2_audio_fp16 \
+    --speaker      speaker0 \
+    --files        f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 \
+    --skip-task1 --skip-task2 --skip-task3 --skip-internals
+
+
+# =============================================================================
+# 6. Direct script calls (no orchestrator) — useful for debugging one step
+# =============================================================================
+
+# Task 2 only — fp16 Qwen2-Audio
+python code/qwen/qwen_focus.py \
+    --model      Qwen/Qwen2-Audio-7B-Instruct \
+    --precision  fp16 \
+    --speaker    speaker0 \
+    --output-dir data/output/qwen2_audio_fp16/Task2 \
+    f1 f2 f3 f4 f5 f6 f7 f8 f9 f10
+
+# Task 4 only — fp16 Qwen2.5-Omni
+python code/qwen/qwenAudioInput.py \
+    --model      Qwen/Qwen2.5-Omni-7B \
+    --precision  fp16 \
+    --speaker    speaker0 \
+    --fewshot    0 \
+    --output-dir data/output/qwen2_5_omni_fp16/Task4 \
+    f1 f2 f3 f4 f5 f6 f7 f8 f9 f10
+
+# Internals + probes (Task 1 & 3) only — fp16 Qwen2-Audio
+python code/qwen/qwen_inspect.py \
+    --model      Qwen/Qwen2-Audio-7B-Instruct \
+    --precision  fp16 \
+    --speaker    speaker0 \
+    --output-dir data/output/qwen2_audio_fp16/internals \
+    --all-layers \
+    --file f1 --file f2 --file f3 --file f4 --file f5 \
+    --file f6 --file f7 --file f8 --file f9 --file f10
+
+python code/qwen/layer_probe.py \
+    --layers-csv  data/output/qwen2_audio_fp16/internals/qwen_encoder_layers_speaker0_<TIMESTAMP>.csv \
+    --target      focus \
+    --pca         50 \
+    --output-dir  data/output/qwen2_audio_fp16/Task1
+
+python code/qwen/layer_probe.py \
+    --layers-csv  data/output/qwen2_audio_fp16/internals/qwen_encoder_layers_speaker0_<TIMESTAMP>.csv \
+    --target      inference \
+    --pca         50 \
+    --output-dir  data/output/qwen2_audio_fp16/Task3

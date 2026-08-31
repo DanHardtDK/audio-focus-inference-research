@@ -1,0 +1,23 @@
+=== Log for f1 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam also gave Sue grapes.
+    pred=C  The word "only" in S1 implies that Bill was the sole recipient of grapes, directly contradicting S2's claim that Sue also received grapes.
+  [1] Sam only gave SUE oranges. / Sam also gave Rob oranges.
+    pred=C  The focus on "Sue" in S1 implies Sam gave oranges *only* to Sue, contradicting S2 which states Sam gave oranges to Rob as well.
+  [2] Sam only gave SUE grapes. / Sam didn't give Ellen grapes.
+    pred=A  The prosodic focus on "Sue" in S1 emphasizes that Sue was the only recipient of grapes, which entails that Ellen did not receive any.
+  [3] Sam only gave TOM apples. / Sam didn't give Tom grapes.
+    pred=A  The prosodic focus on "Tom" in S1 emphasizes that Tom was the recipient of apples, and S2 states that Sam didn't give Tom grapes, which is consistent with S1 and does not contradict it.
+  [4] Sam only gave Rob ORANGES. / Sam also gave Rob apples.
+    pred=C  S1 states that Sam gave Rob oranges and implies this was the only thing given (due to focus on "only"). S2 contradicts this by stating Sam also gave apples, implying more than just oranges were given.
+  [5] Sam only gave SUE grapes. / Sam didn't give Tom grapes.
+    pred=A  The prosodic focus on "Sue" in S1 emphasizes that she was the only recipient, making S2 a logical consequence.
+  [6] Sam only gave Ellen BANANAS. / Sam also gave Mary bananas.
+    pred=C  The word "only" in S1 implies Sam gave bananas to Ellen and no one else. S2 contradicts this by stating Sam also gave bananas to Mary.
+  [7] Sam only gave ROB bananas. / Sam didn't give Rob oranges.
+    pred=A  The prosodic focus on "bananas" in S1 emphasizes the specific fruit given to Rob, making S2 a logical continuation that Rob did not receive oranges.
+  [8] Sam only gave Mary BANANAS. / Sam also gave Mary apples.
+    pred=C  The word "only" in S1 implies that Sam did not give Mary anything other than bananas. S2 states that Sam also gave Mary apples, which contradicts the exclusivity implied by "only".
+  [9] Sam only gave Sue ORANGES. / Sam didn't give Rob oranges.
+    pred=A  The prosodic focus on "oranges" in S1 emphasizes the type of item given, and S2 specifies that Rob was not given that same item, which is consistent with Sam only giving oranges to Sue.
+  f1: 6/10 correct on test items (60.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/f1_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker0_FS0_20260522_144948.csv

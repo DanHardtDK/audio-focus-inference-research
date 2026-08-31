@@ -1,0 +1,23 @@
+=== Log for f12 fold=None fewshot=[] ===
+  [0] Sam only gave BILL grapes. / Sam also gave Bill apples.
+    pred=B  
+  [1] Sam only gave ROB apples. / Sam also gave Rob bananas.
+    pred=B  
+  [2] Sam only gave ROB grapes. / Sam also gave Rob bananas.
+    pred=B  
+  [3] Sam only gave Rob ORANGES. / Sam didn't give Ellen oranges.
+    pred=B  
+  [4] Sam only gave Sue APPLES. / Sam didn't give Rob apples.
+    pred=B  
+  [5] Sam only gave Tom APPLES. / Sam didn't give Bill apples.
+    pred=B  
+  [6] Sam only gave Tom BANANAS. / Sam didn't give Sue bananas.
+    pred=B  
+  [7] Sam only gave Sue APPLES. / Sam didn't give Sue oranges.
+    pred=A  
+  [8] Sam only gave Sue BANANAS. / Sam didn't give Sue oranges.
+    pred=A  
+  [9] Sam only gave Sue ORANGES. / Sam didn't give Sue bananas.
+    pred=A  Sam only gave Sue oranges, so it is entailed that Sam didn't give Sue bananas.
+  f12: 10/10 correct on test items (100.0%)
+  CSV: data/output/qwen2_5_omni_fp16/Task4/f12_inference_audio_qwen_Qwen-Qwen2.5-Omni-7B_SPspeaker0_FS0_20260521_220841.csv

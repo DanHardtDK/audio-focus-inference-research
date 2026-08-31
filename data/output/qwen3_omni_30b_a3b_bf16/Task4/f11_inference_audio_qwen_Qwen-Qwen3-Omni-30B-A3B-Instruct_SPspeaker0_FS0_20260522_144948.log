@@ -1,0 +1,23 @@
+=== Log for f11 fold=None fewshot=[] ===
+  [0] Sam only gave ROB oranges. / Sam didn't give Tom oranges.
+    pred=A  The focus on "Rob" in S1 emphasizes that Rob was the only recipient, making S2 (Tom not receiving oranges) logically entailed.
+  [1] Sam only gave SUE grapes. / Sam didn't give Bill grapes.
+    pred=A  The prosodic focus on "Sue" in S1 emphasizes that she was the only recipient of grapes, which is consistent with S2 stating Bill did not receive any.
+  [2] Sam only gave SUE oranges. / Sam didn't give Mary oranges.
+    pred=A  The prosodic focus on "Sue" in S1 emphasizes that she was the only recipient, making S2 a logical consequence.
+  [3] Sam only gave ELLEN bananas. / Sam didn't give Ellen grapes.
+    pred=A  The focus on "bananas" in S1 implies that Sam gave Ellen bananas and possibly other things, but S2 specifies that Sam didn't give her grapes, which is consistent with the information in S1. Therefore, S2 is entailed by S1.
+  [4] Sam only gave ELLEN bananas. / Sam didn't give Ellen oranges.
+    pred=A  The prosodic focus on "bananas" in S1 emphasizes that only bananas were given to Ellen, making it entailed that oranges were not given.
+  [5] Sam only gave ROB grapes. / Sam didn't give Rob apples.
+    pred=A  The focus on "Rob" in S1 implies that Rob was the only recipient of grapes, making it entailed that Sam didn't give Rob apples (as the focus suggests exclusivity in the action).
+  [6] Sam only gave BILL apples. / Sam also gave Ellen apples.
+    pred=C  S2 contradicts S1 because S1 states Sam *only* gave apples to Bill, implying no one else received apples, while S2 claims Sam also gave apples to Ellen.
+  [7] Sam only gave ELLEN apples. / Sam also gave Sue apples.
+    pred=C  S2 contradicts S1 because S1 states Sam *only* gave apples to Ellen, implying no one else received apples, while S2 claims Sam also gave apples to Sue.
+  [8] Sam only gave ELLEN oranges. / Sam also gave Rob oranges.
+    pred=C  S2 contradicts S1 because S1 states Sam gave oranges to Ellen and only Ellen, while S2 claims Sam also gave oranges to Rob, implying Ellen wasn't the only recipient.
+  [9] Sam only gave SUE apples. / Sam also gave Bill apples.
+    pred=C  S1 states that Sam gave apples only to Sue, implying no one else received apples. S2 contradicts this by stating Sam also gave apples to Bill.
+  f11: 7/10 correct on test items (70.0%)
+  CSV: data/output/qwen3_omni_30b_a3b_bf16/Task4/f11_inference_audio_qwen_Qwen-Qwen3-Omni-30B-A3B-Instruct_SPspeaker0_FS0_20260522_144948.csv
