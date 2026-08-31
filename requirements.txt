@@ -1,5 +1,15 @@
 openai
-google-generativeai
+google-genai
+anthropic
 openai-whisper
 torch
+transformers
+bitsandbytes
+scikit-learn
+pandas
+numpy
+scipy
+statsmodels
+praat-parselmouth
+soundfile
 matplotlib
