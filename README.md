@@ -23,7 +23,7 @@ The model hears sentence 1 and judges whether sentence 2 is entailed,
 contradicted or neither. The correct label depends only on which word is
 focused:
 
-| Sentence 1 (spoken) | Sentence 2 | Label |
+| Sentence 1 | Sentence 2 | Label |
 |---|---|---|
 | Sam only gave **SUE** oranges | Sam *also* gave Mary oranges | Contradiction |
 | Sam only gave Sue **ORANGES** | Sam *also* gave Mary oranges | Neutral |
