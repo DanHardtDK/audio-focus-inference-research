@@ -19,7 +19,7 @@ focus (Rooth 1992), and the code and data used to evaluate audio LLMs on it.
 
 ## The task
 
-The model hears sentence 1 and judges whether written sentence 2 is entailed,
+The model hears sentence 1 and judges whether sentence 2 is entailed,
 contradicted or neither. The correct label depends only on which word is
 focused:
 
