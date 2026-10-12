@@ -4,7 +4,7 @@
 
 **Daniel Hardt** · Copenhagen Business School · *Findings of EMNLP 2026*
 
-[Poster (PDF)](docs/emnlp2026_poster.pdf) · Paper: coming soon in the ACL Anthology
+**[Paper (PDF)](docs/cameraReadyHardt.pdf)** · [Poster (PDF)](docs/emnlp2026_poster.pdf) · ACL Anthology version coming soon
 
 <a href="docs/emnlp2026_poster.pdf"><img src="docs/poster_preview.png" alt="EMNLP 2026 poster" width="420" align="right"></a>
 
