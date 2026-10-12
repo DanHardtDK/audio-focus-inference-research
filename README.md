@@ -37,6 +37,8 @@ sentence 1 and mark the focused word.
 The 128 items follow a 2×2×2 design (focus × alternative × logic) and were
 recorded by a native U.S. English speaker, with a 24-item subset recorded by
 two additional speakers.
+Recordings from speaker0 and speaker1 are included; speaker2's recordings
+are not publicly released, though model outputs for that speaker are.
 
 ## Key results
 

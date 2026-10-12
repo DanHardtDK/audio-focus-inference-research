@@ -27,3 +27,7 @@ data/humanSurvey/raw/
 code/qualtrics_export/output/**/*scored_long.csv
 code/qualtrics_export/output/**/*scored_summary.csv
 !code/qualtrics_export/output/**/*_anon.csv
+
+# speaker2 recordings: not licensed for public release
+data/speakers/speaker2/raw/
+data/speakers/speaker2/clips/
