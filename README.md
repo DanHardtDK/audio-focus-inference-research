@@ -4,7 +4,7 @@
 
 **Daniel Hardt** · Copenhagen Business School · *Findings of EMNLP 2026*
 
-**[Paper (PDF)](docs/cameraReadyHardt.pdf)** · [Poster (PDF)](docs/emnlp2026_poster.pdf) · ACL Anthology version coming soon
+**[Paper (PDF)](docs/cameraReadyHardt.pdf)** · [Poster (PDF)](docs/emnlp2026_poster.pdf) · [ACL Anthology](https://aclanthology.org/2026.findings-emnlp.1884/)
 
 <a href="docs/emnlp2026_poster.pdf"><img src="docs/poster_preview.png" alt="EMNLP 2026 poster" width="420" align="right"></a>
 
@@ -103,11 +103,15 @@ For the Qwen models and probing, see [`commands.txt`](commands.txt).
 ## Citation
 
 ```bibtex
-@inproceedings{hardt-2026-audio-llms-prosodic-focus,
-  title     = {Can Audio {LLM}s Understand Prosodic Focus? An Alternative-Semantics Inference Test with \textit{Only}},
+@inproceedings{hardt-2026-audio,
+  title     = {Can Audio {LLM}s Understand Prosodic Focus? An Alternative-Semantics Inference Test with ``Only''},
   author    = {Hardt, Daniel},
   booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
-  year      = {2026}
+  year      = {2026},
+  pages     = {40166--40183},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2026.findings-emnlp.1884/},
+  doi       = {10.18653/2026.findings-emnlp.1884}
 }
 ```
 
